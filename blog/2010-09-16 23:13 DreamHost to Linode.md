@@ -1,0 +1,5 @@
+Today I switched from DreamHost to Linode. Well, almost, I still have one website to move over, and that's only because I can't get in touch with the friend I'm hosting it for. The whole thing went pretty smoothly, well, other than Postfix which I fought with for over hour hours before discovering that it was actually gmail that was misbehaving. But I got that sorted out.
+
+Admittedly, a Linode is more expensive than DreamHost. But I think I can cope, especially if I start charging a few people who've been using my webspace a small amount to cover the extra cost to me. And, really, the benefits of a VPS more than make up for the additional cost anyway.
+
+I have had a good experience with DreamHost, and would recommend them to anyone looking for shared hosting, but my needs have outgrown what they can provide. I do know about DreamHost PS, but if I'm going to pay extra for a VPS, I may as well go for a VPS company I've used before (for archhurd.org) and which I know are very good. The only downtime archhurd.org has had, is downtime I've caused. I hope that record will continue with my new Linode (aptly named Yuggoth).
