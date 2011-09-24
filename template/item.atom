@@ -1,0 +1,15 @@
+<entry>
+  <title>{title}</title>
+  <link rel="alternate" href="{permalink}"/>
+  <author>
+    <name>Michael Walker</name>
+    <uri>http://www.barrucadu.co.uk</uri>
+  </author>
+  <updated>{timestamp}</updated>
+  <published>{timestamp}</published>
+  <content type="html">
+
+{content}
+
+  </content>
+</entry>

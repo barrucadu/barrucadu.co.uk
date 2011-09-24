@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://www.habariproject.org/" version="0.7-alpha">Habari</generator><id>tag:www.barrucadu.co.uk,2011-09-24:atom/c880ae86dbc9f41d6f9debd099124a5c528ae123</id><title>Michael Walker</title><subtitle>barrucadu (n. bah-ROO-cah-DOO): A chemical reaction for turning caffeine into code.</subtitle><updated>2011-08-12T13:00:36+01:00</updated><link rel="alternate" href="http://www.barrucadu.co.uk/"/><link rel="self" href="http://www.barrucadu.co.uk/atom/1"/><link rel="first" href="http://www.barrucadu.co.uk/atom/1/page/1" type="application/atom+xml" title="First Page"/><link rel="next" href="http://www.barrucadu.co.uk/atom/1/page/2" type="application/atom+xml" title="Next Page"/><link rel="last" href="http://www.barrucadu.co.uk/atom/1/page/6" type="application/atom+xml" title="Last Page"/>
+
+{content}
+
+</feed>
