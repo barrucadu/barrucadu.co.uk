@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Turn a list of Markdown files into a single HTML file, complete with template.
+# Turn a list of Markdown files into a single Atom file, complete with template.
 
 output=$1
 

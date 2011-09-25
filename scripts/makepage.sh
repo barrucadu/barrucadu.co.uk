@@ -41,6 +41,8 @@ sed -e "/{content}/r $tempfile.2" \
     -e "/{content}/d" \
     -e "/{pagelinks}/r $pagelinksfile" \
     -e "/{pagelinks}/d" \
+    -e "/{archiveplink}/d" \
+    -e "/{archivenlink}/d" \
     < template/page.html \
     > $output
 

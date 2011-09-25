@@ -3,11 +3,16 @@
 # Turn a list of Markdown files into a single HTML file, complete with template.
 
 output=$1
+plink=$2
+nlink=$3
 pagelinksfile=`mktemp`
 
 cp template/page.html $output
 
 shift
+shift
+shift
+
 inputs=$@
 
 while [[ $1 != "" ]]; do
@@ -59,6 +64,8 @@ sed -i \
     -e "/{content}/d" \
     -e "/{pagelinks}/r $pagelinksfile" \
     -e "/{pagelinks}/d" \
+    -e "/{archiveplink}/$plink/" \
+    -e "/{archivenlink}/$nlink/" \
     $output
 
 rm $pagelinksfile
