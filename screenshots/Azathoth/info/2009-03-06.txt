@@ -1,7 +1,0 @@
-<li><strong>OS:</strong> Arch Linux x86_64</li>
-<li><strong>GTK:</strong> LiteGNOME (modified)</li>
-<li><strong>Icons:</strong> Minimal_perception_glossy (modified)</li>
-<li><strong>WM:</strong> Xmonad</li>
-<li><strong>GTK Font:</strong> DejaVu Sans</li>
-<li><strong>Wallpaper:</strong> <a href="http://veerle.duoh.com/artveerle/comments/floramagic_desktop/">Floramagic</a></li>
-<li><strong>Other:</strong> Opera, urxvt, ncmpcpp, mpddp (a program of my own)</li>

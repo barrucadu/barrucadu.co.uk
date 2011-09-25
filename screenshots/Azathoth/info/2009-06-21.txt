@@ -1,7 +1,0 @@
-<li><strong>OS:</strong> Arch Linux x86_64</li>
-<li><strong>GTK:</strong> LiteGNOME (modified)</li>
-<li><strong>Icons:</strong> minimal-perception-glossy</li>
-<li><strong>WM:</strong> StumpWM</li>
-<li><strong>GTK Font:</strong> GE Inspira Small Caps 10</li>
-<li><strong>Wallpaper:</strong> <a href="http://interfacelift.com/wallpaper_beta/details/1927/room_without_a_view.html">Room without a view</a></li>
-<li><strong>Other:</strong> Urxvtc, archinfo script, screenshot script</li>

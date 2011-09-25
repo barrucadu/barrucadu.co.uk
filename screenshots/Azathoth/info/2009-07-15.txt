@@ -1,8 +1,0 @@
-<li><strong>OS:</strong> Arch Linux x86_64 desu.</li>
-<li><strong>GTK:</strong> LiteGNOME (modified) desu.</li>
-<li><strong>Icons:</strong> minimal-perception-glossy desu.</li>
-<li><strong>WM:</strong> StumpWM desu.</li>
-<li><strong>GTK Font:</strong> GE Inspira Small Caps 10 desu.</li>
-<li><strong>Wallpaper:</strong> <a href="http://misc.barrucadu.co.uk/rozen29.jpg">rozen29.jpg</a> desu.</li>
-<li><strong>Other:</strong> Urxvtc, screen, ncmpcpp desu.</li>
-<li><strong>Desu:</strong> Sorry, couldn't resist desu :p</li>

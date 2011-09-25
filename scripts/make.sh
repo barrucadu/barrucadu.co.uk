@@ -42,6 +42,27 @@ for archive in `seq $first $last`; do
     ./scripts/makearchive.sh archive/$archive.html $prev $next $files
 done
 
+# Screenshots
+echo "Screenshots"
+pushd screenshots
+for computer in *; do
+    if [[ -d $computer ]]; then
+        pushd $computer/info
+        for info in *.md; do
+            date=`echo $info | sed 's:.md::'`
+            pushd ../../..
+            ./scripts/makescreenshot.sh screenshots/$computer/$date.html $computer $date
+            popd
+        done
+        popd
+    fi
+done
+popd
+
+# Gallery
+echo "Gallery"
+./scripts/makegallery.sh screenshots/index.html
+
 # Index
 echo "Index"
 files=()

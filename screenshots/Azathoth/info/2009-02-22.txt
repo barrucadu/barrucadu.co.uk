@@ -1,8 +1,0 @@
-<li><strong>OS:</strong> Arch Linux x86_64</li>
-<li><strong>GTK:</strong> LiteGNOME (modified)</li>
-<li><strong>Icons:</strong> Minimal_perception_glossy (modified)</li>
-<li><strong>Emerald:</strong> Dark Legacy Mod</li>
-<li><strong>DE:</strong> GNOME 2.24</li>
-<li><strong>Fonts:</strong> Nonserif <span class="smalltext">(application)</span>, DejaVu Sans <span class="smalltext">(document)</span>, Newspaper <span class="smalltext">(desktop)</span>, Onuava <span class="smalltext">(fixed width)</span>, Corbel <span class="smalltext">(emerald)</span></li>
-<li><strong>Wallpaper:</strong> <a href="http://www.barrucadu.co.uk/uploads/Cat.png">Cat.png</a></li>
-<li><strong>Other:</strong> Compiz-Fusion, Devil's Pie + GNOME Terminal, Sonata, ncmpc</li>

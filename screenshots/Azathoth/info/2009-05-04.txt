@@ -1,7 +1,0 @@
-<li><strong>OS:</strong> Arch Linux x86_64</li>
-<li><strong>GTK:</strong> LiteGNOME (modified)</li>
-<li><strong>Icons:</strong> minimal-perception-glossy</li>
-<li><strong>WM:</strong> StumpWM</li>
-<li><strong>GTK Font:</strong> GeosansLight Bold 10</li>
-<li><strong>Wallpaper:</strong> <a href="http://realitydream.deviantart.com/art/Eclipse-V-The-fire-arch-WP-98567591">Eclipse V. - The fire arch WP</a></li>
-<li><strong>Other:</strong> Urxvtc, my Arch info script.</li>

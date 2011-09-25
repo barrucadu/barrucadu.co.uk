@@ -318,3 +318,14 @@ dd
     padding-left: 64px;
     padding-right: 64px;
 }
+
+ol.gallery
+{
+    list-style-type: none
+}
+
+ol.gallery li
+{
+    display: inline;
+    margin: 10px;
+}

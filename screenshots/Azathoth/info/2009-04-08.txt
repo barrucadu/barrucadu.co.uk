@@ -1,7 +1,0 @@
-<li><strong>OS:</strong> Arch Linux x86_64</li>
-<li><strong>GTK:</strong> LiteGNOME (modified)</li>
-<li><strong>Icons:</strong> Minimal_perception_glossy (modified)</li>
-<li><strong>WM:</strong> StumpWM</li>
-<li><strong>GTK Font:</strong> DejaVu Sans</li>
-<li><strong>Wallpaper:</strong> <a href="http://www.animepaper.net/gallery/wallpapers/Elfen-Lied/item91351/">Broken Soul&hellip;</a></li>
-<li><strong>Other:</strong> urxvtc, screen, htop, colortheme, ncmpcpp, pacman</li>

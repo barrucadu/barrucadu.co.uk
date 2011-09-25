@@ -1,7 +1,0 @@
-<li><strong>OS:</strong> Arch Linux x86_64</li>
-<li><strong>GTK:</strong> LiteGNOME (modified)</li>
-<li><strong>Icons:</strong> minimal-perception-glossy</li>
-<li><strong>WM:</strong> StumpWM</li>
-<li><strong>GTK Font:</strong> GE Inspira Small Caps 10</li>
-<li><strong>Wallpaper:</strong> <a href="http://dkf.deviantart.com/art/Exotika-part-2-44150125">Exotika part 2</a></li>
-<li><strong>Other:</strong> Urxvtc, screen, weechat (#uzbl on freenode), screenshot script</li>

@@ -1,8 +1,0 @@
-<li><strong>OS:</strong> Arch Linux x86_64</li>
-<li><strong>GTK:</strong> Shiki Noble</li>
-<li><strong>Icons:</strong> Baku</li>
-<li><strong>WM:</strong> StumpWM</li>
-<li><strong>GTK Font:</strong> Nimbus Sans L 9</li>
-<li><strong>Terminal Font:</strong> envy code r</li>
-<li><strong>Wallpaper:</strong> <a href="http://misc.barrucadu.co.uk/linux%20+%20hurd.png">linux + hurd.png</a></li>
-<li><strong>Other:</strong> urxvtc, irssi (#archhurd, during update-squashing meeting)</li>
