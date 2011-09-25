@@ -1,0 +1,9 @@
+ol.gallery, ol#info
+{
+    list-style-type: none !important;
+}
+
+ol.gallery li
+{
+    display: inline;
+}

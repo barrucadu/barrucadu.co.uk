@@ -1,0 +1,7 @@
+<li><strong>OS:</strong> Arch Linux x86_64</li>
+<li><strong>GTK:</strong> LiteGNOME (modified)</li>
+<li><strong>Icons:</strong> Smokikon v0.9</li>
+<li><strong>Emerald:</strong> Dark Legacy Mod</li>
+<li><strong>DE:</strong> GNOME 2.24</li>
+<li><strong>Fonts:</strong> Nimbus Sans L <span class="smalltext">(application, document)</span>, Liberation Sans <span class="smalltext">(desktop)</span>, Anorexia <span class="smalltext">(fixed width)</span>, Corbel <span class="smalltext">(emerald)</span></li>
+<li><strong>Other:</strong> Compiz-Fusion, Avant-Window-Navigator, Conky, GNOME Terminal</li>

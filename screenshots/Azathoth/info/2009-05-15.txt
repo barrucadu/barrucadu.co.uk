@@ -1,0 +1,7 @@
+<li><strong>OS:</strong> Arch Linux x86_64</li>
+<li><strong>GTK:</strong> LiteGNOME (modified)</li>
+<li><strong>Icons:</strong> minimal-perception-glossy</li>
+<li><strong>WM:</strong> StumpWM</li>
+<li><strong>GTK Font:</strong> GE Inspira Small Caps 10</li>
+<li><strong>Wallpaper:</strong> <a href="http://zilla774.deviantart.com/art/eyeTree-33663571">eyeTree</a></li>
+<li><strong>Other:</strong> Uzbl, URxvt, GNU Screen, sceenshot script, emacs.</li>

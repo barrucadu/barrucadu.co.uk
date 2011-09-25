@@ -1,0 +1,6 @@
+<li><strong>OS:</strong> Arch Linux x86_64</li>
+<li><strong>GTK:</strong> LiteGNOME (modified)</li>
+<li><strong>Icons:</strong> Black White 2 Gloss</li>
+<li><strong>Emerald:</strong> Dark Legacy Mod</li>
+<li><strong>DE:</strong> GNOME 2.22</li>
+<li><strong>Other:</strong> Compiz-Fusion, Avant-Window-Navigator, Conky</li>

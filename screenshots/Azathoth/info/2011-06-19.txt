@@ -1,0 +1,8 @@
+<li><strong>OS:</strong> Arch Linux x86_64</li>
+<li><strong>GTK:</strong> Shiki Noble</li>
+<li><strong>Icons:</strong> Baku</li>
+<li><strong>WM:</strong> StumpWM</li>
+<li><strong>GTK Font:</strong> Nimbus Sans L 9</li>
+<li><strong>Terminal Font:</strong> DejaVu Sans Mono</li>
+<li><strong>Wallpaper:</strong> <a href="http://konachan.com/post/show/2767">Konachan.com - 2767 rozen_maiden suigintou.jpg</a></li>
+<li><strong>Other:</strong> urxvtc, emacs</li>

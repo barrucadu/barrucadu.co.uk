@@ -1,0 +1,7 @@
+<li><strong>OS:</strong> Arch Linux x86_64</li>
+<li><strong>GTK:</strong> LiteGNOME (modified)</li>
+<li><strong>Icons:</strong> Minimal_perception_glossy (modified)</li>
+<li><strong>WM:</strong> Xmonad</li>
+<li><strong>GTK Font:</strong> DejaVu Sans</li>
+<li><strong>Wallpaper:</strong> <a href="http://zilla774.deviantart.com/art/soulache-27161903">soulache</a></li>
+<li><strong>Other:</strong> urxvtc, ncmpcpp, htop</li>

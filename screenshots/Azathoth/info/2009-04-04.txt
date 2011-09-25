@@ -1,0 +1,7 @@
+<li><strong>OS:</strong> Arch Linux x86_64</li>
+<li><strong>GTK:</strong> LiteGNOME (modified)</li>
+<li><strong>Icons:</strong> Minimal_perception_glossy (modified)</li>
+<li><strong>WM:</strong> ScrotWM</li>
+<li><strong>GTK Font:</strong> DejaVu Sans</li>
+<li><strong>Wallpaper:</strong> <a href="http://www.animepaper.net/gallery/wallpapers/Elfen-Lied/item51482/">Forgive Me&hellip;</a></li>
+<li><strong>Other:</strong> urxvtc, ncmpcpp</li>

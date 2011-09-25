@@ -1,0 +1,8 @@
+<li><strong>OS:</strong> Arch Linux x86_64</li>
+<li><strong>GTK:</strong> Gray Shiki Wise</li>
+<li><strong>Icons:</strong> Ubuntu-Mono-Light-Gnome-Wise</li>
+<li><strong>WM:</strong> StumpWM</li>
+<li><strong>GTK Font:</strong> DejaVu Sans 8</li>
+<li><strong>Terminal Font:</strong> Envy Code R</li>
+<li><strong>Wallpaper:</strong> <a href="http://konachan.com/post/show/54616/">Konachan.com - 54616 bicolored_eyes kashiwaba_hisano rozen_maiden suiseiseki.jpg</a></li>
+<li><strong>Other:</strong> urxvt</li>

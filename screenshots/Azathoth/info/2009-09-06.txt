@@ -1,0 +1,7 @@
+<li><strong>OS:</strong> Arch Linux x86_64</li>
+<li><strong>GTK:</strong> Shiki Wise</li>
+<li><strong>Icons:</strong> gnome-wise</li>
+<li><strong>WM:</strong> StumpWM</li>
+<li><strong>GTK Font:</strong> eurofurence Medium 11</li>
+<li><strong>Wallpaper:</strong> <a href="http://interfacelift.com/wallpaper_beta/details/1911/roses.html">Roses</a></li>
+<li><strong>Other:</strong> Urxvtc, ncmpcpp, colortheme.sh</li>
