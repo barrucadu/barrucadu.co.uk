@@ -2,69 +2,103 @@
 
 # Make the entire blog - static HTML files and Atom feed.
 
+all=/bin/true
+
+if [[ $1 != "" ]] && [[ $1 != "all" ]]; then
+    all=/bin/false
+fi
+
 # Blog entries
-echo "Blog entries"
-for file in blog/*.md; do
-    outfile=`echo $file | sed 's:md$:html:' | tr " " "-" | tr -c -d "[:alnum:]-/.:" | tr "[:upper:]" "[:lower:]"`
-    ./scripts/makepage.sh $outfile $file
-done
+if $all || [[ $1 == "blog" ]]; then
+    [[ $1 == "blog" ]] && shift
+
+    echo "Blog entries"
+    for file in blog/*.md; do
+        outfile=`echo $file | sed 's:md$:html:' | tr " " "-" | tr -c -d "[:alnum:]-/.:" | tr "[:upper:]" "[:lower:]"`
+        ./scripts/makepage.sh $outfile $file
+    done
+fi
 
 # Pages
-echo "Pages"
-for file in pages/*.md; do
-    outfile=`echo $file | sed -e 's:md$:html:' -e 's:pages/[0-9\: -]*::' | tr " " "-" | tr -c -d "[:alnum:]-." | tr "[:upper:]" "[:lower:]"`
-    ./scripts/makepage.sh $outfile $file  
-done
+if $all || [[ $1 == "pages" ]]; then
+    [[ $1 == "pages" ]] && shift
+
+    echo "Pages"
+    for file in pages/*.md; do
+        outfile=`echo $file | sed -e 's:md$:html:' -e 's:pages/[0-9\: -]*::' | tr " " "-" | tr -c -d "[:alnum:]-." | tr "[:upper:]" "[:lower:]"`
+        ./scripts/makepage.sh $outfile $file  
+    done
+fi
 
 # Feed
-echo "Feed"
-./scripts/makefeed.sh feed.atom blog/*.md
+if $all || [[ $1 == "feed" ]]; then
+    [[ $1 == "feed" ]] && shift
+
+    echo "Feed"
+    ./scripts/makefeed.sh feed.atom blog/*.md
+fi
 
 # Archives
-echo "Archives"
-first=`ls blog | head -n1 | sed 's/\([0-9]*\)-.*/\1/'`
-last=`ls blog | tail -n1 | sed 's/\([0-9]*\)-.*/\1/'`
-for archive in `seq $first $last`; do
-    prev="<a class=\"prev-page\" href=\"archive/$[ $archive - 1 ].html\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>"
-    next="<a class=\"next-page\" href=\"archive/$[ $archive + 1].html\" title=\"Next Entries &raquo;\">Next Entries &raquo;</a>"
+if $all || [[ $1 == "archives" ]]; then
+    [[ $1 == "archives" ]] && shift
 
-    if [[ $archive == $first ]]; then
-        prev=-
-    fi
-
-    if [[ $archive == $last ]]; then
-        next="<a class=\"next-page\" href=\"/\" title=\"Next Entries &raquo;\">Next Entries &raquo;</a>"
-    fi
-
-    files=()
-    ls blog | grep md$ | grep ^$archive | sed 's:^:blog/:' | while read line; do files+=$line; done
-
-    ./scripts/makearchive.sh archive/$archive.html $prev $next $files
-done
+    echo "Archives"
+    first=`ls blog | head -n1 | sed 's/\([0-9]*\)-.*/\1/'`
+    last=`ls blog | tail -n1 | sed 's/\([0-9]*\)-.*/\1/'`
+    for archive in `seq $first $last`; do
+        prev="<a class=\"prev-page\" href=\"archive/$[ $archive - 1 ].html\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>"
+        next="<a class=\"next-page\" href=\"archive/$[ $archive + 1].html\" title=\"Next Entries &raquo;\">Next Entries &raquo;</a>"
+        
+        if [[ $archive == $first ]]; then
+            prev=-
+        fi
+        
+        if [[ $archive == $last ]]; then
+            next="<a class=\"next-page\" href=\"/\" title=\"Next Entries &raquo;\">Next Entries &raquo;</a>"
+        fi
+        
+        files=()
+        ls blog | grep md$ | grep ^$archive | sed 's:^:blog/:' | while read line; do files+=$line; done
+        
+        ./scripts/makearchive.sh archive/$archive.html $prev $next $files
+    done
+fi
 
 # Screenshots
-echo "Screenshots"
-pushd screenshots
-for computer in *; do
-    if [[ -d $computer ]]; then
-        pushd $computer/info
-        for info in *.md; do
-            date=`echo $info | sed 's:.md::'`
-            pushd ../../..
-            ./scripts/makescreenshot.sh screenshots/$computer/$date.html $computer $date
+if $all || [[ $1 == "screenshots" ]]; then
+    [[ $1 == "screenshots" ]] && shift
+
+    echo "Screenshots"
+    pushd screenshots
+    for computer in *; do
+        if [[ -d $computer ]]; then
+            pushd $computer/info
+            for info in *.md; do
+                date=`echo $info | sed 's:.md::'`
+                pushd ../../..
+                ./scripts/makescreenshot.sh screenshots/$computer/$date.html $computer $date
+                popd
+            done
             popd
-        done
-        popd
-    fi
-done
-popd
+        fi
+    done
+    popd
+fi
 
 # Gallery
-echo "Gallery"
-./scripts/makegallery.sh screenshots/index.html
+if $all || [[ $1 == "gallery" ]]; then
+    [[ $1 == "gallery" ]] && shift
+
+    echo "Gallery"
+    ./scripts/makegallery.sh screenshots/index.html
+fi
 
 # Index
-echo "Index"
-files=()
-ls blog | grep md$ | sed 's:^:blog/:' | tail -n5 | while read line; do files+=$line; done
-./scripts/makearchive.sh index.html "<a class=\"prev-page\" href=\"archive/$last.html\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>" - $files
+if $all || [[ $1 == "index" ]]; then
+    [[ $1 == "index" ]] && shift
+
+    echo "Index"
+    files=()
+    ls blog | grep md$ | sed 's:^:blog/:' | tail -n5 | while read line; do files+=$line; done
+    ./scripts/makearchive.sh index.html "<a class=\"prev-page\" href=\"archive/$last.html\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>" - $files
+fi
