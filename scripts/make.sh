@@ -29,7 +29,7 @@ for archive in `seq $first $last`; do
     next="<a class=\"next-page\" href=\"archive/$[ $archive + 1].html\" title=\"Next Entries &raquo;\">Next Entries &raquo;</a>"
 
     if [[ $archive == $first ]]; then
-        prev=""
+        prev=-
     fi
 
     if [[ $archive == $last ]]; then
@@ -46,4 +46,4 @@ done
 echo "Index"
 files=()
 ls blog | grep md$ | sed 's:^:blog/:' | tail -n5 | while read line; do files+=$line; done
-./scripts/makearchive.sh index.html "<a class=\"prev-page\" href=\"archive/$first.html\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>" "" $files
+./scripts/makearchive.sh index.html "<a class=\"prev-page\" href=\"archive/$last.html\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>" - $files

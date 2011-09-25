@@ -65,6 +65,14 @@ done
 echo $plink > $plinkfile
 echo $nlink > $nlinkfile
 
+if [[ $plink == "-" ]]; then
+    echo "" > $plinkfile
+fi
+
+if [[ $nlink == "-" ]]; then
+    echo "" > $nlinkfile
+fi
+
 sed -i \
     -e "/{content}/d" \
     -e "/{pagelinks}/r $pagelinksfile" \
