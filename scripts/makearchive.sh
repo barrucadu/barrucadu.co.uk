@@ -5,13 +5,6 @@
 output=$1
 pagelinksfile=`mktemp`
 
-# Make pagelinks
-ls pages | grep '.md$' | while read page; do
-    name=`echo $page | sed 's:^\([0-9 -]*[0-9\: ]*\)\(.*\)\.md:\2:'`
-    link=`echo $name  | tr " " "-" | tr -c -d "[:alnum:]" | tr "[:upper:]" "[:lower:]"`.html
-    echo "<li><a href=\"$link\" title=\"$name\">$name</a></li>" >> $pagelinksfile
-done
-
 cp template/page.html $output
 
 shift
@@ -60,6 +53,8 @@ while [[ $1 != "" ]]; do
 done
 
 # Finish the template
+./scripts/makepagelinks.sh $pagelinksfile
+
 sed -i \
     -e "/{content}/d" \
     -e "/{pagelinks}/r $pagelinksfile" \
