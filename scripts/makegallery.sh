@@ -13,7 +13,7 @@ for computer in *; do
         echo "<h2 class=\"gallery\">$computer</h2><ol class=\"gallery\">" >> $tempfile
         
         pushd $computer/fullsize
-        ls | grep png$ | sed 's/.png//' | while read date; do
+        ls | grep png$ | sed 's/.png//' | sort -r | while read date; do
             echo "<li><a href=\"/screenshots/$computer/$date.html\"><img src=\"/screenshots/$computer/thumb/$date.png\" alt=\"$date\"/></a></li>" >> $tempfile
         done
         popd
