@@ -60,14 +60,6 @@ _gaq.push(['_trackPageview']);
             </ul>
           </div>
           
-          <div>
-            <h2>Identi.ca</h2>
-            <ol class="identica">
-              {identica}
-            </ol>
-          </div>
-        </div>
-
         <div id="mainbar">
           <div class="blog">
             {content}

@@ -22,11 +22,11 @@ echo "Feed"
 
 # Archives
 echo "Archives"
-first=2010
-last=2011
+first=`ls blog | head -n1 | sed 's/\([0-9]*\)-.*/\1/'`
+last=`ls blog | tail -n1 | sed 's/\([0-9]*\)-.*/\1/'`
 for archive in `seq $first $last`; do
-    prev="<a class=\"prev-page\" href=\"archive/$[ $archive - 1 ]\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>"
-    next="<a class=\"next-page\" href=\"archive/$[ $archive + 1]\" title=\"Next Entries &raquo;\">Next Entries &raquo;</a>"
+    prev="<a class=\"prev-page\" href=\"archive/$[ $archive - 1 ].html\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>"
+    next="<a class=\"next-page\" href=\"archive/$[ $archive + 1].html\" title=\"Next Entries &raquo;\">Next Entries &raquo;</a>"
 
     if [[ $archive == $first ]]; then
         prev=""
@@ -46,4 +46,4 @@ done
 echo "Index"
 files=()
 ls blog | grep md$ | sed 's:^:blog/:' | tail -n5 | while read line; do files+=$line; done
-./scripts/makearchive.sh index.html "<a class=\"prev-page\" href=\"archive/$first\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>" "" $files
+./scripts/makearchive.sh index.html "<a class=\"prev-page\" href=\"archive/$first.html\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>" "" $files
