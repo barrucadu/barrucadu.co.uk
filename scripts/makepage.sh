@@ -2,9 +2,9 @@
 
 # Turn a Markdown file into a HTML file, complete with template.
 
-input=$1
-output=$2
-tempfile=$2.tmp
+output=$1
+tempfile=$1.tmp
+input=$2
 pagelinksfile=`mktemp`
 
 if [[ ! -e $input ]]; then
