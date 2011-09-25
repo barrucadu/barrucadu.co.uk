@@ -27,12 +27,11 @@ popd
 permalink=`echo $output | sed 's:/:\\\\/:g'`
 title="Gallery"
 timestamp=`date +%Y-%m-%d`
-source=`echo "$input" | sed -e 's:/:\\\\/:g' -e 's:?:%3f:g'`
 
 sed -e "s/{permalink}/$permalink/g" \
     -e "s/{title}/$title/g" \
     -e "s/{timestamp}/$timestamp/g" \
-    -e "s/{source}/#/g" \
+    -e "/{source}/d" \
     -e "/{content}/r $tempfile" \
     -e "/{content}/d" \
     < template/item.html \
@@ -41,7 +40,8 @@ sed -e "s/{permalink}/$permalink/g" \
 # Make the page template
 ./scripts/makepagelinks.sh $pagelinksfile
 
-sed -e "/{content}/r $tempfile.2" \
+sed -e "s/{pagetitle}/$title/g" \
+    -e "/{content}/r $tempfile.2" \
     -e "/{content}/d" \
     -e "/{pagelinks}/r $pagelinksfile" \
     -e "/{pagelinks}/d" \

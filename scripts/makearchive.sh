@@ -73,7 +73,14 @@ if [[ $nlink == "-" ]]; then
     echo "" > $nlinkfile
 fi
 
+atitle=Archive
+
+if [[ $output == "index.html" ]]; then
+    atitle="Michael Walker"
+fi
+
 sed -i \
+    -e "s/{pagetitle}/$atitle/g" \
     -e "/{content}/d" \
     -e "/{pagelinks}/r $pagelinksfile" \
     -e "/{pagelinks}/d" \

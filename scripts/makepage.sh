@@ -37,7 +37,8 @@ sed -e "s/{permalink}/$permalink/g" \
 # Make the page template
 ./scripts/makepagelinks.sh $pagelinksfile
 
-sed -e "/{content}/r $tempfile.2" \
+sed -e "s/{pagetitle}/$title/g" \
+    -e "/{content}/r $tempfile.2" \
     -e "/{content}/d" \
     -e "/{pagelinks}/r $pagelinksfile" \
     -e "/{pagelinks}/d" \
