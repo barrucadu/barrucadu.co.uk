@@ -6,7 +6,7 @@
 
 body
 {
-    margin: 128px auto 0px auto;
+    margin: 100px auto 0px auto;
     width: 560px;
     font-family: Verdana, "Bitstream Vera Sans", sans-serif;
     color: #584d4d;
@@ -33,6 +33,8 @@ h2
 img
 {
     margin: 0px auto 8px auto;
+    width: 560px;
+    height: 560px;
 }
 
 div
