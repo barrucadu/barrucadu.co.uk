@@ -1,0 +1,52 @@
+body
+{
+	margin:0px;
+	padding:10px 5% 10px 5%;
+	font-family:Nimbus Sans, Liberation Sans, DejaVu Sans, Helvetica, Arial, Verdana, sans-serif;
+	font-size:13px;
+	color:#333333;
+	background-color:#fafafa;
+}
+
+ul
+{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+
+ul li
+{
+	margin:0px;
+	padding:5px 0px 5px 0px;
+}
+
+a:active, a:visited, a:link
+{
+	text-decoration:none;
+	color:#9caaab;
+}
+
+a:hover
+{
+	text-decoration:underline;
+	color:#227a82;
+}
+
+div.url
+{
+	border:1px solid #d3d3d3;
+	background-color:#f4fbfc;
+	font-weight:bold;
+	font-size:16px;
+	padding:10px;
+	margin-left:32px;
+}
+
+h1
+{
+	font-weight:normal;
+	font-family:Nimbus Sans, Liberation Sans, DejaVu Sans, Helvetica, Arial, Verdana, sans-serif;
+	text-decoration:none;
+	font-size:32px;
+}
