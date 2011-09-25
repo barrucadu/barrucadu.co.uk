@@ -6,6 +6,8 @@ output=$1
 plink=$2
 nlink=$3
 pagelinksfile=`mktemp`
+plinkfile=`mktemp`
+nlinkfile=`mktemp`
 
 cp template/page.html $output
 
@@ -60,12 +62,17 @@ done
 # Finish the template
 ./scripts/makepagelinks.sh $pagelinksfile
 
+echo $plink > $plinkfile
+echo $nlink > $nlinkfile
+
 sed -i \
     -e "/{content}/d" \
     -e "/{pagelinks}/r $pagelinksfile" \
     -e "/{pagelinks}/d" \
-    -e "/{archiveplink}/$plink/" \
-    -e "/{archivenlink}/$nlink/" \
+    -e "/{archiveplink}/r $plinkfile" \
+    -e "/{archiveplink}/d" \
+    -e "/{archivenlink}/r $nlinkfile" \
+    -e "/{archivenlink}/d" \
     $output
 
-rm $pagelinksfile
+rm $pagelinksfile $plinkfile $nlinkfile

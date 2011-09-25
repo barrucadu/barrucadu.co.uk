@@ -7,6 +7,8 @@ output=$1
 cp template/feed.atom $output
 
 shift
+
+timestamp=""
 inputs=$@
 
 while [[ $1 != "" ]]; do
@@ -34,11 +36,11 @@ while [[ $1 != "" ]]; do
         $tempfile
 
     # Make the item template
-    permalink=`echo $output | sed 's:/:\\\\/:g'`
+    permalink=`echo $input | sed 's:md$:html:' | tr " " "-" | tr -c -d "[:alnum:]-/.:" | tr "[:upper:]" "[:lower:]" | sed 's:/:\\\\/:g'`
     title=`echo $input | sed 's:^\([a-z]*/\)\([0-9 -]*[0-9\: ]*\)\(.*\)\.md:\3:'`
     timestamp=`echo $input | sed 's:^[a-z]*/\([0-9-]*\) \([0-9\:]*\) .*:\1T\2Z:'`
     
-    sed -e "s/{permalink}/$permalink/g" \
+    sed -e "s/{permalink}/http:\/\/www.barrucadu.co.uk\/$permalink/g" \
         -e "s/{title}/$title/g" \
         -e "s/{timestamp}/$timestamp/g" \
         -e "/{content}/r $tempfile" \
@@ -49,7 +51,6 @@ while [[ $1 != "" ]]; do
 
     # Update the feed template
     sed -i \
-        -e "s/{updated}/$timestamp/" \
         -e "/{content}/r $tempfile.2" \
         $output
 
@@ -60,5 +61,6 @@ done
 
 # Finish the template
 sed -i \
+    -e "s/{updated}/$timestamp/" \
     -e "/{content}/d" \
     $output
