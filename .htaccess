@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^barrucadu.co.uk$ [NC]
+RewriteRule ^(.*)$ http://www.barrucadu.co.uk/$1 [L,R=301]
+
+RewriteCond  %{REQUEST_FILENAME} !-f
+RewriteRule ^gallery/.*$ gallery/gallery.php
+RewriteRule ^screenshot/.*$ gallery/gallery.php
+
+ErrorDocument 404 /errors/error.php?error=404
+ErrorDocument 410 /errors/error.php?error=410
+ErrorDocument 500 /errors/error.php?error=500
+
