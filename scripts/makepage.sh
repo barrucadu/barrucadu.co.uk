@@ -21,7 +21,7 @@ fi
 
 # Make the item template
 permalink=`echo $output | sed 's:/:\\\\/:g'`
-title=`echo $input | sed 's:^\([a-z]*/\)\([0-9 -]*[0-9\: ]*\)\(.*\)\.md:\3:'`
+title=`echo $input | sed 's:^\([a-z]*/\)\([0-9 -]*[0-9]*\:[0-9]*\) \(.*\)\.md:\3:'`
 timestamp=`echo $input | sed 's:^\([a-z]*/\)\([0-9 -]*[0-9\: ]*\)\(.*\)\.md:\2:'`
 source=`echo $input | sed -e 's:/:\\\\/:g' -e 's:?:%3f:g'`
 

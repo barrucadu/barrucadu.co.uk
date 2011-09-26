@@ -37,7 +37,7 @@ while [[ $1 != "" ]]; do
 
     # Make the item template
     permalink=`echo $input | sed 's:md$:html:' | tr " " "-" | tr -c -d "[:alnum:]-/.:" | tr "[:upper:]" "[:lower:]" | sed 's:/:\\\\/:g'`
-    title=`echo $input | sed 's:^\([a-z]*/\)\([0-9 -]*[0-9\: ]*\)\(.*\)\.md:\3:'`
+    title=`echo $input | sed 's:^\([a-z]*/\)\([0-9 -]*[0-9]*\:[0-9]*\) \(.*\)\.md:\3:'`
     timestamp=`echo $input | sed 's:^[a-z]*/\([0-9-]*\) \([0-9\:]*\) .*:\1T\2Z:'`
     
     sed -e "s/{permalink}/http:\/\/www.barrucadu.co.uk\/$permalink/g" \
