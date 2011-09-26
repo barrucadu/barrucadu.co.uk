@@ -13,6 +13,8 @@
  */
 
 
+require_once 'config.php';
+
 /**
  * User profile
  * @name $profile
@@ -21,7 +23,7 @@
 $GLOBALS['profile'] = array(
 	// Basic Config - Required
 	'auth_username'	=> 	'barrucadu',
-	'auth_password' =>	'be32f292c3f51fcf277b534c4300678e',
+	'auth_password' =>	PASSWORD,
 
 	// Optional Config - Please see README before setting these
 	'microid'	=>	array('mailto:mike@barrucadu.co.uk', 'http://www.barrucadu.co.uk'),
