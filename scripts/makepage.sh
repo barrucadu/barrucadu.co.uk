@@ -35,6 +35,8 @@ sed -e "s/{permalink}/$permalink/g" \
     > $tempfile.2
 
 # Make the page template
+gpglink=`echo $output.asc | sed 's:/:\\\\/:g'`
+
 sed -e "s/{pagetitle}/$title/g" \
     -e "/{content}/r $tempfile.2" \
     -e "/{content}/d" \
@@ -42,6 +44,7 @@ sed -e "s/{pagetitle}/$title/g" \
     -e "/{sidebar}/d" \
     -e "/{archiveplink}/d" \
     -e "/{archivenlink}/d" \
+    -e "s/{gpglink}/$gpglink/g" \
     < template/page.html \
     > $output
 

@@ -78,6 +78,7 @@ if [[ $nlink == "-" ]]; then
 fi
 
 atitle=Archive
+gpglink=`echo $output.asc | sed 's:/:\\\\/:g'`
 
 if [[ $output == "index.html" ]]; then
     atitle="Michael Walker"
@@ -92,6 +93,7 @@ sed -i \
     -e "/{archiveplink}/d" \
     -e "/{archivenlink}/r $nlinkfile" \
     -e "/{archivenlink}/d" \
+    -e "s/{gpglink}/$gpglink/g" \
     $output
 
 rm $plinkfile $nlinkfile

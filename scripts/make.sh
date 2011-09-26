@@ -4,8 +4,24 @@
 
 INDEXPOSTS=1
 
+# Make sidebar
 sidebarfile=`mktemp`
 ./scripts/makesidebar.sh $sidebarfile
+
+# Get GPG password
+GPGPASS=""
+echo -n "Enter GPG passphrase: "
+stty -echo
+read GPGPASS
+stty echo
+echo
+
+# Sign a file with GPG
+function signfile ()
+{
+    file=$1
+    gpg --passphrase $GPGPASS --no-tty --yes -a --detach-sign $file &>/dev/null
+}
 
 all=/bin/true
 
@@ -21,6 +37,7 @@ if $all || [[ $1 == "blog" ]]; then
     for file in blog/*.md; do
         outfile=`echo $file | sed 's:md$:html:' | tr " " "-" | tr -c -d "[:alnum:]-/.:" | tr "[:upper:]" "[:lower:]"`
         ./scripts/makepage.sh $outfile $sidebarfile $file
+        signfile $outfile
     done
 fi
 
@@ -32,6 +49,7 @@ if $all || [[ $1 == "pages" ]]; then
     for file in pages/*.md; do
         outfile=`echo $file | sed -e 's:md$:html:' -e 's:pages/[0-9\: -]*::' | tr " " "-" | tr -c -d "[:alnum:]-." | tr "[:upper:]" "[:lower:]"`
         ./scripts/makepage.sh $outfile $sidebarfile $file
+        signfile $outfile
     done
 fi
 
@@ -41,6 +59,7 @@ if $all || [[ $1 == "feed" ]]; then
 
     echo "Feed"
     ./scripts/makefeed.sh feed.atom blog/*.md
+    signfile feed.atom
 fi
 
 # Archives
@@ -66,6 +85,7 @@ if $all || [[ $1 == "archives" ]]; then
         ls blog | grep md$ | grep ^$archive | sed 's:^:blog/:' | while read line; do files+=$line; done
         
         ./scripts/makearchive.sh archive/$archive.html $sidebarfile $prev $next $files
+        signfile archive/$archive.html
     done
 fi
 
@@ -82,6 +102,7 @@ if $all || [[ $1 == "screenshots" ]]; then
                 date=`echo $info | sed 's:.md::'`
                 pushd ../../..
                 ./scripts/makescreenshot.sh screenshots/$computer/$date.html $sidebarfile $computer $date
+                signfile screenshots/$computer/$date.html
                 popd
             done
             popd
@@ -96,6 +117,7 @@ if $all || [[ $1 == "gallery" ]]; then
 
     echo "Gallery"
     ./scripts/makegallery.sh screenshots/index.html $sidebarfile
+    signfile screenshots/index.html
 fi
 
 # Index
@@ -106,6 +128,7 @@ if $all || [[ $1 == "index" ]]; then
     files=()
     ls blog | grep md$ | sed 's:^:blog/:' | tail -n$INDEXPOSTS | while read line; do files+=$line; done
     ./scripts/makearchive.sh index.html $sidebarfile - - $files
+    signfile index.html
 fi
 
 rm $sidebarfile
