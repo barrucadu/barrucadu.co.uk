@@ -2,6 +2,9 @@
 
 # Make the entire blog - static HTML files and Atom feed.
 
+sidebarfile=`mktemp`
+./scripts/makesidebar.sh $sidebarfile
+
 all=/bin/true
 
 if [[ $1 != "" ]] && [[ $1 != "all" ]]; then
@@ -15,7 +18,7 @@ if $all || [[ $1 == "blog" ]]; then
     echo "Blog entries"
     for file in blog/*.md; do
         outfile=`echo $file | sed 's:md$:html:' | tr " " "-" | tr -c -d "[:alnum:]-/.:" | tr "[:upper:]" "[:lower:]"`
-        ./scripts/makepage.sh $outfile $file
+        ./scripts/makepage.sh $outfile $sidebarfile $file
     done
 fi
 
@@ -26,7 +29,7 @@ if $all || [[ $1 == "pages" ]]; then
     echo "Pages"
     for file in pages/*.md; do
         outfile=`echo $file | sed -e 's:md$:html:' -e 's:pages/[0-9\: -]*::' | tr " " "-" | tr -c -d "[:alnum:]-." | tr "[:upper:]" "[:lower:]"`
-        ./scripts/makepage.sh $outfile $file  
+        ./scripts/makepage.sh $outfile $sidebarfile $file
     done
 fi
 
@@ -54,13 +57,13 @@ if $all || [[ $1 == "archives" ]]; then
         fi
         
         if [[ $archive == $last ]]; then
-            next="<a class=\"next-page\" href=\"/\" title=\"Next Entries &raquo;\">Next Entries &raquo;</a>"
+            next=-
         fi
         
         files=()
         ls blog | grep md$ | grep ^$archive | sed 's:^:blog/:' | while read line; do files+=$line; done
         
-        ./scripts/makearchive.sh archive/$archive.html $prev $next $files
+        ./scripts/makearchive.sh archive/$archive.html $sidebarfile $prev $next $files
     done
 fi
 
@@ -76,7 +79,7 @@ if $all || [[ $1 == "screenshots" ]]; then
             for info in *.md; do
                 date=`echo $info | sed 's:.md::'`
                 pushd ../../..
-                ./scripts/makescreenshot.sh screenshots/$computer/$date.html $computer $date
+                ./scripts/makescreenshot.sh screenshots/$computer/$date.html $sidebarfile $computer $date
                 popd
             done
             popd
@@ -90,7 +93,7 @@ if $all || [[ $1 == "gallery" ]]; then
     [[ $1 == "gallery" ]] && shift
 
     echo "Gallery"
-    ./scripts/makegallery.sh screenshots/index.html
+    ./scripts/makegallery.sh screenshots/index.html $sidebarfile
 fi
 
 # Index
@@ -100,5 +103,7 @@ if $all || [[ $1 == "index" ]]; then
     echo "Index"
     files=()
     ls blog | grep md$ | sed 's:^:blog/:' | tail -n5 | while read line; do files+=$line; done
-    ./scripts/makearchive.sh index.html "<a class=\"prev-page\" href=\"archive/$last.html\" title=\"&laquo; Previous Entries\">&laquo; Previous Entries</a>" - $files
+    ./scripts/makearchive.sh index.html $sidebarfile - - $files
 fi
+
+rm $sidebarfile

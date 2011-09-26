@@ -4,10 +4,10 @@
 
 output=$1
 tempfile=$1.tmp
-input=$2
-pagelinksfile=`mktemp`
+sidebarfile=$2
+input=$3
 
-if [[ ! -e $input ]]; then
+if [[ ! -e $input ]] || [[ ! -e $sidebarfile ]]; then
     echo "Input file does not exist."
     exit 1
 fi
@@ -35,16 +35,14 @@ sed -e "s/{permalink}/$permalink/g" \
     > $tempfile.2
 
 # Make the page template
-./scripts/makepagelinks.sh $pagelinksfile
-
 sed -e "s/{pagetitle}/$title/g" \
     -e "/{content}/r $tempfile.2" \
     -e "/{content}/d" \
-    -e "/{pagelinks}/r $pagelinksfile" \
-    -e "/{pagelinks}/d" \
+    -e "/{sidebar}/r $sidebarfile" \
+    -e "/{sidebar}/d" \
     -e "/{archiveplink}/d" \
     -e "/{archivenlink}/d" \
     < template/page.html \
     > $output
 
-rm $tempfile $tempfile.2 $pagelinksfile
+rm $tempfile $tempfile.2

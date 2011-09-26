@@ -3,14 +3,20 @@
 # Turn a list of Markdown files into a single HTML file, complete with template.
 
 output=$1
-plink=$2
-nlink=$3
-pagelinksfile=`mktemp`
+sidebarfile=$2
+plink=$3
+nlink=$4
 plinkfile=`mktemp`
 nlinkfile=`mktemp`
 
+if [[ ! -e $sidebarfile ]]; then
+    echo "Input file does not exist."
+    exit 1
+fi
+
 cp template/page.html $output
 
+shift
 shift
 shift
 shift
@@ -60,8 +66,6 @@ while [[ $1 != "" ]]; do
 done
 
 # Finish the template
-./scripts/makepagelinks.sh $pagelinksfile
-
 echo $plink > $plinkfile
 echo $nlink > $nlinkfile
 
@@ -82,12 +86,12 @@ fi
 sed -i \
     -e "s/{pagetitle}/$atitle/g" \
     -e "/{content}/d" \
-    -e "/{pagelinks}/r $pagelinksfile" \
-    -e "/{pagelinks}/d" \
+    -e "/{sidebar}/r $sidebarfile" \
+    -e "/{sidebar}/d" \
     -e "/{archiveplink}/r $plinkfile" \
     -e "/{archiveplink}/d" \
     -e "/{archivenlink}/r $nlinkfile" \
     -e "/{archivenlink}/d" \
     $output
 
-rm $pagelinksfile $plinkfile $nlinkfile
+rm $plinkfile $nlinkfile
