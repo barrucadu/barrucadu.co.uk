@@ -2,6 +2,8 @@
 
 # Make the entire blog - static HTML files and Atom feed.
 
+INDEXPOSTS=1
+
 sidebarfile=`mktemp`
 ./scripts/makesidebar.sh $sidebarfile
 
@@ -102,7 +104,7 @@ if $all || [[ $1 == "index" ]]; then
 
     echo "Index"
     files=()
-    ls blog | grep md$ | sed 's:^:blog/:' | tail -n5 | while read line; do files+=$line; done
+    ls blog | grep md$ | sed 's:^:blog/:' | tail -n$INDEXPOSTS | while read line; do files+=$line; done
     ./scripts/makearchive.sh index.html $sidebarfile - - $files
 fi
 
