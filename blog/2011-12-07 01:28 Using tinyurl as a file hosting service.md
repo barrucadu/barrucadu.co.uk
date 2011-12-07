@@ -7,7 +7,7 @@ And so, I have created two scripts, `tinyupload` and `tinydownload` that can sto
 
 ### Usage
 
-The `tinyupload` script takes a filename, and an encryption method (gzip, bzip2, or xz). The `tinydownload` script takes an index file URL (produced by tinyupload).
+The `tinyupload` script takes a filename, and an optional compression method (gzip, bzip2, or xz, default is gzip). The `tinydownload` script takes an index file URL (produced by tinyupload).
 
     $ tinyupload $file xz
     $ tinydownload $uri
