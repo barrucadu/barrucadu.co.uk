@@ -13,7 +13,7 @@ body
     color: #292522;
 }
 
-div
+div.content
 {
     margin-bottom: 16px;
     padding: 32px 0;
@@ -21,18 +21,45 @@ div
     width: 600px;
 }
 
-div + div
+div.content + div.content
 {
     border-top: 1px solid #A39081;
 }
 
-h1
+div#screenshots
+{
+    margin: 0 5%;
+}
+
+div#screenshots ol
+{
+    list-style-type: none
+}
+
+div#screenshots li
+{
+    display: inline;
+    margin: 4px;
+}
+
+h1, h2
 {
     text-decoration: none;
     font-variant: small-caps;
+]
+
+h1
+{
     font-weight: normal;
     text-align: center;
     font-size: 6em;
+}
+
+h2
+{
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 p
