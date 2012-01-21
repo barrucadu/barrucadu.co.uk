@@ -42,24 +42,13 @@ div#screenshots li
     margin: 4px;
 }
 
-h1, h2
+h1
 {
     text-decoration: none;
     font-variant: small-caps;
-]
-
-h1
-{
     font-weight: normal;
     text-align: center;
     font-size: 6em;
-}
-
-h2
-{
-    margin-bottom: 8px;
-    font-weight: bold;
-    font-size: 1em;
 }
 
 p
