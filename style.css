@@ -42,13 +42,22 @@ div#screenshots li
     margin: 4px;
 }
 
-h1
+h1, h2
 {
     text-decoration: none;
     font-variant: small-caps;
     font-weight: normal;
+}
+
+h1
+{
     text-align: center;
     font-size: 6em;
+}
+
+h2
+{
+    font-size: 1.1em;
 }
 
 p
@@ -71,6 +80,11 @@ a:hover
 {
     text-decoration: underline;
     color: #292522;
+}
+
+a:hover#show
+{
+    text-decoration: none;
 }
 
 dt
