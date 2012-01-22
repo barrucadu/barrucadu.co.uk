@@ -40,37 +40,40 @@
     </div>
 
     <div id="screenshots">
-      <!-- Azathoth -->
-      <ol>
 <?php
-$handle = opendir('screenshots/Azathoth/thumb/');
-while (false !== ($entry = readdir($handle)))
-  {
-    if (!is_dir ($entry))
-      {
-        $date = substr ($entry, 0, 10);
-        echo "        <li><a href=\"/screenshots/Azathoth/thumb-big/{$date}.png\" rel=\"lightbox-azathoth\" title=\"Azathoth: {$date}, &lt;a href=&quot;/screenshots/Azathoth/fullsize/{$date}.png&quot;&gt;Full Size&lt;/a&gt;\">\n";
-        echo "            <img src=\"/screenshots/Azathoth/thumb/{$date}.png\" alt=\"Azathoth: {$date}\" /></a></li>\n";
-      }
-  }
-?>
-      </ol>
 
-      <!-- Randolph -->
-      <ol>
-<?php
-$handle = opendir('screenshots/Randolph/thumb/');
-while (false !== ($entry = readdir($handle)))
+$dirs = array ();
+
+$dh = opendir ('screenshots/');
+while (false !== ($dir = readdir ($dh)))
+  if (is_dir ("screenshots/{$dir}") && $dir != '.' && $dir != '..')
+    $dirs[] = $dir;
+closedir ($dh);
+
+natsort ($dirs);
+
+foreach ($dirs as $dir)
   {
-    if (!is_dir ($entry))
+    echo "      <ol>\n";
+    $shots = array();
+
+    $dh = opendir ("screenshots/{$dir}/thumb/");
+    while (false !== ($entry = readdir ($dh)))
+      if (!is_dir ("screenshots/{$dir}/thumb/{$entry}"))
+        $shots[] = substr ($entry, 0, 10);
+    closedir ($dh);
+
+    natsort ($shots);
+    $shots = array_reverse ($shots);
+
+    foreach ($shots as $shot)
       {
-        $date = substr ($entry, 0, 10);
-        echo "        <li><a href=\"/screenshots/Randolph/thumb-big/{$date}.png\" rel=\"lightbox-randolph\" title=\"Randolph: {$date}, &lt;a href=&quot;/screenshots/Randolph/fullsize/{$date}.png&quot;&gt;Full Size&lt;/a&gt;\">\n";
-        echo "            <img src=\"/screenshots/Randolph/thumb/{$date}.png\" alt=\"Randolph: {$date}\" /></a></li>\n";
-      }
+        echo "        <li><a href=\"/screenshots/{$dir}/thumb-big/{$shot}.png\" rel=\"lightbox-{$dir}\" title=\"{$dir}: {$shot}, &lt;a href=&quot;/screenshots/{$dir}/fullsize/{$shot}.png&quot;&gt;Full Size&lt;/a&gt;\">\n";
+        echo "            <img src=\"/screenshots/{$dir}/thumb/{$shot}.png\" alt=\"{$dir}: {$shot}\" /></a></li>\n";
+     }
+     echo "      </ol>\n";
   }
 ?>
-      </ol>
     </div>
   </body>
 </html>
