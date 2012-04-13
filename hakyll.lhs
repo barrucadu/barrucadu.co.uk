@@ -13,8 +13,8 @@ Preamble
 > module Main where
 > import Control.Arrow ((>>>))
 > import Control.Monad (void, join)
-> import Data.List (sort, isPrefixOf, isSuffixOf)
-> import Data.Text (pack, unpack, replace)
+> import Data.List (sort)
+> import Data.String.Utils (startswith, endswith, replace)
 > import System.Directory (getDirectoryContents)
 > import Hakyll
 
@@ -62,9 +62,9 @@ computer.
 > scrList name directory = do scrs <- scrDirList
 >                             return $ Shots name scrs
 >     where scrDirList = do files <- getRecursiveContents False directory
->                           let imgs = map (strReplace directory "") files
->                           let pngs = filter (isSuffixOf ".png") imgs
->                           let shots = map (strReplace ".png" "") pngs
+>                           let imgs = map (replace directory "") files
+>                           let pngs = filter (endswith ".png") imgs
+>                           let shots = map (replace ".png" "") pngs
 >                           return $ reverse $ sort shots
 
 And now a convenience wrapper to get the list of screenshots for a named
@@ -79,7 +79,7 @@ Now, we have a function to get a list of screenshots for *every* computer!
 > screenshots = do shots <- join $ do
 >                    names <- getDirectoryContents "./static/screenshots/"
 >                    return $ sequence $ map screenshotList $
->                      filter (\a -> not $ isPrefixOf "." a) names
+>                      filter (\a -> not $ startswith "." a) names
 >                  return $ sort shots
 
 Main
@@ -110,9 +110,3 @@ route does just that. This is just a small wrapper around gsubRoute.
 
 > dropPat :: String -> Routes
 > dropPat pat = gsubRoute pat (const "")
-
-There is no string replacement function (that I can find), however, there is a
-text replacement function.
-
-> strReplace :: String -> String -> String -> String
-> strReplace old new str = unpack $ replace (pack old) (pack new) $ pack str
