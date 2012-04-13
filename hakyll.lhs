@@ -12,7 +12,10 @@ Preamble
 > {-# LANGUAGE OverloadedStrings #-}
 > module Main where
 > import Control.Arrow ((>>>))
-> import Control.Monad (void)
+> import Control.Monad (void, join)
+> import Data.List (sort)
+> import Data.Text (pack, unpack, replace, isPrefixOf, isSuffixOf)
+> import System.Directory (getDirectoryContents)
 > import Hakyll
 
 Templates
@@ -44,6 +47,41 @@ links.
 >                      compile $ pageCompiler
 >                        >>> applyTemplateCompiler "template/error.hamlet"
 
+Screenshots
+-----------
+
+For the index page, we need a list of screenshots, sorted by date and the name
+of the computer which the screenshot is for.
+
+> data ScreenshotList = Shots String [String] deriving (Eq, Ord)
+
+We also need a function to generate the list of screenshots for a given
+computer.
+
+> scrList :: String -> String -> IO ScreenshotList
+> scrList name directory = do scrs <- scrDirList
+>                             return $ Shots name scrs
+>     where scrDirList = do files <- getRecursiveContents False directory
+>                           let imgs = map (strReplace directory "") files
+>                           let pngs = filter (endsWith ".png") imgs
+>                           let shots = map (strReplace ".png" "") pngs
+>                           return $ reverse $ sort shots
+
+And now a convenience wrapper to get the list of screenshots for a named
+computer.
+
+> screenshotList :: String -> IO ScreenshotList
+> screenshotList name = scrList name $ "static/screenshots/" ++ name ++ "/fullsize/"
+
+Now, we have a function to get a list of screenshots for *every* computer!
+
+> screenshots :: IO [ScreenshotList]
+> screenshots = do shots <- join $ do
+>                    names <- getDirectoryContents "./static/screenshots/"
+>                    return $ sequence $ map screenshotList $
+>                      filter (\a -> not $ startsWith "." a) names
+>                  return $ sort shots
+
 Main
 ----
 
@@ -63,6 +101,7 @@ Now, the files are built and copied across to the appropriate locations.
 >          dostatic "static/**"
 >          doerrors "errors/*"
 
+
 Utilities
 ---------
 
@@ -71,3 +110,17 @@ route does just that. This is just a small wrapper around gsubRoute.
 
 > dropPat :: String -> Routes
 > dropPat pat = gsubRoute pat (const "")
+
+There is no string replacement function (that I can find), however, there is a
+text replacement function.
+
+> strReplace :: String -> String -> String -> String
+> strReplace old new str = unpack $ replace (pack old) (pack new) $ pack str
+
+Nor is there a function to check if a string starts or ends with another string…
+
+> startsWith :: String -> String -> Bool
+> startsWith pref str = isPrefixOf (pack pref) (pack str)
+
+> endsWith :: String -> String -> Bool
+> endsWith suff str = isSuffixOf (pack suff) (pack str)
