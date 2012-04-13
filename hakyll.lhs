@@ -13,8 +13,8 @@ Preamble
 > module Main where
 > import Control.Arrow ((>>>))
 > import Control.Monad (void, join)
-> import Data.List (sort)
-> import Data.Text (pack, unpack, replace, isPrefixOf, isSuffixOf)
+> import Data.List (sort, isPrefixOf, isSuffixOf)
+> import Data.Text (pack, unpack, replace)
 > import System.Directory (getDirectoryContents)
 > import Hakyll
 
@@ -63,7 +63,7 @@ computer.
 >                             return $ Shots name scrs
 >     where scrDirList = do files <- getRecursiveContents False directory
 >                           let imgs = map (strReplace directory "") files
->                           let pngs = filter (endsWith ".png") imgs
+>                           let pngs = filter (isSuffixOf ".png") imgs
 >                           let shots = map (strReplace ".png" "") pngs
 >                           return $ reverse $ sort shots
 
@@ -79,7 +79,7 @@ Now, we have a function to get a list of screenshots for *every* computer!
 > screenshots = do shots <- join $ do
 >                    names <- getDirectoryContents "./static/screenshots/"
 >                    return $ sequence $ map screenshotList $
->                      filter (\a -> not $ startsWith "." a) names
+>                      filter (\a -> not $ isPrefixOf "." a) names
 >                  return $ sort shots
 
 Main
@@ -116,11 +116,3 @@ text replacement function.
 
 > strReplace :: String -> String -> String -> String
 > strReplace old new str = unpack $ replace (pack old) (pack new) $ pack str
-
-Nor is there a function to check if a string starts or ends with another string…
-
-> startsWith :: String -> String -> Bool
-> startsWith pref str = isPrefixOf (pack pref) (pack str)
-
-> endsWith :: String -> String -> Bool
-> endsWith suff str = isSuffixOf (pack suff) (pack str)
