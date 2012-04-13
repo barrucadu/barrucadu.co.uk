@@ -58,9 +58,9 @@ Now, the files are built and copied across to the appropriate locations.
 
 > main :: IO ()
 > main = hakyllWith config $ do
->          ["template/*"] --> [dotemplates]
->          ["static/*"] --> [dostatic]
->          ["errors/*"] --> [doerrors]
+>          dotemplates "template/*"
+>          dostatic "static/*"
+>          doerrors "errors/*"
 
 Utilities
 ---------
@@ -70,10 +70,3 @@ route does just that. This is just a small wrapper around gsubRoute.
 
 > dropPat :: String -> Routes
 > dropPat pat = gsubRoute pat (const "")
-
-Litle combinator for applying a list of patterns to a list of do* functions.
-
-> (-->) :: Monad m => [a] -> [a -> m b] -> m ()
-> xs --> [f]    = mapM_ f xs
-> xs --> (f:fs) = mapM_ f xs
->                 >> xs --> fs
