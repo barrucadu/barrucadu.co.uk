@@ -8,3 +8,4 @@ Dependencies
 
  - Hakyll
  - MissingH
+ - Blaze HTML

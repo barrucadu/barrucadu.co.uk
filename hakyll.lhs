@@ -11,11 +11,16 @@ Preamble
 
 > {-# LANGUAGE OverloadedStrings #-}
 > module Main where
-> import Control.Arrow ((>>>))
-> import Control.Monad (void, join)
+> import Control.Arrow ((>>>), arr)
+> import Control.Monad (void, join, forM_)
 > import Data.List (sort)
 > import Data.String.Utils (startswith, endswith, replace)
 > import System.Directory (getDirectoryContents)
+> import System.IO.Unsafe (unsafePerformIO)
+> import Text.Blaze.Html5 (Html, (!), toValue)
+> import qualified Text.Blaze.Html5 as H
+> import qualified Text.Blaze.Html5.Attributes as A
+> import Text.Blaze.Renderer.String (renderHtml)
 > import Hakyll
 
 Templates
@@ -82,6 +87,38 @@ Now, we have a function to get a list of screenshots for *every* computer!
 >                      filter (\a -> not $ startswith "." a) names
 >                  return $ sort shots
 
+Now that we have out screenshot functions, we need to be able to generate
+HTML from them to stick into the pages.
+
+> scrHtml :: ScreenshotList -> Html
+> scrHtml (Shots name shots) = H.ol $ forM_ shots scrHtml'
+>
+>     where scrHtml' s =  H.li
+>                           ! A.href  (toValue $ "/screenshots/" ++ name ++ "/thumb-big/" ++ s ++ ".png")
+>                           ! A.rel   (toValue $ "lightbox-" ++ name)
+>                           ! A.title (toValue $ name ++ ": " ++ s ++ "&lt;a href=&quot;/screenshots/" ++ name ++ "/fullsize/" ++ s ++ ".png&quot;&gt;Full Size&lt;/a&gt;") $
+>                         H.img
+>                           ! A.src (toValue $ "/screenshots/" ++ name ++ "/thumb/" ++ s ++ ".png")
+>                           ! A.alt (toValue $ name ++ ": " ++ s)
+
+And finally a function to turn the list of all screenshots into HTML.
+
+> scrsHtml :: [ScreenshotList] -> Html
+> scrsHtml shots = forM_ shots scrHtml
+
+Index
+-----
+
+TODO: Figure out how to have this be [ScreenshotList] -> RulesM ()
+
+> doindex :: [ScreenshotList] -> RulesM ()
+> doindex shots = void $ match "pages/index.markdown" $  do
+>                   route   $ composeRoutes (dropPat "pages/") (setExtension ".html")
+>                   compile $ pageCompiler
+>                     >>> arr (setField "screenshots" $ renderHtml (scrsHtml shots))
+>                     >>> applyTemplateCompiler "template/index.hamlet"
+>                     >>> relativizeUrlsCompiler
+
 Main
 ----
 
@@ -95,12 +132,15 @@ The configuration for Hakyll:
 
 Now, the files are built and copied across to the appropriate locations.
 
+TODO: Figure out how to avoid the need for unsafePerformIO here.
+
 > main :: IO ()
 > main = hakyllWith config $ do
+>          let shots = unsafePerformIO screenshots
 >          dotemplates "template/*"
 >          dostatic "static/**"
 >          doerrors "errors/*"
-
+>          doindex shots
 
 Utilities
 ---------
