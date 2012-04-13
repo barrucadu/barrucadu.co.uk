@@ -50,7 +50,8 @@ Main
 The configuration for Hakyll:
 
 > config = defaultHakyllConfiguration
->          {
+>          { deployCommand = "rsync -avz --checksum _site/ \
+>                            \yuggoth:/srv/http/barrucadu.co.uk/www",
 >            ignoreFile = \a -> False
 >          }
 
@@ -59,7 +60,7 @@ Now, the files are built and copied across to the appropriate locations.
 > main :: IO ()
 > main = hakyllWith config $ do
 >          dotemplates "template/*"
->          dostatic "static/*"
+>          dostatic "static/**"
 >          doerrors "errors/*"
 
 Utilities
