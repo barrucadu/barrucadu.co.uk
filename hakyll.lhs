@@ -11,8 +11,18 @@ Preamble
 
 > {-# LANGUAGE OverloadedStrings #-}
 > module Main where
+> import Control.Arrow ((>>>))
 > import Control.Monad (void)
 > import Hakyll
+
+Templates
+---------
+
+All of the template files need to be read into Hakyll before they can be
+referenced elsewhere.
+
+> dotemplates :: Pattern (Identifier Template) -> RulesM ()
+> dotemplates pattern = void $ match pattern $ compile templateCompiler
 
 Static Files
 ------------
@@ -21,6 +31,18 @@ Static Files
 > dostatic pattern = void $ match pattern $ do
 >                      route   $ dropPat "static/"
 >                      compile copyFileCompiler
+
+Error Pages
+-----------
+
+Error pages use the error.hamlet template, and have absolute (not relative)
+links.
+
+> doerrors :: Pattern (Page String) -> RulesM ()
+> doerrors pattern = void $ match pattern $ do
+>                      route   $ setExtension ".html"
+>                      compile $ pageCompiler
+>                        >>> applyTemplateCompiler "template/error.hamlet"
 
 Main
 ----
@@ -35,7 +57,10 @@ The configuration for Hakyll:
 Now, the files are built and copied across to the appropriate locations.
 
 > main :: IO ()
-> main = hakyllWith config $ ["static/*"] --> [dostatic]
+> main = hakyllWith config $ do
+>          ["template/*"] --> [dotemplates]
+>          ["static/*"] --> [dostatic]
+>          ["errors/*"] --> [doerrors]
 
 Utilities
 ---------
