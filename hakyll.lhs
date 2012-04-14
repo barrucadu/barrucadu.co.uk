@@ -16,7 +16,6 @@ Preamble
 > import Data.List (sort)
 > import Data.String.Utils (startswith, endswith, replace)
 > import System.Directory (getDirectoryContents)
-> import System.IO.Unsafe (unsafePerformIO)
 > import Text.Blaze.Html5 (Html, (!), toValue)
 > import qualified Text.Blaze.Html5 as H
 > import qualified Text.Blaze.Html5.Attributes as A
@@ -109,8 +108,6 @@ And finally a function to turn the list of all screenshots into HTML.
 Index
 -----
 
-TODO: Figure out how to have this be [ScreenshotList] -> RulesM ()
-
 > doindex :: [ScreenshotList] -> RulesM ()
 > doindex shots = void $ match "pages/index.markdown" $  do
 >                   route   $ composeRoutes (dropPat "pages/") (setExtension ".html")
@@ -132,15 +129,13 @@ The configuration for Hakyll:
 
 Now, the files are built and copied across to the appropriate locations.
 
-TODO: Figure out how to avoid the need for unsafePerformIO here.
-
 > main :: IO ()
-> main = hakyllWith config $ do
->          let shots = unsafePerformIO screenshots
->          dotemplates "template/*"
->          dostatic "static/**"
->          doerrors "errors/*"
->          doindex shots
+> main = do shots <- screenshots
+>           hakyllWith config $ do
+>             dotemplates "template/*"
+>             dostatic "static/**"
+>             doerrors "errors/*"
+>             doindex shots
 
 Utilities
 ---------
