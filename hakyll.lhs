@@ -82,8 +82,8 @@ Now, we have a function to get a list of screenshots for *every* computer!
 > screenshots :: IO [ScreenshotList]
 > screenshots = do shots <- join $ do
 >                    names <- getDirectoryContents "./static/screenshots/"
->                    return $ sequence $ map screenshotList $
->                      filter (\a -> not $ startswith "." a) names
+>                    return $ mapM screenshotList $
+>                      filter (not . startswith ".") names
 >                  return $ sort shots
 
 Now that we have out screenshot functions, we need to be able to generate
@@ -109,8 +109,8 @@ Index
 -----
 
 > doindex :: [ScreenshotList] -> RulesM ()
-> doindex shots = void $ match "pages/index.markdown" $  do
->                   route   $ composeRoutes (dropPat "pages/") (setExtension ".html")
+> doindex shots = void $ match "index.markdown" $  do
+>                   route   $ setExtension ".html"
 >                   compile $ pageCompiler
 >                     >>> arr (setField "screenshots" $ renderHtml (scrsHtml shots))
 >                     >>> applyTemplateCompiler "template/index.hamlet"
@@ -124,7 +124,7 @@ The configuration for Hakyll:
 > config = defaultHakyllConfiguration
 >          { deployCommand = "rsync -avz --checksum _site/ \
 >                            \yuggoth:/srv/http/barrucadu.co.uk/www",
->            ignoreFile = \a -> False
+>            ignoreFile = const False
 >          }
 
 Now, the files are built and copied across to the appropriate locations.
