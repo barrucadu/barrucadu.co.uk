@@ -105,6 +105,16 @@ And finally a function to turn the list of all screenshots into HTML.
 > scrsHtml :: [ScreenshotList] -> Html
 > scrsHtml shots = forM_ shots scrHtml
 
+Pages
+-----
+
+> dopages :: Pattern (Page String) -> RulesM ()
+> dopages pattern = void $ match pattern $  do
+>                     route   $ composeRoutes (dropPat "pages/") (setExtension ".html")
+>                     compile $ pageCompiler
+>                       >>> applyTemplateCompiler "template/page.hamlet"
+>                       >>> relativizeUrlsCompiler
+
 Index
 -----
 
@@ -135,6 +145,7 @@ Now, the files are built and copied across to the appropriate locations.
 >             dotemplates "template/*"
 >             dostatic "static/**"
 >             doerrors "errors/*"
+>             dopages "pages/*.markdown"
 >             doindex shots
 
 Utilities
