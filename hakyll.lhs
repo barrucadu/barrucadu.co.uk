@@ -16,7 +16,7 @@ Preamble
 > import Data.List (sort)
 > import Data.String.Utils (startswith, endswith, replace)
 > import System.Directory (getDirectoryContents)
-> import Text.Blaze.Html5 (Html, (!), toValue)
+> import Text.Blaze.Html5 (Html, (!), toValue, preEscapedStringValue)
 > import qualified Text.Blaze.Html5 as H
 > import qualified Text.Blaze.Html5.Attributes as A
 > import Text.Blaze.Renderer.String (renderHtml)
@@ -92,10 +92,10 @@ HTML from them to stick into the pages.
 > scrHtml :: ScreenshotList -> Html
 > scrHtml (Shots name shots) = H.ol $ forM_ shots scrHtml'
 >
->     where scrHtml' s =  H.li
+>     where scrHtml' s =  H.li $ H.a
 >                           ! A.href  (toValue $ "/screenshots/" ++ name ++ "/thumb-big/" ++ s ++ ".png")
 >                           ! A.rel   (toValue $ "lightbox-" ++ name)
->                           ! A.title (toValue $ name ++ ": " ++ s ++ "&lt;a href=&quot;/screenshots/" ++ name ++ "/fullsize/" ++ s ++ ".png&quot;&gt;Full Size&lt;/a&gt;") $
+>                           ! A.title (preEscapedStringValue $ name ++ ": " ++ s ++ " &lt;a href=&quot;/screenshots/" ++ name ++ "/fullsize/" ++ s ++ ".png&quot;&gt;[Click To View Full Size]&lt;/a&gt;") $
 >                         H.img
 >                           ! A.src (toValue $ "/screenshots/" ++ name ++ "/thumb/" ++ s ++ ".png")
 >                           ! A.alt (toValue $ name ++ ": " ++ s)
