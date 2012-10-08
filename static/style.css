@@ -6,7 +6,7 @@
 
 body
 {
-    background-color: #EFD9B4;
+    background-color: #F3E3C9;
     font-family: Helvetica, sans-serif;
     font-size: 14px;
     padding: 5%;
@@ -23,7 +23,7 @@ div.content
 
 div.content + div.content
 {
-    border-top: 1px solid #A39081;
+    border-top: 1px solid #D3C3B9;
 }
 
 div#screenshots
@@ -80,7 +80,7 @@ a
 a:hover
 {
     text-decoration: underline;
-    color: #292522;
+    color: #9A1727;
 }
 
 a:hover#show
