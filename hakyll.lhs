@@ -16,10 +16,11 @@ Preamble
 > import Data.List (sort)
 > import Data.String.Utils (startswith, endswith, replace)
 > import System.Directory (getDirectoryContents)
-> import Text.Blaze.Html5 (Html, (!), toValue, preEscapedStringValue)
+> import Text.Blaze.Html5 (Html, (!), toValue)
+> import Text.Blaze.Internal (preEscapedStringValue)
 > import qualified Text.Blaze.Html5 as H
 > import qualified Text.Blaze.Html5.Attributes as A
-> import Text.Blaze.Renderer.String (renderHtml)
+> import Text.Blaze.Html.Renderer.String (renderHtml)
 > import Hakyll
 
 Templates
@@ -131,6 +132,7 @@ Main
 
 The configuration for Hakyll:
 
+> config :: HakyllConfiguration
 > config = defaultHakyllConfiguration
 >          { deployCommand = "rsync -avz --checksum _site/ \
 >                            \yuggoth:/srv/http/barrucadu.co.uk/www",
