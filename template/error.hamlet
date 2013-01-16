@@ -1,7 +1,7 @@
-$doctype 5
+<!DOCTYPE html>
 <html>
   <head>
-    <title>#{num}</title>
+    <title>$num$</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="Michael Walker">
@@ -11,8 +11,12 @@ $doctype 5
 
   <body>
     <div class="content">
-      <h1>#{num}</h1>
+      <h1>$num$</h1>
+    </div>
 
     <div class="content">
-      <p>#{body}</p>
+      <p>$body$</p>
       <p>Please click <a href="/">here</a> to return to the website.</p>
+    </div>
+  </body>
+</html>

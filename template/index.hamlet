@@ -1,11 +1,11 @@
-$doctype 5
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="author" content="#{who}">
+    <meta name="author" content="$who$">
     <meta name="robots" content="FOLLOW,INDEX">
     
-    <title>#{who}</title>
+    <title>$who$</title>
     
     <link rel="stylesheet" href="/style.css" type="text/css">
 
@@ -14,30 +14,38 @@ $doctype 5
     <link rel="openid.delegate" href="http://www.barrucadu.co.uk/openid/">
     
     <!-- Gallery stuff -->
-    <script type="text/javascript" src="/jquery.js">
-    <script type="text/javascript" src="/slimbox/js/slimbox2.js">
-    <script type="text/javascript" src="/screenshots.js">
+    <script type="text/javascript" src="/jquery.js"></script>
+    <script type="text/javascript" src="/slimbox/js/slimbox2.js"></script>
+    <script type="text/javascript" src="/screenshots.js"></script>
     <link rel="stylesheet" href="/slimbox/css/slimbox2.css" type="text/css" media="screen">
 
   <body>
-    <div .content>
-      <h1>#{who}
+    <div class="content">
+      <h1>$who$</h1>
+    </div>
 
-    <div .content>
-      #{body}
+    <div class="content">
+      $body$
+    </div>
 
-    <div .content>
+    <div class="content">
       <dl>
-        <dt>Email
-        <dd>#{email}
+        <dt>Email</dt>
+        <dd>$email$</dd>
 
-        <dt>IRC
-        <dd>#{irc}
+        <dt>IRC</dt>
+        <dd>$irc$</dd>
 
-        <dt>GPG
-        <dd>#{gpg}
+        <dt>GPG</dt>
+        <dd>$gpg$</dd>
+      </dl>
+    </div>
 
-    <div #screenshots>
-      <h2>Screenshots <a href="#" id="show">±
-      <div #hidden>
-        #{screenshots}
+    <div id="screenshots">
+      <h2>Screenshots <a href="#" id="show">±</a></h2>
+      <div id="hidden">
+        $screenshots$
+      </div>
+    </div>
+  </body>
+</html>

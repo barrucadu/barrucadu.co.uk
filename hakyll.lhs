@@ -11,9 +11,9 @@ Preamble
 
 > {-# LANGUAGE OverloadedStrings #-}
 > module Main where
-> import Control.Arrow ((>>>), arr)
 > import Control.Monad (void, join, forM_)
 > import Data.List (sort)
+> import Data.Monoid (mappend)
 > import Data.String.Utils (startswith, endswith, replace)
 > import System.Directory (getDirectoryContents)
 > import Text.Blaze.Html5 (Html, (!), toValue)
@@ -29,13 +29,13 @@ Templates
 All of the template files need to be read into Hakyll before they can be
 referenced elsewhere.
 
-> dotemplates :: Pattern (Identifier Template) -> RulesM ()
+> dotemplates :: Pattern -> Rules ()
 > dotemplates pattern = void $ match pattern $ compile templateCompiler
 
 Static Files
 ------------
 
-> dostatic :: Pattern (Page String) -> RulesM ()
+> dostatic :: Pattern -> Rules ()
 > dostatic pattern = void $ match pattern $ do
 >                      route   $ dropPat "static/"
 >                      compile copyFileCompiler
@@ -46,11 +46,11 @@ Error Pages
 Error pages use the error.hamlet template, and have absolute (not relative)
 links.
 
-> doerrors :: Pattern (Page String) -> RulesM ()
+> doerrors :: Pattern -> Rules ()
 > doerrors pattern = void $ match pattern $ do
 >                      route   $ setExtension ".html"
->                      compile $ pageCompiler
->                        >>> applyTemplateCompiler "template/error.hamlet"
+>                      compile $ pandocCompiler
+>                        >>= applyTemplateCompiler "template/error.hamlet"
 
 Screenshots
 -----------
@@ -66,7 +66,7 @@ computer.
 > scrList :: String -> String -> IO ScreenshotList
 > scrList name directory = do scrs <- scrDirList
 >                             return $ Shots name scrs
->     where scrDirList = do files <- getRecursiveContents False directory
+>     where scrDirList = do files <- getRecursiveContents directory
 >                           let imgs = map (replace directory "") files
 >                           let pngs = filter (endswith ".png") imgs
 >                           let shots = map (replace ".png" "") pngs
@@ -109,31 +109,31 @@ And finally a function to turn the list of all screenshots into HTML.
 Pages
 -----
 
-> dopages :: Pattern (Page String) -> RulesM ()
-> dopages pattern = void $ match pattern $  do
+> dopages :: Pattern -> Rules ()
+> dopages pattern = void $ match pattern $ do
 >                     route   $ composeRoutes (dropPat "pages/") (setExtension ".html")
->                     compile $ pageCompiler
->                       >>> applyTemplateCompiler "template/page.hamlet"
->                       >>> relativizeUrlsCompiler
+>                     compile $ pandocCompiler
+>                       >>= applyTemplateCompiler "template/page.hamlet"
+>                       >>= relativizeUrls
 
 Index
 -----
 
-> doindex :: [ScreenshotList] -> RulesM ()
-> doindex shots = void $ match "index.markdown" $  do
+> doindex :: [ScreenshotList] -> Rules ()
+> doindex shots = void $ match "index.markdown" $ do
 >                   route   $ setExtension ".html"
->                   compile $ pageCompiler
->                     >>> arr (setField "screenshots" $ renderHtml (scrsHtml shots))
->                     >>> applyTemplateCompiler "template/index.hamlet"
->                     >>> relativizeUrlsCompiler
+>                   compile $ pandocCompiler
+>                     >>= loadAndApplyTemplate "template/index.hamlet"
+>                       (setField defaultContext "screenshots" (renderHtml $ scrsHtml shots))
+>                     >>= relativizeUrls
 
 Main
 ----
 
 The configuration for Hakyll:
 
-> config :: HakyllConfiguration
-> config = defaultHakyllConfiguration
+> config :: Configuration
+> config = defaultConfiguration
 >          { deployCommand = "rsync -avz --checksum _site/ \
 >                            \yuggoth:/srv/http/barrucadu.co.uk/www",
 >            ignoreFile = const False
@@ -158,3 +158,13 @@ route does just that. This is just a small wrapper around gsubRoute.
 
 > dropPat :: String -> Routes
 > dropPat pat = gsubRoute pat (const "")
+
+Apply a template with the default context
+
+> applyTemplateCompiler :: Identifier -> Item String -> Compiler (Item String)
+> applyTemplateCompiler tpl = loadAndApplyTemplate tpl defaultContext
+
+Take a context and set a constant field in it.
+
+> setField :: Context a -> String -> String -> Context a
+> setField c f v = constField f v `mappend` c
