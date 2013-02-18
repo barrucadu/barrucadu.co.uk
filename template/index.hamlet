@@ -20,9 +20,9 @@
     <link rel="stylesheet" href="/slimbox/css/slimbox2.css" type="text/css" media="screen">
 
   <body>
-    <div class="content">
+    <header>
       <h1>$who$</h1>
-    </div>
+    </header>
 
     <div class="content">
       $body$

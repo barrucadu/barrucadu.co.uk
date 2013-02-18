@@ -13,6 +13,17 @@ body
     color: #292522;
 }
 
+header
+{
+    border-top: 1px solid #D3C3A9;
+    border-bottom: 1px solid #D3C3A9;
+}
+
+footer
+{
+    text-align: center;
+}
+
 div.content
 {
     margin-bottom: 16px;

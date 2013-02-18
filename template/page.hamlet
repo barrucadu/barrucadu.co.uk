@@ -14,16 +14,16 @@
     <link rel="openid.delegate" href="http://www.barrucadu.co.uk/openid/">
     
   <body>
-    <div class="content">
+    <header>
       <h1>$title$</h1>
-    </div>
+    </header>
 
     <div class="content">
       $body$
     </div>
 
-    <div class="content">
+    <footer>
       <a href="/" title="Return">Return</a>
-    </div>
+    </footer>
   </body>
 </html>
