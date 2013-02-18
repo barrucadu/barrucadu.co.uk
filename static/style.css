@@ -100,3 +100,11 @@ dd
 {
     margin-bottom: 4px;
 }
+
+blockquote
+{
+    margin: 1em;
+    padding: 0.5em;
+    font-style: italic;
+    font-size: 1.1em;
+}
