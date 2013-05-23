@@ -66,7 +66,7 @@ computer.
 > scrList :: String -> String -> IO ScreenshotList
 > scrList name directory = do scrs <- scrDirList
 >                             return $ Shots name scrs
->     where scrDirList = do files <- getRecursiveContents directory
+>     where scrDirList = do files <- getRecursiveContents (const False) directory
 >                           let imgs = map (replace directory "") files
 >                           let pngs = filter (endswith ".png") imgs
 >                           let shots = map (replace ".png" "") pngs
