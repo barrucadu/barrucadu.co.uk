@@ -1,7 +1,8 @@
 ---
 who: Michael Walker
 email: mike@barrucadu…
-irc: barrucadu@irc.{freenode,irchighway}.net
+jabber: mike@barrucadu… (otr: A22F6CC2 50A97464 4B9A8BC1 B2F87F78 364DD2BC)
+irc: barrucadu irc.freenode.net
 gpg: 9F58FC68
 ---
 

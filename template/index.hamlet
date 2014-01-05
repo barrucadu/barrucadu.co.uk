@@ -36,6 +36,9 @@
         <dt>IRC</dt>
         <dd>$irc$</dd>
 
+        <dt>Jabber</dt>
+        <dd>$jabber$</dd>
+
         <dt>GPG</dt>
         <dd>$gpg$</dd>
       </dl>
