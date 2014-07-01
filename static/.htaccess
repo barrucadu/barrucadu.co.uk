@@ -1,9 +1,0 @@
-RewriteEngine On
-RewriteBase /
-
-RewriteCond %{HTTP_HOST} ^barrucadu.co.uk$ [NC]
-RewriteRule ^(.*)$ http://www.barrucadu.co.uk/$1 [L,R=301]
-
-ErrorDocument 404 /errors/404.html
-
-AddType application/x-httpd-php .html
