@@ -8,12 +8,7 @@
     <title>$who$</title>
     
     <link rel="stylesheet" href="/style.css" type="text/css">
-    
-    <!-- Gallery stuff -->
-    <script type="text/javascript" src="/jquery.js"></script>
-    <script type="text/javascript" src="/slimbox/js/slimbox2.js"></script>
-    <script type="text/javascript" src="/screenshots.js"></script>
-    <link rel="stylesheet" href="/slimbox/css/slimbox2.css" type="text/css" media="screen">
+  </head>
 
   <body>
     <header>
@@ -38,13 +33,6 @@
         <dt>GPG</dt>
         <dd>$gpg$</dd>
       </dl>
-    </div>
-
-    <div id="screenshots">
-      <h2>Screenshots <a href="#" id="show">±</a></h2>
-      <div id="hidden">
-        $screenshots$
-      </div>
     </div>
   </body>
 </html>
