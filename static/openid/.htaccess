@@ -1,2 +1,0 @@
-# OpenID stuff
-SetEnvIf Authorization "(.*)" PHP_AUTH_DIGEST=$1
