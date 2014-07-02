@@ -101,18 +101,10 @@ Index
 Main
 ----
 
-The configuration for Hakyll:
-
-> config :: Configuration
-> config = defaultConfiguration
->          { 
->            ignoreFile = const False
->          }
-
 Now, the files are built and copied across to the appropriate locations.
 
 > main :: IO ()
-> main = hakyllWith config $
+> main = hakyllWith defaultConfiguration $
 >          dotemplates "template/*"
 >          >> dostatic "static/**"
 >          >> doerrors "errors/*"
