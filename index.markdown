@@ -6,6 +6,15 @@ irc: barrucadu irc.freenode.net
 gpg: 9F58FC68
 ---
 
-I am Michael Walker, otherwise known online as barrucadu. I am currently a student of Computer Science at the University of York. My technical interests include the mathematical foundations of computer science, type systems, functional programming, operating systems, and computer architectures.
+I am Michael Walker, otherwise known online as barrucadu. I am
+currently a graduate of Computer Science from the University of York,
+due to start a Ph.D in the same in September. In the mean-time, I'm
+interning at [CoreFiling](http://www.corefiling.com/) and wondering
+what to do with my life.
+
+My academic interests include functional programming, compilers, type
+systems, and operating systems. My non-academic interests include
+small fuzzy animals, but sadly I can't sit in an office and play with
+those all day. Yet.
 
 See my [CV](cv.pdf) and [presentations and publications](publications.html).
