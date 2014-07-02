@@ -105,8 +105,7 @@ The configuration for Hakyll:
 
 > config :: Configuration
 > config = defaultConfiguration
->          { deployCommand = "rsync -avz --checksum _site/ \
->                            \yuggoth:/srv/http/barrucadu.co.uk/www",
+>          { 
 >            ignoreFile = const False
 >          }
 
