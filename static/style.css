@@ -94,3 +94,10 @@ div.center {
     background-color: #00aced;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACaklEQVR42u3aTUhUURjGcSemhhJNMKiMgkKwFKyBUsHIQkxs0yI30aamZqe0CRRqoTRgtOgDpIVuRQqhEqyNbUQKhAhCB6E20XebMgtxmnT6uxuoaZq5Z857br4P/GA2c+A+zJ17OO8tSqVSq5oWoAVoAVqAFqAFaAFagBagBWgBWoAWoAW4owS1OIwGbFstBVThFl4jPfMYx4kM3yvDMQRtFnAUuw1efBTzyJYRlKEI1biId7hk8xewBtOYxSYDF9+JXBLHUySxkhmEbBZQiZ9YyRS2erj4eiwh38SxGQHUIGijgDakZxb78lzrEfLNK3SgF9OIIGCjgPbU7/mKszmuswfLyDc/0j5ft3kLNCNT7qHmH9eJwESu2n4MVmABmbKAflRnWacXXpJAp9Q+YAzZsoj7OImKP6zRDS95I7kRakQumcMEruEcWhAzUMAGyZ1gDyTzAkGJAlpxHjtwA0lI5InULdCetkd/hkVIZFiqgJ1IQjpdkn+C45BOk2QBhyCZTyiVPg+4DKkMuXIg0geJtLp0InQQDzAHG4ljrSsF7McZRPEQSyh0Ii6dCdbCZmYQcu1QtE/23pcvYB3GUOgMuHwsvh4DKFSeo8QPc4FmjOA9vhnc9FT5bTBSjCsGngqf0eC3ydBe3MGygQOPOr/MBkvRhttIwGsmscu14WgAB3AapxBFDKN4CxNJIIaQq9PhLejBF5jOXYT9Mh4vRwem4CUfMYh6P78fEMYFjOIlvv9lkvMBj3ETx1H+v70gEcJ2hNGEFhxBHSqxUd8Q0QK0AC1AC9ACtAAtQAvQArQALUAL0AK0AFG/ADVE276ItLozAAAAAElFTkSuQmCC);
 }
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(/lato-regular.woff) format('woff'), url(https://themes.googleusercontent.com/static/fonts/lato/v7/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+}
