@@ -7,11 +7,9 @@
     
     <title>$title$</title>
     
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/style.css" type="text/css">
-
-    <!-- OpenID -->
-    <link rel="openid.server" href="http://www.barrucadu.co.uk/openid/">
-    <link rel="openid.delegate" href="http://www.barrucadu.co.uk/openid/">
+  </head>
     
   <body>
     <header>
