@@ -1,5 +1,5 @@
 ---
-who: Michael Walker
+who: barrucadu
 email: mike@barrucadu…
 jabber: mike@barrucadu… (otr: A22F6CC2 50A97464 4B9A8BC1 B2F87F78 364DD2BC)
 irc: barrucadu irc.freenode.net
