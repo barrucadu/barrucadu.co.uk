@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="author" content="$who$">
+    <meta name="author" content="Michael Walker">
     <meta name="robots" content="FOLLOW,INDEX">
     
-    <title>$who$</title>
+    <title>barrucadu</title>
     
     <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/style.css" type="text/css">
@@ -13,7 +13,7 @@
 
   <body>
     <header>
-      <h1>$who$</h1>
+      <h1>barrucadu</h1>
     </header>
 
     <div class="center">
@@ -29,16 +29,16 @@
     <div class="content">
       <dl>
         <dt>Email</dt>
-        <dd>$email$</dd>
+        <dd>mike@barrucadu.co.uk</dd>
 
         <dt>IRC</dt>
-        <dd>$irc$</dd>
+        <dd>barrucadu on Freenode and Rizon</dd>
 
         <dt>Jabber</dt>
-        <dd>$jabber$</dd>
+        <dd>mike@barrucadu.co.uk (otr: A22F6CC2 50A97464 4B9A8BC1 B2F87F78 364DD2BC)</dd>
 
         <dt>GPG</dt>
-        <dd>$gpg$</dd>
+        <dd>3F0B 7E4E 590D 9749 CFE7  146E 37F4 AF9F 9F58 FC68</dd>
       </dl>
     </div>
   </body>

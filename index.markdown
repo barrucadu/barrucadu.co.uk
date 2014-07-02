@@ -1,11 +1,3 @@
----
-who: barrucadu
-email: mike@barrucadu…
-jabber: mike@barrucadu… (otr: A22F6CC2 50A97464 4B9A8BC1 B2F87F78 364DD2BC)
-irc: barrucadu irc.freenode.net
-gpg: 9F58FC68
----
-
 I am Michael Walker, otherwise known online as barrucadu. I am
 currently a graduate of Computer Science from the University of York,
 due to start a Ph.D in the same in September. In the mean-time, I'm
