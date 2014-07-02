@@ -16,6 +16,12 @@
       <h1>$who$</h1>
     </header>
 
+    <div class="center">
+      <a href="https://twitter.com/barrucadu" title="Twitter" class="icon" id="twitter">Twitter</a>
+      <a href="http://barrucadu.tumblr.com" title="tumblr" class="icon" id="tumblr">tumblr</a>
+      <a href="https://github.com/barrucadu/" title="GitHub" class="icon" id="github">GitHub</a>
+    </div>
+
     <div class="content">
       $body$
     </div>
