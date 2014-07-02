@@ -1,8 +1,7 @@
 ---
-title: Presentations and Publications
+title: Holistic Mathematics: An Exploration into Category Theory
+category: presentation
 ---
-## Presentations
-### Holistic Mathematics: An Exploration into Category Theory
 
 > Throughout the ages mathematics has been used in very practical and specific ways:
 > dividing up farmland; calculating taxes; and building houses to name but a few and
@@ -19,3 +18,4 @@ title: Presentations and Publications
 > can deal with mathematics as a whole rather than simply proving theorems in its parts.
 
 Presentation given at [Tomorrow's Mathematicians Today 2013](http://mathsoc.cms.gre.ac.uk/tmt/) with Stijn S. C. Hanson. See the [slides](/publ/cat-theory-slides.pdf) and [my half of the presentation](/publ/cat-theory-presentation.pdf).
+

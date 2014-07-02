@@ -12,7 +12,7 @@ Preamble
 > {-# LANGUAGE OverloadedStrings #-}
 > module Main where
 > import Control.Monad (void)
-> import Data.Monoid (mappend)
+> import Data.Monoid ((<>))
 > import Hakyll
 
 Templates
@@ -54,6 +54,40 @@ Pages
 >                       >>= applyTemplateCompiler "template/page.hamlet"
 >                       >>= relativizeUrls
 
+**Inline Pages**
+
+Inline pages are like regular pages, in that they are compiled to
+HTML, but there is nothing there other than the compiled page body: no
+<html>, nothing.
+
+> doinline :: Pattern -> Rules ()
+> doinline pattern = void $ match pattern $ version "inline" $ do
+>                      route     idRoute
+>                      compile $ pandocCompiler
+>                        >>= applyTemplateCompiler "template/empty.hamlet"
+>                        >>= relativizeUrls
+
+
+**Listings**
+
+This is what produces publications.html: it takes a file name to
+generate, a title, and a pattern matching inline pages to include as
+separate "blog posts".
+
+> dolisting :: Identifier -> String -> Pattern -> Rules ()
+> dolisting identifier title pattern = void $ create [identifier] $ do
+>   route idRoute
+>   compile $ do
+>     let entries = recentFirst =<< loadAll (pattern .&&. hasVersion "inline")
+>     let entryDateCtx = dateField "date" "%B %e, %Y" <> defaultContext
+>     let entryCtx = listField "entries" entryDateCtx entries
+>                    <> constField "title" title
+>                    <> defaultContext
+>
+>     makeItem ""
+>       >>= loadAndApplyTemplate "template/blog.hamlet" entryCtx
+>       >>= relativizeUrls
+
 Index
 -----
 
@@ -84,6 +118,18 @@ Now, the files are built and copied across to the appropriate locations.
 >          >> dostatic "static/**"
 >          >> doerrors "errors/*"
 >          >> dopages "pages/*.markdown"
+
+Presentations and publications have two versions built: inline, and
+normal. The inline versions are used in the listing page
+(publications.html), and the normal pages are… normal. Currently the
+normal pages are not linked to, but with a little work it would be
+possible to have the normal versions contain a long description, and
+the inline versions have a much shorter one, with a link to the long
+one. Perhaps future work.
+
+>          >> doinline "pubs/*.markdown"
+>          >> dopages "pubs/*.markdown"
+>          >> dolisting "publications.html" "Presentations and Publications" "pubs/*"
 >          >> doindex
 
 Utilities
@@ -99,8 +145,3 @@ Apply a template with the default context
 
 > applyTemplateCompiler :: Identifier -> Item String -> Compiler (Item String)
 > applyTemplateCompiler tpl = loadAndApplyTemplate tpl defaultContext
-
-Take a context and set a constant field in it.
-
-> setField :: Context a -> String -> String -> Context a
-> setField c f v = constField f v `mappend` c
