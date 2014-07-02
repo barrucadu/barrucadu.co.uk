@@ -11,9 +11,9 @@
   </head>
 
   <body>
-    <div class="content">
+    <header>
       <h1>$num$</h1>
-    </div>
+    </header>
 
     <div class="content">
       <p>$body$</p>
