@@ -1,8 +1,6 @@
 I am Michael Walker, otherwise known online as barrucadu. I am
-currently a graduate of Computer Science from the University of York,
-due to start a Ph.D in the same in September. In the mean-time, I'm
-interning at [CoreFiling](http://www.corefiling.com/) and wondering
-what to do with my life.
+currently a Ph.D student in the Department of Computer Science at the
+University of York.
 
 My academic interests include functional programming, compilers, type
 systems, and operating systems. My non-academic interests include
