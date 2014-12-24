@@ -29,8 +29,8 @@ Static Files
 
 > dostatic :: Pattern -> Rules ()
 > dostatic pattern = void $ match pattern $ do
->                      route   $ dropPat "static/"
->                      compile copyFileCompiler
+>   route $ dropPat "static/"
+>   compile copyFileCompiler
 
 Error Pages
 -----------
@@ -40,19 +40,19 @@ links.
 
 > doerrors :: Pattern -> Rules ()
 > doerrors pattern = void $ match pattern $ do
->                      route   $ setExtension ".html"
->                      compile $ pandocCompiler
->                        >>= applyTemplateCompiler "template/error.hamlet"
+>   route   $ setExtension ".html"
+>   compile $ pandocCompiler
+>     >>= applyTemplateCompiler "template/error.hamlet"
 
 Pages
 -----
 
 > dopages :: Pattern -> Rules ()
 > dopages pattern = void $ match pattern $ do
->                     route   $ composeRoutes (dropPat "pages/") (setExtension ".html")
->                     compile $ pandocCompiler
->                       >>= applyTemplateCompiler "template/page.hamlet"
->                       >>= relativizeUrls
+>   route   $ composeRoutes (dropPat "pages/") (setExtension ".html")
+>   compile $ pandocCompiler
+>     >>= applyTemplateCompiler "template/page.hamlet"
+>     >>= relativizeUrls
 
 Blog
 ----
@@ -63,10 +63,10 @@ HTML, but there is nothing there other than the compiled page body: no
 
 > doinline :: Pattern -> Rules ()
 > doinline pattern = void $ match pattern $ version "inline" $ do
->                      route     idRoute
->                      compile $ pandocCompiler
->                        >>= applyTemplateCompiler "template/empty.hamlet"
->                        >>= relativizeUrls
+>   route     idRoute
+>   compile $ pandocCompiler
+>     >>= applyTemplateCompiler "template/empty.hamlet"
+>     >>= relativizeUrls
 
 
 This is what produces the listing pages: it takes a file name to
@@ -102,10 +102,10 @@ Index
 
 > doindex :: Rules ()
 > doindex = void $ match "index.markdown" $ do
->             route   $ setExtension ".html"
->             compile $ pandocCompiler
->               >>= applyTemplateCompiler "template/index.hamlet"
->               >>= relativizeUrls
+>   route   $ setExtension ".html"
+>   compile $ pandocCompiler
+>     >>= applyTemplateCompiler "template/index.hamlet"
+>     >>= relativizeUrls
 
 Main
 ----
@@ -113,11 +113,11 @@ Main
 Now, the files are built and copied across to the appropriate locations.
 
 > main :: IO ()
-> main = hakyllWith defaultConfiguration $
->          dotemplates "template/*"
->          >> dostatic "static/**"
->          >> doerrors "errors/*"
->          >> dopages "pages/*.markdown"
+> main = hakyllWith defaultConfiguration $ do
+>   dotemplates "template/*"
+>   dostatic    "static/**"
+>   doerrors    "errors/*"
+>   dopages     "pages/*"
 
 Presentations and publications have two versions built: inline, and
 normal. The inline versions are used in the listing page
@@ -127,8 +127,8 @@ possible to have the normal versions contain a long description, and
 the inline versions have a much shorter one, with a link to the long
 one. Perhaps future work.
 
->          >> doblog "publications.html" "Presentations and Publications" "pubs/*"
->          >> doindex
+>   doblog "publications.html" "Presentations and Publications" "pubs/*"
+>   doindex
 
 Utilities
 ---------
