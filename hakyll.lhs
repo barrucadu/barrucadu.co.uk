@@ -4,10 +4,10 @@ barrucadu.co.uk Source
 This is the Hakyll source for barrucadu.co.uk. The directory structure is as
 follows:
 
- - errors/   - Error pages
- - posts/    - Blog posts
- - static/   - Files to be copied over, with the static/ dropped.
- - template/ - Template files
+ - errors/    - Error pages
+ - posts/     - Blog posts
+ - static/    - Files to be copied over, with the static/ dropped.
+ - templates/ - Template files
 
 Preamble
 --------
@@ -19,7 +19,7 @@ Preamble
 
 > main :: IO ()
 > main = hakyllWith defaultConfiguration $ do
->   match "template/*" $ compile templateCompiler
+>   match "templates/*" $ compile templateCompiler
 >
 >   match "static/**" $ do
 >     route $ dropPat "static/"
@@ -28,14 +28,14 @@ Preamble
 >   match "errors/*" $ do
 >     route $ setExtension ".html"
 >     compile $ pandocCompiler
->       >>= loadAndApplyTemplate "template/error.html" defaultContext
+>       >>= loadAndApplyTemplate "templates/error.html" defaultContext
 >
 >   match "posts/*" $ do
 >     route   $ setExtension ".html"
 >     compile $ pandocCompiler
 >       >>= saveSnapshot "content"
 >       >>= return . fmap demoteHeaders
->       >>= loadAndApplyTemplate "template/post.html" defaultContext
+>       >>= loadAndApplyTemplate "templates/post.html" defaultContext
 >       >>= relativizeUrls
 >
 >   match "index.markdown" $ do
@@ -45,7 +45,7 @@ Preamble
 >
 >     route   $ setExtension ".html"
 >     compile $ pandocCompiler
->       >>= loadAndApplyTemplate "template/index.html" entryCtx
+>       >>= loadAndApplyTemplate "templates/index.html" entryCtx
 >       >>= relativizeUrls
 
 Utilities
