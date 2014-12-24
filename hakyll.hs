@@ -15,8 +15,8 @@ main = hakyllWith defaultConfiguration $ do
     route $ dropPat "static/"
     compile copyFileCompiler
 
-  -- Render error pages
-  match "errors/*" $ do
+  -- Render 404 page
+  match "404.markdown" $ do
     route   $ setExtension ".html"
     compile $ pandocCompiler
       >>= loadAndApplyTemplate "templates/error.html"   defaultContext
