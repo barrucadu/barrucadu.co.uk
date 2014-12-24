@@ -57,15 +57,16 @@ Pages
 Blog
 ----
 
-Inline pages are like regular pages, in that they are compiled to
-HTML, but there is nothing there other than the compiled page body: no
-<html>, nothing.
+Render each post as a page, but also save a snapshot of the content
+for reference when building the listing page.
 
-> doinline :: Pattern -> Rules ()
-> doinline pattern = void $ match pattern $ version "inline" $ do
->   route     idRoute
+> doposts :: Pattern -> Rules ()
+> doposts pattern = void $ match pattern $ do
+>   route   $ setExtension ".html"
 >   compile $ pandocCompiler
->     >>= applyTemplateCompiler "template/empty.hamlet"
+>     >>= saveSnapshot "content"
+>     >>= return . fmap demoteHeaders
+>     >>= applyTemplateCompiler "template/page.hamlet"
 >     >>= relativizeUrls
 
 
@@ -73,39 +74,24 @@ This is what produces the listing pages: it takes a file name to
 generate, a title, and a pattern matching inline pages to include as
 separate "blog posts".
 
-> dolisting :: Identifier -> String -> Pattern -> Rules ()
-> dolisting identifier title pattern = void $ create [identifier] $ do
->   route idRoute
->   compile $ do
->     let entries = recentFirst =<< loadAll (pattern .&&. hasVersion "inline")
->     let entryDateCtx = dateField "date" "%B %e, %Y" <> defaultContext
->     let entryCtx = listField "entries" entryDateCtx entries
->                    <> constField "title" title
->                    <> defaultContext
->
->     makeItem ""
->       >>= loadAndApplyTemplate "template/blog.hamlet" entryCtx
->       >>= relativizeUrls
-
+> dolisting :: Pattern -> Rules ()
+> dolisting pattern = void $ match "index.markdown" $ do
+>   route   $ setExtension ".html"
+>   compile $ pandocCompiler
+>     >>= loadAndApplyTemplate "template/index.hamlet" entryCtx
+>     >>= relativizeUrls
+>   where
+>     entries      = recentFirst =<< loadAll pattern
+>     entryDateCtx = dateField "date" "%B %e, %Y"             <> defaultContext
+>     entryCtx     = listField "entries" entryDateCtx entries <> defaultContext
 
 And this ties together rendering blog posts both as separate pages,
 and also as inline chunks for the listing.
 
-> doblog :: Identifier -> String -> Pattern -> Rules ()
-> doblog identifier title pattern = do
->   doinline pattern
->   dopages pattern
->   dolisting identifier title pattern
-
-Index
------
-
-> doindex :: Rules ()
-> doindex = void $ match "index.markdown" $ do
->   route   $ setExtension ".html"
->   compile $ pandocCompiler
->     >>= applyTemplateCompiler "template/index.hamlet"
->     >>= relativizeUrls
+> doblog :: Pattern -> Rules ()
+> doblog pattern = do
+>   doposts   pattern
+>   dolisting pattern
 
 Main
 ----
@@ -118,17 +104,7 @@ Now, the files are built and copied across to the appropriate locations.
 >   dostatic    "static/**"
 >   doerrors    "errors/*"
 >   dopages     "pages/*"
-
-Presentations and publications have two versions built: inline, and
-normal. The inline versions are used in the listing page
-(publications.html), and the normal pages are… normal. Currently the
-normal pages are not linked to, but with a little work it would be
-possible to have the normal versions contain a long description, and
-the inline versions have a much shorter one, with a link to the long
-one. Perhaps future work.
-
->   doblog "publications.html" "Presentations and Publications" "pubs/*"
->   doindex
+>   doblog      "posts/*"
 
 Utilities
 ---------

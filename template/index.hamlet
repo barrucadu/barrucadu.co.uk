@@ -40,5 +40,14 @@
         <dd>3F0B 7E4E 590D 9749 CFE7  146E 37F4 AF9F 9F58 FC68</dd>
       </dl>
     </div>
+
+    <div class="content">
+      <ol class="posts">
+        $for(entries)$
+          <li><a href="$url$" class="title">&ldquo;$title$&rdquo;</a>
+            <span class="date">&mdash;$date$</span></li>
+        $endfor$
+      </ol>
+    </div>
   </body>
 </html>

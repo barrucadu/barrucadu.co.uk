@@ -7,4 +7,4 @@ systems, and program verification. My non-academic interests include
 small fuzzy animals, but sadly I can't sit in an office and play with
 those all day. Yet.
 
-See my [CV](cv.pdf) and [presentations and publications](publications.html).
+See my [CV](cv.pdf).
