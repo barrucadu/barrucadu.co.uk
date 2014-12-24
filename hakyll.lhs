@@ -54,7 +54,8 @@ Pages
 >                       >>= applyTemplateCompiler "template/page.hamlet"
 >                       >>= relativizeUrls
 
-**Inline Pages**
+Blog
+----
 
 Inline pages are like regular pages, in that they are compiled to
 HTML, but there is nothing there other than the compiled page body: no
@@ -68,9 +69,7 @@ HTML, but there is nothing there other than the compiled page body: no
 >                        >>= relativizeUrls
 
 
-**Listings**
-
-This is what produces publications.html: it takes a file name to
+This is what produces the listing pages: it takes a file name to
 generate, a title, and a pattern matching inline pages to include as
 separate "blog posts".
 
@@ -87,6 +86,16 @@ separate "blog posts".
 >     makeItem ""
 >       >>= loadAndApplyTemplate "template/blog.hamlet" entryCtx
 >       >>= relativizeUrls
+
+
+And this ties together rendering blog posts both as separate pages,
+and also as inline chunks for the listing.
+
+> doblog :: Identifier -> String -> Pattern -> Rules ()
+> doblog identifier title pattern = do
+>   doinline pattern
+>   dopages pattern
+>   dolisting identifier title pattern
 
 Index
 -----
@@ -118,9 +127,7 @@ possible to have the normal versions contain a long description, and
 the inline versions have a much shorter one, with a link to the long
 one. Perhaps future work.
 
->          >> doinline "pubs/*.markdown"
->          >> dopages "pubs/*.markdown"
->          >> dolisting "publications.html" "Presentations and Publications" "pubs/*"
+>          >> doblog "publications.html" "Presentations and Publications" "pubs/*"
 >          >> doindex
 
 Utilities
