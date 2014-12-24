@@ -19,7 +19,8 @@ main = hakyllWith defaultConfiguration $ do
   match "errors/*" $ do
     route   $ setExtension ".html"
     compile $ pandocCompiler
-      >>= loadAndApplyTemplate "templates/error.html" defaultContext
+      >>= loadAndApplyTemplate "templates/error.html"   defaultContext
+      >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
 
   -- Render blog posts
   match "posts/*" $ do
@@ -27,17 +28,19 @@ main = hakyllWith defaultConfiguration $ do
     compile $ pandocCompiler
       >>= saveSnapshot "content"
       >>= return . fmap demoteHeaders
-      >>= loadAndApplyTemplate "templates/post.html" defaultContext
+      >>= loadAndApplyTemplate "templates/post.html"    defaultContext
+      >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
       >>= relativizeUrls
 
   -- Render index page / blog post list
   match "index.markdown" $ do
     let entries = recentFirst =<< loadAll "posts/*"
-    let ctx     = listField "entries" postCtx entries <> defaultContext
+    let ctx     = constField "title" "barrucadu" <> listField "entries" postCtx entries <> defaultContext
 
     route   $ setExtension ".html"
     compile $ pandocCompiler
-      >>= loadAndApplyTemplate "templates/index.html" ctx
+      >>= loadAndApplyTemplate "templates/index.html"   ctx
+      >>= loadAndApplyTemplate "templates/wrapper.html" ctx
       >>= relativizeUrls
 
   -- Create blog feed
