@@ -23,6 +23,7 @@ div.content {
     background-color: #f2f2f2;
     box-shadow: 0 4px 0 rgba(94, 94, 94, 0.1);
     margin: 0 auto 45px auto;
+    max-width: 75%;
     width: 960px;
 }
 
