@@ -4,6 +4,7 @@ module Main where
 
 import Data.Monoid ((<>), mconcat)
 import Hakyll
+import Text.Pandoc.Options (WriterOptions(..))
 
 main :: IO ()
 main = hakyllWith defaultConfiguration $ do
@@ -18,16 +19,15 @@ main = hakyllWith defaultConfiguration $ do
   -- Render 404 page
   match "404.markdown" $ do
     route   $ setExtension ".html"
-    compile $ pandocCompiler
+    compile $ myPandocCompiler
       >>= loadAndApplyTemplate "templates/error.html"   defaultContext
       >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
 
   -- Render blog posts
   match "posts/*" $ do
     route   $ setExtension ".html"
-    compile $ pandocCompiler
+    compile $ myPandocCompiler
       >>= saveSnapshot "content"
-      >>= return . fmap demoteHeaders
       >>= loadAndApplyTemplate "templates/post.html"    defaultContext
       >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
       >>= relativizeUrls
@@ -38,7 +38,7 @@ main = hakyllWith defaultConfiguration $ do
     let ctx     = constField "title" "barrucadu" <> listField "entries" postCtx entries <> defaultContext
 
     route   $ setExtension ".html"
-    compile $ pandocCompiler
+    compile $ myPandocCompiler
       >>= loadAndApplyTemplate "templates/index.html"   ctx
       >>= loadAndApplyTemplate "templates/wrapper.html" ctx
       >>= relativizeUrls
@@ -74,3 +74,10 @@ feedCtx = mconcat
 -- | Remove some portion of the route
 dropPat :: String -> Routes
 dropPat pat = gsubRoute pat (const "")
+
+-- | Pandoc compiler without syntax highlighting.
+myPandocCompiler :: Compiler (Item String)
+myPandocCompiler = pandocCompilerWith ropts wopts
+  where
+    ropts = defaultHakyllReaderOptions
+    wopts = defaultHakyllWriterOptions { writerHighlight = False }
