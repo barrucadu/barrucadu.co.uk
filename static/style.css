@@ -18,7 +18,7 @@ h2 {
     font-weight: bold;
 }
 
-div.content {
+div.content, article {
     padding: 25px 90px;
     background-color: #f2f2f2;
     box-shadow: 0 4px 0 rgba(94, 94, 94, 0.1);
