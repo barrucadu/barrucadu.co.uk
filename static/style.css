@@ -118,6 +118,10 @@ div.center {
     padding-left: 0;
 }
 
+.posts li {
+    margin-bottom: 1em;
+}
+
 .title {
     font-size: 1.2em;
 }
