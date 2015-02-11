@@ -134,11 +134,14 @@ div.center {
 
 p code {
     font-size: 12px;
-    font-family: monospace;
     border: 1px solid #ccc;
     background-color: #fff;
     display: inline-block;
     padding: 2px;
+}
+
+code {
+    font-family: Inconsolata, monospace;
 }
 
 h2, h3 {
