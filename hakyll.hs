@@ -2,14 +2,46 @@
 
 module Main where
 
+import Control.Monad (void)
 import Data.Monoid ((<>), mconcat)
 import Hakyll
+import System.Directory (getCurrentDirectory)
+import System.FilePath (FilePath, combine)
+import System.Process (CmdSpec(ShellCommand), CreateProcess(..), StdStream(Inherit), createProcess, waitForProcess)
 import Text.Pandoc.Options (WriterOptions(..))
+
+-- | Run a command in a directory.
+runCmd :: FilePath -> CmdSpec -> IO ()
+runCmd wd cmd = do
+  (_, _, _, handle) <- createProcess process
+  void $ waitForProcess handle
+
+  where
+    process = CreateProcess
+      { cmdspec       = cmd
+      , cwd           = Just wd
+      , env           = Nothing
+      , std_in        = Inherit
+      , std_out       = Inherit
+      , std_err       = Inherit
+      , close_fds     = False
+      , create_group  = False
+      , delegate_ctlc = False
+      }
+
 
 main :: IO ()
 main = hakyllWith defaultConfiguration $ do
   -- Templates
   match "templates/*" $ compile templateCompiler
+
+  -- Build CV
+  preprocess $ do
+    cwd <- getCurrentDirectory
+    runCmd (cwd `combine` "cv") $ ShellCommand "make"
+  match "cv/cv.pdf" $ do
+    route $ dropPat "cv/"
+    compile copyFileCompiler
 
   -- Copy static files
   match "static/**" $ do
