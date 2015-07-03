@@ -20,6 +20,6 @@ executable hakyll
   main-is:             hakyll.hs
   -- other-modules:       
   -- other-extensions:    
-  build-depends:       base >=4.7 && <4.8, directory, filepath, hakyll, pandoc, process
+  build-depends:       base >=4.7 && <5, directory, filepath, hakyll, pandoc, process
   -- hs-source-dirs:      
   default-language:    Haskell2010
