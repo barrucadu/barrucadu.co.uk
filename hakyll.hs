@@ -64,6 +64,16 @@ main = hakyllWith defaultConfiguration $ do
       >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
       >>= relativizeUrls
 
+  -- Render publications
+  match "publications.markdown" $ do
+    route $ setExtension ".html"
+    compile $ myPandocCompiler
+      >>= loadAndApplyTemplate "templates/generic.html" defaultContext
+      >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
+  match "publications/*" $ do
+    route   idRoute
+    compile copyFileCompiler
+
   -- Render index page / blog post list
   match "index.markdown" $ do
     let entries = recentFirst =<< loadAll "posts/*"
