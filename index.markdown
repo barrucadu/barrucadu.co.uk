@@ -1,10 +1,23 @@
-I am Michael Walker, otherwise known online as barrucadu. I am
-currently a Ph.D student in the Department of Computer Science at the
-University of York.
+I am Michael Walker, otherwise known online as **barrucadu**. I am
+currently a **Ph.D student** in the **Department of Computer Science**
+at the **University of York**.
 
-My academic interests include functional programming, compilers, type
-systems, and program verification. My non-academic interests include
-small fuzzy animals, but sadly I can't sit in an office and play with
-those all day. Yet.
+My research relates to **nondeterministic concurrency in pure
+functional programming languages**, such as **Haskell**. Increasingly,
+turning to concurrency for performance gains is a no-brainer, but it
+can be hard to get it right. Concurrency is hard in a number of areas:
+
+ - Testing, due to nondeterminism inherent in the underlying
+   primitives and abstractions, meaning we need **new techniques**.
+ - Formal verification, in the presence of abstractions like
+   **first-class functions**, **lazy evaluation**, and **"higher-order"
+   state**; many of which are essential in a pure functional language.
+ - Optimisation, as compiler optimisations typically stop as soon as
+   **side-effects** are involved.
+
+I am currently working on testing and formal verification. After that,
+I plan to look into **supercompilation** of concurrent programs,
+aiming to execute as much of the computation at compile-time as
+possible.
 
 See my [publications](publications.html) and [CV](cv.pdf).
