@@ -1,41 +1,69 @@
 body {
     font-family: Cambria, Georgia, Times, serif;
-    font-size: 16px;
+    font-size: 18px;
     color: #333;
-    background: url(background.png) repeat fixed;
+    line-height: 30px;
+}
+
+header {
+    margin: 0 0 16px 16px;
+    padding: 0;
 }
 
 h1 {
-    font-family: Lato, sans-serif;
-    font-size: 3em;
-    font-weight: normal;
-    text-align: center;
+    font-size: 2em;
+    margin: 0 0 8px 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-75%);
 }
 
 h2 {
-    font-family: Cambria, Georgia, Times, serif;
-    font-size: 1em;
-    font-weight: bold;
+    font-size: 1.2em;
 }
 
-div.content, article {
-    padding: 25px 90px;
-    background-color: #f2f2f2;
-    box-shadow: 0 4px 0 rgba(94, 94, 94, 0.1);
-    margin: 0 auto 45px auto;
-    max-width: 75%;
-    width: 960px;
-    border: 2px solid rgba(244,13,13,0.25);
-    background: url(background-light.png) repeat fixed;
+h1, h2 {
+    font-family: Lato, sans-serif;
+    font-weight: normal;
 }
 
-a, a:link, a:visited {
-    text-decoration: underline;
-    color: #EB374B;
+nav {
+    display: inline-block;
+    margin-left: 2em;
 }
 
-a:hover, a:active {
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+}
+
+nav a, nav a:link, nav a:visited {
+    color: #474747;
+}
+
+nav a:hover, nav a:active {
     color: #05B2C2;
+}
+
+nav img {
+    height: 24px;
+    width: 24px;
+    margin: 8px 0 0 0;
+}
+
+div#wrapper {
+    min-width: 20em;
+    max-width: 35em;
+    margin: 60px 14px 0 64px;
 }
 
 dt {
@@ -45,57 +73,56 @@ dt {
     width: 100px;
 }
 
-blockquote {
-    margin: 1em 2em;
-    padding-left: 20px;
-    border-left: 3px solid #ccc;
-}
-
-div.date {
-    width: 100px;
-    padding-bottom: 14px;
-    margin-left: -120px;
-    float: left;
-}
-
-div.date p {
-    background: #EB374B;
-    padding: 5px 10px;
-    margin-bottom: 0;
-    text-align: right;
-    font-family: Lato, sans-serif;
-    color: #fff;
-    box-shadow: 0 4px 0 #CD172B;
-}
-
-div.center {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin: 0 auto 45px auto;
-}
-
-.icon {
+p code {
+    font-size: 0.8em;
+    border: 1px solid #ccc;
     display: inline-block;
-    height: 64px;
-    width: 64px;
-    text-indent: -9999em;
-    margin: 0 1em;
+    padding: 0;
 }
 
-#github {
-    background-color: #4183c4;
-    background-image: url(github.png);
+code {
+    font-family: Inconsolata, monospace;
 }
 
-#tumblr {
-    background-color: #2c4762;
-    background-image: url(tumblr.png);
+pre code {
+    font-size: 0.8em;
 }
 
-#twitter {
-    background-color: #00aced;
-    background-image: url(twitter.png);
+a, a:link, a:visited {
+    text-decoration: none;
+    color: #4B37EB;
+}
+
+a:hover, a:active {
+    color: #05B2C2;
+}
+
+.links, .links li {
+    list-style-type: none;
+    margin-left: 0.5em;
+    padding-left: 0;
+}
+
+.links li {
+    margin-bottom: 1em;
+}
+
+.title {
+    font-size: 1.2em;
+}
+
+.meta {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #777;
+}
+
+hr {
+    border: 0;
+    width: 66%;
+    color: #777;
+    background-color: #777;
+    height: 1px;
 }
 
 @font-face {
@@ -106,58 +133,9 @@ div.center {
 }
 
 @font-face {
-  font-family: 'Vollkorn';
+  font-family: 'Inconsolata';
   font-style: normal;
   font-weight: 400;
-  src: local('Vollkorn Regular'), local('Vollkorn-Regular'), url(/vollkorn-regular.woff2) format('woff2'), url(https://fonts.gstatic.com/s/vollkorn/v6/idGKtgpe38okB6bfeHMsLBTbgVql8nDJpwnrE27mub0.woff2) format('woff2');
-}
-
-.posts, .posts li {
-    list-style-type: none;
-    margin-left: 0;
-    padding-left: 0;
-}
-
-.posts li {
-    margin-bottom: 1em;
-}
-
-.title {
-    font-size: 1.2em;
-}
-
-.date {
-    font-style: italic;
-    font-size: 0.8em;
-    color: #bbb;
-}
-
-p code {
-    font-size: 12px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    display: inline-block;
-    padding: 2px;
-}
-
-code {
-    font-family: Inconsolata, monospace;
-}
-
-h2, h3 {
-    font-family: Vollkorn, serif;
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none;
-    margin: 10px 0;
-    padding: 0;
-}
-
-h2 {
-    font-size: 2.2em;
-}
-
-footer {
-    text-align: center;
-    font-size: 0.9em;
+  src: local('Inconsolata'), url(https://fonts.gstatic.com/s/inconsolata/v11/BjAYBlHtW3CJxDcjzrnZCCYE0-AqJ3nfInTTiDXDjU4.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }

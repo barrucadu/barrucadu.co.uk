@@ -68,7 +68,6 @@ main = hakyllWith defaultConfiguration $ do
   match "publications.markdown" $ do
     route $ setExtension ".html"
     compile $ myPandocCompiler
-      >>= loadAndApplyTemplate "templates/generic.html" defaultContext
       >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
   match "publications/*" $ do
     route   idRoute
