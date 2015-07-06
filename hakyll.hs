@@ -48,6 +48,14 @@ main = hakyllWith defaultConfiguration $ do
     route $ dropPat "static/"
     compile copyFileCompiler
 
+  -- Copy font-awesome files
+  match "fontawesome/css/**" $ do
+    route   idRoute
+    compile copyFileCompiler
+  match "fontawesome/fonts/**" $ do
+    route   idRoute
+    compile copyFileCompiler
+
   -- Render 404 page
   match "404.markdown" $ do
     route   $ setExtension ".html"
