@@ -3,4 +3,4 @@
 	url = https://github.com/barrucadu/cv.git
 [submodule "fontawesome"]
 	path = fontawesome
-	url = git@github.com:FortAwesome/Font-Awesome.git
+	url = https://github.com/FortAwesome/Font-Awesome.git
