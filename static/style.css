@@ -24,7 +24,11 @@ h2 {
     font-size: 1.2em;
 }
 
-h1, h2 {
+h3 {
+    font-size: 1em;
+}
+
+h1, h2, h3 {
     font-family: Lato, sans-serif;
     font-weight: normal;
 }
