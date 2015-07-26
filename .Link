@@ -1,0 +1,18 @@
+Name=The Gopherspace of Michael Walker, otherwise known online as barrucadu
+Name=
+
+Name=About Me
+Path=aboutme.markdown
+Type=0
+
+Name=Publications
+Path=publications
+Type=1
+
+Name=CV
+Path=cv.pdf
+Type=9
+
+Name=Blog Posts
+Path=posts
+Type=1

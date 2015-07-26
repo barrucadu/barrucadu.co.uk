@@ -1,0 +1,24 @@
+Name=Continuous Integration with Jenkins and Stack
+Path=posts/2015-07-18-continuous-integration-with-jenkins-and-stack.markdown
+Type=0
+Name=Playing around with the cool new Haskell build tool.
+
+Name=Pre-emption Bounding
+Path=posts/2015-01-10-pre-emption-bounding.markdown
+Type=0
+Name=Implementing pre-emption bounding in monad-conc.
+
+Name=Haskell Systematic Concurrency Testing
+Path=posts/2014-12-26-haskell-systematic-concurrency-testing.markdown
+Type=0
+Name=What systematic concurrency testing (SCT) is, and how we can apply it to Haskell.
+
+Name=Garbage Collection
+Path=posts/2014-01-07-garbage-collection.markdown
+Type=0
+Name=An overview of the major different types of garbage collector.
+
+Name=A Gentle Introduction to Parsec
+Path=posts/2013-05-27-a-gentle-introduction-to-parsec.markdown
+Type=0
+Name=Introduction to Parsec by constructing a parser for CSV files.

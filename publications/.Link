@@ -1,0 +1,17 @@
+Name=Conference Papers
+Name=
+
+Name=Déjà Fu: A Concurrency Testing Library for Haskell
+Path=publications/dejafu-hs15.pdf
+Type=9
+Name=In ACM SIGPLAN Symposium on Haskell (Haskell '15)
+Name=
+
+Name=Others
+Name=
+
+Name=Search Party: a Haskell library for speculative parallelism in generate-and-test searches
+Path=publications/searchparty-acmsrc15.pdf
+Type=9
+Name=Presented as a poster.
+Name=In ACM ICFP Student Research Competition (ICFP SRC '15)
