@@ -82,11 +82,11 @@ main = hakyllWith defaultConfiguration $ do
     compile copyFileCompiler
 
   -- Render index page / blog post list
-  match "index.markdown" $ do
+  match "aboutme.markdown" $ do
     let entries = recentFirst =<< loadAll "posts/*"
     let ctx     = constField "title" "barrucadu" <> listField "entries" postCtx entries <> defaultContext
 
-    route   $ setExtension ".html"
+    route   $ constRoute "index.html"
     compile $ myPandocCompiler
       >>= loadAndApplyTemplate "templates/index.html"   ctx
       >>= loadAndApplyTemplate "templates/wrapper.html" ctx
