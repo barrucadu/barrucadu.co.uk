@@ -1,3 +1,9 @@
+Name=Debugging an Allocation Issue
+Path=posts/2015-08-01-debugging-an-allocation-issue.markdown
+Type=0
+Name=A seemingly-innocuous change resulted in some extra heap churn,
+Name=and we went down to Core to figure out why.
+
 Name=Weekend Project: Writing a Gopher Server in Erlang
 Path=posts/2015-07-26-erlang-gopher-server.markdown
 Type=0
@@ -16,7 +22,8 @@ Name=Implementing pre-emption bounding in monad-conc.
 Name=Haskell Systematic Concurrency Testing
 Path=posts/2014-12-26-haskell-systematic-concurrency-testing.markdown
 Type=0
-Name=What systematic concurrency testing (SCT) is, and how we can apply it to Haskell.
+Name=What systematic concurrency testing (SCT) is, and how we can apply
+Name=it to Haskell.
 
 Name=Garbage Collection
 Path=posts/2014-01-07-garbage-collection.markdown
