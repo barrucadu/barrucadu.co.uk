@@ -88,6 +88,19 @@ code {
     font-family: Inconsolata, monospace;
 }
 
+div.sourceCode {
+  margin: 0;
+  padding: 0;
+}
+
+pre {
+  background: white;
+  font-size: 1em;
+  line-height: 18px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
 pre code {
     font-size: 0.8em;
 }
