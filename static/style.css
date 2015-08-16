@@ -128,6 +128,10 @@ a:hover, a:active {
     font-size: 1.2em;
 }
 
+.description {
+    font-size: 0.8em;
+}
+
 .meta {
     font-style: italic;
     font-size: 0.8em;
