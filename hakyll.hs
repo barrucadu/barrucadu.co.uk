@@ -68,8 +68,8 @@ main = hakyllWith defaultConfiguration $ do
     route   $ setExtension ".html"
     compile $ pandocCompiler
       >>= saveSnapshot "content"
-      >>= loadAndApplyTemplate "templates/post.html"    defaultContext
-      >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
+      >>= loadAndApplyTemplate "templates/post.html"    postCtx
+      >>= loadAndApplyTemplate "templates/wrapper.html" postCtx
       >>= relativizeUrls
 
   -- Render publications
@@ -84,7 +84,9 @@ main = hakyllWith defaultConfiguration $ do
   -- Render index page / blog post list
   match "aboutme.markdown" $ do
     let entries = recentFirst =<< loadAll "posts/*"
-    let ctx     = constField "title" "barrucadu" <> listField "entries" postCtx entries <> defaultContext
+    let ctx     = constField "title" "barrucadu"      <>
+                  listField "entries" postCtx entries <>
+                  defaultContext
 
     route   $ constRoute "index.html"
     compile $ pandocCompiler
@@ -101,7 +103,8 @@ main = hakyllWith defaultConfiguration $ do
 
 postCtx :: Context String
 postCtx = mconcat
-  [ dateField "date" "%B %e, %Y"
+  [ dateField "isodate" "%Y-%m-%d"
+  , dateField "ppdate"  "%B %e, %Y"
   , defaultContext
   ]
 

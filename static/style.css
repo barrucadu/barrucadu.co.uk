@@ -22,6 +22,8 @@ h1 {
 
 h2 {
     font-size: 1.2em;
+    margin: 0;
+    padding: 0;
 }
 
 h3 {
@@ -128,11 +130,16 @@ a:hover, a:active {
     font-size: 1.2em;
 }
 
+.meta {
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+}
+
 .description {
     font-size: 0.8em;
 }
 
-.meta {
+.published {
     font-style: italic;
     font-size: 0.8em;
     color: #777;

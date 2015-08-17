@@ -1,5 +1,18 @@
-<h2>$title$</h2>
+<article class="h-entry">
+  <h2 class="p-name">$title$</h2>
 
-<article>
-  $body$
+  <div class="meta">
+    <span class="description p-summary">$description$</span><br/>
+    <span class="published">
+$if(author)$
+  Published by <a class="p-author h-card" rel="author" href="$authorurl$">$author$</a> on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
+$else$
+  Published on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
+$endif$
+    </span>
+  </div>
+
+  <div class="e-content">
+    $body$
+  </div>
 </article>
