@@ -151,6 +151,7 @@ a:hover, a:active {
 .meta {
     border-bottom: 1px solid #ccc;
     padding: 8px;
+    line-height: 1em;
 }
 
 .description {
