@@ -66,6 +66,24 @@ nav img {
     margin: 8px 0 0 0;
 }
 
+.figure {
+    padding: 1em;
+    border: 1px solid #ccc;
+}
+
+.figure img {
+    display: block;
+    margin: 0 auto;
+}
+
+.figure .caption {
+    font-weight: bold;
+    font-size: 0.8em;
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 div#wrapper {
     min-width: 20em;
     max-width: 35em;
