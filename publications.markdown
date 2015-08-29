@@ -3,7 +3,11 @@
 <!-- todo: when hakyll supports proper yaml front matter, turn this into a template loop, rather than a load of html -->
 <ol class="links">
   <li><a href="/publications/dejafu-hs15.pdf" class="title">&ldquo;Déjà Fu: A Concurrency Testing Library for Haskell&rdquo;</a><br/>
-    <span class="description">In <em>ACM SIGPLAN Symposium on Haskell (<a href="https://www.haskell.org/haskell-symposium/2015/">Haskell '15</a>)</em></span></li>
+    <span class="description">
+      In <em>ACM SIGPLAN Symposium on Haskell (<a href="https://www.haskell.org/haskell-symposium/2015/">Haskell '15</a>)</em>
+      [<a href="/publications/dejafu-hs15.bib">bib</a>] 
+      [<a href="https://dx.doi.org/10.1145/2804302.2804306"><abbr title="Digital Object Identifier">doi</abbr></a>]
+  </li>
 </ol>
 
 ## Others
