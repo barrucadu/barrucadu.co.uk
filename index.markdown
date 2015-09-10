@@ -15,10 +15,11 @@ can be hard to get it right. Concurrency is hard in a number of areas:
  - Optimisation, as compiler optimisations typically stop as soon as
    **side-effects** are involved.
 
-I am currently working on testing and formal verification. After that,
-I plan to look into **supercompilation** of concurrent programs,
-aiming to execute as much of the computation at compile-time as
-possible.
+My recent work has been on systematic testing assuming a
+sequentially-consistent memory model, next I plan to move on to the
+issues of **relaxed memory** and testing non-synchronised primitives
+like **compare-and-swap**, used in the implementation of many modern
+concurrent algorithms.
 
 See my [publications](publications.html) and [CV](cv.pdf).
 
