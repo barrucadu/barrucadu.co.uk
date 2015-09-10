@@ -38,10 +38,11 @@ main = hakyllWith defaultConfiguration $ do
       >>= relativizeUrls
 
   -- Render publications
-  match "publications.markdown" $ do
-    route $ setExtension ".html"
-    compile $ pandocCompiler
+  match "publications.html" $ do
+    route     idRoute
+    compile $ getResourceBody
       >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
+      >>= relativizeUrls
 
   -- Render all posts
   create ["posts.html"] $
