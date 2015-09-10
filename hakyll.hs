@@ -2,33 +2,12 @@
 
 module Main where
 
-import Control.Monad (void)
-import Data.Monoid ((<>), mconcat)
+import Control.Monad (forM_, void)
+import Data.Monoid ((<>))
 import Hakyll
 import System.Directory (getCurrentDirectory)
 import System.FilePath (FilePath, combine)
 import System.Process (CmdSpec(ShellCommand), CreateProcess(..), StdStream(Inherit), createProcess, waitForProcess)
-import Text.Pandoc.Options (WriterOptions(..))
-
--- | Run a command in a directory.
-runCmd :: FilePath -> CmdSpec -> IO ()
-runCmd wd cmd = do
-  (_, _, _, handle) <- createProcess process
-  void $ waitForProcess handle
-
-  where
-    process = CreateProcess
-      { cmdspec       = cmd
-      , cwd           = Just wd
-      , env           = Nothing
-      , std_in        = Inherit
-      , std_out       = Inherit
-      , std_err       = Inherit
-      , close_fds     = False
-      , create_group  = False
-      , delegate_ctlc = False
-      }
-
 
 main :: IO ()
 main = hakyllWith defaultConfiguration $ do
@@ -44,17 +23,10 @@ main = hakyllWith defaultConfiguration $ do
     compile copyFileCompiler
 
   -- Copy static files
-  match "static/**" $ do
-    route $ dropPat "static/"
-    compile copyFileCompiler
-
-  -- Copy font-awesome files
-  match "fontawesome/css/**" $ do
-    route   idRoute
-    compile copyFileCompiler
-  match "fontawesome/fonts/**" $ do
-    route   idRoute
-    compile copyFileCompiler
+  forM_ ["static/**", "fontawesome/css/**", "fontawesome/fonts/**"] $ \p ->
+    match p $ do
+      route $ dropPat "static/"
+      compile copyFileCompiler
 
   -- Render 404 page
   match "404.markdown" $ do
@@ -77,36 +49,14 @@ main = hakyllWith defaultConfiguration $ do
     route $ setExtension ".html"
     compile $ pandocCompiler
       >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
-  match "publications/*" $ do
-    route   idRoute
-    compile copyFileCompiler
 
   -- Render all posts
-  create ["posts.html"] $ do
-    let entries = recentFirst =<< loadAll "posts/*"
-    let ctx     = constField "title" "All Posts"    <>
-                  listField "posts" postCtx entries <>
-                  defaultContext
-
-    route idRoute
-
-    compile $ makeItem ""
-      >>= loadAndApplyTemplate "templates/postlist.html" ctx
-      >>= loadAndApplyTemplate "templates/wrapper.html"  ctx
-      >>= relativizeUrls
+  create ["posts.html"] $
+    postList Nothing "posts.html" "All Posts" (makeItem "")
             
   -- Render index page / blog post list
-  match "aboutme.markdown" $ do
-    let entries = fmap (take 5) . recentFirst =<< loadAll "posts/*"
-    let ctx     = constField "title" "barrucadu"    <>
-                  listField "posts" postCtx entries <>
-                  defaultContext
-
-    route   $ constRoute "index.html"
-    compile $ pandocCompiler
-      >>= loadAndApplyTemplate "templates/index.html"   ctx
-      >>= loadAndApplyTemplate "templates/wrapper.html" ctx
-      >>= relativizeUrls
+  match "index.markdown" $
+    postList (Just 5) "index.html" "barrucadu" pandocCompiler
 
   -- Create blog feed
   create ["atom.xml"] $ do
@@ -114,6 +64,9 @@ main = hakyllWith defaultConfiguration $ do
     compile $ loadAllSnapshots "posts/*" "content"
       >>= fmap (take 10) . recentFirst
       >>= renderAtom feedCfg feedCtx
+
+-------------------------------------------------------------------------------
+-- Contexts and Configurations
 
 postCtx :: Context String
 postCtx = mconcat
@@ -136,6 +89,43 @@ feedCtx = mconcat
   [ bodyField "description"
   , defaultContext
   ]
+
+-------------------------------------------------------------------------------
+-- Utilities
+
+-- | Render a possibly limited post list to the given path
+postList :: Maybe Int -> FilePath -> String -> Compiler (Item String) -> Rules ()
+postList limit fname title compiler = do
+  route $ constRoute fname
+  compile $ do
+    entries <- fmap (maybe id take limit) . recentFirst =<< loadAll "posts/*"
+    let ctx = constField "title" title <>
+              listField "posts" postCtx (return entries) <>
+              defaultContext
+
+    compiler
+      >>= loadAndApplyTemplate "templates/postlist.html" ctx
+      >>= loadAndApplyTemplate "templates/wrapper.html"  ctx
+      >>= relativizeUrls
+
+-- | Run a command in a directory.
+runCmd :: FilePath -> CmdSpec -> IO ()
+runCmd wd cmd = do
+  (_, _, _, handle) <- createProcess process
+  void $ waitForProcess handle
+
+  where
+    process = CreateProcess
+      { cmdspec       = cmd
+      , cwd           = Just wd
+      , env           = Nothing
+      , std_in        = Inherit
+      , std_out       = Inherit
+      , std_err       = Inherit
+      , close_fds     = False
+      , create_group  = False
+      , delegate_ctlc = False
+      }
 
 -- | Remove some portion of the route
 dropPat :: String -> Routes

@@ -19,3 +19,23 @@ I am currently working on testing and formal verification. After that,
 I plan to look into **supercompilation** of concurrent programs,
 aiming to execute as much of the computation at compile-time as
 possible.
+
+See my [publications](publications.html) and [CV](cv.pdf).
+
+---
+
+Email
+: mike@barrucadu.co.uk
+
+IRC
+: barrucadu on Freenode and Rizon
+
+Jabber
+: mike@barrucadu.co.uk
+
+GPG
+: 3F0B 7E4E 590D 9749 CFE7  146E 37F4 AF9F 9F58 FC68
+
+---
+
+## Recent Posts ([All Posts](posts.html))
