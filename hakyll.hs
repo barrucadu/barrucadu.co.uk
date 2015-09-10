@@ -28,13 +28,6 @@ main = hakyllWith defaultConfiguration $ do
       route $ dropPat "static/"
       compile copyFileCompiler
 
-  -- Render 404 page
-  match "404.markdown" $ do
-    route   $ setExtension ".html"
-    compile $ pandocCompiler
-      >>= loadAndApplyTemplate "templates/error.html"   defaultContext
-      >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
-
   -- Render blog posts
   match "posts/*" $ do
     route   $ setExtension ".html"
