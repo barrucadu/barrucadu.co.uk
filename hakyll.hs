@@ -81,11 +81,25 @@ main = hakyllWith defaultConfiguration $ do
     route   idRoute
     compile copyFileCompiler
 
+  -- Render all posts
+  create ["posts.html"] $ do
+    let entries = recentFirst =<< loadAll "posts/*"
+    let ctx     = constField "title" "All Posts"    <>
+                  listField "posts" postCtx entries <>
+                  defaultContext
+
+    route idRoute
+
+    compile $ makeItem ""
+      >>= loadAndApplyTemplate "templates/postlist.html" ctx
+      >>= loadAndApplyTemplate "templates/wrapper.html"  ctx
+      >>= relativizeUrls
+            
   -- Render index page / blog post list
   match "aboutme.markdown" $ do
-    let entries = recentFirst =<< loadAll "posts/*"
-    let ctx     = constField "title" "barrucadu"      <>
-                  listField "entries" postCtx entries <>
+    let entries = fmap (take 5) . recentFirst =<< loadAll "posts/*"
+    let ctx     = constField "title" "barrucadu"    <>
+                  listField "posts" postCtx entries <>
                   defaultContext
 
     route   $ constRoute "index.html"

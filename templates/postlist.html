@@ -1,0 +1,15 @@
+<ol class="links h-feed">
+  $for(posts)$
+    <li class="h-entry">
+      <a href="$url$" class="title u-url">&ldquo;<span class="p-name">$title$</span>&rdquo;</a>
+      <span class="published">
+$if(author)$
+  Published by <a class="p-author h-card" rel="author" href="$authorurl$">$author$</a> on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
+$else$
+  Published on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
+$endif$
+      </span><br/>
+      <span class="description p-summary">$description$</span>
+    </li>
+  $endfor$
+</ol>
