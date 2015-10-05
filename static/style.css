@@ -2,7 +2,7 @@ body {
     font-family: Cambria, Georgia, Times, serif;
     font-size: 18px;
     color: #333;
-    line-height: 30px;
+    line-height: 1.5em;
 }
 
 header {
@@ -170,6 +170,14 @@ hr {
     color: #777;
     background-color: #777;
     height: 1px;
+}
+
+blockquote {
+    font-size: 0.95em;
+    line-height: 1.25em;
+    border-left: 1px solid #777;
+    padding-left: 1em;
+    margin-left: 1.5em;
 }
 
 @font-face {
