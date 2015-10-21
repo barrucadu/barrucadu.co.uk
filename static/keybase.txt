@@ -1,0 +1,71 @@
+==================================================================
+https://keybase.io/barrucadu
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://barrucadu.co.uk
+  * I am barrucadu (https://keybase.io/barrucadu) on keybase.
+  * I have a public key with fingerprint 3F0B 7E4E 590D 9749 CFE7  146E 37F4 AF9F 9F58 FC68
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.8.23"
+        },
+        "key": {
+            "eldest_kid": "0101aa24f6d828b9ba8bbfbc69ced5e90917dba80f4b1f822cad897300fd7a9b72c00a",
+            "fingerprint": "3f0b7e4e590d9749cfe7146e37f4af9f9f58fc68",
+            "host": "keybase.io",
+            "key_id": "37f4af9f9f58fc68",
+            "kid": "0101aa24f6d828b9ba8bbfbc69ced5e90917dba80f4b1f822cad897300fd7a9b72c00a",
+            "uid": "8a77f05ca473b2f20e50b1bc4e7eb519",
+            "username": "barrucadu"
+        },
+        "service": {
+            "hostname": "barrucadu.co.uk",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1445466951,
+    "expire_in": 157680000,
+    "prev": "cc4881baf9ed476e36b2ae459e5b509a8b665d8a13deca45b55475f262eafce0",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2
+
+owGtUmtIFFEY3c3SrTCjArWCbJIokmVm9s5rg7QwpCyoH5WFud47883utOvOOjtr
+baJEkRKFiEX2EKy0KHpHURhBBEJlG9GbIkvQIntAEPqnqDtiQdHP7v1z+e455zvf
+ubc5M83lcUtfz7e3l30LuXveE9faeVNLahliaknGX8uoEQOitnOK4ipg/EwYkgTH
+wWuYeVFTA++meN4opoCpAStumFGKYr2yl/cxdQUO3mFDRIO4HQgbmnPLsRzGPNJF
+TeZlohAsE6ITVVRU0ARQWIWTNFpkdUQ4XeZ5FWuyIvlYVtckrBCJV1kW04a6EQ2C
+FbMMxyLj01kiAQJBYTVFQoqqg8QhEXySjrCu0C3IuirKlBgy4/YfwzAjTgMj9v6B
+/8++EyNyMpYknRVUjCQf4XWeBYElHFERSEAETnGAcbBGgyfYshJUMOGkSss1hgpO
+ss4of0O8qulNhCk/Zpm2qZoRehmy7Zjf4drJmAPeDCQwKhMgRlSjUVLC4d9vyFGo
+ahuOMIeQgERREbgCBrbEDAsChoMQJFFm6XL6QA3VVFUkyxyh4YGGJJq8SHgMSFBA
+IAKr0LhEUdBkzPk0oGPTooAkQedFHrCuAss4k1VHTcaPqE8cpJJxIxjFdsICpm6X
+e+ZYl9vjSh83xvmkrgnjJ//6uRzyuFrnZFxonj+0sWTRo3NtZU93d6YG93ZsdvcV
+TkwN95Yv3tCfe9RzeCCnZW7W0uotaQ+aMlrl0P2qQ5Ufr8DkY1m9xUVXWjyZ3HX+
+6aT1Kz4/n3Lgjm/Wm+ZnyeWBBfndL/puVlyMvDPSviafFDXtr94zIVj/pWlsbmE4
+rPQ39uUvu9pwbXWXFc9O3W8oKz1eX1qa3nXEOvk29WpiqtyqqCw8e+O2sPXS49y3
+Ze0tJW25yf2VO58t2PEyf3Dr8NltGQ2nH7YuPHWm88eKS+VD92419j0Mrxs6sy+V
+2QGzq4wPndPuph8YznG7P8840ZOdvWT99ssruweK1+Rf2FufSE4/OJha9en1958=
+=ILII
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/barrucadu
+
+==================================================================
