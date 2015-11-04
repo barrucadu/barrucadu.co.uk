@@ -15,11 +15,14 @@ can be hard to get it right. Concurrency is hard in a number of areas:
  - Optimisation, as compiler optimisations typically stop as soon as
    **side-effects** are involved.
 
-My recent work has been on systematic testing assuming a
-sequentially-consistent memory model, next I plan to move on to the
-issues of **relaxed memory** and testing non-synchronised primitives
-like **compare-and-swap**, used in the implementation of many modern
-concurrent algorithms.
+My recent work has been on systematic testing in the presence of
+**relaxed memory**, where caching can delay the visibility of
+writes. The sequentially-consistent portion of this work is documented
+in one of my papers, and I am in the process of writing a technical
+report on the further developments. I have also started investigating
+the verification of my testing framework, in the
+[Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle) proof
+assistant.
 
 See my [publications](publications.html) and [CV](cv.pdf).
 
