@@ -44,10 +44,17 @@ main = hakyllWith defaultConfiguration $ do
       >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
       >>= relativizeUrls
 
+  -- Render projects
+  match "projects.markdown" $ do
+    route $ constRoute "projects.html"
+    compile $ pandocCompiler
+      >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
+      >>= relativizeUrls
+
   -- Render all posts
   create ["posts.html"] $
     postList Nothing "posts.html" "All Posts" (makeItem "")
-            
+
   -- Render index page / blog post list
   match "index.markdown" $
     postList (Just 5) "index.html" "barrucadu" pandocCompiler

@@ -24,7 +24,9 @@ the verification of my testing framework, in the
 [Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle) proof
 assistant.
 
-See my [publications](publications.html) and [CV](cv.pdf).
+See my [publications](publications.html) and [CV](cv.pdf). If you're
+looking for something to work on, see my
+[project ideas](projects.html).
 
 ---
 
