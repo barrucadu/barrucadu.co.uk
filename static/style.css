@@ -108,23 +108,15 @@ code {
     font-family: Inconsolata, monospace;
 }
 
-div.sourceCode {
+div.highlight {
   margin: 0;
   padding: 0;
 }
 
 pre {
-  background: white;
-  font-size: 1em;
+  font-size: 0.8em;
   line-height: 18px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  border-left: 5px solid #ccc;
   padding: 10px;
-}
-
-pre code {
-    font-size: 0.8em;
 }
 
 a, a:link, a:visited {
