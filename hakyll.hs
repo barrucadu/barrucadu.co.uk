@@ -3,11 +3,14 @@
 module Main where
 
 import Control.Monad (forM_, void)
+import Data.Char (toLower)
 import Data.Monoid ((<>))
 import Hakyll
 import System.Directory (getCurrentDirectory)
 import System.FilePath (FilePath, combine)
-import System.Process (CmdSpec(ShellCommand), CreateProcess(..), StdStream(Inherit), createProcess, waitForProcess)
+import System.Process (CmdSpec(ShellCommand), CreateProcess(..), StdStream(Inherit), createProcess, waitForProcess, readProcess)
+import Text.Pandoc.Definition (Pandoc, Block(..), Format(..))
+import Text.Pandoc.Walk (walkM)
 
 main :: IO ()
 main = hakyllWith defaultConfiguration $ do
@@ -31,7 +34,7 @@ main = hakyllWith defaultConfiguration $ do
   -- Render blog posts
   match "posts/*" $ do
     route   $ setExtension ".html"
-    compile $ pandocCompiler
+    compile $ pandocCompiler'
       >>= saveSnapshot "content"
       >>= loadAndApplyTemplate "templates/post.html"    postCtx
       >>= loadAndApplyTemplate "templates/wrapper.html" postCtx
@@ -47,7 +50,7 @@ main = hakyllWith defaultConfiguration $ do
   -- Render projects
   match "projects.markdown" $ do
     route $ constRoute "projects.html"
-    compile $ pandocCompiler
+    compile $ pandocCompiler'
       >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
       >>= relativizeUrls
 
@@ -57,7 +60,7 @@ main = hakyllWith defaultConfiguration $ do
 
   -- Render index page / blog post list
   match "index.markdown" $
-    postList (Just 5) "index.html" "barrucadu" pandocCompiler
+    postList (Just 5) "index.html" "barrucadu" pandocCompiler'
 
   -- Create blog feed
   create ["atom.xml"] $ do
@@ -90,6 +93,21 @@ feedCtx = mconcat
   [ bodyField "description"
   , defaultContext
   ]
+
+--------------------------------------------------------------------------------
+-- Compilers
+
+-- | The Pandoc compiler, but using pygmentize for syntax
+-- highlighting.
+pandocCompiler' :: Compiler (Item String)
+pandocCompiler' = pandocCompilerWithTransformM defaultHakyllReaderOptions defaultHakyllWriterOptions highlight where
+  highlight :: Pandoc -> Compiler Pandoc
+  highlight = unsafeCompiler . walkM pygments
+
+  pygments :: Block -> IO Block
+  pygments (CodeBlock (_, (lang:_), _) code) = RawBlock (Format "html") <$> readProcess "pygmentize" ["-l", map toLower lang,  "-f", "html"] code
+  pygments (CodeBlock _ code) = pure . RawBlock (Format "html") $ "<div class =\"highlight\"><pre>" ++ code ++ "</pre></div>"
+  pygments x = pure x
 
 -------------------------------------------------------------------------------
 -- Utilities
