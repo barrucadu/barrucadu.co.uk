@@ -64,3 +64,25 @@ manage it in theory.
 [^recursion]: "Recursive function calls shall be permitted, both
   directly and indirectly through any chain of other functions.",
   6.5.2.2.11, nothing else is said on the matter.
+
+### Addendum: Virtual Memory
+
+In a discussion about this on Twitter, the possibility of doing some
+sort of virtual memory shenanigans to make a pointer see different
+things depending on its context of use came up. I believe that this is
+prohibited by the semantics of object lifetimes (6.2.4.2):
+
+> The lifetime of an object is the portion of program execution during
+> which storage is guaranteed to be reserved for it. An object exists,
+> has a constant address, and retains its last-stored value throughout
+> its lifetime. If an object is referred to outside of its lifetime,
+> the behavior is undefined. The value of a pointer becomes
+> indeterminate when the object it points to (or just past) reaches
+> the end of its lifetime.
+
+The lifetime for heap-allocated objects is from the allocation until
+the deallocation (7.22.3.1):
+
+> The lifetime of an allocated object extends from the allocation
+> until the deallocation. Each such allocation shall yield a pointer
+> to an object disjoint from any other object.
