@@ -31,6 +31,13 @@ main = hakyllWith defaultConfiguration $ do
       route $ dropPat "static/"
       compile copyFileCompiler
 
+  -- Minify CSS
+  match "css/*" $ compile getResourceBody
+  create ["style.css"] $ do
+    route idRoute
+    compile $ loadAll "css/*"
+      >>= minifyCompiler compressCss
+
   -- Render blog posts
   match "posts/*" $ do
     route   $ setExtension ".html"
@@ -105,9 +112,13 @@ pandocCompiler' = pandocCompilerWithTransformM defaultHakyllReaderOptions defaul
   highlight = unsafeCompiler . walkM pygments
 
   pygments :: Block -> IO Block
-  pygments (CodeBlock (_, (lang:_), _) code) = RawBlock (Format "html") <$> readProcess "pygmentize" ["-l", map toLower lang,  "-f", "html"] code
+  pygments (CodeBlock (_, lang:_, _) code) = RawBlock (Format "html") <$> readProcess "pygmentize" ["-l", map toLower lang,  "-f", "html"] code
   pygments (CodeBlock _ code) = pure . RawBlock (Format "html") $ "<div class =\"highlight\"><pre>" ++ code ++ "</pre></div>"
   pygments x = pure x
+
+-- | Concatenate and minify a collection of items.
+minifyCompiler :: (String -> String) -> [Item String] -> Compiler (Item String)
+minifyCompiler minify = makeItem . minify . concatMap itemBody
 
 -------------------------------------------------------------------------------
 -- Utilities
