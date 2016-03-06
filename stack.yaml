@@ -3,3 +3,6 @@ packages:
 - '.'
 extra-deps: []
 resolver: lts-5.5
+nix:
+  enable: false
+  packages: [zlib]
