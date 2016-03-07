@@ -2,13 +2,11 @@
 
 module Main where
 
-import Control.Monad (forM_, void)
+import Control.Monad (forM_)
 import Data.Char (toLower)
 import Data.Monoid ((<>))
 import Hakyll
-import System.Directory (getCurrentDirectory)
-import System.FilePath (FilePath, combine)
-import System.Process (CmdSpec(ShellCommand), CreateProcess(..), StdStream(Inherit), createProcess, waitForProcess, readProcess)
+import System.Process (readProcess)
 import Text.Pandoc.Definition (Pandoc, Block(..), Format(..))
 import Text.Pandoc.Walk (walkM)
 
@@ -16,14 +14,6 @@ main :: IO ()
 main = hakyllWith defaultConfiguration $ do
   -- Templates
   match "templates/*" $ compile templateCompiler
-
-  -- Build CV
-  preprocess $ do
-    cwd <- getCurrentDirectory
-    runCmd (cwd `combine` "cv") $ ShellCommand "make"
-  match "cv/cv.pdf" $ do
-    route $ dropPat "cv/"
-    compile copyFileCompiler
 
   -- Copy static files
   forM_ ["static/**", "fontawesome/css/**", "fontawesome/fonts/**"] $ \p ->
@@ -137,25 +127,6 @@ postList limit fname title compiler = do
       >>= loadAndApplyTemplate "templates/postlist.html" ctx
       >>= loadAndApplyTemplate "templates/wrapper.html"  ctx
       >>= relativizeUrls
-
--- | Run a command in a directory.
-runCmd :: FilePath -> CmdSpec -> IO ()
-runCmd wd cmd = do
-  (_, _, _, handle) <- createProcess process
-  void $ waitForProcess handle
-
-  where
-    process = CreateProcess
-      { cmdspec       = cmd
-      , cwd           = Just wd
-      , env           = Nothing
-      , std_in        = Inherit
-      , std_out       = Inherit
-      , std_err       = Inherit
-      , close_fds     = False
-      , create_group  = False
-      , delegate_ctlc = False
-      }
 
 -- | Remove some portion of the route
 dropPat :: String -> Routes
