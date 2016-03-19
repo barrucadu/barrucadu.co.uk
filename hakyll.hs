@@ -31,7 +31,7 @@ main = hakyllWith defaultConfiguration $ do
   -- Render blog posts
   match "posts/*" $ do
     route   $ setExtension ".html"
-    compile $ pandocCompiler'
+    compile $ pandocWithPygments
       >>= saveSnapshot "content"
       >>= loadAndApplyTemplate "templates/post.html"    postCtx
       >>= loadAndApplyTemplate "templates/wrapper.html" postCtx
@@ -47,7 +47,7 @@ main = hakyllWith defaultConfiguration $ do
   -- Render projects
   match "projects.markdown" $ do
     route $ constRoute "projects.html"
-    compile $ pandocCompiler'
+    compile $ pandocWithPygments
       >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
       >>= relativizeUrls
 
@@ -57,7 +57,7 @@ main = hakyllWith defaultConfiguration $ do
 
   -- Render index page / blog post list
   match "index.markdown" $
-    postList (Just 5) "index.html" "barrucadu" pandocCompiler'
+    postList (Just 5) "index.html" "barrucadu" pandocWithPygments
 
   -- Create blog feed
   create ["atom.xml"] $ do
@@ -91,20 +91,28 @@ feedCtx = mconcat
   , defaultContext
   ]
 
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 -- Compilers
 
--- | The Pandoc compiler, but using pygmentize for syntax
+-- | The Pandoc compiler, but using pygments/pygmentize for syntax
 -- highlighting.
-pandocCompiler' :: Compiler (Item String)
-pandocCompiler' = pandocCompilerWithTransformM defaultHakyllReaderOptions defaultHakyllWriterOptions highlight where
-  highlight :: Pandoc -> Compiler Pandoc
-  highlight = unsafeCompiler . walkM pygments
+pandocWithPygments :: Compiler (Item String)
+pandocWithPygments = pandocCompilerWithTransformM
+                       defaultHakyllReaderOptions
+                       defaultHakyllWriterOptions
+                       pygmentize
 
-  pygments :: Block -> IO Block
-  pygments (CodeBlock (_, lang:_, _) code) = RawBlock (Format "html") <$> readProcess "pygmentize" ["-l", map toLower lang,  "-f", "html"] code
-  pygments (CodeBlock _ code) = pure . RawBlock (Format "html") $ "<div class =\"highlight\"><pre>" ++ code ++ "</pre></div>"
-  pygments x = pure x
+-- | Apply pygments/pygmentize syntax highlighting to a Pandoc
+-- document.
+pygmentize :: Pandoc -> Compiler Pandoc
+pygmentize = unsafeCompiler . walkM highlight where
+  highlight (CodeBlock opts code) = RawBlock (Format "html") <$> case opts of
+    (_, lang:_, _) -> withLanguage lang code
+    _ -> pure $ "<div class =\"highlight\"><pre>" ++ code ++ "</pre></div>"
+  highlight x = pure x
+
+  -- Apply language-specific syntax highlighting
+  withLanguage lang = readProcess "pygmentize" ["-l", map toLower lang,  "-f", "html"]
 
 -- | Concatenate and minify a collection of items.
 minifyCompiler :: (String -> String) -> [Item String] -> Compiler (Item String)
