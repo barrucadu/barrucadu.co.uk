@@ -2,7 +2,6 @@
 
 module Main where
 
-import Control.Monad (forM_)
 import Data.Char (toLower)
 import Data.Monoid ((<>))
 import Hakyll
@@ -16,10 +15,9 @@ main = hakyllWith defaultConfiguration $ do
   match "templates/*" $ compile templateCompiler
 
   -- Copy static files
-  forM_ ["static/**", "fontawesome/css/**", "fontawesome/fonts/**"] $ \p ->
-    match p $ do
-      route $ dropPat "static/"
-      compile copyFileCompiler
+  match "static/**" $ do
+    route $ dropPat "static/"
+    compile copyFileCompiler
 
   -- Minify CSS
   match "css/*" $ compile getResourceBody
