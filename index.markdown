@@ -39,10 +39,7 @@ Email
 : mike@barrucadu.co.uk
 
 IRC
-: barrucadu on Freenode and Rizon
-
-Jabber
-: mike@barrucadu.co.uk
+: barrucadu on Freenode
 
 GPG
 : 2540 0995 1D49 0628 1780  CC5E D50F C531 7F5A 95FD
