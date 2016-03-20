@@ -7,22 +7,27 @@ functional programming languages**, such as **Haskell**. Increasingly,
 turning to concurrency for performance gains is a no-brainer, but it
 can be hard to get it right. Concurrency is hard in a number of areas:
 
- - Testing, due to nondeterminism inherent in the underlying
-   primitives and abstractions, meaning we need **new techniques**.
- - Formal verification, in the presence of abstractions like
-   **first-class functions**, **lazy evaluation**, and **"higher-order"
-   state**; many of which are essential in a pure functional language.
- - Optimisation, as compiler optimisations typically stop as soon as
-   **side-effects** are involved.
+- Testing, due to nondeterminism inherent in the underlying primitives
+  and abstractions, meaning we need **new techniques**.
+- Formal verification, in the presence of abstractions like
+  **first-class functions**, **lazy evaluation**, and **"higher-order"
+  state**; many of which are essential in a pure functional language.
+- Optimisation, as compiler optimisations typically stop as soon as
+  **side-effects** are involved.
 
-My recent work has been on systematic testing in the presence of
-**relaxed memory**, where caching can delay the visibility of
-writes. The sequentially-consistent portion of this work is documented
-in one of my papers, and I am in the process of writing a technical
-report on the further developments. I have also started investigating
-the verification of my testing framework, in the
-[Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle) proof
-assistant.
+My recent work has been on checking temporal logic properties of
+concurrent Haskell programs, building upon the Deja Fu work documented
+in a paper and a technical report. I plan to submit a paper on this to
+[RV'16](https://rv2016.imag.fr), I am also preparing a new account of
+Deja Fu to submit to the Journal of Functional Programming.
+
+The plans for the rest of my Ph.D include:
+
+- Systematic testing of temporal logic properties *(current work)*.
+- Safe, automated, concurrency introduction for generate-and-test
+  search computations.
+- Using types to enforce interesting concurrent safety properties,
+  beyond just deadlock freedom.
 
 See my [publications](publications.html) and [CV](cv.pdf). If you're
 looking for something to work on, see my
