@@ -99,9 +99,8 @@ dt {
 
 p code {
     font-size: 0.8em;
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 0;
+    color: #343642;
+    font-weight: bold;
 }
 
 code {
