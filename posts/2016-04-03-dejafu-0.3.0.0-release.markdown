@@ -1,0 +1,186 @@
+---
+title: dejafu-0.3.0.0 release!
+description: Refactoring, performance improvements, tweaks, "93
+  commits to master since this [0.2.0.0] tag". Let's see what changed.
+---
+
+It's been quite a while since the [last release of dejafu][0.2.0.0],
+and there have been quite a few changes since then, so I'm going to
+give the major highlights of what's gone on since December. For a full
+commit log, see [github][commits].
+
+[0.2.0.0]: http://hackage.haskell.org/package/dejafu-0.2.0.0
+[commits]: https://github.com/barrucadu/dejafu/compare/0.2.0.0...dejafu-0.3.0.0
+
+## Changelog
+
+### Structural changes
+
+- Everything was renamed and moved to be more in line with the `IO`
+  variants:
+    - Everything lives in Control.Concurrent.Classy.
+    - `CVar` was renamed to `MVar`.
+    - `CTVar` was renamed to `TVar`.
+    - `STMLike` was renamed to `STM`.
+    - `CRef` was *not* renamed to `IORef`, as I felt that having "IO"
+      in the name for something not necessarily involving `IO` was
+      confusing.
+
+- A generic DPOR implementation was spun out as a separate library,
+  now you can use "dejafu" with things which are not dejafu! This took
+  much of the Test.DejaFu.STM and Test.DejaFu.STM.Internal modules,
+  and the entirety of the Test.DejaFu.Deterministic.Schedule module,
+  with it.
+
+- Some things were moved out of the typeclasses, as I couldn't
+  envision a sensible case where you would *want* that:
+    - The `throw(STM)` and `catch(STM)` functions were moved out of
+      `MonadConc` and `MonadSTM`, to be top-level aliases to the
+      functions in Control.Monad.Catch.
+    - The `check` function was moved out of `MonadSTM`, to be a
+      top-level definition.
+
+- And some lesser-used things were dropped:
+    - Strict `CVar`s (now `MVar`s) were dropped.
+    - The `lock` and `unlock` functions were dropped.
+
+### Bug fixes
+
+The relaxed memory implementation was *totally* wrong! A combination
+of two issues made it really bizarre:
+
+- TSO/PSO write buffers are now queues (as they should be!), not
+  stacks.
+
+- Under PSO, there is one buffer for each (thread, variable) pair, not
+  just for each variable.
+
+### New features
+
+- Threads and variables can now be named, these names will show up in
+  the execution trace. See the `fooN` functions in `MonadConc` and
+  `MonadSTM`.
+
+- An STM action executed with `atomically` now includes a trace in the
+  generated `ThreadAction`.
+
+- Arbitrary `Typeable` data can be inserted into an execution trace
+  with the new `_concMessage` function. This makes it possible to
+  extend execution traces to incorporate other sorts of event.
+
+- The `threadDelay` function was added to `MonadConc`, with a
+  difference in semantics. Delaying is not required, only
+  yielding. However, when the thread *is* delayed, it must be delayed
+  for at least the given time.
+
+### Performance improvements
+
+- When executing with no schedule bounds enabled, no conservative
+  backtracking points are added.
+
+- The `BacktrackStep` type now keeps track of the relaxed memory state
+  and uses that to identify dependencies (this results in a *massive*
+  reduction in the number of schedules tried in the relaxed memory
+  tests).
+
+- The `dependent'` function now doesn't introduce a dependency between
+  two actions if the prior one would immediately block (which is safe,
+  as if the action blocks then a context switch will happen anyway)
+  UNLESS this could result in a different relaxed memory state, as all
+  the operations which can block will force a memory barrier.
+
+- A few redundant linear-time (in the size of the DPOR tree, or the
+  length of a trace) operations were removed.
+
+- The `dependentActions` function now doesn't introduce a dependency
+  between writes and commits *if* the write buffer is nonempty. This
+  is safe because commits take from the front and writes push to the
+  back.
+
+### Miscellaneous
+
+- Support for GHC < 7.10 was dropped. I don't anticipate dropping
+  support for 7.10 any time soon, as there aren't any big prelude
+  changes coming up.
+
+- Documentation moved from github pages to docs.barrucadu.co.uk, see
+  links in READMEs.
+
+- A `MonadBase IO` instance was added to `ConcIO`.
+
+- Template Haskell functions were added to generate `MonadConc` and
+  `MonadSTM` instances for monad transformers which are (a) instances
+  of `MonadTransControl`, and (b) can define a function `StT t a ->
+  a`.
+
+- A lot of missing data types were added: `MonadConc` variants of
+  `Chan`, `QSem`, and `QSemN`; and `MonadSTM` variants of `TChan`,
+  `TQueue`, `TBQueue`, and `TArray`.
+
+- The test suite has been expanded with more examples and litmus test
+  cases.
+
+- I added a bibliography to the README.
+
+## Using dejafu
+
+1. Change all your imports:
+    - Control.Concurrent.foo to Control.Concurrent.Classy.foo
+    - Control.Exception to Control.Monad.Catch
+2. Fix all the type errors.
+
+It's that simple!
+
+Only slightly kidding, here are some more things to bear in mind that
+will make your transition easier:
+
+- The `IORef`, `MVar`, `TVar`, `STM` (etc) types are all parameterised
+  by the monad they operate in (also `IORef` is renamed to `CRef`).
+
+- You'll need to replace `IO a` with `MonadConc m => m a`, and `STM a`
+  to `MonadSTM stm => stm a` (substituting into your type signatures
+  appropriately).
+
+- An instance of `MonadConc` is not necessarily an instance of
+  `MonadIO`, so you'll need to add that extra constraint where you
+  need it, and add calls to `liftIO`.
+
+- There are instances of `MonadConc` and `MonadSTM` for many common
+  transformers, so you may find yourself able to drop many calls to
+  `lift`.
+
+External libraries are a pain point, you may just be out of luck if
+you really need an external library which uses `IO` and does some
+concurrency of its own. Sorry :(
+
+## Contributing
+
+**Tests!** The relaxed memory implementation was *completely* bogus,
+and I just didn't realise because I only had one test! The current
+situation is much better, but could still be greatly improved, so if
+you have any small (read: can realistically be compressed into one
+module with very few external dependencies) examples of buggy
+concurrent programs, here's what you can do:
+
+1. Check that dejafu can catch the bug you expect. If not, file an
+   issue!
+2. Have a go at converting it into a test case or example and adding
+   it to the test suite, email me if you have any difficulty with
+   that.
+
+Unsurprisingly, test cases which make use of relaxed memory are
+preferred at the moment.
+
+**Performance!** Things are now pretty good, the dependency
+improvements have made testing relaxed-memory computations *much* more
+efficient than they were, which was one of the major slowdowns. The
+other is exceptions, which I have not yet figured out. If you want me
+to be forever grateful, find a way to make the dependency function for
+`ThrowTo` much more restrictive.
+
+**Issues!** If you find a bug, or find that something you need isn't
+supported, open an issue and let me know! Having users is very
+motivating, and I can't anticipate everything: the development of
+dejafu is driven directly by what *I* want and need, so having someone
+else come in and say "hang on, you haven't implemented <feature>,
+which I use all the time!" is helpful.
