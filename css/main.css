@@ -1,8 +1,15 @@
+html, body {
+  height: 100%;
+}
+
 body {
     font-family: Cambria, Georgia, Times, serif;
     font-size: 18px;
     color: #333;
     line-height: 1.5em;
+    background-color: #fffff0;
+    padding: 0;
+    margin: 0;
 }
 
 header {
@@ -37,7 +44,7 @@ h1, h2, h3 {
 
 nav {
     display: inline-block;
-    margin-left: 11em;
+    margin-left: 15em;
 }
 
 nav ul {
@@ -85,9 +92,13 @@ nav img {
 }
 
 div#wrapper {
-    min-width: 20em;
-    max-width: 35em;
-    margin: 60px 14px 0 64px;
+    box-sizing: border-box;
+    width: 45em;
+    min-height: 100%;
+    margin: 0;
+    padding: 30px 32px 0 64px;
+    background-color: #fff;
+    border-right: 1px solid #cdcdc1;
 }
 
 dt {
@@ -116,6 +127,7 @@ pre {
   font-size: 0.8em;
   line-height: 18px;
   padding: 10px;
+  margin: 0;
 }
 
 a, a:link, a:visited {
