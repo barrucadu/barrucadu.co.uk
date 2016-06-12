@@ -1,33 +1,28 @@
-I am Michael Walker, otherwise known online as **barrucadu**. I am
-currently a **Ph.D student** in the **Department of Computer Science**
-at the **University of York**.
+I am Michael Walker, otherwise known online as barrucadu. I am a
+Computer Science Ph.D Student at the University of York. Although I'm
+currently on a little break and interning at
+[Pusher](https://www.pusher.com) in London this summer, writing Go.
 
-My research relates to **nondeterministic concurrency in pure
-functional programming languages**, such as **Haskell**. Increasingly,
-turning to concurrency for performance gains is a no-brainer, but it
-can be hard to get it right. Concurrency is hard in a number of areas:
+My research relates to nondeterministic concurrency, and I'm doing my
+work in Haskell. Increasingly, turning to concurrency for performance
+gains is a no-brainer, but it can be hard to get right. Concurrency is
+hard in a number of areas:
 
 - Testing, due to nondeterminism inherent in the underlying primitives
-  and abstractions, meaning we need **new techniques**.
+  and abstractions, meaning we need new techniques.
 - Formal verification, in the presence of abstractions like
-  **first-class functions**, **lazy evaluation**, and **"higher-order"
-  state**; many of which are essential in a pure functional language.
+  first-class functions, lazy evaluation, and "higher-order" state;
+  many of which are essential in a pure functional language.
 - Optimisation, as compiler optimisations typically stop as soon as
-  **side-effects** are involved.
+  side-effects are involved.
 
-My recent work has been on checking temporal logic properties of
-concurrent Haskell programs, building upon the Deja Fu work documented
-in a paper and a technical report. I plan to submit a paper on this to
-[RV'16](https://rv2016.imag.fr), I am also preparing a new account of
-Deja Fu to submit to the Journal of Functional Programming.
-
-The plans for the rest of my Ph.D include:
-
-- Systematic testing of temporal logic properties *(current work)*.
-- Safe, automated, concurrency introduction for generate-and-test
-  search computations.
-- Using types to enforce interesting concurrent safety properties,
-  beyond just deadlock freedom.
+I recently submitted a paper on checking temporal logic properties of
+concurrent Haskell programs to [RV'16](https://rv2016.imag.fr). Next I
+plan to look at testing distributed systems with lossy communication
+channels, such as UDP. Such channels have less overhead than lossless
+ones, and so if you need rapid data transfer and can tolerate a bit of
+loss, they're a good choice. They also underly lossless protocols,
+such as TCP.
 
 See my [publications](publications.html) and [CV](cv.pdf). If you're
 looking for something to work on, see my
