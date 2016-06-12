@@ -35,27 +35,16 @@ main = hakyllWith defaultConfiguration $ do
       >>= loadAndApplyTemplate "templates/wrapper.html" postCtx
       >>= relativizeUrls
 
-  -- Render publications
-  match "publications.html" $ do
-    route     idRoute
-    compile $ getResourceBody
-      >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
-      >>= relativizeUrls
-
-  -- Render projects
-  match "projects.markdown" $ do
-    route $ constRoute "projects.html"
-    compile $ pandocWithPygments
-      >>= loadAndApplyTemplate "templates/wrapper.html" defaultContext
-      >>= relativizeUrls
-
   -- Render all posts
   create ["posts.html"] $
     postList Nothing "posts.html" "All Posts" (makeItem "")
 
-  -- Render index page / blog post list
-  match "index.markdown" $
-    postList (Just 5) "index.html" "barrucadu" pandocWithPygments
+  -- Render index page
+  match "index.markdown" $ do
+    route $ setExtension ".html"
+    compile $ pandocWithPygments
+      >>= loadAndApplyTemplate "templates/wrapper.html"  (constField "title" "barrucadu" <> defaultContext)
+      >>= relativizeUrls
 
   -- Create blog feed
   create ["atom.xml"] $ do

@@ -33,3 +33,6 @@
 .fa-envelope:before {
   content: "\f0e0";
 }
+.fa-lock:before {
+  content: "\f023";
+}
