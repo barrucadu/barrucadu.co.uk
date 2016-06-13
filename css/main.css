@@ -3,8 +3,8 @@ html, body {
 }
 
 body {
-    font-family: Cambria, Georgia, Times, serif;
-    font-size: 18px;
+    font-family: Merriweather, Cambria, Georgia, Times, serif;
+    font-size: 16px;
     color: #3b3b3b;
     line-height: 1.5em;
     padding: 0;
@@ -23,12 +23,8 @@ h1, h2, h3, h4 {
     color: #333333;
 }
 
-h2, h2 {
-    font-family: Lato, sans-serif;
-}
-
 h1 {
-    font-size: 2em;
+    font-size: 2.5em;
     margin: 0 0 8px 0;
     padding: 0;
     display: inline-block;
