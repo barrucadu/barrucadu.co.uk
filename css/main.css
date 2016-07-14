@@ -96,7 +96,7 @@ nav a, nav a:link, nav a:visited {
 }
 
 nav a:hover, nav a:active {
-    color: #05B2C2;
+    color: #549eff;
 }
 
 .cventry {
@@ -185,11 +185,11 @@ pre {
 
 a, a:link, a:visited {
     text-decoration: none;
-    color: #204d73;
+    color: #549eff;
 }
 
 a:hover, a:active {
-    color: #05B2C2;
+    color: #05b2c2;
 }
 
 .links, .links li {
