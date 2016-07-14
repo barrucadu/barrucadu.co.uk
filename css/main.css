@@ -206,6 +206,14 @@ a:hover, a:active {
     font-size: 1.2em;
 }
 
+.title:before {
+    content: "“";
+}
+
+.title:after {
+    content: "”";
+}
+
 .meta {
     border-bottom: 1px solid #ccc;
     padding: 8px;

@@ -143,7 +143,7 @@ the x86 / x86_64 relaxed memory model.
 ### Conference papers
 
 <ol class="links">
-  <li><a href="/publications/dejafu-hs15.pdf" class="title">&ldquo;Déjà Fu: A Concurrency Testing Library for Haskell&rdquo;</a><br/>
+  <li><a href="/publications/dejafu-hs15.pdf" class="title">Déjà Fu: A Concurrency Testing Library for Haskell</a><br/>
     <span class="description">
       In <em>ACM SIGPLAN Symposium on Haskell (<a href="https://www.haskell.org/haskell-symposium/2015/">Haskell '15</a>)</em>
       [<a href="/publications/dejafu-hs15.bib">bib</a>]
@@ -155,14 +155,14 @@ the x86 / x86_64 relaxed memory model.
 ### Others
 
 <ol class="links">
-  <li><a href="/publications/YCS-2016-503.pdf" class="title">&ldquo;Déjà Fu: A Concurrency Testing Library for Haskell&rdquo;</a><br/>
+  <li><a href="/publications/YCS-2016-503.pdf" class="title">Déjà Fu: A Concurrency Testing Library for Haskell</a><br/>
     <span class="description">
       University of York Computer Science Department Technical Report YCS-2016-503.
       [<a href="/publications/YCS-2016-503.bib">bib</a>]
     </span>
   </li>
 
-  <li><a href="/publications/searchparty-acmsrc15.pdf" class="title">&ldquo;Search Party: a Haskell library for speculative parallelism in generate-and-test searches&rdquo;</a><br/>
+  <li><a href="/publications/searchparty-acmsrc15.pdf" class="title">Search Party: a Haskell library for speculative parallelism in generate-and-test searches</a><br/>
     <span class="description">
       In <em>ACM ICFP Student Research Competition (<a href="http://icfpconference.org/icfp2015/src.html">ICFP SRC '15</a>)</em>.
       Presented as a poster.

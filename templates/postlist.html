@@ -3,7 +3,7 @@ $body$
 <ol class="links h-feed">
   $for(posts)$
     <li class="h-entry">
-      <a href="$url$" class="title u-url">&ldquo;<span class="p-name">$title$</span>&rdquo;</a>
+      <a href="$url$" class="title u-url"><span class="p-name">$title$</span></a>
       <span class="published">
 $if(author)$
   Published by <a class="p-author h-card" rel="author" href="$authorurl$">$author$</a> on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
