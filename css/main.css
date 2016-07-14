@@ -99,6 +99,35 @@ nav a:hover, nav a:active {
     color: #05B2C2;
 }
 
+.cventry {
+    display: flex;
+    align-items: center;
+    margin-left: -272px;
+}
+
+.cventry .left {
+    width: 256px;
+    margin-right: 16px;
+}
+
+.cventry .left img {
+    width: 128px;
+    height: 128px;
+    margin: 0 0 0 128px;
+}
+
+.cventry .left img.small {
+    width: 64px;
+    height: 64px;
+    margin: 0 0 0 192px;
+}
+
+.cventry .left img.big {
+    width: 256px;
+    height: 256px;
+    margin: 0;
+}
+
 .figure {
     padding: 1em;
     border: 1px solid #ccc;

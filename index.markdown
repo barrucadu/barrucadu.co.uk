@@ -32,9 +32,15 @@ I write sometimes. See my [blog](/posts.html).
 
 <h2 class="big">Employment</h2>
 
+<div class="cventry"><div class="left"><img src="logos/pusher.png" alt="Pusher" class="small"></div><div>
+
 ### **Pusher**, Software Engineering Intern <span class="meta">(May 2016--now, London)</span>
 
 I write Go and code which generates Go.
+
+</div></div>
+
+<div class="cventry"><div class="left"><img src="logos/university-of-york.png" alt="University of York" class="big"></div><div>
 
 ### **University of York**, Postgraduate Teaching Assistant (TPOP) <span class="meta">(Oct 2015--May 2016, York)</span>
 
@@ -51,6 +57,10 @@ during problem classes, and invigilating and marking formative
 assessments. MFCS teaches simple logic, set theory, and proof; and
 formal languages, grammars, and automata.
 
+</div></div>
+
+<div class="cventry"><div class="left"><img src="logos/corefiling.png" alt="CoreFiling"></div><div>
+
 ### **CoreFiling**, Software Engineering Intern <span class="meta">(Jul 2014--Sep 2014, Oxford)</span>
 
 Refactored an extensively-used in-house wiki program, fixing numerous
@@ -61,11 +71,15 @@ this markup in issue descriptions and comments.
 * <i class="fa fa-github"></i> [reviki](https://github.com/CoreFiling/reviki)
 * <i class="fa fa-github"></i> [reviki-jira-plugin](https://github.com/CoreFiling/reviki-jira-plugin)
 
+</div></div>
+
 ---
 
 <div class="vspace"></div>
 
 <h2 class="big">Education</h2>
+
+<div class="cventry"><div class="left"><img src="logos/university-of-york.png" alt="University of York"></div><div>
 
 ### **University of York**
 
@@ -78,11 +92,15 @@ Expected to submit in December 2017.
 Received first-class honours for dissertation on the formal
 verification of stop-the-world garbage collectors.
 
+</div></div>
+
 ---
 
 <div class="vspace"></div>
 
 <h2 class="big">Open Source</h2>
+
+<div class="cventry"><div class="left"><img src="logos/archhurd.png" alt="Arch Hurd" class="small"></div><div>
 
 ### **[Arch Hurd](http://www.archhurd.org)**, Project Leader <span class="meta">(2010--2015)</span>
 
@@ -90,10 +108,16 @@ Managed a small, geographically-diverse, development team porting core
 Linux software to the GNU/Hurd platform. Also produced installation
 media and maintained a website and online software repository.
 
+</div></div>
+
+<div class="cventry"><div class="left"><img src="logos/uzbl.png" alt="Uzbl" class="small"></div><div>
+
 ### **[Uzbl](http://www.uzbl.org)**, Developer <span class="meta">(2009)</span>
 
 Was part of a small development team that implemented early-stage
 functionality in an open-source web browser using C and git.
+
+</div></div>
 
 ---
 
