@@ -52,12 +52,11 @@ main = hakyllWith defaultConfiguration $ do
         >>= relativizeUrls
 
   -- Render index page
-  match "index.markdown" $ do
-    route $ setExtension ".html"
+  match "index.html" $ do
+    route idRoute
     let ctx = constField "title" "barrucadu" <> defaultContext
-    compile $ pandocWithPygments
-      >>= loadAndApplyTemplate "templates/wrapper.html" ctx
-      >>= loadAndApplyTemplate "templates/html.html"    ctx
+    compile $ getResourceBody
+      >>= loadAndApplyTemplate "templates/html.html" ctx
       >>= relativizeUrls
 
   -- Create blog feed

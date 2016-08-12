@@ -1,0 +1,100 @@
+#homepage {
+    text-align: center;
+}
+
+#homepage nav li {
+    margin: 0 0.8rem;
+    font-size: 2.5rem;
+}
+
+#homepage > header, #homepage > section {
+    padding: 5rem 12.5rem 5rem 12.5rem;
+    margin: 0;
+}
+
+#homepage > section:last-child {
+    padding-bottom: 1rem;
+}
+
+#homepage > section > p {
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
+
+#homepage .columns {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#homepage .columns section {
+    box-sizing: border-box;
+    flex: 0 0 32%;
+    margin: 1% 0;
+}
+
+#homepage .faded {
+    opacity: 0.3;
+}
+
+#homepage img {
+    width: 128px;
+    height: 128px;
+    object-fit: scale-down;
+    margin: 0 auto;
+    display: block;
+}
+
+#homepage section h1 {
+    margin: 0 0 1em 0;
+}
+
+#homepage section h2 {
+    font-size: 1.5rem;
+    margin: 0 0 1em 0;
+}
+
+#homepage .title {
+    font-size: 1rem;
+}
+
+#homepage section section h1 {
+    font-size: 1rem;
+    font-family:'Merriweather Black';
+    font-weight: normal;
+    margin: 0;
+}
+
+#homepage section section h2 {
+    font-size: 1rem;
+}
+
+#homepage .when {
+    color: #bbb;
+    font-size: 0.8rem;
+    padding: 0;
+    margin: 0;
+}
+
+#homepage ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#homepage > section:nth-child(even) {
+    background-color: #383838;
+    color: #fff;
+}
+
+#homepage > section:nth-child(even) h1, #homepage > section:nth-child(even) h2 {
+    color: #fff;
+}
+
+#homepage > section:nth-child(even) a, #homepage > section:nth-child(even) a:link, #homepage > section:nth-child(even) a:visited {
+    color: #94deff;
+}
+
+#homepage > section:nth-child(even) a:hover, #homepage > section:nth-child(even) a:active {
+    color: #35e2f2;
+}
