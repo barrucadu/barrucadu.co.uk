@@ -36,8 +36,18 @@ main = hakyllWith defaultConfiguration $ do
       >>= relativizeUrls
 
   -- Render all posts
-  create ["posts.html"] $
-    postList Nothing "posts.html" "All Posts" (makeItem "")
+  create ["posts.html"] $ do
+    route idRoute
+    compile $ do
+      entries <- recentFirst =<< loadAll "posts/*"
+      let ctx = constField "title" "All Posts" <>
+                listField "posts" postCtx (return entries) <>
+                defaultContext
+
+      makeItem ""
+        >>= loadAndApplyTemplate "templates/postlist.html" ctx
+        >>= loadAndApplyTemplate "templates/wrapper.html"  ctx
+        >>= relativizeUrls
 
   -- Render index page
   match "index.markdown" $ do
@@ -107,21 +117,6 @@ minifyCompiler minify = makeItem . minify . concatMap itemBody
 
 -------------------------------------------------------------------------------
 -- Utilities
-
--- | Render a possibly limited post list to the given path
-postList :: Maybe Int -> FilePath -> String -> Compiler (Item String) -> Rules ()
-postList limit fname title compiler = do
-  route $ constRoute fname
-  compile $ do
-    entries <- fmap (maybe id take limit) . recentFirst =<< loadAll "posts/*"
-    let ctx = constField "title" title <>
-              listField "posts" postCtx (return entries) <>
-              defaultContext
-
-    compiler
-      >>= loadAndApplyTemplate "templates/postlist.html" ctx
-      >>= loadAndApplyTemplate "templates/wrapper.html"  ctx
-      >>= relativizeUrls
 
 -- | Remove some portion of the route
 dropPat :: String -> Routes
