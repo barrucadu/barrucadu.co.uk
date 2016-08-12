@@ -33,6 +33,7 @@ main = hakyllWith defaultConfiguration $ do
       >>= saveSnapshot "content"
       >>= loadAndApplyTemplate "templates/post.html"    postCtx
       >>= loadAndApplyTemplate "templates/wrapper.html" postCtx
+      >>= loadAndApplyTemplate "templates/html.html"    postCtx
       >>= relativizeUrls
 
   -- Render all posts
@@ -47,13 +48,16 @@ main = hakyllWith defaultConfiguration $ do
       makeItem ""
         >>= loadAndApplyTemplate "templates/postlist.html" ctx
         >>= loadAndApplyTemplate "templates/wrapper.html"  ctx
+        >>= loadAndApplyTemplate "templates/html.html"     ctx
         >>= relativizeUrls
 
   -- Render index page
   match "index.markdown" $ do
     route $ setExtension ".html"
+    let ctx = constField "title" "barrucadu" <> defaultContext
     compile $ pandocWithPygments
-      >>= loadAndApplyTemplate "templates/wrapper.html"  (constField "title" "barrucadu" <> defaultContext)
+      >>= loadAndApplyTemplate "templates/wrapper.html" ctx
+      >>= loadAndApplyTemplate "templates/html.html"    ctx
       >>= relativizeUrls
 
   -- Create blog feed
