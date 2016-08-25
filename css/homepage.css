@@ -8,7 +8,7 @@
 }
 
 #homepage > header, #homepage > section {
-    padding: 5rem 12.5rem 5rem 12.5rem;
+    padding: 5rem 2rem;
     margin: 0;
 }
 
@@ -17,20 +17,36 @@
 }
 
 #homepage > section > p {
-    margin-left: 10rem;
-    margin-right: 10rem;
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Adjust horizontal padding for wider displays */
+@media (min-width: 50rem) {
+    #homepage > header, #homepage > section {
+        padding-left: 6rem;
+        padding-right: 6rem;
+    }
+}
+@media (min-width: 100rem) {
+    #homepage > header, #homepage > section {
+        padding-left: 12.5rem;
+        padding-right: 12.5rem;
+    }
 }
 
 #homepage .columns {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #homepage .columns section {
     box-sizing: border-box;
-    flex: 0 0 32%;
     margin: 1% 0;
+    min-width: 25rem;
+    width: 32%;
 }
 
 #homepage .faded {
