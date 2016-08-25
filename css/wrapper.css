@@ -14,3 +14,13 @@
     /* Because the text is ragged-right it looks a bit off to be totally right-aligned */
     margin: 0 2em 0 0;
 }
+
+#wrapper .e-content h2 {
+    margin: 2rem 0 1rem 0;
+    font-size: 2rem;
+}
+
+#wrapper .e-content h3 {
+    margin: 1.5rem 0 0.8rem 0;
+    font-size: 1.5rem;
+}
