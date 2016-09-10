@@ -1,0 +1,102 @@
+---
+title: dejafu-0.4.0.0 release!
+description: 23 commits since 0.3.2.1, 68 since 0.3.0.0.
+---
+
+It's time for another major release of [dejafu][]! As always, this
+brings backwards-incompatible changes, but hopefully this is the last
+we'll see of those for a little while. The biggest change is splitting
+out the non-testing code to the new [concurrency][] package. This
+resolves a conflict I had with wanting to keep the dependencies
+minimal (so people would be willing to add a new dependency over just
+base), and not wanting to reinvent the wheel.
+
+## Changelog
+
+- Split out the Control.* modules to a separate [concurrency][]
+  package.
+
+    This is the big one. It allows me to depend on more things in
+    dejafu itself without feeling bad, and reduces the API surface of
+    both libraries, resulting in fewer future major version bumps (I
+    hope).
+
+    commit: [2f0f51c][]. issue: [#51][].
+
+- Re-organise some other modules.
+
+    The module hierarchy still left in the dejafu package has been
+    shuffled around a bit, and now hopefully makes more sense.
+
+    commits: [25718a6][], [75fbad3][]. issue: [#45][].
+
+- Drop the penultimate `Lift`.
+
+    Since the beginning, the termination of a thread has shown up as
+    *two* separate steps in the trace: `Lift`, to communicate the
+    result back to the testing framework, and `Stop` to clean up the
+    thread. This is now all handled in the `Stop`, with the result
+    that every `Lift` you see in a trace is a distinct call to
+    `liftIO` now.
+
+    commit: [066ce93][]. issue: [#43][].
+
+- Traces come with a key.
+
+    Traces now include a key with all the thread names in, if a thread
+    was given a name when it was forked. The name of the initial
+    thread is never included, to save space.
+
+    commits: [8d6cdb6][], [c4884ba][].
+
+- Simpler ticket implementation and usage.
+
+    The monadic `peekTicket` was removed from `MonadConc` and replaced
+    with a non-monadic `peekTicket'` one taking a proxy argument. The
+    proxy is necessary because type families are not injective, so
+    there is no other way to determine which monad we're in. The
+    monadic version was left as a top-level function for those who
+    need it. This then allowed a simpler implementation in the testing
+    code, and simpler execution traces as a result.
+
+    commit: [f3c546f][].
+
+- Reduce code duplication in testing instances.
+
+    There was a lot of duplication between the `ConcIO` and `ConcST`
+    types. Everything is now done in terms of an arbitrary `MonadRef`
+    type, which is simpler.
+
+    commits: [2aa2b8f][], [43b2dd3][]. issue: [#44][].
+
+- Fewer inconsistencies, and better documentation.
+
+    Things have just generally been improved as I touched them. The
+    main [README][] has been particularly improved, and an
+    [inconsistency with autocheck'][fe25151] remedied.
+
+## What's next?
+
+There are no major plans for dejafu/concurrency in the future, but I
+am currently working on adding a few different algorithms to dpor
+(which did not get a version bump this release cycle). The dpor
+library itself will probably be merged back into dejafu, for version
+0.4.1.0. It seems that it wasn't as generically-useful as I thought.
+
+[dejafu]: https://hackage.haskell.org/package/dejafu
+[concurrency]: https://hackage.haskell.org/package/concurrency
+[README]: https://github.com/barrucadu/dejafu#dejafu-
+[066ce93]: https://github.com/barrucadu/dejafu/commit/066ce937e67bbe96ba3b963cedeb67e9394b0659
+[25718a6]: https://github.com/barrucadu/dejafu/commit/25718a6162b5e985f4625bed324ebbef98f5b520
+[2aa2b8f]: https://github.com/barrucadu/dejafu/commit/2aa2b8f447dd67f22ad72db0f5da508cfc007591
+[2f0f51c]: https://github.com/barrucadu/dejafu/commit/2f0f51ceb6e20769a9ca0c73a9c2f0c32b549591
+[43b2dd3]: https://github.com/barrucadu/dejafu/commit/43b2dd3913e6830100f0fceb112a483d951a9bce
+[75fbad3]: https://github.com/barrucadu/dejafu/commit/75fbad38a15bac52d92dc7a2364a404721bf31be
+[8d6cdb6]: https://github.com/barrucadu/dejafu/commit/8d6cdb6aff6423dfef23081ec22a97ec23e4cd33
+[c4884ba]: https://github.com/barrucadu/dejafu/commit/c4884badb854b89d8a6e904130ecc9468f0e5a04
+[f3c546f]: https://github.com/barrucadu/dejafu/commit/f3c546f59103d165e946f35973943f43aaf2302a
+[fe25151]: https://github.com/barrucadu/dejafu/commit/fe251512f5f3a2a699b10b06fb01089f737061c7
+[#43]: https://github.com/barrucadu/dejafu/issues/43
+[#44]: https://github.com/barrucadu/dejafu/issues/44
+[#45]: https://github.com/barrucadu/dejafu/issues/45
+[#51]: https://github.com/barrucadu/dejafu/issues/51
