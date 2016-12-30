@@ -1,5 +1,5 @@
 ---
-title: ICFP: Retrospective
+title: "ICFP: Retrospective"
 description: Looking back at ICFP nearly one month later.
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Paper Summary: Secure Communications Over Insecure Channels
+title: "Paper Summary: Secure Communications Over Insecure Channels"
 description: Review of (Merkle 1978), one of the first public-key cryptosystems.
 ---
 

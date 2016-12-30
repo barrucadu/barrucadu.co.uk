@@ -1,5 +1,5 @@
 ---
-title: Breaking the Law: Verifying Typeclass Laws with QuickCheck and Deja Fu
+title: "Breaking the Law: Verifying Typeclass Laws with QuickCheck and Deja Fu"
 description: Testing typeclass laws with QuickCheck has been done to
   death, but what about when we add concurrency to the mix?
 ---

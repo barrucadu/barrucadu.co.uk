@@ -1,5 +1,5 @@
 ---
-title: Announce: dejafu-0.1.0.0
+title: "Announce: dejafu-0.1.0.0"
 description: Overloadable primitives for testable, potentially non-deterministic, concurrency.
 ---
 

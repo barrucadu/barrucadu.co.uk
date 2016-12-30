@@ -1,5 +1,5 @@
 ---
-title: Weekend Project: Writing a Gopher Server in Erlang
+title: "Weekend Project: Writing a Gopher Server in Erlang"
 description: How better to learn Erlang than by writing a server?
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: cabal-info: get information from cabal files.
+title: "cabal-info: get information from cabal files."
 description: Have you ever needed to get information from a cabal file
   in a shell script? Now you can! `cabal-info` exposes a simple
   command-line interface to the cabal file format.
