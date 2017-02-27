@@ -86,3 +86,37 @@ the deallocation (7.22.3.1):
 > The lifetime of an allocated object extends from the allocation
 > until the deallocation. Each such allocation shall yield a pointer
 > to an object disjoint from any other object.
+
+### Addendum 2: Non-Object Information (Feb 2017)
+
+I had a fun discussion on IRC, where someone argued that the
+definition of pointer equality does not mention the object
+representation, therefore the fixed object representation size is
+irrelevant! Therefore, pointers could have extra information somehow
+which is not part of the object representation.
+
+It took a while to resolve, but I believe the final sentence of the
+object representation quote and the first clause of the pointer
+equality quote, together with the fact that pointers are values,
+resolves this:
+
+1. Pointers are values.
+2. > Two values (other than NaNs) with the same object representation
+   compare equal, but values that compare equal may have different
+   object representations.
+3. Points (1) and (2) mean that pointers with the same object
+   representation compare equal.
+4. > Two pointers compare equal if and only if...
+5. The "only if" in (4) means that if two pointers compare equal, then
+   the rest of the rules apply.
+6. Points (3) and (5) mean that two pointers with the same object
+   representation compare equal, and therefore point to the same
+   object (or are both null pointers, etc).
+
+This means that there cannot be any further information that what is
+stored in the object representation.
+
+Interestingly, I believe this forbids something I initially thought to
+be the case: I say in a footnote that different types could have
+different heaps. They *could*, but that doesn't let you use the same
+object representation for pointers of different types!
