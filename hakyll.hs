@@ -27,7 +27,7 @@ main = hakyllWith defaultConfiguration $ do
       >>= minifyCompiler compressCss
 
   -- Render blog posts
-  match "posts/*" $ do
+  match "posts/*/*.markdown" $ do
     route   $ setExtension ".html"
     compile $ pandocWithPygments
       >>= saveSnapshot "content"
@@ -40,9 +40,13 @@ main = hakyllWith defaultConfiguration $ do
   create ["posts.html"] $ do
     route idRoute
     compile $ do
-      entries <- recentFirst =<< loadAll "posts/*"
+      posts_relnotes    <- recentFirst =<< loadAll "posts/relnotes/*.markdown"
+      posts_concurrency <- recentFirst =<< loadAll "posts/concurrency/*.markdown"
+      posts_etc         <- recentFirst =<< loadAll "posts/etc/*.markdown"
       let ctx = constField "title" "All Posts" <>
-                listField "posts" postCtx (return entries) <>
+                listField "posts_relnotes"    postCtx (return posts_relnotes)    <>
+                listField "posts_concurrency" postCtx (return posts_concurrency) <>
+                listField "posts_etc"         postCtx (return posts_etc)         <>
                 defaultContext
 
       makeItem ""
