@@ -36,3 +36,6 @@
 .fa-lock:before {
   content: "\f023";
 }
+.fa-arrow-left:before {
+    content: "\f060";
+}

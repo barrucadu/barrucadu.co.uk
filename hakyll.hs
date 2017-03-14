@@ -31,9 +31,8 @@ main = hakyllWith defaultConfiguration $ do
     route   $ setExtension ".html"
     compile $ pandocWithPygments
       >>= saveSnapshot "content"
-      >>= loadAndApplyTemplate "templates/post.html"    postCtx
-      >>= loadAndApplyTemplate "templates/wrapper.html" postCtx
-      >>= loadAndApplyTemplate "templates/html.html"    postCtx
+      >>= loadAndApplyTemplate "templates/post.html" postCtx
+      >>= loadAndApplyTemplate "templates/html.html" postCtx
       >>= relativizeUrls
 
   -- Render index page
