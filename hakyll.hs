@@ -36,32 +36,22 @@ main = hakyllWith defaultConfiguration $ do
       >>= loadAndApplyTemplate "templates/html.html"    postCtx
       >>= relativizeUrls
 
-  -- Render all posts
-  create ["posts.html"] $ do
+  -- Render index page
+  match "index.html" $ do
     route idRoute
     compile $ do
       posts_relnotes    <- recentFirst =<< loadAll "posts/relnotes/*.markdown"
       posts_concurrency <- recentFirst =<< loadAll "posts/concurrency/*.markdown"
       posts_etc         <- recentFirst =<< loadAll "posts/etc/*.markdown"
-      let ctx = constField "title" "All Posts" <>
+      let ctx = constField "title" "barrucadu" <>
                 listField "posts_relnotes"    postCtx (return posts_relnotes)    <>
                 listField "posts_concurrency" postCtx (return posts_concurrency) <>
                 listField "posts_etc"         postCtx (return posts_etc)         <>
                 defaultContext
-
-      makeItem ""
-        >>= loadAndApplyTemplate "templates/postlist.html" ctx
-        >>= loadAndApplyTemplate "templates/wrapper.html"  ctx
-        >>= loadAndApplyTemplate "templates/html.html"     ctx
+      getResourceBody
+        >>= applyAsTemplate ctx
+        >>= loadAndApplyTemplate "templates/html.html" ctx
         >>= relativizeUrls
-
-  -- Render index page
-  match "index.html" $ do
-    route idRoute
-    let ctx = constField "title" "barrucadu" <> defaultContext
-    compile $ getResourceBody
-      >>= loadAndApplyTemplate "templates/html.html" ctx
-      >>= relativizeUrls
 
   -- Create blog feed
   create ["atom.xml"] $ do

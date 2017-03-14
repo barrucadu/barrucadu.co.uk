@@ -14,7 +14,7 @@
       </ul>
     </nav>
 
-    <p>See my <a href="/cv.pdf">CV</a>. I also <a href="/posts.html">blog</a>.</p>
+    <p>See my <a href="/cv.pdf">CV</a>.</p>
   </header>
 
   <section>
@@ -151,5 +151,41 @@
         <p>Do not expect good code if you go and dig up my contributions.</p>
       </section>
     </div>
+  </section>
+
+  <section id="blog">
+    <h1>I Write Things</h1>
+    <h2>Release Notes</h2>
+    <ol class="links">
+      $for(posts_relnotes)$
+      <li>
+        <time class="meta" datetime="$isodate$">$ppdate$</time>
+        &mdash;
+        <a href="$url$" class="title">$title$</a>
+      </li>
+      $endfor$
+    </ol>
+
+    <h2>Concurrency</h2>
+    <ol class="links">
+      $for(posts_concurrency)$
+      <li>
+        <time class="meta" datetime="$isodate$">$ppdate$</time>
+        &mdash;
+        <a href="$url$" class="title">$title$</a>
+      </li>
+      $endfor$
+    </ol>
+
+    <h2>Etc</h2>
+    <ol class="links">
+      $for(posts_etc)$
+      <li>
+        <time class="meta" datetime="$isodate$">$ppdate$</time>
+        &mdash;
+        <a href="$url$" class="title">$title$</a>
+      </li>
+      $endfor$
+    </ol>
   </section>
 </div>
