@@ -66,7 +66,7 @@ main = hakyllWith defaultConfiguration $ do
   -- Create blog feed
   create ["atom.xml"] $ do
     route     idRoute
-    compile $ loadAllSnapshots "posts/*" "content"
+    compile $ loadAllSnapshots "posts/*/*.markdown" "content"
       >>= fmap (take 10) . recentFirst
       >>= renderAtom feedCfg feedCtx
 
