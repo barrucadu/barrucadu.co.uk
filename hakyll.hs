@@ -3,6 +3,7 @@
 module Main where
 
 import Data.Char (toLower)
+import Data.Maybe (fromMaybe)
 import Data.Monoid ((<>))
 import Hakyll
 import System.Process (readProcess)
@@ -35,14 +36,14 @@ main = hakyllWith defaultConfiguration $ do
       >>= loadAndApplyTemplate "templates/html.html" postCtx
       >>= relativizeUrls
 
-  -- Render index page
-  match "index.html" $ do
+  -- Render html pages
+  match "*.html" $ do
     route idRoute
     compile $ do
       posts_relnotes    <- recentFirst =<< loadAll "posts/relnotes/*.markdown"
       posts_concurrency <- recentFirst =<< loadAll "posts/concurrency/*.markdown"
       posts_etc         <- recentFirst =<< loadAll "posts/etc/*.markdown"
-      let ctx = constField "title" "barrucadu" <>
+      let ctx = mdataField "title" "barrucadu" <>
                 listField "posts_relnotes"    postCtx (return posts_relnotes)    <>
                 listField "posts_concurrency" postCtx (return posts_concurrency) <>
                 listField "posts_etc"         postCtx (return posts_etc)         <>
@@ -117,3 +118,8 @@ minifyCompiler minify = makeItem . minify . concatMap itemBody
 -- | Remove some portion of the route
 dropPat :: String -> Routes
 dropPat pat = gsubRoute pat (const "")
+
+-- | Get a field value from the metadata, supplying a default value if
+-- missing.
+mdataField :: String -> String -> Context String
+mdataField fld z = field fld (\i -> fromMaybe z <$> getMetadataField (itemIdentifier i) fld)
