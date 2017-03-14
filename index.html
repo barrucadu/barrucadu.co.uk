@@ -1,5 +1,5 @@
 <div id="homepage">
-  <header>
+  <header class="center">
     <h1>barrucadu</h1>
     <p>I'm <strong>Michael Walker</strong>. I also go by <strong>barrucadu</strong>.<br/>It's like
       the <a href="https://en.wikipedia.org/wiki/barracuda">fish</a>, but with the vowels wrong.</p>
@@ -13,8 +13,6 @@
         <li><a href="https://keybase.io/barrucadu" rel="me" title="Keybase"><i class="fa fa-lock"></i></a>
       </ul>
     </nav>
-
-    <p>See my <a href="/cv.pdf">CV</a>.</p>
   </header>
 
   <section>
@@ -25,10 +23,12 @@
     <p>I read <a href="https://www.barrucadu.co.uk/bookdb/">a lot of books</a>, I
       write <a href="https://github.com/barrucadu">a lot of code</a>, and I
       <a href="#research">research concurrency</a>.</p>
+
+    <p>See my <a href="/cv.pdf">CV</a>.</p>
   </section>
 
-  <section id="work">
-    <h1>Places I've Worked</h1>
+  <section id="work" class="center">
+    <h1>Work</h1>
 
     <div class="columns">
       <section>
@@ -68,16 +68,14 @@
   </section>
 
   <section id="research">
-    <h1>I Do Research</h1>
+    <h1>Research</h1>
 
     <p>Concurrency is great as both a design pattern and a performance enhancer, but it can be hard to get right.
       Testing in particular is hard: you can't just run a program once and see what the result is.</p>
 
-    <p>Next I plan to try to apply some of what I've learned to distributed systems.</p>
-
     <h2>Conference Papers</h2>
 
-    <ul class="links">
+    <ol class="links">
       <li>
         <a class="title" href="/publications/dejafu-hs15.pdf">Déjà Fu: A Concurrency Testing Library for Haskell</a>
         <br/>
@@ -86,11 +84,12 @@
           [<a href="/publications/dejafu-hs15.bib">bib</a>]
           [<a href="https://dx.doi.org/10.1145/2804302.2804306">doi</a>]
         </span>
-    </ul>
+      </li>
+    </ol>
 
     <h2>Others</h2>
 
-    <ul class="links">
+    <ol class="links">
       <li>
         <a class="title" href="/publications/YCS-2016-503.pdf">Déjà Fu: A Concurrency Testing Library for Haskell</a>
         <br/>
@@ -105,11 +104,12 @@
           In <em>ACM ICFP Student Research Competition (<a href="http://icfpconference.org/icfp2015/src.html">ICFP SRC '15</a>)</em>.
           Presented as a poster.
         </span>
-    </ul>
+      </li>
+    </ol>
   </section>
 
-  <section id="open-source">
-    <h1>Open Source Is Good, Too</h1>
+  <section id="open-source" class="center">
+    <h1>Programming</h1>
 
     <div class="columns">
       <section>
@@ -154,7 +154,7 @@
   </section>
 
   <section id="blog">
-    <h1>I Write Things</h1>
+    <h1>Writing</h1>
     <h2>Release Notes</h2>
     <ol class="links">
       $for(posts_relnotes)$

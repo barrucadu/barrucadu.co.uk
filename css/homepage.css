@@ -1,5 +1,6 @@
-#homepage {
+#homepage > header {
     text-align: center;
+    padding: 5rem 2rem 0 2rem;
 }
 
 #homepage nav li {
@@ -7,19 +8,14 @@
     font-size: 2.5rem;
 }
 
-#homepage > header, #homepage > section {
-    padding: 5rem 2rem;
+#homepage > section {
+    padding: 2rem;
     margin: 0;
+    border-bottom: 1px solid #ddd;
 }
 
 #homepage > section:last-child {
     padding-bottom: 1rem;
-}
-
-#homepage > section > p {
-    max-width: 50rem;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* Adjust horizontal padding for wider displays */
@@ -37,6 +33,7 @@
 }
 
 #homepage .columns {
+    text-align: center;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -96,21 +93,4 @@
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-#homepage > section:nth-child(even) {
-    background-color: #383838;
-    color: #fff;
-}
-
-#homepage > section:nth-child(even) h1, #homepage > section:nth-child(even) h2 {
-    color: #fff;
-}
-
-#homepage > section:nth-child(even) a, #homepage > section:nth-child(even) a:link, #homepage > section:nth-child(even) a:visited {
-    color: #94deff;
-}
-
-#homepage > section:nth-child(even) a:hover, #homepage > section:nth-child(even) a:active {
-    color: #35e2f2;
 }
