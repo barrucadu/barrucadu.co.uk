@@ -19,31 +19,63 @@
 }
 
 /* Adjust horizontal padding for wider displays */
-@media (min-width: 50rem) {
+@media (max-width: 75rem) {
     #homepage > header, #homepage > section {
         padding-left: 6rem;
         padding-right: 6rem;
     }
 }
-@media (min-width: 100rem) {
+@media (min-width: 75rem) {
     #homepage > header, #homepage > section {
         padding-left: 12.5rem;
         padding-right: 12.5rem;
     }
 }
 
-#homepage .columns {
-    text-align: center;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
+/* Turn columns to rows on narrow displays */
+@media (max-width: 75rem) {
+    #homepage .columns img {
+        float: left;
+        margin: 0 1rem 0 0;
+        width: 64px;
+        height: 64px;
+    }
+    #homepage .columns h2 {
+        margin: 0;
+    }
+    #homepage .columns section {
+        margin: 0 0 3rem 0;
+    }
+    #homepage .columns section:nth-last-child(1) {
+        margin-bottom: 0;
+    }
+    #homepage .when {
+        display: inline;
+    }
+}
+@media (min-width: 75rem) {
+    #homepage .columns {
+        text-align: center;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+    }
+    #homepage .columns section {
+        box-sizing: border-box;
+        margin: 1% 0;
+        min-width: 25rem;
+        width: 32%;
+    }
+    #homepage .columns img {
+        width: 128px;
+        height: 128px;
+    }
 }
 
-#homepage .columns section {
-    box-sizing: border-box;
-    margin: 1% 0;
-    min-width: 25rem;
-    width: 32%;
+#homepage .columns header {
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 #homepage .faded {
@@ -51,8 +83,6 @@
 }
 
 #homepage img {
-    width: 128px;
-    height: 128px;
     object-fit: scale-down;
     margin: 0 auto;
     display: block;
@@ -93,4 +123,9 @@
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+#homepage p {
+    margin-top: 0;
+    padding-top: 0;
 }
