@@ -3,7 +3,6 @@
 module Main where
 
 import Data.Char (toLower)
-import Data.Maybe (fromMaybe)
 import Data.Monoid ((<>))
 import Hakyll
 import System.Process (readProcess)
@@ -32,21 +31,29 @@ main = hakyllWith defaultConfiguration $ do
     route   $ setExtension ".html"
     compile $ pandocWithPygments
       >>= saveSnapshot "content"
-      >>= loadAndApplyTemplate "templates/post.html" postCtx
-      >>= loadAndApplyTemplate "templates/html.html" postCtx
+      >>= loadAndApplyTemplate "templates/page.html" pageCtx
+      >>= loadAndApplyTemplate "templates/html.html" pageCtx
       >>= relativizeUrls
 
-  -- Render html pages
-  match "*.html" $ do
+  -- Render HTML pages
+  match "pages/*.markdown" $ do
+    route $ dropPat "pages/" `composeRoutes` setExtension ".html"
+    compile $ pandocWithPygments
+      >>= loadAndApplyTemplate "templates/page.html" pageCtx
+      >>= loadAndApplyTemplate "templates/html.html" pageCtx
+      >>= relativizeUrls
+
+  -- Render index page
+  match "index.html" $ do
     route idRoute
     compile $ do
       posts_relnotes    <- recentFirst =<< loadAll "posts/relnotes/*.markdown"
       posts_concurrency <- recentFirst =<< loadAll "posts/concurrency/*.markdown"
       posts_etc         <- recentFirst =<< loadAll "posts/etc/*.markdown"
-      let ctx = mdataField "title" "barrucadu" <>
-                listField "posts_relnotes"    postCtx (return posts_relnotes)    <>
-                listField "posts_concurrency" postCtx (return posts_concurrency) <>
-                listField "posts_etc"         postCtx (return posts_etc)         <>
+      let ctx = constField "title" "barrucadu" <>
+                listField "posts_relnotes"    pageCtx (return posts_relnotes)    <>
+                listField "posts_concurrency" pageCtx (return posts_concurrency) <>
+                listField "posts_etc"         pageCtx (return posts_etc)         <>
                 defaultContext
       getResourceBody
         >>= applyAsTemplate ctx
@@ -63,8 +70,8 @@ main = hakyllWith defaultConfiguration $ do
 -------------------------------------------------------------------------------
 -- Contexts and Configurations
 
-postCtx :: Context String
-postCtx = mconcat
+pageCtx :: Context String
+pageCtx = mconcat
   [ dateField "isodate" "%Y-%m-%d"
   , dateField "ppdate"  "%d %b, %Y"
   , defaultContext
@@ -118,8 +125,3 @@ minifyCompiler minify = makeItem . minify . concatMap itemBody
 -- | Remove some portion of the route
 dropPat :: String -> Routes
 dropPat pat = gsubRoute pat (const "")
-
--- | Get a field value from the metadata, supplying a default value if
--- missing.
-mdataField :: String -> String -> Context String
-mdataField fld z = field fld (\i -> fromMaybe z <$> getMetadataField (itemIdentifier i) fld)
