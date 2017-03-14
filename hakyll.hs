@@ -76,7 +76,7 @@ main = hakyllWith defaultConfiguration $ do
 postCtx :: Context String
 postCtx = mconcat
   [ dateField "isodate" "%Y-%m-%d"
-  , dateField "ppdate"  "%B %e, %Y"
+  , dateField "ppdate"  "%d %b, %Y"
   , defaultContext
   ]
 

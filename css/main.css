@@ -126,36 +126,10 @@ a:hover, a:active {
     padding-left: 0;
 }
 
-.links li {
-    margin-bottom: 1em;
-}
-
-.title {
-    font-size: 1.2em;
-}
-
-.title:before {
-    content: "“";
-}
-
-.title:after {
-    content: "”";
-}
-
 .meta {
-    border-bottom: 1px solid #ccc;
-    padding: 8px;
-    line-height: 1em;
-}
-
-.description {
-    font-size: 0.8em;
-}
-
-.published {
-    font-style: italic;
-    font-size: 0.8em;
     color: #777;
+    font-family: Inconsolata, monospace;
+    font-size: 0.9em;
 }
 
 hr {

@@ -1,50 +1,32 @@
 <h2>Release Notes</h2>
-<ol class="links h-feed">
+<ol class="links">
   $for(posts_relnotes)$
-    <li class="h-entry">
-      <a href="$url$" class="title u-url"><span class="p-name">$title$</span></a>
-      <span class="published">
-$if(author)$
-  Published by <a class="p-author h-card" rel="author" href="$authorurl$">$author$</a> on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
-$else$
-  Published on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
-$endif$
-      </span><br/>
-      <span class="description p-summary">$description$</span>
+    <li>
+      <time class="meta" datetime="$isodate$">$ppdate$</time>
+      &mdash;
+      <a href="$url$" class="title">$title$</a>
     </li>
   $endfor$
 </ol>
 
 <h2>Concurrency</h2>
-<ol class="links h-feed">
-  $for(posts_relnotes)$
-    <li class="h-entry">
-      <a href="$url$" class="title u-url"><span class="p-name">$title$</span></a>
-      <span class="published">
-$if(author)$
-  Published by <a class="p-author h-card" rel="author" href="$authorurl$">$author$</a> on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
-$else$
-  Published on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
-$endif$
-      </span><br/>
-      <span class="description p-summary">$description$</span>
+<ol class="links">
+  $for(posts_concurrency)$
+    <li>
+      <time class="meta" datetime="$isodate$">$ppdate$</time>
+      &mdash;
+      <a href="$url$" class="title">$title$</a>
     </li>
   $endfor$
 </ol>
 
 <h2>Etc</h2>
-<ol class="links h-feed">
+<ol class="links">
   $for(posts_etc)$
-    <li class="h-entry">
-      <a href="$url$" class="title u-url"><span class="p-name">$title$</span></a>
-      <span class="published">
-$if(author)$
-  Published by <a class="p-author h-card" rel="author" href="$authorurl$">$author$</a> on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
-$else$
-  Published on <time class="dt-published" datetime="$isodate$">$ppdate$</time>
-$endif$
-      </span><br/>
-      <span class="description p-summary">$description$</span>
+    <li>
+      <time class="meta" datetime="$isodate$">$ppdate$</time>
+      &mdash;
+      <a href="$url$" class="title">$title$</a>
     </li>
   $endfor$
 </ol>
