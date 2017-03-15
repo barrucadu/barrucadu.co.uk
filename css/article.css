@@ -71,11 +71,6 @@ article dt {
     width: 100px;
 }
 
-article p code, article li code {
-    color: #343642;
-    font-weight: bold;
-}
-
 article code {
     font-family: Inconsolata, monospace;
 }
