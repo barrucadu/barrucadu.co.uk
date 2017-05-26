@@ -14,23 +14,24 @@ article > section:last-child {
 .columns header {
     text-align: left;
 }
+
 .columns img {
     float: right;
     margin: 0 1rem 0 0;
     width: 64px;
     height: 64px;
 }
+
 .columns h2 {
     margin: 0;
 }
+
 .columns section {
     margin: 0 0 1rem 0;
 }
+
 .columns section:nth-last-child(1) {
     margin-bottom: 0;
-}
-.when {
-    display: inline;
 }
 
 .columns header {
