@@ -4,7 +4,7 @@ nav li {
 }
 
 article > section {
-    border-bottom: 1px solid #ddd;
+    padding-bottom: 2rem;
 }
 
 article > section:last-child {
@@ -24,7 +24,7 @@ article > section:last-child {
     margin: 0;
 }
 .columns section {
-    margin: 0 0 3rem 0;
+    margin: 0 0 1rem 0;
 }
 .columns section:nth-last-child(1) {
     margin-bottom: 0;
@@ -50,11 +50,13 @@ img {
 }
 
 section h1 {
-    margin: 0 0 1em 0;
+    border-top: 1px solid #ddd;
+    font-size: 1.1rem;
+    text-align: center;
 }
 
 section h2 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     margin: 0 0 1em 0;
 }
 
@@ -63,10 +65,11 @@ section h2 {
 }
 
 section section h1 {
-    font-size: 1rem;
     font-family:'Merriweather Black';
     font-weight: normal;
     margin: 0;
+    border-top: none;
+    text-align: left;
 }
 
 section section h2 {
