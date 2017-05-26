@@ -1,19 +1,21 @@
-html, body {
-  height: 100%;
-}
-
 body {
     font-family: Merriweather, Cambria, Georgia, Times, serif;
-    font-size: 16px;
     color: #3b3b3b;
     padding: 0;
-    margin: 0;
-    position: relative;
+    margin: 0 auto;
+    max-width: 1000px;
 }
 
-header {
-    margin: 0 0 16px 16px;
+header, footer {
+    text-align: center;
+    margin: 16px 0 16px 0;
     padding: 0;
+}
+
+article {
+    max-width: 68em;
+    min-height: 100%;
+    margin: 0 auto 0 auto;
 }
 
 nav ul {
@@ -44,22 +46,21 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    font-size: 2.5em;
-    margin: 0 0 8px 0;
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
     padding: 0;
-    display: inline-block;
     font-family: Raleway, sans-serif;
     font-weight: 300;
 }
 
 h2 {
-    font-size: 1.2em;
+    font-size: 1.1rem;
     margin: 0;
     padding: 0;
 }
 
 h3, h4 {
-    font-size: 1.1em;
+    font-size: 1rem;
     margin: 0.5em 0 0.2em 0;
     padding: 0;
 }
@@ -79,8 +80,26 @@ a:hover, a:active {
     padding-left: 0;
 }
 
+.wide li {
+    margin-bottom: 1rem;
+}
+
 .meta {
     color: #777;
     font-family: Inconsolata, monospace;
     font-size: 0.9em;
 }
+
+p {
+    line-height: 1.35;
+    margin-bottom: 1em;
+    padding: 0;
+}
+
+/* Scale body text size depending on browser width */
+@media all {html {font-size: 21px}}
+@media all and (max-width:1000px){html {font-size: 21px !important}}
+@media all and (max-width:960px) {html {font-size: 20px !important}}
+@media all and (max-width:920px) {html {font-size: 19px !important}}
+@media all and (max-width:880px) {html {font-size: 18px !important}}
+@media all and (max-width:840px) {html {font-size: 17px !important}}

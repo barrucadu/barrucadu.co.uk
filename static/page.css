@@ -1,49 +1,38 @@
-article {
-    max-width: 68em;
-    min-height: 100%;
-    margin: 0 auto 0 auto;
-    padding: 30px 4em 8px 4em;
-}
-
-article header, article footer {
-    text-align: center;
-}
-
-article time {
+time {
     display: block;
     text-align: center;
 }
 
-article nav {
+nav {
     font-size: 2em;
 }
 
-article h2 {
+h2 {
     margin: 2rem 0 1rem 0;
-    font-size: 2rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 1rem;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    font-family: Raleway, sans-serif;
+    font-weight: 300;
 }
 
-article h3 {
-    margin: 1.5rem 0 0.8rem 0;
-    font-size: 1.5rem;
+h3 {
+    text-align: center;
 }
 
-article .figure {
+.figure {
     padding: 1em;
 }
 
-article .figure img {
+.figure img {
     display: block;
     margin: 0 auto;
 }
 
-article .figure .caption {
+.figure .caption {
     display: none;
 }
 
-article hr {
+hr {
     border: 0;
     width: 100%;
     color: #777;
@@ -51,7 +40,7 @@ article hr {
     height: 1px;
 }
 
-article blockquote {
+blockquote {
     font-size: 0.95em;
     line-height: 1.25em;
     border-left: 1px solid #777;
@@ -59,25 +48,24 @@ article blockquote {
     margin-left: 1.5em;
 }
 
-article dt {
+dt {
     font-weight: bold;
     display: block;
     float: left;
     width: 100px;
 }
 
-article code {
+code {
     font-family: Inconsolata, monospace;
 }
 
-article div.highlight {
+div.highlight {
   margin: 0;
   padding: 0;
 }
 
-article pre {
+pre {
   font-size: 0.8em;
-  line-height: 18px;
   padding: 10px;
   margin: 0;
 }
