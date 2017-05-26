@@ -80,6 +80,10 @@ a:hover, a:active {
     padding-left: 0;
 }
 
+.wide li {
+    margin-bottom: 1rem;
+}
+
 .meta {
     color: #777;
     font-family: Inconsolata, monospace;
