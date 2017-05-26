@@ -5,6 +5,7 @@ module Main where
 import Data.Char (toLower)
 import Data.Monoid ((<>))
 import Hakyll
+import Hakyll.Contrib.Hyphenation (hyphenateHtml, english_GB)
 import System.Process (readProcess)
 import Text.Pandoc.Definition (Pandoc, Block(..), Format(..))
 import Text.Pandoc.Walk (walkM)
@@ -30,6 +31,7 @@ main = hakyllWith defaultConfiguration $ do
   match "posts/*/*.markdown" $ do
     route   $ setExtension ".html"
     compile $ pandocWithPygments
+      >>= hyphenateHtml english_GB
       >>= saveSnapshot "content"
       >>= loadAndApplyTemplate "templates/page.html" pageCtx
       >>= loadAndApplyTemplate "templates/html.html" pageCtx
@@ -39,6 +41,7 @@ main = hakyllWith defaultConfiguration $ do
   match "pages/*.markdown" $ do
     route $ dropPat "pages/" `composeRoutes` setExtension ".html"
     compile $ pandocWithPygments
+      >>= hyphenateHtml english_GB
       >>= loadAndApplyTemplate "templates/page.html" pageCtx
       >>= loadAndApplyTemplate "templates/html.html" pageCtx
       >>= relativizeUrls
@@ -57,6 +60,7 @@ main = hakyllWith defaultConfiguration $ do
                 defaultContext
       getResourceBody
         >>= applyAsTemplate ctx
+        >>= hyphenateHtml english_GB
         >>= loadAndApplyTemplate "templates/html.html" ctx
         >>= relativizeUrls
 
