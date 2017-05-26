@@ -18,19 +18,11 @@
     padding-bottom: 1rem;
 }
 
-/* Adjust horizontal padding for wider displays */
 #homepage > header, #homepage > section {
     padding-left: 6rem;
     padding-right: 6rem;
 }
-@media (min-width: 75rem) {
-    #homepage > header, #homepage > section {
-        padding-left: 12.5rem;
-        padding-right: 12.5rem;
-    }
-}
 
-/* Turn columns to rows on narrow displays */
 #homepage .columns img {
     float: left;
     margin: 0 1rem 0 0;
@@ -48,32 +40,6 @@
 }
 #homepage .when {
     display: inline;
-}
-@media (min-width: 75rem) {
-    #homepage .columns {
-        text-align: center;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-around;
-    }
-    #homepage .columns img {
-        float: none;
-        margin: 0 auto;
-        width: 128px;
-        height: 128px;
-    }
-    #homepage .columns h2 {
-        margin: 0 0 1em 0;
-    }
-    #homepage .columns section {
-        box-sizing: border-box;
-        margin: 1% 0;
-        min-width: 25rem;
-        width: 32%;
-    }
-    #homepage .when {
-        display: block;
-    }
 }
 
 #homepage .columns header {
