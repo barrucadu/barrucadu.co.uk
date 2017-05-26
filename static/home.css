@@ -1,101 +1,89 @@
-#homepage > header {
-    text-align: center;
-    padding: 5rem 2rem 0 2rem;
-}
-
-#homepage nav li {
+nav li {
     margin: 0 0.8rem;
     font-size: 2.5rem;
 }
 
-#homepage > section {
-    padding: 2rem;
-    margin: 0;
+> section {
     border-bottom: 1px solid #ddd;
 }
 
-#homepage > section:last-child {
+> section:last-child {
     padding-bottom: 1rem;
 }
 
-#homepage > header, #homepage > section {
-    padding-left: 6rem;
-    padding-right: 6rem;
-}
-
-#homepage .columns img {
+.columns img {
     float: left;
     margin: 0 1rem 0 0;
     width: 64px;
     height: 64px;
 }
-#homepage .columns h2 {
+.columns h2 {
     margin: 0;
 }
-#homepage .columns section {
+.columns section {
     margin: 0 0 3rem 0;
 }
-#homepage .columns section:nth-last-child(1) {
+.columns section:nth-last-child(1) {
     margin-bottom: 0;
 }
-#homepage .when {
+.when {
     display: inline;
 }
 
-#homepage .columns header {
+.columns header {
     margin: 0;
     padding: 0;
     display: block;
 }
 
-#homepage .faded {
+.faded {
     opacity: 0.3;
 }
 
-#homepage img {
+img {
     object-fit: scale-down;
     margin: 0 auto;
     display: block;
 }
 
-#homepage section h1 {
+section h1 {
     margin: 0 0 1em 0;
 }
 
-#homepage section h2 {
+section h2 {
     font-size: 1.5rem;
     margin: 0 0 1em 0;
 }
 
-#homepage .title {
+.title {
     font-size: 1rem;
 }
 
-#homepage section section h1 {
+section section h1 {
     font-size: 1rem;
     font-family:'Merriweather Black';
     font-weight: normal;
     margin: 0;
 }
 
-#homepage section section h2 {
+section section h2 {
     font-size: 1rem;
 }
 
-#homepage .when {
+.when {
     color: #bbb;
     font-size: 0.8rem;
     padding: 0;
     margin: 0;
 }
 
-#homepage ul {
+ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#homepage p {
+p {
     margin-top: 0;
     padding-top: 0;
 }

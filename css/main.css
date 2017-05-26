@@ -16,6 +16,17 @@ header {
     padding: 0;
 }
 
+article {
+    max-width: 68em;
+    min-height: 100%;
+    margin: 0 auto 0 auto;
+    padding: 30px 4em 8px 4em;
+}
+
+article header, article footer {
+    text-align: center;
+}
+
 nav ul {
     list-style: none;
 }
