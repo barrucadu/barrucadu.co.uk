@@ -6,8 +6,9 @@ body {
     max-width: 1000px;
 }
 
-header {
-    margin: 0 0 16px 16px;
+header, footer {
+    text-align: center;
+    margin: 16px 0 16px 0;
     padding: 0;
 }
 
@@ -15,10 +16,6 @@ article {
     max-width: 68em;
     min-height: 100%;
     margin: 0 auto 0 auto;
-}
-
-article header, article footer {
-    text-align: center;
 }
 
 nav ul {
