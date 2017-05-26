@@ -1,14 +1,9 @@
-html, body {
-  height: 100%;
-}
-
 body {
     font-family: Merriweather, Cambria, Georgia, Times, serif;
-    font-size: 16px;
     color: #3b3b3b;
     padding: 0;
-    margin: 0;
-    position: relative;
+    margin: 0 auto;
+    max-width: 1000px;
 }
 
 header {
@@ -20,7 +15,6 @@ article {
     max-width: 68em;
     min-height: 100%;
     margin: 0 auto 0 auto;
-    padding: 30px 4em 8px 4em;
 }
 
 article header, article footer {
@@ -95,3 +89,17 @@ a:hover, a:active {
     font-family: Inconsolata, monospace;
     font-size: 0.9em;
 }
+
+p {
+    line-height: 1.35;
+    margin-bottom: 1em;
+    padding: 0;
+}
+
+/* Scale body text size depending on browser width */
+@media all {html {font-size: 21px}}
+@media all and (max-width:1000px){html {font-size: 21px !important}}
+@media all and (max-width:960px) {html {font-size: 20px !important}}
+@media all and (max-width:920px) {html {font-size: 19px !important}}
+@media all and (max-width:880px) {html {font-size: 18px !important}}
+@media all and (max-width:840px) {html {font-size: 17px !important}}
