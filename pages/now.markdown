@@ -1,21 +1,18 @@
 ---
 title: Now
-date: 2017-03-14
+date: 2017-07-14
 ---
 
 This is a [now page][]. It shows you what my current focus is.
 
-- Now in the final year of my Ph.D.
-- Researching property-discovery of concurrent programs. Think [QuickSpec][] / [speculate][] but
-  with more dejafu. I have my current work [on GitHub][spec].
-- Slowly working through my large collection of bookmarked articles, papers, and podcasts:
-- Becoming more financially aware by tracking my spending with [hledger][].
+- Taking a Ph.D break by interning at [Overleaf][] until October.
+- Working out my post-Ph.D life plans.
+- Slowly working through my large collection of bookmarked articles, papers, and podcasts.
 
 My future plans are:
 
-1. Finish all research by the end of June.
-2. Take a three month break to intern at [Overleaf][].
-3. Write up my thesis.
+1. Write and submit my thesis by the end of next March.
+2. Get a job.
 
 [now page]:  http://nownownow.com/about
 [QuickSpec]: https://github.com/nick8235/quickspec
