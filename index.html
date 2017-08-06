@@ -2,214 +2,196 @@
 css: home
 ---
 
-<article>
-  <header>
-    <h1>barrucadu</h1>
-    <p>I'm <strong>Michael Walker</strong>. I also go by <strong>barrucadu</strong>.<br/>It's like
-      the <a href="https://en.wikipedia.org/wiki/barracuda">fish</a>, but with the vowels wrong.</p>
+<header class="box">
+  <h1>barrucadu</h1>
+  <p>I'm <strong>Michael Walker</strong>. I also go by <strong>barrucadu</strong>.<br/>It's like
+    the <a href="https://en.wikipedia.org/wiki/barracuda">fish</a>, but with the vowels wrong.</p>
 
-    <nav>
+  <nav>
+    <ul>
+      <li><a href="https://twitter.com/barrucadu" rel="me" title="Twitter"><i class="fa fa-twitter"></i></a>
+      <li><a href="https://uk.linkedin.com/in/barrucadu" rel="me" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <li><a href="https://github.com/barrucadu" rel="me" title="GitHub"><i class="fa fa-github"></i></a>
+      <li><a href="mailto:mike@barrucadu.co.uk" rel="me" title="Email"><i class="fa fa-envelope"></i></a>
+      <li><a href="https://keybase.io/barrucadu" rel="me" title="Keybase"><i class="fa fa-lock"></i></a>
+    </ul>
+  </nav>
+
+  <hr>
+
+  <p><strong>What have I done in the past?</strong> See my <a href="/cv.pdf">CV</a>.<br/>
+    <strong>What am I doing now?</strong> See my <a href="/now.html">&quot;now&quot; page</a>.</p>
+</header>
+
+<section id="work" class="box">
+  <h1>Work</h1>
+
+  <section class="experience">
+    <header>
+      <img src="/logos/pusher.png" alt="Pusher">
+      <div>
+        <h1>Pusher</h1>
+        <h2>Software Engineering Intern</h2>
+        <p class="when">May&ndash;Aug 2016</p>
+      </div>
       <ul>
-        <li><a href="https://twitter.com/barrucadu" rel="me" title="Twitter"><i class="fa fa-twitter"></i></a>
-        <li><a href="https://uk.linkedin.com/in/barrucadu" rel="me" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-        <li><a href="https://github.com/barrucadu" rel="me" title="GitHub"><i class="fa fa-github"></i></a>
-        <li><a href="mailto:mike@barrucadu.co.uk" rel="me" title="Email"><i class="fa fa-envelope"></i></a>
-        <li><a href="https://keybase.io/barrucadu" rel="me" title="Keybase"><i class="fa fa-lock"></i></a>
+        <li><i class="fa fa-github"></i> <a href="https://github.com/pusher/go-interface-fuzzer">go-interface-fuzzer</a>
       </ul>
-    </nav>
-  </header>
-
-  <section>
-    <p>I am a Computer Science Ph.D student at the <a href="https://www.cs.york.ac.uk">University of York</a> in
-      the <a href="https://www.cs.york.ac.uk/research/research-groups/plasma/">Programming Languages and Systems
-      (PLASMA)</a> group, currently thinking about testing distributed systems.</p>
-
-    <p>I read <a href="https://www.barrucadu.co.uk/bookdb/">a lot of books</a>, I
-      write <a href="https://github.com/barrucadu">a lot of code</a>, and I
-      <a href="#research">research concurrency</a>.</p>
-
-    <p><strong>What have I done in the past?</strong> See my <a href="/cv.pdf">CV</a>.<br/>
-      <strong>What am I doing now?</strong> See my <a href="/now.html">&quot;now&quot; page</a>.</p>
+    </header>
+    <p>Powering realtime with spit and glue! (or so says my mug).
+      I worked on performant and reliable distributed systems for message delivery.</p>
   </section>
-
-  <section id="work" class="center">
-    <h1>Work</h1>
-
-    <div class="columns">
-      <section>
-        <header>
-          <img src="/logos/pusher.png" alt="Pusher">
-          <h1>Pusher</h1>
-          <h2>Software Engineering Intern</h2>
-          <p class="when">May&ndash;Aug 2016</p>
-        </header>
-        <p>Powering realtime with spit and glue! (or so says my mug)</p>
-        <p>I worked on performant and reliable distributed systems for message delivery.</p>
-        <ul>
-          <li><i class="fa fa-github"></i> <a href="https://github.com/pusher/go-interface-fuzzer">go-interface-fuzzer</a>
-        </ul>
-      </section>
-      <section>
-        <header>
-          <img src="/logos/university-of-york.png" alt="University of York">
-          <h1>University of York</h1>
-          <h2>Postgraduate Teaching Assistant</h2>
-          <p class="when">Feb 2017&ndash;Mar 2017, Oct 2016&ndash;Dec 2016, Oct 2015&ndash;May 2016, Oct 2014&ndash;May 2015</p>
-        </header>
-        <p>Marked homeworks and helped students in the &ldquo;Mathematical Foundations of Computer Science&rdquo;
-          and &ldquo;Theory and Practice of Programming&rdquo; first-year modules, and the &ldquo;Software Testing&rdquo; masters-level module.</p>
-      </section>
-      <section>
-        <header>
-          <img src="/logos/corefiling.png" alt="CoreFiling">
-          <h1>CoreFiling</h1>
-          <h2>Software Engineering Intern</h2>
-          <p class="when">Jul&ndash;Sep 2014</p>
-        </header>
-        <p>Wrote a parser/renderer for an in-house wiki program using ANTLR in Java, and integrated this with
-          JIRA.</p>
-        <ul>
-          <li><i class="fa fa-github"></i> <a href="https://github.com/CoreFiling/reviki">reviki</a>
-          <li><i class="fa fa-github"></i> <a href="https://github.com/CoreFiling/reviki-jira-plugin">reviki-jira-plugin</a>
-        </ul>
-      </section>
-    </div>
+  <section class="experience">
+    <header>
+      <img src="/logos/university-of-york.png" alt="University of York">
+      <div>
+        <h1>University of York</h1>
+        <h2>Postgraduate Teaching Assistant</h2>
+        <p class="when">Feb 2017&ndash;Mar 2017, Oct 2016&ndash;Dec 2016, Oct 2015&ndash;May 2016, Oct 2014&ndash;May 2015</p>
+      </div>
+    </header>
+    <p>Marked homeworks and helped students in the &ldquo;Mathematical Foundations of Computer Science&rdquo;
+      and &ldquo;Theory and Practice of Programming&rdquo; first-year modules, and the &ldquo;Software Testing&rdquo; masters-level module.</p>
   </section>
-
-  <section id="research">
-    <h1>Research</h1>
-
-    <p>Concurrency is great as both a design pattern and a performance enhancer, but it can be hard to get right.
-      Testing in particular is hard: you can't just run a program once and see what the result is.</p>
-
-    <h2>Conference Papers</h2>
-
-    <ol class="links wide">
-      <li>
-        <a class="title" href="/publications/coco-tfp17-prelim.pdf">Cheap Remarks about Concurrent Programs</a>
-        <br/>
-        <span class="description">
-          Accepted for presentation at <em>Trends in Functional Programming (<a href="https://www.cs.kent.ac.uk/events/tfp17/">TFP '17</a>)</em>.
-          [<a href="/publications/coco-tfp17-prelim.bib">bib</a>]
-        </span>
-      </li>
-      <li>
-        <a class="title" href="/publications/dejafu-hs15.pdf">Déjà Fu: A Concurrency Testing Library for Haskell</a>
-        <br/>
-        <span class="description">
-          In <em>ACM SIGPLAN Symposium on Haskell (<a href="https://www.haskell.org/haskell-symposium/2015/">Haskell '15</a>)</em>.
-          [<a href="/publications/dejafu-hs15.bib">bib</a>]
-          [<a href="https://dx.doi.org/10.1145/2804302.2804306">doi</a>]
-        </span>
-      </li>
-    </ol>
-
-    <h2>Others</h2>
-
-    <ol class="links wide">
-      <li>
-        <a class="title" href="/publications/YCS-2016-503.pdf">Déjà Fu: A Concurrency Testing Library for Haskell</a>
-        <br/>
-        <span class="description">
-          University of York Computer Science Department Technical Report YCS-2016-503.
-          [<a href="/publications/YCS-2016-503.bib">bib</a>]
-        </span>
-      </li>
-      <li>
-        <a class="title" href="/publications/searchparty-acmsrc15.pdf">Search Party: a Haskell library for speculative parallelism in generate-and-test searches</a>
-        <br/>
-        <span class="description">
-          In <em>ACM ICFP Student Research Competition (<a href="http://icfpconference.org/icfp2015/src.html">ICFP SRC '15</a>)</em>.
-          Presented as a poster.
-        </span>
-      </li>
-    </ol>
+  <section class="experience">
+    <header>
+      <img src="/logos/corefiling.png" alt="CoreFiling">
+      <div>
+        <h1>CoreFiling</h1>
+        <h2>Software Engineering Intern</h2>
+        <p class="when">Jul&ndash;Sep 2014</p>
+      </div>
+      <ul>
+        <li><i class="fa fa-github"></i> <a href="https://github.com/CoreFiling/reviki">reviki</a>
+        <li><i class="fa fa-github"></i> <a href="https://github.com/CoreFiling/reviki-jira-plugin">reviki-jira-plugin</a>
+      </ul>
+    </header>
+    <p>Wrote a parser/renderer for an in-house wiki program using ANTLR in Java, and integrated this with
+      JIRA.</p>
   </section>
+</section>
 
-  <section id="open-source" class="center">
-    <h1>Programming</h1>
+<section id="research" class="box">
+  <h1>Research</h1>
 
-    <div class="columns">
-      <section>
-        <header>
-          <img class="faded" src="logos/github.png" title="My GitHub">
-          <h1>Various Projects</h1>
-          <h2>Sole/Main Developer</h2>
-          <p class="when">the dawn of time&ndash;now</p>
-        </header>
-        <p>I actively develop a variety of things.</p>
+  <p>Concurrency is great as both a design pattern and a performance enhancer, but it can be hard to get right.
+    Testing in particular is hard: you can't just run a program once and see what the result is.</p>
 
-        <p>The coolest by far is <a href="https://github.com/barrucadu/dejafu">dejafu</a>, a library for testing
-          concurrent Haskell programs, which came out of my research.</p>
+  <h2>Conference Papers</h2>
 
-        <p>Second place goes to <a href="https://github.com/barrucadu/logdb">logdb</a>, a performant and reliable
-          log-structured database in Go.</p>
+  <ol class="links wide">
+    <li>
+      <a class="title" href="/publications/coco-tfp17-prelim.pdf">Cheap Remarks about Concurrent Programs</a>
+      <br/>
+      <span class="description">
+        Accepted for presentation at <em>Trends in Functional Programming (<a href="https://www.cs.kent.ac.uk/events/tfp17/">TFP '17</a>)</em>.
+        [<a href="/publications/coco-tfp17-prelim.bib">bib</a>]
+      </span>
+    </li>
+    <li>
+      <a class="title" href="/publications/dejafu-hs15.pdf">Déjà Fu: A Concurrency Testing Library for Haskell</a>
+      <br/>
+      <span class="description">
+        In <em>ACM SIGPLAN Symposium on Haskell (<a href="https://www.haskell.org/haskell-symposium/2015/">Haskell '15</a>)</em>.
+        [<a href="/publications/dejafu-hs15.bib">bib</a>]
+        [<a href="https://dx.doi.org/10.1145/2804302.2804306">doi</a>]
+      </span>
+    </li>
+  </ol>
 
-        <p>I also maintain a few <a href="https://github.com/barrucadu/irc-ctcp">Haskell</a>
-          <a href="https://github.com/barrucadu/irc-conduit">IRC</a>
-          <a href="https://github.com/barrucadu/irc-client">libraries</a>
-          which have actual users!</p>
-      </section>
-      <section>
-        <header>
-          <img src="logos/archhurd.png" title="Arch Hurd">
-          <h1>Arch Hurd</h1>
-          <h2>Project Leader</h2>
-          <p class="when">2010&ndash;2015</p>
-        </header>
-        <p>I accidentally started a <a href="https://www.gnu.org/software/hurd">GNU/Hurd</a> distribution based
-          on <a href="https://www.archlinux.org">Arch Linux</a>. This was completely unintentional.</p>
-        <p>Served my time as project leader from 2010 to 2015, managing a handful of developers around the world
-          porting over Linux software. I also produced installation media and maintained the website and
-          repositories.</p>
-      </section>
-      <section>
-        <header>
-          <img src="logos/uzbl.png" title="Uzbl">
-          <h1>Uzbl</h1>
-          <h2>Developer</h2>
-          <p class="when">2009</p>
-        </header>
-        <p>I was one of the first few developers, and this is the project that taught me C and Git. It was fun, and
-          I learned a lot. I still host the website and mailing list.</p>
-        <p>Do not expect good code if you go and dig up my contributions.</p>
-      </section>
-    </div>
+  <h2>Others</h2>
+
+  <ol class="links wide">
+    <li>
+      <a class="title" href="/publications/YCS-2016-503.pdf">Déjà Fu: A Concurrency Testing Library for Haskell</a>
+      <br/>
+      <span class="description">
+        University of York Computer Science Department Technical Report YCS-2016-503.
+        [<a href="/publications/YCS-2016-503.bib">bib</a>]
+      </span>
+    </li>
+    <li>
+      <a class="title" href="/publications/searchparty-acmsrc15.pdf">Search Party: a Haskell library for speculative parallelism in generate-and-test searches</a>
+      <br/>
+      <span class="description">
+        In <em>ACM ICFP Student Research Competition (<a href="http://icfpconference.org/icfp2015/src.html">ICFP SRC '15</a>)</em>.
+        Presented as a poster.
+      </span>
+    </li>
+  </ol>
+</section>
+
+<section id="open-source" class="box">
+  <h1>Programming</h1>
+
+  <section class="experience">
+    <header>
+      <img class="faded" src="logos/github.png" title="My GitHub">
+      <div>
+        <h1>Various Projects</h1>
+        <h2>Sole/Main Developer</h2>
+        <p class="when">the dawn of time&ndash;now</p>
+      </div>
+    </header>
+    <p>I actively develop a variety of things.
+      The coolest by far is <a href="https://github.com/barrucadu/dejafu">dejafu</a>, a library for testing
+      concurrent Haskell programs, which came out of my research.</p>
+
+    <p>I also maintain a few <a href="https://github.com/barrucadu/irc-ctcp">Haskell</a>
+      <a href="https://github.com/barrucadu/irc-conduit">IRC</a>
+      <a href="https://github.com/barrucadu/irc-client">libraries</a>
+      which have actual users!</p>
   </section>
-
-  <section id="blog">
-    <h1>Writing</h1>
-    <h2>Release Notes</h2>
-    <ol class="links">
-      $for(posts_relnotes)$
-      <li>
-        <time class="meta" datetime="$isodate$">$ppdate$</time>
-        &mdash;
-        <a href="$url$" class="title">$title$</a>
-      </li>
-      $endfor$
-    </ol>
-
-    <h2>Concurrency</h2>
-    <ol class="links">
-      $for(posts_concurrency)$
-      <li>
-        <time class="meta" datetime="$isodate$">$ppdate$</time>
-        &mdash;
-        <a href="$url$" class="title">$title$</a>
-      </li>
-      $endfor$
-    </ol>
-
-    <h2>Etc</h2>
-    <ol class="links">
-      $for(posts_etc)$
-      <li>
-        <time class="meta" datetime="$isodate$">$ppdate$</time>
-        &mdash;
-        <a href="$url$" class="title">$title$</a>
-      </li>
-      $endfor$
-    </ol>
+  <section class="experience">
+    <header>
+      <img src="logos/archhurd.png" title="Arch Hurd">
+      <div>
+        <h1>Arch Hurd</h1>
+        <h2>Project Leader</h2>
+        <p class="when">2010&ndash;2015</p>
+      </div>
+    </header>
+    <p>I accidentally started a <a href="https://www.gnu.org/software/hurd">GNU/Hurd</a> distribution based
+      on <a href="https://www.archlinux.org">Arch Linux</a>. This was completely unintentional.</p>
+    <p>Served my time as project leader from 2010 to 2015, managing a handful of developers around the world
+      porting over Linux software. I also produced installation media and maintained the website and
+      repositories.</p>
   </section>
-</article>
+  <section class="experience">
+    <header>
+      <img src="logos/uzbl.png" title="Uzbl">
+      <div>
+        <h1>Uzbl</h1>
+        <h2>Developer</h2>
+        <p class="when">2009</p>
+      </div>
+    </header>
+    <p>I was one of the first few developers, and this is the project that taught me C and Git. It was fun, and
+      I learned a lot. I still host the website and mailing list.</p>
+    <p>Do not expect good code if you go and dig up my contributions.</p>
+  </section>
+</section>
+
+<section id="blog" class="box">
+  <h1>Writing</h1>
+  <h2>Release Notes</h2>
+  <ol class="links">
+    $for(posts_relnotes)$
+    <li><a href="$url$" class="title">$title$</a></li>
+    $endfor$
+  </ol>
+
+  <h2>Concurrency</h2>
+  <ol class="links">
+    $for(posts_concurrency)$
+    <li><a href="$url$" class="title">$title$</a></li>
+    $endfor$
+  </ol>
+
+  <h2>Etc</h2>
+  <ol class="links">
+    $for(posts_etc)$
+    <li><a href="$url$" class="title">$title$</a></li>
+    $endfor$
+  </ol>
+</section>

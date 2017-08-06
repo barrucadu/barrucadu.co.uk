@@ -8,8 +8,7 @@ nav {
 }
 
 h2 {
-    margin: 2rem 0 1rem 0;
-    border-top: 1px solid #ddd;
+    margin: 2rem 0;
     text-align: center;
     font-family: Raleway, sans-serif;
     font-weight: 300;
@@ -32,14 +31,6 @@ h3 {
     display: none;
 }
 
-hr {
-    border: 0;
-    width: 100%;
-    color: #777;
-    background-color: #dddddd;
-    height: 1px;
-}
-
 blockquote {
     font-size: 0.95em;
     line-height: 1.25em;
@@ -59,13 +50,7 @@ code {
     font-family: Inconsolata, monospace;
 }
 
-div.highlight {
-  margin: 0;
-  padding: 0;
-}
-
 pre {
   font-size: 0.8em;
   padding: 10px;
-  margin: 0;
 }

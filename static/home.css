@@ -3,43 +3,6 @@ nav li {
     font-size: 2.5rem;
 }
 
-article > section {
-    padding-bottom: 2rem;
-}
-
-article > section:last-child {
-    padding-bottom: 1rem;
-}
-
-.columns header {
-    text-align: left;
-}
-
-.columns img {
-    float: right;
-    margin: 0 1rem 0 0;
-    width: 64px;
-    height: 64px;
-}
-
-.columns h2 {
-    margin: 0;
-}
-
-.columns section {
-    margin: 0 0 1rem 0;
-}
-
-.columns section:nth-last-child(1) {
-    margin-bottom: 0;
-}
-
-.columns header {
-    margin: 0;
-    padding: 0;
-    display: block;
-}
-
 .faded {
     opacity: 0.3;
 }
@@ -51,7 +14,6 @@ img {
 }
 
 section h1 {
-    border-top: 1px solid #ddd;
     font-size: 1.1rem;
     text-align: center;
 }
@@ -65,27 +27,58 @@ section h2 {
     font-size: 1rem;
 }
 
-section section h1 {
+.experience {
+    margin-bottom: 1rem;
+}
+
+.experience header {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: 96px;
+}
+
+.experience h1 {
     font-family:'Merriweather Black';
     font-weight: normal;
-    margin: 0;
-    border-top: none;
     text-align: left;
+    margin: 0;
 }
 
-section section h2 {
+.experience h2 {
     font-size: 1rem;
+    margin: 0;
 }
 
-.when {
+.experience img {
+    width: 64px;
+    height: 64px;
+    margin-right: 24px;
+}
+
+.experience div {
+    align-self: flex-start;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.experience ul {
+    flex: 0 0 auto;
+    align-self: flex-start;
+}
+
+.experience .when {
+    margin: 0 0 8px 0;
+    padding: 0;
     color: #bbb;
     font-size: 0.8rem;
-    padding: 0;
-    margin: 0;
+}
+
+.experience p {
+    margin-top: 0;
 }
 
 ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
