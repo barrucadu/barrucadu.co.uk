@@ -64,6 +64,7 @@ section h2 {
 .experience ul {
     flex: 0 0 auto;
     align-self: flex-start;
+    text-align: right;
 }
 
 .experience .when {
