@@ -10,8 +10,6 @@ nav {
 h2 {
     margin: 2rem 0;
     text-align: center;
-    font-family: Raleway, sans-serif;
-    font-weight: 300;
 }
 
 h3 {
@@ -44,10 +42,6 @@ dt {
     display: block;
     float: left;
     width: 100px;
-}
-
-code {
-    font-family: Inconsolata, monospace;
 }
 
 pre {

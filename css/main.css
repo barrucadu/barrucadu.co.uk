@@ -3,7 +3,6 @@
 }
 
 body {
-    font-family: Merriweather, Cambria, Georgia, Times, serif;
     color: #3b3b3b;
     background-color: #E7E4D5;
     margin: 0;
@@ -46,15 +45,12 @@ nav a:hover, nav a:active {
 }
 
 h1, h2, h3, h4 {
-    font-family: Lato, sans-serif;
     font-weight: normal;
     color: #333333;
 }
 
 h1 {
     font-size: 1.5rem;
-    font-family: Raleway, sans-serif;
-    font-weight: 300;
 }
 
 h2 {
