@@ -34,7 +34,6 @@ section h2 {
 .experience header {
     text-align: left;
     display: flex;
-    align-items: center;
     min-height: 96px;
 }
 
