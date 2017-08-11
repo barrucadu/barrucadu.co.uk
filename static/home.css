@@ -37,6 +37,18 @@ section h2 {
     min-height: 96px;
 }
 
+.experience header a, .experience header a:link, .experience header a:visited {
+    color: #474747;
+}
+
+.experience header ul a {
+    color: #C84648 !important;
+}
+
+.experience header a:hover, .experience header a:active {
+    color: #703E3B;
+}
+
 .experience h1 {
     text-align: left;
     margin: 0;
