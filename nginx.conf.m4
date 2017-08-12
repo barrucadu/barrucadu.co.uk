@@ -6,6 +6,10 @@ gone(`2015-07-26-erlang-gopher-server.html')
 gone(`2015-08-09-identity-monads-ahoy.html')
 gone(`2015-10-04-secure-communications-over-insecure-channels.html')
 gone(`2015-12-15-finite-maps-in-isabelle.html')
+gone(`concurrency/2014-12-26-haskell-systematic-concurrency-testing.html')
+gone(`concurrency/2015-01-10-pre-emption-bounding.html')
+gone(`etc/2016-02-02-cabal-info.html')
+gone(`etc/2017-04-16-representing-generating-comparing-typed-expressions.html')
 
 # Renamed posts
 define(`categorised', `location = /posts/$2 { rewrite ^ /posts/$1/$2 permanent; }')
