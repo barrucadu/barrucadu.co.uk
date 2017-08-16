@@ -18,6 +18,12 @@ h3 {
 
 .figure {
     padding: 1em;
+    text-align: center;
+}
+
+.figure.figure-sm {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .figure img {
@@ -27,6 +33,13 @@ h3 {
 
 .figure .caption {
     display: none;
+    font-size: 0.8em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.figure .caption.show {
+    display: block;
 }
 
 blockquote {
@@ -47,4 +60,8 @@ dt {
 pre {
   font-size: 0.8em;
   padding: 10px;
+}
+
+.row {
+    display: flex;
 }
