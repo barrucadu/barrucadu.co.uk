@@ -31,6 +31,10 @@ section h2 {
     margin-bottom: 1rem;
 }
 
+.experience p {
+    margin-left: 88px;
+}
+
 .experience header {
     text-align: left;
     display: flex;
