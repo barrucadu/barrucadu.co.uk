@@ -72,6 +72,8 @@ a:hover, a:active {
 
 .links, .links li {
     list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .meta {
