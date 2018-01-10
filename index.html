@@ -190,21 +190,21 @@ css: home
   <h2>Release Notes</h2>
   <ol class="links">
     $for(posts_relnotes)$
-    <li><a href="$url$" class="title">$title$</a></li>
+    <li><time datetime="$isodate$">$ppdate$</time> &mdash; <a href="$url$" class="title">$title$</a></li>
     $endfor$
   </ol>
 
   <h2>Concurrency</h2>
   <ol class="links">
     $for(posts_concurrency)$
-    <li><a href="$url$" class="title">$title$</a></li>
+    <li><time datetime="$isodate$">$ppdate$</time> &mdash; <a href="$url$" class="title">$title$</a></li>
     $endfor$
   </ol>
 
   <h2>etc</h2>
   <ol class="links">
     $for(posts_etc)$
-    <li><a href="$url$" class="title">$title$</a></li>
+    <li><time datetime="$isodate$">$ppdate$</time> &mdash; <a href="$url$" class="title">$title$</a></li>
     $endfor$
   </ol>
 </section>

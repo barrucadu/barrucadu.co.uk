@@ -96,3 +96,9 @@ section h2 {
 ul {
     list-style: none;
 }
+
+time {
+    display: inline-block;
+    width: 5.5em;
+    text-align: right;
+}
