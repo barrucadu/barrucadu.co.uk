@@ -27,16 +27,6 @@ main = hakyllWith defaultConfiguration $ do
     compile $ loadAll "css/*"
       >>= minifyCompiler compressCss
 
-  -- Render blog posts
-  match "posts/*/*.markdown" $ do
-    route   $ setExtension ".html"
-    compile $ pandocWithPygments
-      >>= hyphenateHtml english_GB
-      >>= saveSnapshot "content"
-      >>= loadAndApplyTemplate "templates/page.html" pageCtx
-      >>= loadAndApplyTemplate "templates/html.html" pageCtx
-      >>= relativizeUrls
-
   -- Render HTML pages
   match "pages/*.markdown" $ do
     route $ dropPat "pages/" `composeRoutes` setExtension ".html"
@@ -50,26 +40,12 @@ main = hakyllWith defaultConfiguration $ do
   match "index.html" $ do
     route idRoute
     compile $ do
-      posts_relnotes    <- recentFirst =<< loadAll "posts/relnotes/*.markdown"
-      posts_concurrency <- recentFirst =<< loadAll "posts/concurrency/*.markdown"
-      posts_etc         <- recentFirst =<< loadAll "posts/etc/*.markdown"
-      let ctx = constField "title" "barrucadu" <>
-                listField "posts_relnotes"    pageCtx (return posts_relnotes)    <>
-                listField "posts_concurrency" pageCtx (return posts_concurrency) <>
-                listField "posts_etc"         pageCtx (return posts_etc)         <>
-                defaultContext
+      let ctx = constField "title" "barrucadu" <> defaultContext
       getResourceBody
         >>= applyAsTemplate ctx
         >>= hyphenateHtml english_GB
         >>= loadAndApplyTemplate "templates/html.html" ctx
         >>= relativizeUrls
-
-  -- Create blog feed
-  create ["atom.xml"] $ do
-    route     idRoute
-    compile $ loadAllSnapshots "posts/*/*.markdown" "content"
-      >>= fmap (take 10) . recentFirst
-      >>= renderAtom feedCfg feedCtx
 
 -------------------------------------------------------------------------------
 -- Contexts and Configurations
@@ -78,21 +54,6 @@ pageCtx :: Context String
 pageCtx = mconcat
   [ dateField "isodate" "%Y-%m-%d"
   , dateField "ppdate"  "%d %b, %Y"
-  , defaultContext
-  ]
-
-feedCfg :: FeedConfiguration
-feedCfg = FeedConfiguration
-  { feedTitle       = "barrucadu :: All Posts"
-  , feedDescription = "Personal blog of barrucadu"
-  , feedAuthorName  = "Michael Walker"
-  , feedAuthorEmail = "mike@barrucadu.co.uk"
-  , feedRoot        = "http://barrucadu.co.uk"
-  }
-
-feedCtx :: Context String
-feedCtx = mconcat
-  [ bodyField "description"
   , defaultContext
   ]
 
