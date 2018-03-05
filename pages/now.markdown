@@ -10,7 +10,7 @@ after thesis.
 
 - Revising my [Ph.D thesis][w1], to submit the final version in March.
 - Working part-time for [Overleaf][w2] until I finish my Ph.D.
-- Starting a job at the [Government Digital Service (GDS)][w2] in
+- Starting a job at the [Government Digital Service (GDS)][w3] in
   April.
 
 [w1]: https://github.com/barrucadu/phd
