@@ -1,6 +1,6 @@
 ---
 title: Now
-date: 2018-01-12
+date: 2018-03-17
 ---
 
 I'm still in York, still working on my Ph.D, but preparing for life
@@ -8,10 +8,11 @@ after thesis.
 
 **Work:**
 
-- Revising my [Ph.D thesis][w1], to submit the final version in March.
-- Working part-time for [Overleaf][w2] until I finish my Ph.D.
-- Starting a job at the [Government Digital Service (GDS)][w3] in
-  April.
+- Revising my [Ph.D thesis][w1], to submit the final version in a few
+  weeks.
+- Just finished working part-time for [Overleaf][w2].
+- Starting a job at the [Government Digital Service (GDS)][w3] next
+  month.
 
 [w1]: https://github.com/barrucadu/phd
 [w2]: https://www.overleaf.com/
@@ -21,8 +22,7 @@ after thesis.
 
 - Thinking about my longer-term goals now that I've almost achieved
   most of my current ones.
-- Looking for somewhere to live in London.
-- Figuring out how to move all my stuff from York.
+- Moving to London.
 - Trying to establish some beneficial habits before I start at GDS.
 - Still [tracking my finances][p1], but now with a plan to save three
   months of expenses by 2019.
