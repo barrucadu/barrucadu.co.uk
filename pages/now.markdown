@@ -1,29 +1,24 @@
 ---
 title: Now
-date: 2018-03-17
+date: 2018-04-03
 ---
 
-I'm still in York, still working on my Ph.D, but preparing for life
-after thesis.
+I've recently moved to London and have started a new job.
 
 **Work:**
 
-- Revising my [Ph.D thesis][w1], to submit the final version in a few
-  weeks.
-- Just finished working part-time for [Overleaf][w2].
-- Starting a job at the [Government Digital Service (GDS)][w3] next
-  month.
+- Waiting for my Ph.D viva in May, having submitted [the thesis][w1]
+  in March.
+- Started a job at the [Government Digital Service (GDS)][w2], on the
+  Platform Health team (looking after everything not being actively
+  developed by another team).
 
 [w1]: https://github.com/barrucadu/phd
-[w2]: https://www.overleaf.com/
-[w3]: https://gds.blog.gov.uk/
+[w2]: https://gds.blog.gov.uk/
 
 **Personal:**
 
-- Thinking about my longer-term goals now that I've almost achieved
-  most of my current ones.
-- Moving to London.
-- Trying to establish some beneficial habits before I start at GDS.
+- Working out life in London.
 - Still [tracking my finances][p1], but now with a plan to save three
   months of expenses by 2019.
 - Still [programming][p2].
