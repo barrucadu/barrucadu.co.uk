@@ -76,6 +76,10 @@ a:hover, a:active {
     padding-left: 0;
 }
 
+.links li + li {
+    margin-top: 1em;
+}
+
 .meta {
     color: #777;
     font-size: 0.9em;
