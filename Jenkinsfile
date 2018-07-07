@@ -9,7 +9,7 @@ stack exec hakyll build'''
     }
     stage('deploy') {
       steps {
-        sh '''WEB_DIR=/srv/http/www
+        sh '''WEB_DIR=/var/lib/containers/barrucadu/srv/http/www
 cv=""
 
 if [[ -e $WEB_DIR/cv.pdf ]]; then
