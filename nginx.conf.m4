@@ -1,3 +1,8 @@
+# Moved files
+define(`moved', `location = $1 { rewrite ^ $2 permanent; }')
+moved(`/publications/coco-flops18-prelim.pdf', `/publications/coco-flops18.pdf')
+moved(`/publications/coco-flops18-prelim.bib', `/publications/coco-flops18.bib')
+
 # Removed posts
 define(`gone', `location = /posts/$1 { return 410; }')
 gone(`2014-01-07-garbage-collection.html')
