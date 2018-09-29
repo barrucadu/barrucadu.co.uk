@@ -1,6 +1,6 @@
 ---
 title: Now
-date: 2018-07-07
+date: 2018-09-29
 ---
 
 I'm living London and working as a software engineer.
