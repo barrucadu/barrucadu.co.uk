@@ -4,7 +4,6 @@ module Main where
 
 import Data.Monoid ((<>))
 import Hakyll
-import Hakyll.Contrib.Hyphenation (hyphenateHtml, english_GB)
 
 main :: IO ()
 main = hakyllWith defaultConfiguration $ do
@@ -30,7 +29,6 @@ main = hakyllWith defaultConfiguration $ do
   match "pages/*.markdown" $ do
     route $ dropPat "pages/" `composeRoutes` setExtension ".html"
     compile $ pandocCompiler
-      >>= hyphenateHtml english_GB
       >>= loadAndApplyTemplate "templates/page.html" pageCtx
       >>= loadAndApplyTemplate "templates/html.html" pageCtx
       >>= relativizeUrls
@@ -42,7 +40,6 @@ main = hakyllWith defaultConfiguration $ do
       let ctx = constField "title" "barrucadu" <> defaultContext
       getResourceBody
         >>= applyAsTemplate ctx
-        >>= hyphenateHtml english_GB
         >>= loadAndApplyTemplate "templates/html.html" ctx
         >>= relativizeUrls
 
