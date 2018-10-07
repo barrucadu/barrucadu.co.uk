@@ -2,13 +2,9 @@
 
 module Main where
 
-import Data.Char (toLower)
 import Data.Monoid ((<>))
 import Hakyll
 import Hakyll.Contrib.Hyphenation (hyphenateHtml, english_GB)
-import System.Process (readProcess)
-import Text.Pandoc.Definition (Pandoc, Block(..), Format(..))
-import Text.Pandoc.Walk (walkM)
 
 main :: IO ()
 main = hakyllWith defaultConfiguration $ do
@@ -33,7 +29,7 @@ main = hakyllWith defaultConfiguration $ do
   -- Render HTML pages
   match "pages/*.markdown" $ do
     route $ dropPat "pages/" `composeRoutes` setExtension ".html"
-    compile $ pandocWithPygments
+    compile $ pandocCompiler
       >>= hyphenateHtml english_GB
       >>= loadAndApplyTemplate "templates/page.html" pageCtx
       >>= loadAndApplyTemplate "templates/html.html" pageCtx
@@ -62,26 +58,6 @@ pageCtx = mconcat
 
 -------------------------------------------------------------------------------
 -- Compilers
-
--- | The Pandoc compiler, but using pygments/pygmentize for syntax
--- highlighting.
-pandocWithPygments :: Compiler (Item String)
-pandocWithPygments = pandocCompilerWithTransformM
-                       defaultHakyllReaderOptions
-                       defaultHakyllWriterOptions
-                       pygmentize
-
--- | Apply pygments/pygmentize syntax highlighting to a Pandoc
--- document.
-pygmentize :: Pandoc -> Compiler Pandoc
-pygmentize = unsafeCompiler . walkM highlight where
-  highlight (CodeBlock opts code) = RawBlock (Format "html") <$> case opts of
-    (_, lang:_, _) -> withLanguage lang code
-    _ -> pure $ "<div class =\"highlight\"><pre>" ++ escapeHtml code ++ "</pre></div>"
-  highlight x = pure x
-
-  -- Apply language-specific syntax highlighting
-  withLanguage lang = readProcess "pygmentize" ["-l", map toLower lang,  "-f", "html"]
 
 -- | Concatenate and minify a collection of items.
 minifyCompiler :: (String -> String) -> [Item String] -> Compiler (Item String)
