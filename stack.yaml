@@ -1,7 +1,10 @@
 flags: {}
 packages:
 - '.'
-resolver: lts-8.3
+extra-deps:
+- hakyll-4.12.5.1
+- lrucache-1.2.0.1
+resolver: lts-13.16
 nix:
   pure: false
   enable: true
