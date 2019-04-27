@@ -21,9 +21,6 @@ main = hakyllWith defaultConfiguration $ do
     route idRoute
     compile $ loadAll "css/*"
       >>= minifyCompiler compressCss
-  match "extra_css/*" $ do
-    route $ dropPat "extra_css/"
-    compile compressCssCompiler
 
   -- Render HTML pages
   match "pages/*.markdown" $ do

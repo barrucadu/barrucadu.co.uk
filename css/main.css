@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 21px;
+}
+
 body {
     color: #3b3b3b;
     background-color: #E7E4D5;
@@ -97,10 +101,93 @@ hr {
     height: 1px;
 }
 
-/* Scale body text size depending on browser width */
-@media all {html {font-size: 21px}}
-@media all and (max-width:1000px){html {font-size: 21px !important}}
-@media all and (max-width:960px) {html {font-size: 20px !important}}
-@media all and (max-width:920px) {html {font-size: 19px !important}}
-@media all and (max-width:880px) {html {font-size: 18px !important}}
-@media all and (max-width:840px) {html {font-size: 17px !important}}
+.faded {
+    opacity: 0.3;
+}
+
+section h1 {
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 1.1rem;
+    margin: 0 0 1em 0;
+}
+
+.title {
+    font-size: 1rem;
+}
+
+.experience {
+    margin-bottom: 1rem;
+}
+
+.experience p {
+    margin-left: 88px;
+}
+
+.experience header {
+    text-align: left;
+    display: flex;
+    min-height: 96px;
+}
+
+.experience header a, .experience header a:link, .experience header a:visited {
+    color: #474747;
+}
+
+.experience header ul a {
+    color: #C84648 !important;
+}
+
+.experience header a:hover, .experience header a:active {
+    color: #703E3B;
+}
+
+.experience h1 {
+    text-align: left;
+    margin: 0;
+}
+
+.experience h2 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.experience img {
+    object-fit: scale-down;
+    margin: 0 auto;
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin-right: 24px;
+}
+
+.experience div {
+    align-self: flex-start;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.experience ul {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    text-align: right;
+}
+
+.experience .when {
+    margin: 0 0 8px 0;
+    padding: 0;
+    color: #bbb;
+    font-size: 0.8rem;
+}
+
+.experience p {
+    margin-top: 0;
+}
+
+ul {
+    list-style: none;
+}
