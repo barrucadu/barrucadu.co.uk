@@ -1,33 +1,44 @@
+<meta itemprop="email"    content="mike@barrucadu.co.uk">
+<meta itemprop="jobTitle" content="Software Engineer">
+
 <header class="box">
   <h1>barrucadu</h1>
-  <p>I'm <strong>Michael Walker</strong>. I also go by <strong>barrucadu</strong>.<br/>It's like
-    the <a href="https://en.wikipedia.org/wiki/barracuda">fish</a>, but with the vowels wrong.</p>
+  <p>I'm <strong itemprop="name">Michael Walker</strong>. I also go by <strong itemprop="alternateName">barrucadu</strong>.<br/>
+    It's like the <a href="https://en.wikipedia.org/wiki/barracuda">fish</a>, but with the vowels wrong.</p>
 
   <nav>
     <ul>
-      <li><a href="https://twitter.com/barrucadu" rel="me" title="Twitter"><i class="fa fa-twitter"></i></a>
-      <li><a href="https://uk.linkedin.com/in/barrucadu" rel="me" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-      <li><a href="https://github.com/barrucadu" rel="me" title="GitHub"><i class="fa fa-github"></i></a>
-      <li><a href="mailto:mike@barrucadu.co.uk" rel="me" title="Email"><i class="fa fa-envelope"></i></a>
-      <li><a href="/gpg-public-key.asc" rel="me" title="GPG"><i class="fa fa-lock"></i></a>
+      <li><a itemprop="sameAs" rel="me" href="https://twitter.com/barrucadu" title="Twitter"><i class="fa fa-twitter"></i></a>
+      <li><a itemprop="sameAs" rel="me" href="https://uk.linkedin.com/in/barrucadu" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <li><a itemprop="sameAs" rel="me" href="https://github.com/barrucadu" title="GitHub"><i class="fa fa-github"></i></a>
+      <li><a itemprop="sameAs" rel="me" href="mailto:mike@barrucadu.co.uk" title="Email"><i class="fa fa-envelope"></i></a>
+      <li><a itemprop="sameAs" rel="me" href="/gpg-public-key.asc" title="GPG"><i class="fa fa-lock"></i></a>
     </ul>
   </nav>
 
   <hr>
 
   <p><strong>What have I done in the past?</strong> See my <a href="/cv.pdf">CV</a>.<br/>
-    <strong>What am I doing now?</strong> See my <a href="/now.html">&ldquo;now&rdquo; page</a>.<br/>
-    <strong>Sometimes I write things!</strong> See my <a href="https://memo.barrucadu.co.uk/read-me-first.html">memos</a>.</p>
+    <strong>What am I doing now?</strong> See my <a rel="author" href="/now.html">&ldquo;now&rdquo; page</a>.<br/>
+    <strong>Sometimes I write things!</strong> See my <a rel="author" href="https://memo.barrucadu.co.uk/read-me-first.html">memos</a>.</p>
 </header>
 
 <section id="work" class="box">
   <h1>Work</h1>
 
-  <section class="experience">
-    <header>
-      <a href="https://www.gov.uk/government/organisations/government-digital-service"><img src="/logos/gds.png" alt="Government Digital Service (GDS)"></a>
+  <section itemscope itemprop="worksFor" itemtype="https://schema.org/EmployeeRole" class="experience">
+    <meta itemprop="roleName"  content="Software Engineer">
+    <meta itemprop="startDate" content="2018-04">
+    <header itemscope itemprop="worksFor" itemtype="https://schema.org/Organization">
+      <a href="https://www.gov.uk/government/organisations/government-digital-service">
+        <img itemprop="logo" src="/logos/gds.png" alt="Government Digital Service (GDS)">
+      </a>
       <div>
-        <h1><a href="https://www.gov.uk/government/organisations/government-digital-service">Government Digital Service (GDS)</a></h1>
+        <h1>
+          <a itemprop="url" href="https://www.gov.uk/government/organisations/government-digital-service">
+            <span itemprop="name">Government Digital Service (GDS)</span>
+          </a>
+        </h1>
         <h2>Software Engineer</h2>
         <p class="when">Apr 2018&ndash;present</p>
       </div>
@@ -43,11 +54,20 @@
       full-time developer.  Most of my work for GOV.UK is open
       source.</p>
   </section>
-  <section class="experience">
-    <header>
-      <a href="https://www.overleaf.com"><img src="/logos/overleaf.png" alt="Overleaf"></a>
+  <section itemscope itemprop="worksFor" itemtype="https://schema.org/EmployeeRole" class="experience">
+    <meta itemprop="roleName"  content="Software Engineer (Part Time)">
+    <meta itemprop="startDate" content="2018-01">
+    <meta itemprop="endDate"   content="2018-03">
+    <header itemscope itemprop="worksFor" itemtype="https://schema.org/Organization">
+      <a href="https://www.overleaf.com">
+        <img itemprop="logo" src="/logos/overleaf.png" alt="Overleaf">
+      </a>
       <div>
-        <h1><a href="https://www.overleaf.com">Overleaf</a></h1>
+        <h1>
+          <a itemprop="url" href="https://www.overleaf.com">
+            <span itemprop="name">Overleaf</span>
+          </a>
+        </h1>
         <h2>Software Engineer (Part Time)</h2>
         <p class="when">Jan&ndash;Mar 2018</p>
       </div>
@@ -55,11 +75,20 @@
     <p>Maintained legacy Rails and Java applications by fixing bugs
     and applying updates.</p>
   </section>
-  <section class="experience">
-    <header>
-      <a href="https://cs.york.ac.uk"><img src="/logos/university-of-york.png" alt="University of York"></a>
+  <section itemscope itemprop="worksFor" itemtype="https://schema.org/EmployeeRole" class="experience">
+    <meta itemprop="roleName"  content="Postgraduate Teaching Assistant">
+    <meta itemprop="startDate" content="2014">
+    <meta itemprop="endDate"   content="2017">
+    <header itemscope itemprop="worksFor" itemtype="https://schema.org/Organization">
+      <a href="https://cs.york.ac.uk">
+        <img itemprop="logo" src="/logos/university-of-york.png" alt="University of York">
+      </a>
       <div>
-        <h1><a href="https://cs.york.ac.uk">University of York</a></h1>
+        <h1>
+          <a itemprop="url" href="https://cs.york.ac.uk">
+            <span itemprop="name">University of York</span>
+          </a>
+        </h1>
         <h2>Postgraduate Teaching Assistant</h2>
         <p class="when">2014&ndash;-2017</p>
       </div>
@@ -68,22 +97,40 @@
     compilers, discrete maths, and introductory programming modules,
     and the masters-level software testing module.</p>
   </section>
-  <section class="experience">
-    <header>
-      <a href="https://www.overleaf.com"><img src="/logos/overleaf.png" alt="Overleaf"></a>
+  <section itemscope itemprop="worksFor" itemtype="https://schema.org/EmployeeRole" class="experience">
+    <meta itemprop="roleName"  content="Software Engineering Intern">
+    <meta itemprop="startDate" content="2017-07">
+    <meta itemprop="endDate"   content="2017-09">
+    <header itemscope itemprop="worksFor" itemtype="https://schema.org/Organization">
+      <a href="https://www.overleaf.com">
+        <img itemprop="logo" src="/logos/overleaf.png" alt="Overleaf">
+      </a>
       <div>
-        <h1><a href="https://www.overleaf.com">Overleaf</a></h1>
+        <h1>
+          <a itemprop="url" href="https://www.overleaf.com">
+            <span itemprop="name">Overleaf</span>
+          </a>
+        </h1>
         <h2>Software Engineering Intern</h2>
         <p class="when">Jul&ndash;Sep 2017</p>
       </div>
     </header>
     <p>Fixed bugs, closed security holes, ported Ruby, and worked on ShareLaTeX code and data analysis after the two companies merged.</p>
   </section>
-  <section class="experience">
-    <header>
-      <a href="https://pusher.com"><img src="/logos/pusher.png" alt="Pusher"></a>
+  <section itemscope itemprop="worksFor" itemtype="https://schema.org/EmployeeRole" class="experience">
+    <meta itemprop="roleName"  content="Software Engineering Intern">
+    <meta itemprop="startDate" content="2016-04">
+    <meta itemprop="endDate"   content="2016-08">
+    <header itemscope itemprop="worksFor" itemtype="https://schema.org/Organization">
+      <a href="https://pusher.com">
+        <img itemprop="logo" src="/logos/pusher.png" alt="Pusher">
+      </a>
       <div>
-        <h1><a href="https://pusher.com">Pusher</a></h1>
+        <h1>
+          <a itemprop="url" href="https://pusher.com">
+            <span itemprop="name">Pusher</span>
+          </a>
+        </h1>
         <h2>Software Engineering Intern</h2>
         <p class="when">May&ndash;Aug 2016</p>
       </div>
@@ -94,11 +141,20 @@
     <p>Powering realtime with spit and glue! (or so says my mug).
       I worked on performant and reliable distributed systems for message delivery.</p>
   </section>
-  <section class="experience">
-    <header>
-      <a href="https://www.corefiling.com"><img src="/logos/corefiling.png" alt="CoreFiling"></a>
+  <section itemscope itemprop="worksFor" itemtype="https://schema.org/EmployeeRole" class="experience">
+    <meta itemprop="roleName"  content="Software Engineering Intern">
+    <meta itemprop="startDate" content="2014-04">
+    <meta itemprop="endDate"   content="2014-09">
+    <header itemscope itemprop="worksFor" itemtype="https://schema.org/Organization">
+      <a href="https://www.corefiling.com">
+        <img itemprop="logo" src="/logos/corefiling.png" alt="CoreFiling">
+      </a>
       <div>
-        <h1><a href="https://www.corefiling.com">CoreFiling</a></h1>
+        <h1>
+          <a itemprop="url" href="https://www.corefiling.com">
+            <span itemprop="name">CoreFiling</span>
+          </a>
+        </h1>
         <h2>Software Engineering Intern</h2>
         <p class="when">Jul&ndash;Sep 2014</p>
       </div>
@@ -118,38 +174,59 @@
   <h2>Papers</h2>
 
   <ol class="links wide">
-    <li>
-      <a class="title" href="/publications/thesis.pdf">Revealing Behaviours of Concurrent Functional Programs by Systematic Testing</a>
+    <li itemscope itemprop="knowsAbout" itemtype="https://schema.org/Thesis">
+      <meta itemprop="author"             content="https://www.barrucadu.co.uk">
+      <meta itemprop="datePublished"      content="2018">
+      <meta itemprop="sourceOrganization" content="University of York">
+      <meta itemprop="inSupportOf"        content="Ph.D">
+      <a itemprop="url" rel="author" class="title" href="/publications/thesis.pdf">
+        <span itemprop="headline name">Revealing Behaviours of Concurrent Functional Programs by Systematic Testing</span>
+      </a>
       <br/>
       <span class="description">
         University of York. Ph.D thesis. 2018.
-        [<a href="/publications/thesis.bib">bib</a>]
+        [<a itemprop="sameAs" rel="alternate" href="/publications/thesis.bib">bib</a>]
       </span>
     </li>
-    <li>
-      <a class="title" href="/publications/coco-flops18.pdf">Cheap Remarks about Concurrent Programs</a>
+    <li itemscope itemprop="knowsAbout" itemtype="https://schema.org/Article">
+      <meta itemprop="author"             content="https://www.barrucadu.co.uk">
+      <meta itemprop="datePublished"      content="2018">
+      <meta itemprop="sourceOrganization" content="University of York">
+      <a itemprop="url" rel="author" class="title" href="/publications/coco-flops18.pdf">
+        <span itemprop="headline name">Cheap Remarks about Concurrent Programs</span>
+      </a>
       <br/>
       <span class="description">
         In <em>Functional and Logic Programming Symposium (<a href="http://www.sqlab.jp/FLOPS2018/">FLOPS '18</a>)</em>.
-        [<a href="/publications/coco-flops18.bib">bib</a>]
-        [<a href="https://doi.org/10.1007/978-3-319-90686-7_17">doi</a>]
+        [<a itemprop="sameAs" rel="alternate" href="/publications/coco-flops18.bib">bib</a>]
+        [<a itemprop="sameAs" rel="alternate" href="https://doi.org/10.1007/978-3-319-90686-7_17">doi</a>]
       </span>
     </li>
-    <li>
-      <a class="title" href="/publications/YCS-2016-503.pdf">Déjà Fu: A Concurrency Testing Library for Haskell</a>
+    <li itemscope itemprop="knowsAbout" itemtype="https://schema.org/Article">
+      <meta itemprop="author"             content="https://www.barrucadu.co.uk">
+      <meta itemprop="datePublished"      content="2016">
+      <meta itemprop="sourceOrganization" content="University of York">
+      <a itemprop="url" rel="author" class="title" href="/publications/YCS-2016-503.pdf">
+        <span itemprop="headline name">Déjà Fu: A Concurrency Testing Library for Haskell</span>
+      </a>
       <br/>
       <span class="description">
         University of York Computer Science Department Technical Report YCS-2016-503. 2016.
-        [<a href="/publications/YCS-2016-503.bib">bib</a>]
+        [<a itemprop="sameAs" rel="alternate" href="/publications/YCS-2016-503.bib">bib</a>]
       </span>
     </li>
-    <li>
-      <a class="title" href="/publications/dejafu-hs15.pdf">Déjà Fu: A Concurrency Testing Library for Haskell</a>
+    <li itemscope itemprop="knowsAbout" itemtype="https://schema.org/Article">
+      <meta itemprop="author"             content="https://www.barrucadu.co.uk">
+      <meta itemprop="datePublished"      content="2015">
+      <meta itemprop="sourceOrganization" content="University of York">
+      <a itemprop="url" rel="author" class="title" href="/publications/dejafu-hs15.pdf">
+        <span itemprop="headline name">Déjà Fu: A Concurrency Testing Library for Haskell</span>
+      </a>
       <br/>
       <span class="description">
         In <em>ACM SIGPLAN Symposium on Haskell (<a href="https://www.haskell.org/haskell-symposium/2015/">Haskell '15</a>)</em>.
-        [<a href="/publications/dejafu-hs15.bib">bib</a>]
-        [<a href="https://dx.doi.org/10.1145/2804302.2804306">doi</a>]
+        [<a itemprop="sameAs" rel="alternate" href="/publications/dejafu-hs15.bib">bib</a>]
+        [<a itemprop="sameAs" rel="alternate" href="https://dx.doi.org/10.1145/2804302.2804306">doi</a>]
       </span>
     </li>
   </ol>
@@ -157,15 +234,25 @@
   <h2>Presentations &amp; Posters</h2>
 
   <ol class="links wide">
-    <li>
-      <a class="title" href="/publications/coco-tfp17.pdf">Cheap Remarks about Concurrent Programs</a>
+    <li itemscope itemprop="knowsAbout" itemtype="https://schema.org/CreativeWork">
+      <meta itemprop="author"             content="https://www.barrucadu.co.uk">
+      <meta itemprop="datePublished"      content="2017">
+      <meta itemprop="sourceOrganization" content="University of York">
+      <a itemprop="url" rel="author" class="title" href="/publications/coco-tfp17.pdf">
+        <span itemprop="headline name">Cheap Remarks about Concurrent Programs</span>
+      </a>
       <br/>
       <span class="description">
         Presented at <em>Trends in Functional Programming (<a href="https://www.cs.kent.ac.uk/events/tfp17/">TFP '17</a>)</em>.
       </span>
     </li>
-    <li>
-      <a class="title" href="/publications/searchparty-acmsrc15.pdf">Search Party: a Haskell library for speculative parallelism in generate-and-test searches</a>
+    <li itemscope itemprop="knowsAbout" itemtype="https://schema.org/CreativeWork">
+      <meta itemprop="author"             content="https://www.barrucadu.co.uk">
+      <meta itemprop="datePublished"      content="2015">
+      <meta itemprop="sourceOrganization" content="University of York">
+      <a itemprop="url" rel="author" class="title" href="/publications/searchparty-acmsrc15.pdf">
+        <span itemprop="headline name">Search Party: a Haskell library for speculative parallelism in generate-and-test searches</span>
+      </a>
       <br/>
       <span class="description">
         Poster at <em>ACM ICFP Student Research Competition (<a href="http://icfpconference.org/icfp2015/src.html">ICFP SRC '15</a>)</em>.
@@ -177,11 +264,17 @@
 <section id="open-source" class="box">
   <h1>Programming</h1>
 
-  <section class="experience">
-    <header>
+  <section itemscope itemprop="memberOf" itemtype="https://schema.org/OrganizationRole" class="experience">
+    <meta itemprop="roleName"  content="Developer">
+    <meta itemprop="startDate" content="2015">
+    <header itemscope itemprop="memberOf" itemtype="https://schema.org/Organization">
       <a href="https://github.com/barrucadu/dejafu"><img class="faded" src="logos/github.png" title="Déjà Fu"></a>
       <div>
-        <h1><a href="https://github.com/barrucadu/dejafu">Déjà Fu</a></h1>
+        <h1>
+          <a itemprop="url" href="https://github.com/barrucadu/dejafu">
+            <span itemprop="name">Déjà Fu</span>
+          </a>
+        </h1>
         <h2>Developer</h2>
         <p class="when">2015&ndash;now</p>
       </div>
@@ -194,11 +287,20 @@
     <p>Comes with HUnit and Tasty bindings, so you can easily integrate it with your existing
       testsuite.</p>
   </section>
-  <section class="experience">
-    <header>
-      <a href="https://www.archhurd.org"><img src="logos/archhurd.png" title="Arch Hurd"></a>
+  <section itemscope itemprop="memberOf" itemtype="https://schema.org/OrganizationRole" class="experience">
+    <meta itemprop="roleName"  content="Project Leader">
+    <meta itemprop="startDate" content="2010">
+    <meta itemprop="endDate"   content="2015">
+    <header itemscope itemprop="memberOf" itemtype="https://schema.org/Organization">
+      <a href="https://www.archhurd.org">
+        <img itemprop="logo" src="logos/archhurd.png" title="Arch Hurd">
+      </a>
       <div>
-        <h1><a href="https://www.archhurd.org">Arch Hurd</a></h1>
+        <h1>
+          <a itemprop="url" href="https://www.archhurd.org">
+            <span itemprop="name">Arch Hurd</span>
+          </a>
+        </h1>
         <h2>Project Leader</h2>
         <p class="when">2010&ndash;2015</p>
       </div>
@@ -212,11 +314,20 @@
       porting over Linux software. I also produced installation media and maintained the website and
       repositories.</p>
   </section>
-  <section class="experience">
-    <header>
-      <a href="https://www.uzbl.org"><img src="logos/uzbl.png" title="Uzbl"></a>
+  <section itemscope itemprop="memberOf" itemtype="https://schema.org/OrganizationRole" class="experience">
+    <meta itemprop="roleName"  content="Developer">
+    <meta itemprop="startDate" content="2009">
+    <meta itemprop="endDate"   content="2009">
+    <header itemscope itemprop="memberOf" itemtype="https://schema.org/Organization">
+      <a href="https://www.uzbl.org">
+        <img itemprop="logo" src="logos/uzbl.png" title="Uzbl">
+      </a>
       <div>
-        <h1><a href="https://www.uzbl.org">Uzbl</a></h1>
+        <h1>
+          <a itemprop="url" href="https://www.uzbl.org">
+            <span itemprop="name">Uzbl</span>
+          </a>
+        </h1>
         <h2>Developer</h2>
         <p class="when">2009</p>
       </div>

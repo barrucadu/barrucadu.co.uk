@@ -2,7 +2,7 @@
 
 module Main where
 
-import Data.Monoid ((<>))
+import Data.List (stripPrefix)
 import Hakyll
 
 main :: IO ()
@@ -29,24 +29,33 @@ main = hakyllWith defaultConfiguration $ do
       >>= loadAndApplyTemplate "templates/page.html" pageCtx
       >>= loadAndApplyTemplate "templates/html.html" pageCtx
       >>= relativizeUrls
+      >>= fixHtml
 
   -- Render index page
   match "index.html" $ do
     route idRoute
     compile $ do
-      let ctx = constField "title" "barrucadu" <> defaultContext
       getResourceBody
-        >>= applyAsTemplate ctx
-        >>= loadAndApplyTemplate "templates/html.html" ctx
+        >>= applyAsTemplate indexCtx
+        >>= loadAndApplyTemplate "templates/html.html" indexCtx
         >>= relativizeUrls
+        >>= fixHtml
 
 -------------------------------------------------------------------------------
 -- Contexts and Configurations
+
+indexCtx :: Context String
+indexCtx = mconcat
+  [ constField "title" "barrucadu"
+  , constField "item_type" "Person"
+  , defaultContext
+  ]
 
 pageCtx :: Context String
 pageCtx = mconcat
   [ dateField "isodate" "%Y-%m-%d"
   , dateField "ppdate"  "%d %b, %Y"
+  , constField "item_type" "Article"
   , defaultContext
   ]
 
@@ -56,6 +65,18 @@ pageCtx = mconcat
 -- | Concatenate and minify a collection of items.
 minifyCompiler :: (String -> String) -> [Item String] -> Compiler (Item String)
 minifyCompiler minify = makeItem . minify . concatMap itemBody
+
+-- | 'relativizeUrls' (and other bits of hakyll perhaps?) uses
+-- TagSoup, which is rather opinionated about how HTML should be
+-- written, and is actually wrong.
+fixHtml :: Item String -> Compiler (Item String)
+fixHtml = pure . fmap fixup where
+  fixup = replace "itemscope=\"\"" "itemscope"
+
+  replace from to s@(x:xs) = case stripPrefix from s of
+    Just rest -> to ++ replace from to rest
+    Nothing -> x : replace from to xs
+  replace _ _ [] = []
 
 -------------------------------------------------------------------------------
 -- Utilities
