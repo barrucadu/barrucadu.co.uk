@@ -34,12 +34,10 @@ main = hakyllWith defaultConfiguration $ do
   -- Render index page
   match "index.html" $ do
     route idRoute
-    compile $ do
-      getResourceBody
-        >>= applyAsTemplate indexCtx
-        >>= loadAndApplyTemplate "templates/html.html" indexCtx
-        >>= relativizeUrls
-        >>= fixHtml
+    compile $ getResourceBody
+      >>= loadAndApplyTemplate "templates/html.html" indexCtx
+      >>= relativizeUrls
+      >>= fixHtml
 
 -------------------------------------------------------------------------------
 -- Contexts and Configurations
