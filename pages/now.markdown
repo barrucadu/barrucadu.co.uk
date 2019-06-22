@@ -14,7 +14,7 @@ I'm living London and working as a software engineer.
   Elasticsearch, and also migrating to a hosted service.  Next quarter
   I'm likely to be continuing with other search-related work.
 
-[w1]: /publications/thesis.pdf
+[w1]: publications/thesis.pdf
 [w2]: https://www.gov.uk/government/organisations/government-digital-service
 
 **Personal:**

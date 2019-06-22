@@ -1,0 +1,210 @@
+job_title: "Senior Developer"
+
+work:
+  - role_name: "Senior Developer"
+    start_date: "2019-06"
+    html_range: "Jun 2019&ndash;now"
+    org:
+      name: "Government Digital Service (GDS)"
+      url: "https://www.gov.uk/government/organisations/government-digital-service"
+      logo: "gds.png"
+    github:
+      - "alphagov"
+    summary: |
+      Currently leading an upgrade from Elasticsearch 5 to
+      Elasticsearch 6.  Line manager to a mid-level developer.
+    summary2: |
+      Most of my work for GOV.UK is open source.
+
+  - role_name: "Developer"
+    start_date: "2018-04"
+    end_date: "2019-06"
+    html_range: "Apr 2018&ndash;Jun 2019"
+    org:
+      name: "Government Digital Service (GDS)"
+      url: "https://www.gov.uk/government/organisations/government-digital-service"
+      logo: "gds.png"
+    github:
+      - "alphagov"
+    html_summary: |
+      I've worked on a variety of evidence-driven improvements to the
+      <a href="https://www.gov.uk">GOV.UK</a> publishing stack, both
+      performance improvements and also resolving long-standing
+      technical debt.  Mostly Ruby and Rails 5 / Sinatra, some Python
+      2.  Also gave regular support to teams which did not merit a
+      full-time developer.
+    summary2: |
+      Most of my work for GOV.UK is open source.
+
+  - role_name: "Software Engineer (Part Time)"
+    start_date: "2018-01"
+    end_date: "2018-03"
+    html_range: "Jan&ndash;Mar 2018"
+    org:
+      name: "Overleaf"
+      url: "https://www.overleaf.com"
+      logo: "overleaf.png"
+    summary: |
+      Maintained legacy Rails and Java applications by fixing bugs and
+      applying updates.
+
+  - role_name: "Postgraduate Teaching Assistant"
+    start_date: "2014"
+    end_date: "2017"
+    html_range: "2014&ndash;2017"
+    org:
+      name: "University of York"
+      url: "https://cs.york.ac.uk"
+      logo: "university-of-york.png"
+    summary: |
+      Marked homeworks and helped students in the undergraduate
+      compilers, discrete maths, and introductory programming modules,
+      and the masters-level software testing module.
+
+  - role_name: "Software Engineering Intern"
+    start_date: "2017-07"
+    end_date: "2017-09"
+    html_range: "Jul&ndash;Sep 2019"
+    org:
+      name: "Overleaf"
+      url: "https://www.overleaf.com"
+      logo: "overleaf.png"
+    summary: |
+      Fixed bugs, closed security holes, ported Ruby, and worked on
+      ShareLaTeX code and data analysis after the two companies
+      merged.
+
+  - role_name: "Software Engineering Intern"
+    start_date: "2016-04"
+    end_date: "2016-08"
+    html_range: "May&ndash;Aug 2016"
+    org:
+      name: "Pusher"
+      url: "https://pusher.com"
+      logo: "pusher.png"
+    github:
+      - "pusher/go-interface-fuzzer"
+    summary: |
+      Powering realtime with spit and glue! (or so says my mug).  I
+      worked on performant and reliable distributed systems for
+      message delivery.
+
+  - role_name: "Software Engineering Intern"
+    start_date: "2014-04"
+    end_date: "2014-09"
+    html_range: "May&ndash;Sep 2016"
+    org:
+      name: "CoreFiling"
+      url: "https://www.corefiling.com"
+      logo: "corefiling.png"
+    github:
+      - "CoreFiling/reviki"
+      - "CoreFiling/reviki-jira-plugin"
+    summary: |
+      Wrote a parser/renderer for an in-house wiki program using ANTLR
+      in Java, and integrated this with JIRA.
+
+research:
+  papers:
+    - title: "Revealing Behaviours of Concurrent Functional Programs by Systematic Testing"
+      date: "2018"
+      is_thesis: true
+      in_support_of: "Ph.D"
+      file: "thesis"
+      description: "University of York. Ph.D thesis. 2018."
+
+    - title: "Cheap Remarks about Concurrent Programs"
+      date: "2018"
+      doi: "10.1007/978-3-319-90686-7_17"
+      file: "coco-flops18"
+      venue:
+        name: "Functional and Logic Programming Symposium"
+        acronym: "FLOPS '18"
+        url: "http://www.sqlab.jp/FLOPS2018/"
+
+    - title: "Déjà Fu: A Concurrency Testing Library for Haskell"
+      date: "2016"
+      file: "YCS-2016-503"
+      description: "University of York Computer Science Department Technical Report YCS-2016-503. 2016."
+
+    - title: "Déjà Fu: A Concurrency Testing Library for Haskell"
+      date: "2015"
+      doi: "10.1145/2804302.2804306"
+      file: "dejafu-hs15"
+      venue:
+        name: "ACM SIGPLAN Symposium on Haskell"
+        acronym: "Haskell '15"
+        url: "https://www.haskell.org/haskell-symposium/2015/"
+
+  presentations_and_posters:
+    - title: "Cheap Remarks about Concurrent Programs"
+      is_presentation: true
+      date: "2017"
+      file: "coco-tfp17"
+      venue:
+        name: "Trends in Functional Programming"
+        acronym: "TFP '17"
+        url: "https://www.cs.kent.ac.uk/events/tfp17/"
+
+    - title: "Search Party: a Haskell library for speculative parallelism in generate-and-test searches"
+      date: "2015"
+      file: "searchparty-acmsrc15"
+      venue:
+        name: "ACM ICFP Student Research Competition"
+        acronym: "ICFP SRC '15"
+        url: "http://icfpconference.org/icfp2015/src.html"
+
+open_source:
+  - role_name: "Developer"
+    start_date: "2015"
+    html_range: "2015&ndash;now"
+    org:
+      name: "Déjà Fu"
+      url: "https://github.com/barrucadu/dejafu"
+    github:
+      - "barrucadu/dejafu"
+    summary: |
+      It's a library for testing concurrent Haskell programs, which
+      came out of my Ph.D research. Pretty much everything is
+      supported, plus a few extras.
+    summary2: |
+      Comes with HUnit and Tasty bindings, so you can easily integrate
+      it with your existing testsuite.
+
+  - role_name: "Project Leader"
+    start_date: "2010"
+    end_date: "2015"
+    html_range: "2010&ndash;2015"
+    org:
+      name: "Arch Hurd"
+      url: "https://www.archhurd.org"
+      logo: "archhurd.png"
+    github:
+      - "archhurd"
+    html_summary: |
+      I accidentally started a <a
+      href="https://www.gnu.org/software/hurd">GNU/Hurd</a>
+      distribution based on <a href="https://www.archlinux.org">Arch
+      Linux</a>. This was completely unintentional.
+    summary2: |
+      Served my time as project leader from 2010 to 2015, managing a
+      handful of developers around the world porting over Linux
+      software. I also produced installation media and maintained the
+      website and repositories.
+
+  - role_name: "Developer"
+    start_date: "2009"
+    end_date: "2009"
+    html_range: "2009"
+    org:
+      name: "Uzbl"
+      url: "https://www.uzbl.org"
+      logo: "uzbl.png"
+    github:
+      - "uzbl"
+    summary: |
+      I was one of the first few developers, and this is the project
+      that taught me C and Git. It was fun, and I learned a lot. I
+      still host the website and mailing list.
+    summary2: |
+      Do not expect good code if you go and dig up my contributions.

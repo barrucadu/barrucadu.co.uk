@@ -1,0 +1,42 @@
+<section itemscope itemprop="worksFor" itemtype="https://schema.org/EmployeeRole" class="experience">
+  <meta itemprop="roleName"  content="{{ entry.role_name|e }}">
+  <meta itemprop="startDate" content="{{ entry.start_date|e }}">
+  {% if entry.end_date is defined %}
+  <meta itemprop="endDate"   content="{{ entry.end_date|e }}">
+  {% endif %}
+  <header itemscope itemprop="worksFor" itemtype="https://schema.org/Organization">
+    <a href="{{ entry.org.url|e }}">
+      {% if entry.org.logo is defined %}
+      <img itemprop="logo" src="logos/{{ entry.org.logo|e }}" alt="{{ entry.org.name|e }}">
+      {% else %}
+      <img class="faded" src="logos/{{ fallback_logo|e }}" alt="{{ entry.org.name|e }}">
+      {% endif %}
+    </a>
+    <div>
+      <h1>
+        <a itemprop="url" href="{{ entry.org.url|e }}">
+          <span itemprop="name">{{ entry.org.name|e }}</span>
+        </a>
+      </h1>
+      <h2>{{ entry.role_name|e }}</h2>
+      <p class="when">{{ entry.html_range }}</p>
+    </div>
+    {% if entry.github is defined %}
+    <ul>
+      {% for gh in entry.github %}
+      <li><a href="https://github.com/{{ gh|e }}">{{ gh|e }}</a> <i class="fa fa-github"></i>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </header>
+  {% if entry.html_summary is defined %}
+  <p>{{ entry.html_summary }}</p>
+  {% else %}
+  <p>{{ entry.summary|e }}</p>
+  {% endif %}
+  {% if entry.html_summary2 is defined %}
+  <p>{{ entry.html_summary2 }}</p>
+  {% elif entry.summary2 is defined %}
+  <p>{{ entry.summary2|e }}</p>
+  {% endif %}
+</section>

@@ -1,0 +1,81 @@
+{% extends "_layout.html" %}
+{% block itemtype %}Person{% endblock %}
+{% block header %}
+<h1>barrucadu</h1>
+
+<p>I'm <strong itemprop="name">Michael Walker</strong>. I also go by <strong itemprop="alternateName">barrucadu</strong>.<br/>
+  It's like the <a href="https://en.wikipedia.org/wiki/barracuda">fish</a>, but with the vowels wrong.</p>
+
+<nav>
+  <ul>
+    <li><a itemprop="sameAs" rel="me" href="https://twitter.com/barrucadu" title="Twitter"><i class="fa fa-twitter"></i></a>
+    <li><a itemprop="sameAs" rel="me" href="https://uk.linkedin.com/in/barrucadu" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+    <li><a itemprop="sameAs" rel="me" href="https://github.com/barrucadu" title="GitHub"><i class="fa fa-github"></i></a>
+    <li><a itemprop="sameAs" rel="me" href="mailto:mike@barrucadu.co.uk" title="Email"><i class="fa fa-envelope"></i></a>
+    <li><a itemprop="sameAs" rel="me" href="gpg-public-key.asc" title="GPG"><i class="fa fa-lock"></i></a>
+  </ul>
+</nav>
+
+<hr>
+
+<p><strong>What have I done in the past?</strong> See my <a href="cv.pdf">CV</a>.<br/>
+  <strong>What am I doing now?</strong> See my <a rel="author" href="now.html">&ldquo;now&rdquo; page</a>.<br/>
+  <strong>Sometimes I write things!</strong> See my <a rel="author" href="https://memo.barrucadu.co.uk/read-me-first.html">memos</a>.</p>
+
+<meta itemprop="email"    content="mike@barrucadu.co.uk">
+{% if job_title is defined %}
+<meta itemprop="jobTitle" content="{{ job_title|e }}">
+{% endif %}
+{% endblock %}
+{% block body %}
+<section id="work" class="box">
+  <h1>Work</h1>
+
+  {% for entry in work %}
+    {% set item_type = "EmployeeRole" %}
+    {% include "_experience.html" %}
+  {% endfor %}
+</section>
+
+<section id="research" class="box">
+  <h1>Research</h1>
+
+  <h2>Papers</h2>
+
+  <ol class="links wide">
+    {% for entry in research.papers %}
+      {% set item_type = "Article" %}
+      {% set phrase = "In" %}
+      {% if entry.is_thesis is defined and entry.is_thesis %}
+        {% set item_type = "Thesis" %}
+      {% endif %}
+      {% set show_bib = true %}
+      {% include "_research.html" %}
+    {% endfor %}
+  </ol>
+
+  <h2>Presentations &amp; Posters</h2>
+
+  <ol class="links wide">
+    {% for entry in research.presentations_and_posters %}
+      {% set item_type = "CreativeWork" %}
+      {% set phrase = "Poster at" %}
+      {% if entry.is_presentation is defined and entry.is_presentation %}
+        {% set phrase = "Presented at" %}
+      {% endif %}
+      {% set show_bib = false %}
+      {% include "_research.html" %}
+    {% endfor %}
+  </ol>
+</section>
+
+<section id="open-source" class="box">
+  <h1>Open Source</h1>
+
+  {% for entry in open_source %}
+    {% set item_type = "OrganizationRole" %}
+    {% set fallback_logo = "github.png" %}
+    {% include "_experience.html" %}
+  {% endfor %}
+</section>
+{% endblock %}

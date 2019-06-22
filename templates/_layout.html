@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="Michael Walker">
+    <meta name="robots" content="FOLLOW,INDEX">
+
+    <base href="{{ site_root|e }}">
+
+    <title>{{ title|e }}</title>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+  </head>
+
+  <body itemscope itemtype="http://schema.org/WebPage">
+    <article itemscope itemtype="http://schema.org/{% block itemtype %}{% endblock %}" itemprop="mainEntity">
+      <header class="box">
+        {% block header %}{% endblock %}
+      </header>
+
+      {% block body %}{% endblock %}
+
+      {% if not is_root %}
+      <footer>
+        <nav>
+          <a href="" title="Go back"><i class="fa fa-arrow-left"></i></a>
+        </nav>
+      </footer>
+      {% endif %}
+    </article>
+  </body>
+</html>

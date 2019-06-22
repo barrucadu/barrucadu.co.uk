@@ -1,18 +1,18 @@
-<header class="box">
-  <h1 itemprop="headline name" >$title$</h1>
-  <time itemprop="dateModified" class="meta" datetime="$isodate$">$ppdate$</time>
-</header>
-
+{% extends "_layout.html" %}
+{% block itemtype %}Article{% endblock %}
+{% block header %}
+<h1 itemprop="headline name" >{{ title|e }}</h1>
+<meta itemprop="datePublished" content="{{ published_iso|e }}">
+<time itemprop="dateModified" class="meta" datetime="{{ modified_iso|e }}">{{ modified_pp|e }}</time>
+{% endblock %}
+{% block body %}
 <section class="box">
-  $body$
+  {{ content }}
 </section>
-
-<footer class="box">
-  <nav><a href="/" title="Go Back"><i class="fa fa-arrow-left"></i></a></nav>
-</footer>
 
 <span itemprop="author" itemscope itemtype="http://schema.org/Person" style="display: none">
   <meta itemprop="name" content="Michael Walker">
   <meta itemprop="email" context="mike@barrucadu.co.uk">
   <link itemprop="url" href="https://www.barrucadu.co.uk">
 </span>
+{% endblock %}
