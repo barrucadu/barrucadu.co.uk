@@ -22,7 +22,7 @@
       <p class="when">{{ entry.html_range }}</p>
     </div>
     {% if entry.github is defined %}
-    <ul>
+    <ul class="github">
       {% for gh in entry.github %}
       <li><a href="https://github.com/{{ gh|e }}">{{ gh|e }}</a> <i class="fa fa-github"></i>
       {% endfor %}

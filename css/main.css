@@ -177,6 +177,10 @@ section h2 {
     text-align: right;
 }
 
+ul.github {
+    list-style: none;
+}
+
 .experience .when {
     margin: 0 0 8px 0;
     padding: 0;
@@ -186,8 +190,4 @@ section h2 {
 
 .experience p {
     margin-top: 0;
-}
-
-ul {
-    list-style: none;
 }
