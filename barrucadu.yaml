@@ -12,7 +12,8 @@ work:
       - "alphagov"
     summary: |
       Currently leading an upgrade from Elasticsearch 5 to
-      Elasticsearch 6.  Line manager to a mid-level developer.
+      Elasticsearch 6.  Also working on search relevancy.  Line
+      manager to a mid-level developer.
     summary2: |
       Most of my work for GOV.UK is open source.
 
