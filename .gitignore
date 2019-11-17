@@ -1,2 +1,3 @@
 _site/
 venv/
+static/caddy.conf
