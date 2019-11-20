@@ -1,24 +1,36 @@
 # Removed posts
 status 410 {
-  /2014-01-07-garbage-collection.html
-  /2015-07-18-continuous-integration-with-jenkins-and-stack.html
-  /2015-07-26-erlang-gopher-server.html
-  /2015-08-09-identity-monads-ahoy.html
-  /2015-10-04-secure-communications-over-insecure-channels.html
-  /2015-12-15-finite-maps-in-isabelle.html
-  /concurrency/2014-12-26-haskell-systematic-concurrency-testing.html
-  /concurrency/2015-01-10-pre-emption-bounding.html
-  /concurrency/2016-05-18-some-thoughts-on-distributed-systems.html
-  /concurrency/2017-02-02-subconcurrency.html
-  /etc/2013-05-27-a-gentle-introduction-to-parsec.html
-  /etc/2015-08-01-debugging-an-allocation-issue.html
-  /etc/2015-09-23-icfp-retrospective.html
-  /etc/2016-02-02-cabal-info.html
-  /etc/2017-03-15-optimising-haskell.html
-  /etc/2017-04-16-representing-generating-comparing-typed-expressions.html
-  /relnotes/2016-04-03-dejafu-0.3.0.0-release.html
-  /relnotes/2016-09-10-dejafu-0.4.0.0-release.html
-  /relnotes/2017-02-21-concurrency-1.1.0.0-dejafu-0.5.0.1-release.html
+  /posts/2013-05-27-a-gentle-introduction-to-parsec.html
+  /posts/2014-01-07-garbage-collection.html
+  /posts/2014-12-26-haskell-systematic-concurrency-testing.html
+  /posts/2015-01-10-pre-emption-bounding.html
+  /posts/2015-07-18-continuous-integration-with-jenkins-and-stack.html
+  /posts/2015-07-26-erlang-gopher-server.html
+  /posts/2015-08-01-debugging-an-allocation-issue.html
+  /posts/2015-08-09-identity-monads-ahoy.html
+  /posts/2015-09-23-icfp-retrospective.html
+  /posts/2015-10-04-secure-communications-over-insecure-channels.html
+  /posts/2015-12-15-finite-maps-in-isabelle.html
+  /posts/2016-02-02-cabal-info.html
+  /posts/2016-04-03-dejafu-0.3.0.0-release.html
+  /posts/2016-05-18-some-thoughts-on-distributed-systems.html
+  /posts/2016-09-10-dejafu-0.4.0.0-release.html
+  /posts/2017-02-02-subconcurrency.html
+  /posts/2017-02-21-concurrency-1.1.0.0-dejafu-0.5.0.1-release.html
+
+  /posts/concurrency/2014-12-26-haskell-systematic-concurrency-testing.html
+  /posts/concurrency/2015-01-10-pre-emption-bounding.html
+  /posts/concurrency/2016-05-18-some-thoughts-on-distributed-systems.html
+  /posts/concurrency/2017-02-02-subconcurrency.html
+  /posts/etc/2013-05-27-a-gentle-introduction-to-parsec.html
+  /posts/etc/2015-08-01-debugging-an-allocation-issue.html
+  /posts/etc/2015-09-23-icfp-retrospective.html
+  /posts/etc/2016-02-02-cabal-info.html
+  /posts/etc/2017-03-15-optimising-haskell.html
+  /posts/etc/2017-04-16-representing-generating-comparing-typed-expressions.html
+  /posts/relnotes/2016-04-03-dejafu-0.3.0.0-release.html
+  /posts/relnotes/2016-09-10-dejafu-0.4.0.0-release.html
+  /posts/relnotes/2017-02-21-concurrency-1.1.0.0-dejafu-0.5.0.1-release.html
 }
 
 redir 301 {
@@ -28,24 +40,13 @@ redir 301 {
 
   # Renamed posts
   define(`categorised', `/posts/$2 /posts/$1/$2')
-  categorised(`etc',         `2013-05-27-a-gentle-introduction-to-parsec.html')
-  categorised(`concurrency', `2014-12-26-haskell-systematic-concurrency-testing.html')
-  categorised(`concurrency', `2015-01-10-pre-emption-bounding.html')
-  categorised(`etc',         `2015-08-01-debugging-an-allocation-issue.html')
   categorised(`concurrency', `2015-08-21-reducing-combinatorial-explosion.html')
   categorised(`relnotes',    `2015-08-27-announce-dejafu.html')
-  categorised(`etc',         `2015-09-23-icfp-retrospective.html')
   categorised(`concurrency', `2015-11-29-breaking-the-law-verifying-typeclass-laws-with-quickcheck-and-dejafu.html')
   categorised(`etc',         `2016-01-09-c-is-not-turing-complete.html')
-  categorised(`etc',         `2016-02-02-cabal-info.html')
   categorised(`etc',         `2016-02-12-strict-vs-lazy.html')
-  categorised(`relnotes',    `2016-04-03-dejafu-0.3.0.0-release.html')
   categorised(`concurrency', `2016-05-13-systematic-concurrency-testing-and-daemon-threads.html')
-  categorised(`concurrency', `2016-05-18-some-thoughts-on-distributed-systems.html')
   categorised(`etc',         `2016-08-25-three-months-of-go.html')
-  categorised(`relnotes',    `2016-09-10-dejafu-0.4.0.0-release.html')
-  categorised(`concurrency', `2017-02-02-subconcurrency.html')
-  categorised(`relnotes',    `2017-02-21-concurrency-1.1.0.0-dejafu-0.5.0.1-release.html')
 
   # Converted to memos
   define(`memod', `/posts/$1 https://memo.barrucadu.co.uk/$2')
