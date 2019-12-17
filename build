@@ -196,8 +196,6 @@ pages = PageReader("pages").pages()
 
 builder = WebsiteBuilder(args["--out"], args["--root"])
 
-subprocess.run("m4 caddy.conf.m4 > static/caddy.conf", shell=True)
-
 builder.copy("static")
 
 builder.index()
