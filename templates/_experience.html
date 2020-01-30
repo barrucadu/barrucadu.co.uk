@@ -1,4 +1,4 @@
-<section itemscope itemprop="worksFor" itemtype="https://schema.org/EmployeeRole" class="experience">
+<section itemscope itemprop="worksFor" itemtype="https://schema.org/{{ item_type|e }}" class="experience">
   <meta itemprop="roleName"  content="{{ entry.role_name|e }}">
   <meta itemprop="startDate" content="{{ entry.start_date|e }}">
   {% if entry.end_date is defined %}
