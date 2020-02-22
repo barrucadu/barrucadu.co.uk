@@ -7,7 +7,7 @@ work:
     org:
       name: "Government Digital Service (GDS)"
       url: "https://www.gov.uk/government/organisations/government-digital-service"
-      logo: "gds.png"
+      logo: "gds.webp"
     github:
       - "alphagov"
     summary: |
@@ -25,7 +25,7 @@ work:
     org:
       name: "Government Digital Service (GDS)"
       url: "https://www.gov.uk/government/organisations/government-digital-service"
-      logo: "gds.png"
+      logo: "gds.webp"
     github:
       - "alphagov"
     html_summary: |
@@ -45,7 +45,7 @@ work:
     org:
       name: "Overleaf"
       url: "https://www.overleaf.com"
-      logo: "overleaf.png"
+      logo: "overleaf.webp"
     summary: |
       Maintained legacy Rails and Java applications by fixing bugs and
       applying updates.
@@ -57,7 +57,7 @@ work:
     org:
       name: "University of York"
       url: "https://cs.york.ac.uk"
-      logo: "university-of-york.png"
+      logo: "university-of-york.webp"
     summary: |
       Marked homeworks and helped students in the undergraduate
       compilers, discrete maths, and introductory programming modules,
@@ -70,7 +70,7 @@ work:
     org:
       name: "Overleaf"
       url: "https://www.overleaf.com"
-      logo: "overleaf.png"
+      logo: "overleaf.webp"
     summary: |
       Fixed bugs, closed security holes, ported Ruby, and worked on
       ShareLaTeX code and data analysis after the two companies
@@ -83,7 +83,7 @@ work:
     org:
       name: "Pusher"
       url: "https://pusher.com"
-      logo: "pusher.png"
+      logo: "pusher.webp"
     github:
       - "pusher/go-interface-fuzzer"
     summary: |
@@ -98,7 +98,7 @@ work:
     org:
       name: "CoreFiling"
       url: "https://www.corefiling.com"
-      logo: "corefiling.png"
+      logo: "corefiling.webp"
     github:
       - "CoreFiling/reviki"
       - "CoreFiling/reviki-jira-plugin"
@@ -180,7 +180,7 @@ open_source:
     org:
       name: "Arch Hurd"
       url: "https://www.archhurd.org"
-      logo: "archhurd.png"
+      logo: "archhurd.webp"
     github:
       - "archhurd"
     html_summary: |
@@ -201,7 +201,7 @@ open_source:
     org:
       name: "Uzbl"
       url: "https://www.uzbl.org"
-      logo: "uzbl.png"
+      logo: "uzbl.webp"
     github:
       - "uzbl"
     summary: |
