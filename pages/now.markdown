@@ -1,33 +1,30 @@
 ---
 title: Now
-date: 2019-09-29
+date: 2020-04-15
 ---
 
-I'm living London and working as a software engineer.
+I'm living in London and working as a software engineer.
 
 **Work:**
 
-- I've finally graduated my Ph.D and have the fancy bit of paper
-  saying I'm a doctor, having submitted the final version of [the
-  thesis][w1] in March.
-- I still work for the [Government Digital Service (GDS)][w2].
-  Recently I've been working on improving GOV.UK search, see my
-  [weeknotes][w3] for more on that.
+- I'm working from home for the foreseeable future.
+- I still work for the [Government Digital Service (GDS)][w1].
+  Recently I've moved back to the Platform Health team, after spending
+  a year doing search. See my [weeknotes][w2] for more on that.
 
-[w1]: publications/thesis.pdf
-[w2]: https://www.gov.uk/government/organisations/government-digital-service
-[w3]: https://memo.barrucadu.co.uk/tag/weeknotes.html
+[w1]: https://www.gov.uk/government/organisations/government-digital-service
+[w2]: https://memo.barrucadu.co.uk/taxon/weeknotes.html
 
 **Personal:**
 
 - Still [tracking my finances][p1], working towards savings and
   investment goals I revise every few months.
-- Still [programming][p2], though maybe not as much as I'd like to.
-- Still [reading][p3], but *definitely* not as much as I'd like to.
+- Still [reading][p2], though maybe not as much as I'd like to.
+- Still [programming][p3], but *definitely* not as much as I'd like to.
 
 [p1]: https://memo.barrucadu.co.uk/personal-finance.html
-[p2]: https://github.com/barrucadu
-[p3]: https://www.barrucadu.co.uk/bookdb/
+[p2]: https://www.barrucadu.co.uk/bookdb/
+[p3]: https://github.com/barrucadu
 
 <small>This is a [now page][]. It shows you what my current focus is.</small>
 
