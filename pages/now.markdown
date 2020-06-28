@@ -1,6 +1,6 @@
 ---
 title: Now
-date: 2020-04-15
+date: 2020-06-28
 ---
 
 I'm living in London and working as a software engineer.
@@ -9,8 +9,8 @@ I'm living in London and working as a software engineer.
 
 - I'm working from home for the foreseeable future.
 - I still work for the [Government Digital Service (GDS)][w1].
-  Recently I've moved back to the Platform Health team, after spending
-  a year doing search. See my [weeknotes][w2] for more on that.
+- Recently I've been tech lead for a small team doing discovery
+  work. See my [weeknotes][w2] for more on that.
 
 [w1]: https://www.gov.uk/government/organisations/government-digital-service
 [w2]: https://memo.barrucadu.co.uk/taxon/weeknotes.html
