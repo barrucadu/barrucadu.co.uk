@@ -3,6 +3,7 @@ body { font-family: 'Gentium Book Basic', Cambria, Georgia, Times, serif }
 pre, code { font-family: 'Fira Mono', monospace }
 
 @font-face {
+  font-display: swap;
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
@@ -11,6 +12,7 @@ pre, code { font-family: 'Fira Mono', monospace }
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Gentium Book Basic';
   font-style: normal;
   font-weight: 400;
@@ -19,6 +21,7 @@ pre, code { font-family: 'Fira Mono', monospace }
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Fira Mono';
   font-style: normal;
   font-weight: 400;
