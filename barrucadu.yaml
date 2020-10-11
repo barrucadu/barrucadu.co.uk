@@ -11,12 +11,12 @@ work:
     github:
       - "alphagov"
     summary: |
-      Recently moved back to the Platform Health team where I'm
-      leading on migrating away from a large legacy application.
-      Before that I spent a year working on search, including leading
-      an upgrade from Elasticsearch 5 to Elasticsearch 6, and
+      Tech lead on a small team doing discovery work into GOV.UK
+      Accounts: lots of OAuth and OpenID Connect.  Before that I spent
+      a year working on search, including leading an upgrade from
+      Elasticsearch 5 to Elasticsearch 6, and
       prototyping/productionising a machine learning pipeline for
-      ranking results.  Line manager to a mid-level developer.
+      ranking results.  Line manager to two mid-level developers.
     summary2: |
       Most of my work for GOV.UK is open source.
 
