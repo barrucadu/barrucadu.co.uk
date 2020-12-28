@@ -1,16 +1,18 @@
 ---
 title: Now
-date: 2020-10-11
+date: 2020-12-28
 ---
 
 I'm living in Rickmansworth and working as a software engineer.
 
 **Work:**
 
-- I'm still working from home for the foreseeable future.
+- I'm still working from home for the foreseeable future, but there's
+  a vaccine now so maybe that'll change by the next update?
 - I still work for the [Government Digital Service (GDS)][w1].
-- Recently I've been tech lead for a small team doing discovery
-  work into [GOV.UK Accounts][w2]. See my [weeknotes][w3] for more on that.
+- RecentlyFor the last several months I've been tech lead for a small
+  team doing discovery work into [GOV.UK Accounts][w2]. See my
+  [weeknotes][w3] for more on that.
 
 [w1]: https://www.gov.uk/government/organisations/government-digital-service
 [w2]: https://gds.blog.gov.uk/2020/09/22/introducing-gov-uk-accounts/
@@ -18,6 +20,7 @@ I'm living in Rickmansworth and working as a software engineer.
 
 **Personal:**
 
+- Experimenting with tracking my time, it's going well so far.
 - Still [tracking my finances][p1], working towards savings and
   investment goals I revise every few months.
 - Still [reading][p2].  See my [weeknotes][w3] for thoughts on what
