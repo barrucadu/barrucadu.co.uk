@@ -5,6 +5,8 @@
     <meta name="author" content="Michael Walker">
     <meta name="robots" content="FOLLOW,INDEX">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <base href="{{ base_href }}">
 
     <title>{{ title }}</title>
@@ -15,20 +17,18 @@
   </head>
 
   <body>
-    <article>
-      <header class="box">
+    <div id="wrapper">
+      <header id="header">
         {% block header %}{% endblock %}
       </header>
 
       {% block body %}{% endblock %}
 
       {% if link != "index.html" %}
-      <footer>
-        <nav>
-          <a href="" title="Go back"><i class="fa fa-arrow-left"></i></a>
-        </nav>
+      <footer id="footer" class="navigation">
+        <a class="navigation__link" href="" title="Go back"><i class="fa fa-arrow-left"></i></a>
       </footer>
       {% endif %}
-    </article>
+    </div>
   </body>
 </html>

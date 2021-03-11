@@ -1,51 +1,41 @@
 * {
     box-sizing: border-box;
+    max-width: 100%;
+    object-fit: scale-down;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-    font-size: 21px;
+    font-size: 20px;
 }
 
 body {
     color: #3b3b3b;
     background-color: #E7E4D5;
-    margin: 0;
-    padding: 0;
+    padding: 0 20px;
 }
 
-.box {
-    margin: 0 auto 16px auto;
-    padding: 1rem 2rem;
-    max-width: 1000px;
+ul, ol {
+    padding-left: 20px;
 }
 
-section {
-    background-color: #f4f4f4;
+p {
+    line-height: 1.2;
+    margin-bottom: 16px;
 }
 
-header, footer {
-    text-align: center;
+li {
+    margin-bottom: 16px;
 }
 
-nav ul {
-    list-style: none;
-}
-
-nav li {
-    height: 24px;
-    line-height: 24px;
-    text-align: center;
-    display: inline-block;
-    font-size: 2em;
-    margin: 0 0.25em;
-}
-
-nav a, nav a:link, nav a:visited {
-    color: #474747;
-}
-
-nav a:hover, nav a:active {
-    color: #703E3B;
+hr {
+    border: 0;
+    width: 100%;
+    color: #777;
+    background-color: #D3C8B4;
+    height: 1px;
+    margin-bottom: 8px;
 }
 
 h1, h2, h3, h4 {
@@ -74,35 +64,49 @@ a:hover, a:active {
     color: #703E3B;
 }
 
-.links, .links li {
-    list-style-type: none;
-    margin-left: 0;
-    padding-left: 0;
+#wrapper {
+    max-width: 960px;
+    margin: 64px auto;
 }
 
-.links li + li {
-    margin-top: 1em;
+#header {
+    text-align: center;
+}
+
+#footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.navigation {
+    text-align: center;
+}
+
+.navigation__link {
+    margin: 8px;
+    display: inline-block;
+    font-size: 2rem;
+}
+
+.navigation__link, .navigation__link:link, .navigation__link:visited {
+    color: #474747;
+}
+
+.box {
+    margin-top: 16px;
+    padding: 1rem 2rem;
+    background-color: #f4f4f4;
+}
+
+.links, .links li {
+    list-style-type: none;
+    padding-left: 0;
 }
 
 .meta {
     color: #777;
     font-size: 0.9em;
-}
-
-p {
-    line-height: 1.35;
-}
-
-hr {
-    border: 0;
-    width: 100%;
-    color: #777;
-    background-color: #D3C8B4;
-    height: 1px;
-}
-
-.faded {
-    opacity: 0.3;
 }
 
 section h1 {
@@ -112,7 +116,6 @@ section h1 {
 
 section h2 {
     font-size: 1.1rem;
-    margin: 0 0 1em 0;
 }
 
 .title {
@@ -123,71 +126,68 @@ section h2 {
     margin-bottom: 1rem;
 }
 
-.experience p {
-    margin-left: 88px;
+.experience__header {
+    display: grid;
+    grid-template-columns: 64px auto auto;
+    grid-column-gap: 1rem;
+    grid-template-areas: "logo info links";
 }
 
-.experience header {
-    text-align: left;
-    display: flex;
-    min-height: 96px;
+.experience__logo {
+    grid-area: logo;
 }
 
-.experience header a, .experience header a:link, .experience header a:visited {
-    color: #474747;
-}
-
-.experience header ul a {
-    color: #C84648 !important;
-}
-
-.experience header a:hover, .experience header a:active {
-    color: #703E3B;
-}
-
-.experience h1 {
-    text-align: left;
-    margin: 0;
-}
-
-.experience h2 {
-    font-size: 1rem;
-    margin: 0;
-}
-
-.experience img {
+.logo {
     object-fit: scale-down;
-    margin: 0 auto;
+    margin: 0 24px 0 auto;
     display: block;
     width: 64px;
     height: 64px;
-    margin-right: 24px;
 }
 
-.experience div {
-    align-self: flex-start;
-    flex-basis: 0;
-    flex-grow: 1;
-    max-width: 100%;
+.logo--faded {
+    opacity: 0.3;
 }
 
-.experience ul {
-    flex: 0 0 auto;
-    align-self: flex-start;
-    text-align: right;
+.experience__info  {
+    grid-area: info;
+    text-align: left;
 }
 
-ul.github {
-    list-style: none;
+.experience__org-link, .experience__org-link:link, .experience__org-link:visited {
+    color: #474747;
 }
 
-.experience .when {
-    margin: 0 0 8px 0;
-    padding: 0;
+.experience__info__when {
+    margin-bottom: 8px;
     color: #bbb;
     font-size: 0.8rem;
 }
 
-.experience p {
-    margin-top: 0;
+.experience__links {
+    grid-area: links;
+    text-align: right;
+    list-style: none;
+}
+
+.experience__links__item {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 16px;
+    }
+
+    #wrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .experience__header {
+        grid-template-columns: 64px auto;
+        grid-template-areas:
+            "logo info"
+            "links links";
+    }
 }

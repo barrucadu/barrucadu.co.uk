@@ -5,14 +5,12 @@
 <p>I'm <strong>Michael Walker</strong>. I also go by <strong>barrucadu</strong>.<br/>
   It's like the <a href="https://en.wikipedia.org/wiki/barracuda">fish</a>, but with the vowels wrong.</p>
 
-<nav>
-  <ul>
-    <li><a href="https://twitter.com/barrucadu" title="Twitter"><i class="fa fa-twitter"></i></a>
-    <li><a href="https://uk.linkedin.com/in/barrucadu" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-    <li><a href="https://github.com/barrucadu" title="GitHub"><i class="fa fa-github"></i></a>
-    <li><a href="mailto:mike@barrucadu.co.uk" title="Email"><i class="fa fa-envelope"></i></a>
-    <li><a href="gpg-public-key.asc" title="GPG"><i class="fa fa-lock"></i></a>
-  </ul>
+<nav class="navigation">
+  <a class="navigation__link" href="https://twitter.com/barrucadu" title="Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="navigation__link" href="https://uk.linkedin.com/in/barrucadu" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+  <a class="navigation__link" href="https://github.com/barrucadu" title="GitHub"><i class="fa fa-github"></i></a>
+  <a class="navigation__link" href="mailto:mike@barrucadu.co.uk" title="Email"><i class="fa fa-envelope"></i></a>
+  <a class="navigation__link" href="gpg-public-key.asc" title="GPG"><i class="fa fa-lock"></i></a>
 </nav>
 
 <hr>
@@ -22,7 +20,7 @@
   <strong>Sometimes I write things!</strong> See my <a rel="author" href="https://memo.barrucadu.co.uk/">memos</a>.</p>
 {% endblock %}
 {% block body %}
-<section id="work" class="box">
+<section class="box">
   <h1>Work</h1>
 
   {% for entry in work %}
@@ -30,10 +28,8 @@
   {% endfor %}
 </section>
 
-<section id="research" class="box">
+<section class="box">
   <h1>Research</h1>
-
-  <h2>Papers</h2>
 
   <ol class="links wide">
     {% for entry in research.papers %}
@@ -42,22 +38,9 @@
       {% include "_research.html" %}
     {% endfor %}
   </ol>
-
-  <h2>Presentations &amp; Posters</h2>
-
-  <ol class="links wide">
-    {% for entry in research.presentations_and_posters %}
-      {% set phrase = "Poster at" %}
-      {% if entry.is_presentation is defined and entry.is_presentation %}
-        {% set phrase = "Presented at" %}
-      {% endif %}
-      {% set show_bib = false %}
-      {% include "_research.html" %}
-    {% endfor %}
-  </ol>
 </section>
 
-<section id="open-source" class="box">
+<section class="box">
   <h1>Open Source</h1>
 
   {% for entry in open_source %}

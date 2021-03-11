@@ -1,21 +1,21 @@
 <section class="experience">
-  <header>
-    <a href="{{ entry.org.url }}">
+  <header class="experience__header">
+    <a class="experience__logo" href="{{ entry.org.url }}">
       {% if entry.org.logo is defined %}
-      <img src="logos/{{ entry.org.logo }}" alt="{{ entry.org.name }}">
+      <img class="logo" src="logos/{{ entry.org.logo }}" alt="{{ entry.org.name }}">
       {% else %}
-      <img class="faded" src="logos/{{ fallback_logo }}" alt="{{ entry.org.name }}">
+      <img class="logo logo--faded" src="logos/{{ fallback_logo }}" alt="{{ entry.org.name }}">
       {% endif %}
     </a>
-    <div>
-      <h1><a href="{{ entry.org.url }}">{{ entry.org.name }}</a></h1>
-      <h2>{{ entry.role_name }}</h2>
-      <p class="when">{{ entry.html_range | safe }}</p>
+    <div class="experience__info">
+      <h2><a class="experience__org-link" href="{{ entry.org.url }}">{{ entry.org.name }}</a></h2>
+      <h3>{{ entry.role_name }}</h3>
+      <p class="experience__info__when">{{ entry.html_range | safe }}</p>
     </div>
     {% if entry.github is defined %}
-    <ul class="github">
+    <ul class="experience__links">
       {% for gh in entry.github %}
-      <li><a href="https://github.com/{{ gh }}">{{ gh }}</a> <i class="fa fa-github"></i>
+      <li class="experience__links__item"><a href="https://github.com/{{ gh }}">{{ gh }}</a> <i class="fa fa-github"></i>
       {% endfor %}
     </ul>
     {% endif %}
