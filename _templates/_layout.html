@@ -5,22 +5,24 @@
     <meta name="author" content="Michael Walker">
     <meta name="robots" content="FOLLOW,INDEX">
 
-    <base href="{{ site_root|e }}">
+    <base href="{{ base_href }}">
 
-    <title>{{ title|e }}</title>
+    <title>{{ title }}</title>
 
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet preload" href="{{ hashed_links['main.css'] }}" as="style" type="text/css">
+    <link rel="stylesheet preload" href="{{ hashed_links['fontawesome.css'] }}" as="style" type="text/css">
+    <link rel="stylesheet preload" href="{{ hashed_links['webfonts.css'] }}" as="style" type="text/css">
   </head>
 
-  <body itemscope itemtype="http://schema.org/WebPage">
-    <article itemscope itemtype="http://schema.org/{% block itemtype %}{% endblock %}" itemprop="mainEntity">
+  <body>
+    <article>
       <header class="box">
         {% block header %}{% endblock %}
       </header>
 
       {% block body %}{% endblock %}
 
-      {% if not is_root %}
+      {% if link != "index.html" %}
       <footer>
         <nav>
           <a href="" title="Go back"><i class="fa fa-arrow-left"></i></a>

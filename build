@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-"""build.py
+"""build
 
 Usage:
-  build.py [--out=<dir>] [--root=<url>]
-  build.py (-h | --help)
+  build [--out=<dir>] [--root=<url>]
+  build (-h | --help)
 
 Options:
   -h --help       Show this screen.
@@ -13,195 +13,83 @@ Options:
 
 """
 
+import hashlib
+import jinja2
+import markdown
 import os
-import pypandoc
-import subprocess
 import yaml
 
 from datetime import datetime
-from distutils.dir_util import create_tree, copy_tree
+from distutils import dir_util, file_util
 from docopt import docopt
-from jinja2 import Environment, FileSystemLoader, select_autoescape
-
-
-class PageReader:
-    def __init__(self, pagedir="pages"):
-        self.pagedir = pagedir
-
-    def pages(self):
-        """Read and parse all pages.
-        """
-
-        pages = []
-
-        for pagefile in os.listdir(self.pagedir):
-            fpath = os.path.join(self.pagedir, pagefile)
-            if not os.path.isfile(fpath):
-                continue
-
-            with open(fpath, "r") as f:
-                frontmatter, content = PageReader.__split_frontmatter_content(fpath, f.readlines())
-
-            page = frontmatter
-            page["content"] = PageReader.__pandocise_page_content(pagefile, content)
-
-            pages.append(page)
-
-        return pages
-
-
-    @staticmethod
-    def __split_frontmatter_content(fpath, lines):
-        """Split a file into frontmatter and content, and interpret the
-        frontmatter as a YAML document.
-        """
-
-        # structure of a document is:
-        #
-        #    ---
-        #    yaml frontmatter
-        #    ---
-        #    content
-        #
-        # there may be more '---'s in the content, so we want the
-        # index of the first one after the initial line.
-        idx = lines[1:].index("---\n") + 1
-
-        frontmatter = yaml.load("".join(lines[1:idx]), Loader=yaml.SafeLoader)
-        content = "".join(lines[idx + 1:])
-
-        # add the implicit frontmatter
-        if "slug" not in frontmatter:
-            frontmatter["slug"], _ = os.path.splitext(os.path.basename(fpath))
-        if "published" not in frontmatter:
-            datestr = subprocess.check_output(["git", "log", "--diff-filter=A", "--follow", "--date=short", "--format=%ad", "-1", "--", fpath])
-            try:
-                frontmatter["published"] = datetime.strptime(datestr.decode("utf-8").strip(), "%Y-%m-%d")
-            except:
-                # this will be reached if the file hasn't been committed
-                frontmatter["published"] = datetime.now()
-        frontmatter["published_iso"] = frontmatter.get("published_iso", frontmatter["published"].strftime("%Y-%m-%d"))
-        frontmatter["published_pp"] = frontmatter.get("published_pp", frontmatter["published"].strftime("%B %-d, %Y"))
-        frontmatter["modified"] = frontmatter.get("modified", frontmatter.get("date", frontmatter["published"]))
-        frontmatter["modified_iso"] = frontmatter.get("modified_iso", frontmatter["modified"].strftime("%Y-%m-%d"))
-        frontmatter["modified_pp"] = frontmatter.get("modified_pp", frontmatter["modified"].strftime("%B %-d, %Y"))
-
-        return frontmatter, content
-
-
-    @staticmethod
-    def __pandocise_page_content(pagefile, content):
-        """Render a page's content using pandoc.
-        """
-
-        _, fmt = os.path.splitext(pagefile)
-        fmt = fmt[1:]
-
-        return pypandoc.convert_text(content, "html", format=fmt)
-
-
-class WebsiteBuilder:
-    def __init__(self, outdir, siteroot, cssdir="css", tpldir="templates"):
-        self.outdir = outdir
-        self.siteroot = siteroot
-        self.cssdir = cssdir
-
-        self.env = Environment(
-            loader=FileSystemLoader(tpldir),
-            autoescape=False,
-        )
-
-
-    def copy(self, source):
-        """Copy the 'source' into the $target directory.
-        """
-
-        copy_tree(source, self.outdir)
-
-
-    def index(self):
-        """Render the index page.
-        """
-
-        with open("barrucadu.yaml", "r") as f:
-            metadata = yaml.load(f, Loader=yaml.SafeLoader)
-        self.__render("index.html", "index.html",
-            title="barrucadu",
-            **metadata,
-        )
-
-
-    def css(self, target="style.css"):
-        """Combine all the css files.
-        """
-
-        create_tree(self.outdir, [target])
-
-        with open(os.path.join(self.outdir, target), "w") as of:
-            for cssfile in os.listdir(self.cssdir):
-                fpath = os.path.join(self.cssdir, cssfile)
-                if not os.path.isfile(fpath):
-                    continue
-
-                with open(fpath, "r") as f:
-                    print(f.read(), file=of)
-
-
-    def robots(self):
-        """Render the robots.txt.
-        """
-
-        self.__render("robots.txt", "robots.txt")
-
-
-    def sitemap(self, pages):
-        """Render an XML sitemap.
-        """
-
-        self.__render("sitemap.xml", "sitemap.xml",
-            pages=pages,
-        )
-
-
-    def page(self, page):
-        """Render a page.
-        """
-
-        self.__render(page["slug"] + ".html", "page.html", **page)
-
-
-    def __render(self, fname, tplfile, **kwargs):
-        """Render a template to a file.  The file name is interpreted relative
-        to the base directory.
-        """
-
-        create_tree(self.outdir, [fname])
-
-        tplargs = {
-            "is_root": fname == "index.html",
-            "site_root": self.siteroot,
-            "url": fname,
-        }
-
-        template = self.env.get_template(tplfile)
-        rendered = template.render(**tplargs, **kwargs)
-
-        with open(os.path.join(self.outdir, fname), "w") as f:
-            print(rendered, file=f)
 
 
 args = docopt(__doc__)
+OUT_DIR = args["--out"]
+BASE_HREF = args["--root"]
 
-pages = PageReader("pages").pages()
+JINJA2_ENV = jinja2.Environment(
+    autoescape=jinja2.select_autoescape(["html", "xml"]),
+    loader=jinja2.FileSystemLoader("_templates"),
+)
 
-builder = WebsiteBuilder(args["--out"], args["--root"])
+dir_util.copy_tree("static", OUT_DIR)
 
-builder.copy("static")
+HASHED_LINKS = {}
+for fname in os.listdir("hashed-static"):
+    fpath = os.path.join("hashed-static", fname)
+    if not os.path.isfile(fpath):
+        continue
 
-builder.index()
-builder.css() # todo - minify
-builder.robots()
-builder.sitemap(pages)
+    file_hash = hashlib.sha256()
+    with open(fpath, "rb") as f:
+        while True:
+            data = f.read(65536)
+            if not data:
+                break
+            file_hash.update(data)
+    base, ext = os.path.splitext(fname)
+    HASHED_LINKS[fname] = f"{base}-sha256-{file_hash.hexdigest()}{ext}"
+    file_util.copy_file(fpath, os.path.join(OUT_DIR, HASHED_LINKS[fname]))
 
-for page in pages:
-    builder.page(page)
+ALL_PAGES = []
+for fname in os.listdir("pages"):
+    fpath = os.path.join("pages", fname)
+    if not os.path.isfile(fpath):
+        continue
+
+    with open(fpath, "r") as f:
+        lines = f.readlines()
+        idx = lines[1:].index("---\n") + 1
+        page = yaml.load("".join(lines[1:idx]), Loader=yaml.SafeLoader)
+        if "slug" not in page:
+            page["slug"], _ = os.path.splitext(os.path.basename(fpath))
+        page["permalink"] = f"{BASE_HREF}{page['slug']}.html"
+        page["date_iso"] = page["date"].strftime("%Y-%m-%d")
+        page["date_pp"] = page["date"].strftime("%B %-d, %Y")
+        page["text"] = "".join(lines[idx + 1:])
+        page["body"] = markdown.markdown(page["text"], output_format="html5", extensions=["smarty"])
+    ALL_PAGES.append(page)
+
+
+def render(link, template, **metadata):
+     with open(os.path.join(OUT_DIR, link), "w") as f:
+         rendered = JINJA2_ENV.get_template(template).render(
+             base_href=BASE_HREF,
+             hashed_links=HASHED_LINKS,
+             permalink=f"{BASE_HREF}{link}",
+             link=link,
+             **metadata,
+         )
+         print(rendered, file=f)
+
+
+with open("barrucadu.yaml", "r") as f:
+    index_metadata = yaml.load(f, Loader=yaml.SafeLoader)
+    render("index.html", "index.html", title="barrucadu", **index_metadata)
+
+render("robots.txt", "robots.txt")
+render("sitemap.xml", "sitemap.xml", pages=ALL_PAGES)
+
+for page in ALL_PAGES:
+    render(f"{page['slug']}.html", "page.html", title=page["title"], page=page)

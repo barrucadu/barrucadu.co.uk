@@ -1,0 +1,17 @@
+<li>
+  <a class="title" href="publications/{{ entry.file }}.pdf">{{ entry.title }}</a>
+  <br/>
+  <span class="description">
+    {% if entry.venue is defined %}
+    {{ phrase }} <em>{{ entry.venue.name }} (<a href="{{ entry.venue.url }}">{{ entry.venue.acronym }}</a>)</em>.
+    {% else %}
+    {{ entry.description }}
+    {% endif %}
+    {% if show_bib %}
+    [<a href="publications/{{ entry.file }}.bib">bib</a>]
+    {% endif %}
+    {% if entry.doi is defined %}
+    [<a href="https://doi.org/{{ entry.doi }}">doi</a>]
+    {% endif %}
+  </span>
+</li>

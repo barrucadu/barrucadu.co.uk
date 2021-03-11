@@ -1,4 +1,4 @@
 docopt
 jinja2
-pypandoc
+markdown
 pyyaml
