@@ -1,0 +1,91 @@
+resource_types:
+  - name: rsync-resource
+    type: docker-image
+    source:
+      repository: registry.barrucadu.dev/rsync-resource
+      username: registry
+      password: ((docker-registry-password))
+
+resources:
+  - name: cv-git
+    type: git
+    source:
+      uri: https://github.com/barrucadu/cv.git
+  - name: www-git
+    type: git
+    source:
+      uri: https://github.com/barrucadu/barrucadu.co.uk.git
+  - name: www-rsync
+    type: rsync-resource
+    source:
+      server: dunwich.barrucadu.co.uk
+      remote_dir: /srv/http/barrucadu.co.uk/www
+      private_key: ((dunwich-ssh-private-key))
+
+jobs:
+  - name: update-pipeline
+    plan:
+      - get: www-git
+        trigger: true
+      - set_pipeline: www-barrucadu-co-uk
+        file: www-git/concourse/pipeline.yml
+
+  - name: build-and-deploy
+    serial: true
+    plan:
+      - get: cv-git
+        trigger: true
+      - get: www-git
+        trigger: true
+      - task: build-site
+        params:
+          OUT_DIR: www
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: registry.barrucadu.dev/barrucadu.co.uk-builder
+              username: registry
+              password: ((docker-registry-password))
+          inputs:
+            - name: www-git
+          outputs:
+            - name: site
+          run:
+            dir: www-git
+            path: sh
+            args:
+              - -cex
+              - |
+                virtualenv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
+                PATH=.:$PATH ./build --out="../site/${OUT_DIR}"
+      - task: build-cv
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: registry.barrucadu.dev/barrucadu.co.uk-builder
+              username: registry
+              password: ((docker-registry-password))
+          inputs:
+            - name: cv-git
+            - name: site
+          outputs:
+            - name: site
+          run:
+            dir: cv-git
+            path: sh
+            args:
+              - -cex
+              - |
+                latexmk -pdf -xelatex cv-full.tex
+                mv cv-full.pdf ../site/www/cv.pdf
+      - put: www-rsync
+        params:
+          path: site/www
+          rsync_args:
+            - --delete
