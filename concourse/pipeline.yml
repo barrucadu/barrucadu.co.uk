@@ -45,9 +45,8 @@ jobs:
           image_resource:
             type: docker-image
             source:
-              repository: registry.barrucadu.dev/barrucadu.co.uk-builder
-              username: registry
-              password: ((docker-registry-password))
+              repository: python
+              tag: 3.8
           inputs:
             - name: www-git
           outputs:
@@ -58,19 +57,15 @@ jobs:
             args:
               - -cex
               - |
-                virtualenv venv
-                source venv/bin/activate
                 pip install -r requirements.txt
-                PATH=.:$PATH ./build --out="../site/${OUT_DIR}"
+                ./build --out="../site/${OUT_DIR}"
       - task: build-cv
         config:
           platform: linux
           image_resource:
             type: docker-image
             source:
-              repository: registry.barrucadu.dev/barrucadu.co.uk-builder
-              username: registry
-              password: ((docker-registry-password))
+              repository: texlive/texlive
           inputs:
             - name: cv-git
             - name: site
