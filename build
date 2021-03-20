@@ -19,7 +19,6 @@ import markdown
 import os
 import yaml
 
-from datetime import datetime
 from distutils import dir_util, file_util
 from docopt import docopt
 
@@ -60,28 +59,29 @@ for fname in os.listdir("pages"):
 
     with open(fpath, "r") as f:
         lines = f.readlines()
-        idx = lines[1:].index("---\n") + 1
-        page = yaml.load("".join(lines[1:idx]), Loader=yaml.SafeLoader)
+        metadata_end_idx = lines[1:].index("---\n") + 1
+        text_start_idx = metadata_end_idx + 1
+        page = yaml.load("".join(lines[1:metadata_end_idx]), Loader=yaml.SafeLoader)
         if "slug" not in page:
             page["slug"], _ = os.path.splitext(os.path.basename(fpath))
         page["permalink"] = f"{BASE_HREF}{page['slug']}.html"
         page["date_iso"] = page["date"].strftime("%Y-%m-%d")
         page["date_pp"] = page["date"].strftime("%B %-d, %Y")
-        page["text"] = "".join(lines[idx + 1:])
+        page["text"] = "".join(lines[text_start_idx:])
         page["body"] = markdown.markdown(page["text"], output_format="html5", extensions=["smarty"])
     ALL_PAGES.append(page)
 
 
 def render(link, template, **metadata):
-     with open(os.path.join(OUT_DIR, link), "w") as f:
-         rendered = JINJA2_ENV.get_template(template).render(
-             base_href=BASE_HREF,
-             hashed_links=HASHED_LINKS,
-             permalink=f"{BASE_HREF}{link}",
-             link=link,
-             **metadata,
-         )
-         print(rendered, file=f)
+    with open(os.path.join(OUT_DIR, link), "w") as f:
+        rendered = JINJA2_ENV.get_template(template).render(
+            base_href=BASE_HREF,
+            hashed_links=HASHED_LINKS,
+            permalink=f"{BASE_HREF}{link}",
+            link=link,
+            **metadata,
+        )
+        print(rendered, file=f)
 
 
 with open("barrucadu.yaml", "r") as f:
