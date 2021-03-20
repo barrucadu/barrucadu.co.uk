@@ -57,7 +57,7 @@ jobs:
             args:
               - -cex
               - |
-                pip install -r requirements.txt
+                pip install -r requirements-freeze.txt
                 ./build --out="../site/${OUT_DIR}"
       - task: build-cv
         config:
