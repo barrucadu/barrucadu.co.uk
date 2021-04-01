@@ -15,9 +15,7 @@ Options:
 
 import hashlib
 import jinja2
-import markdown
 import os
-import yaml
 
 from distutils import dir_util, file_util
 from docopt import docopt
@@ -51,45 +49,9 @@ for fname in os.listdir("hashed-static"):
     HASHED_LINKS[fname] = f"{base}-sha256-{file_hash.hexdigest()}{ext}"
     file_util.copy_file(fpath, os.path.join(OUT_DIR, HASHED_LINKS[fname]))
 
-ALL_PAGES = []
-for fname in os.listdir("pages"):
-    fpath = os.path.join("pages", fname)
-    if not os.path.isfile(fpath):
-        continue
-
-    with open(fpath, "r") as f:
-        lines = f.readlines()
-        metadata_end_idx = lines[1:].index("---\n") + 1
-        text_start_idx = metadata_end_idx + 1
-        page = yaml.load("".join(lines[1:metadata_end_idx]), Loader=yaml.SafeLoader)
-        if "slug" not in page:
-            page["slug"], _ = os.path.splitext(os.path.basename(fpath))
-        page["permalink"] = f"{BASE_HREF}{page['slug']}.html"
-        page["date_iso"] = page["date"].strftime("%Y-%m-%d")
-        page["date_pp"] = page["date"].strftime("%B %-d, %Y")
-        page["text"] = "".join(lines[text_start_idx:])
-        page["body"] = markdown.markdown(page["text"], output_format="html5", extensions=["smarty"])
-    ALL_PAGES.append(page)
-
-
-def render(link, template, **metadata):
-    with open(os.path.join(OUT_DIR, link), "w") as f:
-        rendered = JINJA2_ENV.get_template(template).render(
-            base_href=BASE_HREF,
-            hashed_links=HASHED_LINKS,
-            permalink=f"{BASE_HREF}{link}",
-            link=link,
-            **metadata,
-        )
-        print(rendered, file=f)
-
-
-with open("barrucadu.yaml", "r") as f:
-    index_metadata = yaml.load(f, Loader=yaml.SafeLoader)
-    render("index.html", "index.html", title="barrucadu", **index_metadata)
-
-render("robots.txt", "robots.txt")
-render("sitemap.xml", "sitemap.xml", pages=ALL_PAGES)
-
-for page in ALL_PAGES:
-    render(f"{page['slug']}.html", "page.html", title=page["title"], page=page)
+with open(os.path.join(OUT_DIR, "index.html"), "w") as f:
+    rendered = JINJA2_ENV.get_template("index.html").render(
+        base_href=BASE_HREF,
+        hashed_links=HASHED_LINKS,
+    )
+    print(rendered, file=f)

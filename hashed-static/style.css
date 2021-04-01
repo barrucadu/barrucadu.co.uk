@@ -1,0 +1,90 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/gentiumbookbasic.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(fonts/inconsolata.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+    --text: #c9d1d9;
+    --link: #a33b3b;
+    --bg: #0d1117;
+    --border: #30363d;
+}
+
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+    object-fit: scale-down;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 20px;
+    font-family: "Gentium Book Basic", serif;
+    color: var(--text);
+    background-color: var(--bg);
+}
+
+body {
+    padding: 32px 0;
+}
+
+div {
+    max-width: 960px;
+    margin: 16px auto 32px auto;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    color: var(--border);
+    height: 1px;
+}
+
+h1, h2 {
+    font-size: 2em;
+    margin: 0 0 24px 0;
+    font-weight: bold;
+}
+
+p, li, details {
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+pre {
+    margin: 16px 0;
+    padding-left: 1em;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+a, a:active, a:link, a:visited, a:hover, summary {
+    color: var(--link);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+emph {
+    font-weight: bold;
+    font-style: normal;
+}
+
+pre {
+    font-family: "Inconsolata", monospace;
+}

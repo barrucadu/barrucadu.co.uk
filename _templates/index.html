@@ -1,51 +1,188 @@
-{% extends "_layout.html" %}
-{% block header %}
-<h1>barrucadu</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="Michael Walker">
+    <meta name="robots" content="FOLLOW,INDEX">
 
-<p>I'm <strong>Michael Walker</strong>. I also go by <strong>barrucadu</strong>.<br/>
-  It's like the <a href="https://en.wikipedia.org/wiki/barracuda">fish</a>, but with the vowels wrong.</p>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<nav class="navigation">
-  <a class="navigation__link" href="https://twitter.com/barrucadu" title="Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="navigation__link" href="https://uk.linkedin.com/in/barrucadu" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-  <a class="navigation__link" href="https://github.com/barrucadu" title="GitHub"><i class="fa fa-github"></i></a>
-  <a class="navigation__link" href="mailto:mike@barrucadu.co.uk" title="Email"><i class="fa fa-envelope"></i></a>
-  <a class="navigation__link" href="gpg-public-key.asc" title="GPG"><i class="fa fa-lock"></i></a>
-</nav>
+    <base href="{{ base_href }}">
 
-<hr>
+    <title>barrucadu</title>
 
-<p><strong>What have I done in the past?</strong> See my <a href="cv.pdf">CV</a>.<br/>
-  <strong>What am I doing now?</strong> See my <a rel="author" href="now.html">&ldquo;now&rdquo; page</a>.<br/>
-  <strong>Sometimes I write things!</strong> See my <a rel="author" href="https://memo.barrucadu.co.uk/">memos</a>.</p>
-{% endblock %}
-{% block body %}
-<section class="box">
-  <h1>Work</h1>
+    <link rel="stylesheet preload" href="{{ hashed_links['style.css'] }}" as="style" type="text/css">
+  </head>
 
-  {% for entry in work %}
-    {% include "_experience.html" %}
-  {% endfor %}
-</section>
+  <body>
+    <div>
+      <h1>Hello,</h1>
 
-<section class="box">
-  <h1>Research</h1>
+      <p>
+        I'm <emph>barrucadu</emph>, also known in meatspace as <emph>Michael Walker</emph>.
+      </p>
 
-  <ol class="links wide">
-    {% for entry in research.papers %}
-      {% set phrase = "In" %}
-      {% set show_bib = true %}
-      {% include "_research.html" %}
-    {% endfor %}
-  </ol>
-</section>
+      <p>
+        I'm a <emph>Senior Developer</emph> working on <a href="https://www.gov.uk">GOV.UK</a> for the <emph>Government Digital Service</emph>.
+      </p>
 
-<section class="box">
-  <h1>Open Source</h1>
+      <p>
+        In my spare time, I like programming and tinkering with DevOps for fun.
+        My go-to languages are <emph>Python</emph>, <emph>Ruby</emph>, and <emph>Haskell</emph>.
+        I run <emph>NixOS</emph> on all my machines.
+        I like <emph>Configuration as Code</emph> and <emph>Infrastructure as Code</emph>.
+      </p>
 
-  {% for entry in open_source %}
-    {% set fallback_logo = "github.png" %}
-    {% include "_experience.html" %}
-  {% endfor %}
-</section>
-{% endblock %}
+      <p>
+        I have a <a href="https://memo.barrucadu.co.uk">blog</a>, updated weekly with what's been going on in my life.
+      </p>
+
+      <p>
+        I also play, and think a lot about, roleplaying games.
+        My current game of choice is <emph>Call of Cthulhu 7th edition</emph>.
+        I run a <a href="https://www.lookwhattheshoggothdraggedin.com/">TTRPG blog</a>, updated once or twice a month.
+      </p>
+
+      <p>
+        You can find me elsewhere on the internet:
+      </p>
+
+      <ul>
+        <li><a href="https://twitter.com/barrucadu">Twitter</a></li>
+        <li><a href="https://www.linkedin.com/in/barrucadu">Linkedin</a></li>
+        <li><a href="https://github.com/barrucadu">GitHub</a></li>
+        <li><a href="mailto:mike@barrucadu.co.uk">Email</a></li>
+      </ul>
+
+      <p>
+        If you want to send me encrypted mail, <a href="gpg-public-key.asc">here's my GPG key</a>.
+      </p>
+    </div>
+
+    <hr>
+
+    <div>
+      <h2 id="work">Work</h2>
+
+      <p>
+        I'm currently the <emph>Tech Lead</emph> for GOV.UK's <emph>accounts and personalisation</emph> team.
+      </p>
+
+      <p>
+        We're aiming to make it easier to use government services and to find things you need.
+      </p>
+
+      <p>
+        I lead a small team of developers, and work with <emph>product</emph>, <emph>delivery</emph> and <emph>user-centred design</emph> teammates to define what we build and advise on relevant technical matters.
+        I also work with more senior stakeholders, both technical and nontechnical, to ensure that what we're doing meets the GOV.UK vision and fits in with what other teams are doing.
+      </p>
+
+      <p>
+        In the past at GOV.UK I've also spent a lot of time working on <emph>search</emph>, upgrading <emph>Elasticsearch</emph> and productionising a <emph>machine learning search ranking system</emph>.
+      </p>
+
+      <p>
+        I like working on tricky technical challenges, and gravitate to <emph>infrastructure</emph> or <emph>backend</emph>.
+      </p>
+
+      <p>
+        See <a href="cv.pdf">my CV</a> for a bullet-point highlight reel.
+      </p>
+    </div>
+
+    <hr>
+
+    <div>
+      <h2 id="research">Research</h2>
+
+      <p>
+        I did a Ph.D at the <emph>University of York</emph> on the topic of <emph>testing concurrent Haskell programs</emph>.
+        I ultimately decided that academia wasn't for me, but I'm glad I stuck it out to the end.
+      </p>
+
+      <p>
+        Here's a <a href="publications/thesis.pdf">PDF of my thesis</a>.
+      </p>
+
+      <p>
+        I published a couple of papers too:
+      </p>
+
+      <ul>
+        <li>One about <a href="publications/dejafu-hs15.pdf">testing concurrent Haskell programs</a>.</li>
+        <li>And another about <a href="publications/coco-flops18.pdf">discovering properties of concurrency APIs</a>.</li>
+      </ul>
+
+      <p>
+        If you want to cite any of my publications, click the headings below to show the BibTeX:
+      </p>
+
+      <details>
+        <summary>Show BibTeX to cite my thesis.</summary>
+        <pre>@PhdThesis{walker2018,
+  author = "Walker, Michael",
+  title  = "Revealing Behaviours of Concurrent Functional Programs by Systematic Testing",
+  year   = 2018,
+}</pre>
+      </details>
+
+      <details>
+        <summary>Show BibTeX to cite my paper &quot;Déjà Fu: A Concurrency Testing Library for Haskell&quot;.</summary>
+        <pre>@InProceedings{dejafu-hs15,
+  author    = "Walker, Michael and Runciman, Colin",
+  title     = {{ "{{D{\'e}j\`{a} Fu}: {A} Concurrency Testing Library for {Haskell}}" }},
+  booktitle = "Proceedings of the 8th ACM SIGPLAN Symposium on Haskell",
+  series    = "Haskell 2015",
+  year      = "2015",
+  isbn      = "978-1-4503-3808-0",
+  location  = "Vancouver, BC, Canada",
+  pages     = "141--152",
+  numpages  = "12",
+  url       = "http://doi.acm.org/10.1145/2804302.2804306",
+  doi       = "10.1145/2804302.2804306",
+  acmid     = "2804306",
+  publisher = "ACM",
+  address   = "New York, NY, USA",
+}</pre>
+      </details>
+
+      <details>
+        <summary>Show BibTeX to cite my paper &quot;Cheap Remarks About Concurrent Programs&quot;.</summary>
+        <pre>@InProceedings{coco-flops18,
+  author    = "Walker, Michael and Runciman, Colin",
+  title     = "Cheap Remarks About Concurrent Programs",
+  booktitle = "Functional and Logic Programming",
+  year      = 2018,
+  editor    = "Gallagher, John P. and Sulzmann, Martin",
+  series    = "FLOPS 2018",
+  pages     = "264-279",
+  publisher = "Springer International Publishing",
+  isbn      = "978-3-319-90686-7",
+  location  = "Nagoya, Japan",
+  url       = "https://doi.org/10.1007/978-3-319-90686-7_17",
+  doi       = "10.1007/978-3-319-90686-7_17",
+}</pre>
+      </details>
+    </div>
+
+    <hr>
+
+    <div>
+      <h2 id="open-source">Open source</h2>
+
+      <p>
+        My main open source project is <a href="https://github.com/barrucadu/dejafu">Déjà Fu</a>, a library for <emph>testing concurrent Haskell programs</emph>, which came out of my Ph.D research.
+        You can write deterministic unit tests to catch race conditions and other such bugs.
+        It comes with <emph>HUnit</emph> and <emph>Tasty</emph> bindings, so you can easily integrate it with your existing testsuite.
+      </p>
+
+      <p>
+        In the past I've also served as project leader for <a href="https://github.com/archhurd">Arch Hurd</a>, a <emph>GNU/Hurd</emph> distribution based on <emph>Arch Linux</emph>; and worked as one of the first few developers for <a href="https://github.com/uzbl">Uzbl</a>, a Webkit-based web browser.
+      </p>
+
+      <p>
+        I also have some Haskell IRC libraries: <a href="https://github.com/barrucadu/irc-ctcp">irc-ctcp</a>, <a href="https://github.com/barrucadu/irc-conduit">irc-conduit</a>, and <a href="https://github.com/barrucadu/irc-client">irc-client</a>.  But these are essentially abandonware right now.  If you want to maintain them, get in touch!
+      </p>
+    </div>
+  </body>
+</html>
