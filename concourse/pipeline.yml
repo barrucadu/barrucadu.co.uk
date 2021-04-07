@@ -77,8 +77,8 @@ jobs:
             args:
               - -cex
               - |
-                latexmk -pdf -xelatex cv-full.tex
-                mv cv-full.pdf ../site/www/cv.pdf
+                latexmk -pdf -xelatex cv.tex
+                mv cv.pdf ../site/www/cv.pdf
       - put: www-rsync
         params:
           path: site/www
