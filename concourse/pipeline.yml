@@ -7,6 +7,11 @@ resource_types:
       password: ((docker-registry-password))
 
 resources:
+  - name: fonts-git
+    type: git
+    source:
+      uri: git@github.com:barrucadu/fonts.git
+      private_key: ((github-ssh-private-key))
   - name: cv-git
     type: git
     source:
@@ -33,6 +38,7 @@ jobs:
   - name: build-and-deploy
     serial: true
     plan:
+      - get: fonts-git
       - get: cv-git
         trigger: true
       - get: www-git
@@ -67,6 +73,8 @@ jobs:
             source:
               repository: texlive/texlive
           inputs:
+            - name: fonts-git
+              path: fonts
             - name: cv-git
             - name: site
           outputs:
