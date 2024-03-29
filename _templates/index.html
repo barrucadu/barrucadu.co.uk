@@ -11,116 +11,146 @@
 
     <title>barrucadu</title>
 
-    <link rel="stylesheet preload" href="{{ hashed_links['style.css'] }}" as="style" type="text/css">
+    <link rel="stylesheet preload" href="{{ hashed_links['normalize.css'] }}" as="style" type="text/css">
+    <link rel="stylesheet preload" href="{{ hashed_links['magick.css'] }}" as="style" type="text/css">
+    <link rel="stylesheet preload" href="{{ hashed_links['fonts.css'] }}" as="style" type="text/css">
   </head>
 
   <body>
-    <section>
-      <h1>Hello,</h1>
+    <main>
+      <section>
+        <h1>Hello,</h1>
 
-      <p>
-        I'm <emph>barrucadu</emph>, also known in meatspace as <emph>Michael Walker</emph>.
-      </p>
+        <p>
+          I'm <strong>barrucadu</strong>, also known in meatspace as <strong>Michael Walker</strong>.
+        </p>
 
-      <p>
-        I'm a <emph>Software Engineer</emph> working at <a href="https://gocardless.com">GoCardless</a>.
-      </p>
+        <p>
+          I <a href="https://bookdb.barrucadu.co.uk/">read books</a> (mostly sci-fi &amp; fantasy, but I've been getting into history too);
+          I <a href="https://www.anime-planet.com/users/Barrucadu/">watch anime</a>;
+          I <a href="https://github.com/barrucadu/">program things for fun</a> (and <a href="cv.pdf">for work</a>);
+          I play and think about roleplaying games a lot, and <a href="https://www.lookwhattheshoggothdraggedin.com/">sometimes write about them</a>.
+          I <a href="https://weeknotes.barrucadu.co.uk/">write weeknotes</a>, updated every Sunday with what's going on in my life.
+          I used to be into boardgames, but I'm not so much anymore; similarly computer games.
+          I bake acceptable bread.
+          I enjoy listening to metal of all sorts (but casually&mdash;don't expect me to converse intelligently on it).
+          <br>
+          <small>I don't know what else to write here.</small>
+        </p>
 
-      <p>
-        In my spare time, I like programming and tinkering with DevOps for fun.
-        My go-to languages are <emph>Haskell</emph>, <emph>Python</emph>, <emph>Ruby</emph>, and <emph>Rust</emph>.
-        I run <emph>NixOS</emph> on all my machines.
-        I like <emph>Configuration as Code</emph> and <emph>Infrastructure as Code</emph>.
-      </p>
+        <p>
+          You can find me elsewhere on the internet:
+        </p>
 
-      <p>
-        I have a <a href="https://weeknotes.barrucadu.co.uk">blog</a>, updated weekly with what's been going on in my life.
-      </p>
+        <ul>
+          <li><a href="https://twitter.com/barrucadu">Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/barrucadu">Linkedin</a></li>
+          <li><a href="https://github.com/barrucadu">GitHub</a></li>
+          <li><a href="mailto:mike@barrucadu.co.uk">Email</a></li>
+        </ul>
+      </section>
 
-      <p>
-        I also play, and think a lot about, roleplaying games.
-        My current games of choice are <emph>Call of Cthulhu (7th edition)</emph>, <emph>Traveller (Mongoose 2nd edition)</emph>, and <emph>Old School Essentials</emph>.
-        I run a <a href="https://www.lookwhattheshoggothdraggedin.com/">TTRPG blog</a>, updated infrequently.
-      </p>
+      <section id="fun">
+        <h2>Fun</h2>
 
-      <p>
-        You can find me elsewhere on the internet:
-      </p>
+        <h3>Programming</h3>
+        <p>
+          I like programming and tinkering with DevOps in my spare time.
+          My go-to languages are <strong>Haskell</strong>, <strong>Python</strong>, <strong>Rust</strong>.
+          I run <strong>NixOS</strong> on all my machines.
+          I like <strong>Configuration as Code</strong> and <strong>Infrastructure as Code</strong>.
+        </p>
 
-      <ul>
-        <li><a href="https://twitter.com/barrucadu">Twitter</a></li>
-        <li><a href="https://www.linkedin.com/in/barrucadu">Linkedin</a></li>
-        <li><a href="https://github.com/barrucadu">GitHub</a></li>
-        <li><a href="mailto:mike@barrucadu.co.uk">Email</a></li>
-      </ul>
+        <p>
+          You can see all my projects <a href="https://github.com/barrucadu/">on GitHub</a>.  Some favourites are:
+        </p>
 
-      <p>
-        If you want to send me encrypted mail, <a href="gpg-public-key.asc">here's my GPG key</a>.
-      </p>
-    </section>
+        <ul>
+          <li><a href="https://github.com/barrucadu/dejafu">Déjà Fu</a>, a library for testing concurrent Haskell programs, which came out of my Ph.D.</li>
+          <li><a href="https://github.com/barrucadu/resolved">resolved</a>, a DNS server and adblocker designed for home networks.</li>
+          <li><a href="https://github.com/barrucadu/thing-doer">thing-doer</a>, a simple container orchestrator written to learn how those things work.</li>
+          <li>My <a href="https://github.com/barrucadu/nixfiles">NixOS configuration</a>, an endless source of tweaking.</li>
+        </ul>
 
-    <hr>
+        <p>
+          In the past I've also served as project leader for <a href="https://github.com/archhurd">Arch Hurd</a>, a <strong>GNU/Hurd</strong> distribution based on <strong>Arch Linux</strong>; and worked as one of the first few developers for <a href="https://github.com/uzbl">Uzbl</a>, a Webkit-based web browser.
+        </p>
 
-    <section id="work">
-      <h2>Work</h2>
+        <p>
+          I also have some Haskell IRC libraries: <a href="https://github.com/barrucadu/irc-ctcp">irc-ctcp</a>, <a href="https://github.com/barrucadu/irc-conduit">irc-conduit</a>, and <a href="https://github.com/barrucadu/irc-client">irc-client</a>.  But these are essentially abandonware right now.  If you want to maintain them, get in touch!
+        </p>
 
-      <p>
-        I'm a software engineer on GoCardless's <emph>Payment Flows</emph> team.
-        We own the core models and logic that handle payments, in the heart of the business.
-      </p>
+        <h3>Roleplaying Games</h3>
+        <p>
+          My current games of choice are <strong>Call of Cthulhu (7th edition)</strong>, <strong>Traveller (Mongoose 2nd edition)</strong>, and <strong>Old School Essentials</strong>.  I also greatly enjoy <strong>Dolmenwood</strong>, <strong>Delta Green</strong>, and <strong>ALIEN</strong>.  I'm not really a fan of storygames, being pretty firmly in the &quot;traditional&quot; and &quot;OSR&quot; camps.
+        </p>
 
-      <p>
-        Before GoCardless, I worked for the Government Digital Service on <a href="https://www.gov.uk">GOV.UK</a>.
-      </p>
+        <p>
+          Right now I'm running one regular game, a campaign of <strong>The Halls of Arden Vul</strong>: the greatest megadungeon ever written.
+        </p>
 
-      <p>
-        I like working on tricky technical challenges, and gravitate to <emph>infrastructure</emph> or <emph>backend</emph>.
-      </p>
+        <p>
+          I also run a <a href="https://www.lookwhattheshoggothdraggedin.com/">TTRPG blog</a>, updated infrequently.
+        </p>
+      </section>
 
-      <p>
-        See <a href="cv.pdf">my CV</a> for a bullet-point highlight reel.
-      </p>
-    </section>
+      <section id="work">
+        <h2>Work</h2>
 
-    <hr>
+        <p>
+          I'm a <strong>Senior Software Engineer</strong> at <a href="https://gocardless.com/">GoCardless</a> on the <strong>Merchant Engagement</strong> team.
+          We have a wide remit covering much of everything that existing customers directly interact with.
+        </p>
 
-    <section id="research">
-      <h2>Research</h2>
+        <p>
+          Before GoCardless, I worked for the Government Digital Service on <a href="https://www.gov.uk">GOV.UK</a>.
+        </p>
 
-      <p>
-        I did a Ph.D at the <emph>University of York</emph> on the topic of <emph>testing concurrent Haskell programs</emph>.
-        I ultimately decided that academia wasn't for me, but I'm glad I stuck it out to the end.
-      </p>
+        <p>
+          I like working on tricky technical challenges, and gravitate to <strong>infrastructure</strong> or <strong>backend</strong>.
+        </p>
 
-      <p>
-        Here's a <a href="publications/thesis.pdf">PDF of my thesis</a>.
-      </p>
+        <p>
+          See <a href="cv.pdf">my CV</a> for a bullet-point highlight reel.
+        </p>
+      </section>
 
-      <p>
-        I published a couple of papers too:
-      </p>
+      <section id="research">
+        <h2>Research</h2>
 
-      <ul>
-        <li>One about <a href="publications/dejafu-hs15.pdf">testing concurrent Haskell programs</a>.</li>
-        <li>And another about <a href="publications/coco-flops18.pdf">discovering properties of concurrency APIs</a>.</li>
-      </ul>
+        <p>
+          I did a Ph.D at the <strong>University of York</strong> on the topic of <strong>testing concurrent Haskell programs</strong>.
+          I ultimately decided that academia wasn't for me, but I'm glad I stuck it out to the end.
+        </p>
 
-      <p>
-        If you want to cite any of my publications, click the headings below to show the BibTeX:
-      </p>
+        <p>
+          Here's a <a href="publications/thesis.pdf">PDF of my thesis</a>.
+        </p>
 
-      <details>
-        <summary>Show BibTeX to cite my thesis.</summary>
-        <pre>@PhdThesis{walker2018,
+        <p>
+          I published a couple of papers too:
+        </p>
+
+        <ul>
+          <li>One about <a href="publications/dejafu-hs15.pdf">testing concurrent Haskell programs</a>.</li>
+          <li>And another about <a href="publications/coco-flops18.pdf">discovering properties of concurrency APIs</a>.</li>
+        </ul>
+
+        <p>
+          If you want to cite any of those, use this BibTeX:
+        </p>
+
+        <figure>
+          <pre><code>@PhdThesis{walker2018,
   author = "Walker, Michael",
   title  = "Revealing Behaviours of Concurrent Functional Programs by Systematic Testing",
   year   = 2018,
-}</pre>
-      </details>
+}</code></pre>
+          <figcaption>My Ph.D thesis.</figcaption>
+        </figure>
 
-      <details>
-        <summary>Show BibTeX to cite my paper &quot;Déjà Fu: A Concurrency Testing Library for Haskell&quot;.</summary>
-        <pre>@InProceedings{dejafu-hs15,
+        <figure>
+          <pre><code>@InProceedings{dejafu-hs15,
   author    = "Walker, Michael and Runciman, Colin",
   title     = {{ "{{D{\'e}j\`{a} Fu}: {A} Concurrency Testing Library for {Haskell}}" }},
   booktitle = "Proceedings of the 8th ACM SIGPLAN Symposium on Haskell",
@@ -135,12 +165,12 @@
   acmid     = "2804306",
   publisher = "ACM",
   address   = "New York, NY, USA",
-}</pre>
-      </details>
+}</code></pre>
+          <figcaption>&quot;Déjà Fu: A Concurrency Testing Library for Haskell&quot;.</figcaption>
+        </figure>
 
-      <details>
-        <summary>Show BibTeX to cite my paper &quot;Cheap Remarks About Concurrent Programs&quot;.</summary>
-        <pre>@InProceedings{coco-flops18,
+        <figure>
+          <pre><code>@InProceedings{coco-flops18,
   author    = "Walker, Michael and Runciman, Colin",
   title     = "Cheap Remarks About Concurrent Programs",
   booktitle = "Functional and Logic Programming",
@@ -153,28 +183,10 @@
   location  = "Nagoya, Japan",
   url       = "https://doi.org/10.1007/978-3-319-90686-7_17",
   doi       = "10.1007/978-3-319-90686-7_17",
-}</pre>
-      </details>
-    </section>
-
-    <hr>
-
-    <section id="open-source">
-      <h2>Open source</h2>
-
-      <p>
-        My main open source project is <a href="https://github.com/barrucadu/dejafu">Déjà Fu</a>, a library for <emph>testing concurrent Haskell programs</emph>, which came out of my Ph.D research.
-        You can write deterministic unit tests to catch race conditions and other such bugs.
-        It comes with <emph>HUnit</emph> and <emph>Tasty</emph> bindings, so you can easily integrate it with your existing testsuite.
-      </p>
-
-      <p>
-        In the past I've also served as project leader for <a href="https://github.com/archhurd">Arch Hurd</a>, a <emph>GNU/Hurd</emph> distribution based on <emph>Arch Linux</emph>; and worked as one of the first few developers for <a href="https://github.com/uzbl">Uzbl</a>, a Webkit-based web browser.
-      </p>
-
-      <p>
-        I also have some Haskell IRC libraries: <a href="https://github.com/barrucadu/irc-ctcp">irc-ctcp</a>, <a href="https://github.com/barrucadu/irc-conduit">irc-conduit</a>, and <a href="https://github.com/barrucadu/irc-client">irc-client</a>.  But these are essentially abandonware right now.  If you want to maintain them, get in touch!
-      </p>
-    </section>
+}</code></pre>
+          <figcaption>&quot;Cheap Remarks About Concurrent Programs&quot;.</figcaption>
+        </figure>
+      </section>
+    </main>
   </body>
 </html>
