@@ -7,6 +7,14 @@
 }
 
 @font-face {
+  font-family: 'Heliotrope Caps';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url(fonts/heliotrope_6_caps_regular.woff2) format('woff2');
+}
+
+@font-face {
   font-family: 'Equity';
   font-style: italic;
   font-weight: 300;

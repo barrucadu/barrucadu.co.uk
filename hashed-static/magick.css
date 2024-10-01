@@ -499,6 +499,8 @@ input[type="submit"] {
     margin-top: 1.6rem; /* 3 */
     border: 1px solid var(--fg); /* 4 */
     cursor: pointer; /* 5 */
+    font-family: "Heliotrope Caps", cursive;
+    text-transform: lowercase;
 }
 
 /*
