@@ -21,6 +21,8 @@ from docopt import docopt
 from pathlib import Path
 
 
+FILTERS = {}
+
 args = docopt(__doc__)
 OUT_DIR = args["--out"]
 BASE_HREF = args["--root"]
@@ -54,7 +56,9 @@ for root, dirs, files in Path("content").walk():
     for dir in dirs:
         Path(target_dir, dir).mkdir()
     for file in files:
-        preamble = {}
+        preamble = {
+            "title": "barrucadu",
+        }
         body = []
         in_preamble = True
         for line in Path(root, file).read_text().splitlines():
@@ -68,10 +72,20 @@ for root, dirs, files in Path("content").walk():
             else:
                 body.append(line)
 
+        if "filters" in preamble:
+            for name in preamble.get("filters", "").split(","):
+                body = list(FILTERS[name](body))
+
+        body = "\n".join(body) + "\n"
+        template = JINJA2_ENV.get_template(preamble.get("template", "plain.html"))
+        if "extends" in preamble:
+            template = JINJA2_ENV.from_string(
+                f"{{% extends \"{preamble['extends']}\" %}}\n" + body
+            )
         Path(target_dir, file).with_suffix(".html").write_text(
-            JINJA2_ENV.get_template(preamble.get("template", "page.html")).render(
-                title=preamble.get("title", "barrucadu"),
-                body="\n".join(body) + "\n",
+            template.render(
+                **preamble,
+                body=body,
                 base_href=BASE_HREF,
                 hashed_links=HASHED_LINKS,
             )
