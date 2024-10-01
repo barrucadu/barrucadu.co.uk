@@ -15,10 +15,10 @@ Options:
 
 import hashlib
 import jinja2
-import os
+import shutil
 
-from distutils import dir_util, file_util
 from docopt import docopt
+from pathlib import Path
 
 
 args = docopt(__doc__)
@@ -30,28 +30,49 @@ JINJA2_ENV = jinja2.Environment(
     loader=jinja2.FileSystemLoader("_templates"),
 )
 
-dir_util.copy_tree("static", OUT_DIR)
+shutil.rmtree(OUT_DIR, ignore_errors=True)
+shutil.copytree("static", OUT_DIR, dirs_exist_ok=True)
 
 HASHED_LINKS = {}
-for fname in os.listdir("hashed-static"):
-    fpath = os.path.join("hashed-static", fname)
-    if not os.path.isfile(fpath):
+for fpath in Path("hashed-static").iterdir():
+    if not fpath.is_file():
         continue
 
     file_hash = hashlib.sha256()
-    with open(fpath, "rb") as f:
+    with fpath.open(mode="rb") as f:
         while True:
             data = f.read(65536)
             if not data:
                 break
             file_hash.update(data)
-    base, ext = os.path.splitext(fname)
-    HASHED_LINKS[fname] = f"{base}-sha256-{file_hash.hexdigest()}{ext}"
-    file_util.copy_file(fpath, os.path.join(OUT_DIR, HASHED_LINKS[fname]))
 
-with open(os.path.join(OUT_DIR, "index.html"), "w") as f:
-    rendered = JINJA2_ENV.get_template("index.html").render(
-        base_href=BASE_HREF,
-        hashed_links=HASHED_LINKS,
-    )
-    print(rendered, file=f)
+    HASHED_LINKS[fpath.name] = f"{fpath.stem}-sha256-{file_hash.hexdigest()}{fpath.suffix}"
+    shutil.copy(fpath, Path(OUT_DIR, HASHED_LINKS[fpath.name]))
+
+for root, dirs, files in Path("content").walk():
+    target_dir = Path(OUT_DIR, *root.parts[1:])
+    for dir in dirs:
+        Path(target_dir, dir).mkdir()
+    for file in files:
+        preamble = {}
+        body = []
+        in_preamble = True
+        for line in Path(root, file).read_text().splitlines():
+            if in_preamble:
+                if line and line[0] == "%":
+                    key, val = line[1:].split("=")
+                    preamble[key.strip()] = val.strip()
+                else:
+                    in_preamble = False
+                    body = [line]
+            else:
+                body.append(line)
+
+        Path(target_dir, file).with_suffix(".html").write_text(
+            JINJA2_ENV.get_template(preamble.get("template", "page.html")).render(
+                title=preamble.get("title", "barrucadu"),
+                body="\n".join(body) + "\n",
+                base_href=BASE_HREF,
+                hashed_links=HASHED_LINKS,
+            )
+        )

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="Michael Walker">
+    <meta name="robots" content="FOLLOW,INDEX">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <base href="{{ base_href }}">
+
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet preload" href="{{ hashed_links['normalize.css'] }}" as="style" type="text/css">
+    <link rel="stylesheet preload" href="{{ hashed_links['magick.css'] }}" as="style" type="text/css">
+    <link rel="stylesheet preload" href="{{ hashed_links['fonts.css'] }}" as="style" type="text/css">
+  </head>
+
+  <body>
+    <main>
+      {{ body|safe }}
+    </main>
+  </body>
+</html>

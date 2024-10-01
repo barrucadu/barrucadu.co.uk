@@ -12,6 +12,6 @@ else
   docker="podman"
 fi
 
-$docker run -it --rm -v $(pwd):/src -v $HOME/http/_site:/build -w /src python:3.11.4 sh -c "
+$docker run -it --rm -v $(pwd):/src -v $HOME/http/_site:/build -w /src python:3.12 sh -c "
   pip install -r requirements.txt
   ./build --root=$ROOT --out=/build"
