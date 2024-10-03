@@ -120,7 +120,7 @@ footer>*:last-child {
 /* Add large margins to the header to visually separate it from the main content. */
 header {
     margin-top: 12rem;
-    margin-bottom: 8rem;
+    margin-bottom: 2rem;
 }
 
 /* On mobile devices, reduce the margin around the header to save space. */
@@ -214,21 +214,12 @@ h4 {
 
 /* A uniquely styled h1 for the header */
 header h1 {
-    font-size: 4rem;
+    font-size: 8rem;
+    line-height: 6.6rem;
     color: var(--fg);
     text-align: center;
     padding: 4rem 0 1.2rem 0;
     margin-bottom: 1rem;
-}
-
-/* Additional decorations for the header h1 */
-header h1:before,
-header h1:after {
-    content: "✦";
-    color: var(--fg);
-    font-size: 1.5rem;
-    vertical-align: middle;
-    padding: 0 0.5rem;
 }
 
 /*

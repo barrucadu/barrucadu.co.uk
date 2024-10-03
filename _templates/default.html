@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block main %}
+<header>
+  <h1>{{ title }}</h1>
+</header>
+
+{% block content required %}{% endblock %}
+
+<footer>
+  {% block footer %}
+  <span class="big-link"><a href="">return</a></span>
+  {% endblock %}
+</footer>
+{% endblock %}

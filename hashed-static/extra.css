@@ -1,0 +1,11 @@
+.big-link:before, .big-link:after {
+    content: "✦";
+    font-size: 1rem;
+    vertical-align: middle;
+    padding: 0 0.5rem;
+}
+.big-link {
+    font-family: "Heliotrope Caps", cursive;
+    display: block;
+    text-align: center;
+}

@@ -58,7 +58,7 @@ for root, dirs, files in Path("content").walk():
     for file in files:
         preamble = {
             "title": "barrucadu",
-            "template": "layout.html",
+            "template": "default.html",
         }
         body = []
         in_preamble = True
