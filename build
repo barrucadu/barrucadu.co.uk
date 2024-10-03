@@ -58,6 +58,7 @@ for root, dirs, files in Path("content").walk():
     for file in files:
         preamble = {
             "title": "barrucadu",
+            "template": "layout.html",
         }
         body = []
         in_preamble = True
@@ -76,14 +77,11 @@ for root, dirs, files in Path("content").walk():
             for name in preamble.get("filters", "").split(","):
                 body = list(FILTERS[name](body, JINJA2_ENV))
 
-        body = "\n".join(body) + "\n"
-        template = JINJA2_ENV.get_template(preamble.get("template", "plain.html"))
-        if "extends" in preamble:
-            template = JINJA2_ENV.from_string(
-                f"{{% extends \"{preamble['extends']}\" %}}\n" + body
-            )
         Path(target_dir, file).with_suffix(".html").write_text(
-            template.render(
+            JINJA2_ENV.from_string(
+                f"{{% extends \"{preamble['template']}\" %}}\n" +
+                "\n".join(body),
+            ).render(
                 **preamble,
                 body=body,
                 base_href=BASE_HREF,
