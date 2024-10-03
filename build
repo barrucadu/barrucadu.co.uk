@@ -74,7 +74,7 @@ for root, dirs, files in Path("content").walk():
 
         if "filters" in preamble:
             for name in preamble.get("filters", "").split(","):
-                body = list(FILTERS[name](body))
+                body = list(FILTERS[name](body, JINJA2_ENV))
 
         body = "\n".join(body) + "\n"
         template = JINJA2_ENV.get_template(preamble.get("template", "plain.html"))
