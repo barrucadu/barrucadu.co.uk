@@ -16,7 +16,9 @@ Options:
 import hashlib
 import jinja2
 import shutil
+import sys
 
+from bs4 import BeautifulSoup
 from docopt import docopt
 from pathlib import Path
 
@@ -51,6 +53,7 @@ for fpath in Path("hashed-static").iterdir():
     HASHED_LINKS[fpath.name] = f"{fpath.stem}-sha256-{file_hash.hexdigest()}{fpath.suffix}"
     shutil.copy(fpath, Path(OUT_DIR, HASHED_LINKS[fpath.name]))
 
+links_to_check = {}
 for root, dirs, files in Path("content").walk():
     target_dir = Path(OUT_DIR, *root.parts[1:])
     for dir in dirs:
@@ -77,14 +80,38 @@ for root, dirs, files in Path("content").walk():
             for name in preamble.get("filters", "").split(","):
                 body = list(FILTERS[name](body, JINJA2_ENV))
 
-        Path(target_dir, file).with_suffix(".html").write_text(
-            JINJA2_ENV.from_string(
-                f"{{% extends \"{preamble['template']}\" %}}\n" +
-                "\n".join(body),
-            ).render(
-                **preamble,
-                body=body,
-                base_href=BASE_HREF,
-                hashed_links=HASHED_LINKS,
-            )
+        rendered = JINJA2_ENV.from_string(
+            f"{{% extends \"{preamble['template']}\" %}}\n" +
+            "\n".join(body),
+        ).render(
+            **preamble,
+            body=body,
+            base_href=BASE_HREF,
+            hashed_links=HASHED_LINKS,
         )
+        Path(target_dir, file).with_suffix(".html").write_text(rendered)
+
+        soup = BeautifulSoup(rendered, features="html.parser")
+        links = []
+        for tag, attr in [("a", "href"), ("img", "src"), ("link", "href")]:
+            for elem in soup.find_all(tag):
+                links.append(elem.attrs[attr].split("#")[0])
+        links_to_check[Path(*root.parts[1:], file)] = set(links)
+
+any_broken_links = False
+for page, links in links_to_check.items():
+    for link in links:
+        # cv.pdf is generated and copied over in the deployment script
+        if "://" in link or link in ["mailto:mike@barrucadu.co.uk", "cv.pdf"]:
+            continue
+
+        file_destination = Path(OUT_DIR, link)
+        dir_destination = Path(OUT_DIR, link, "index.html")
+        if file_destination.is_file() or dir_destination.is_file():
+            continue
+
+        print(f"BROKEN LINK {page}: {link}", file=sys.stderr)
+        any_broken_links = True
+
+if any_broken_links:
+    sys.exit(1)
