@@ -57,7 +57,7 @@ links_to_check = {}
 for root, dirs, files in Path("content").walk():
     target_dir = Path(OUT_DIR, *root.parts[1:])
     for dir in dirs:
-        Path(target_dir, dir).mkdir()
+        Path(target_dir, dir).mkdir(exist_ok=True)
     for file in files:
         preamble = {
             "title": "barrucadu",
