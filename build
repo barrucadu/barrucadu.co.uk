@@ -81,8 +81,7 @@ for root, dirs, files in Path("content").walk():
                 body = list(FILTERS[name](body, JINJA2_ENV))
 
         rendered = JINJA2_ENV.from_string(
-            f"{{% extends \"{preamble['template']}\" %}}\n" +
-            "\n".join(body),
+            f"{{% extends \"{preamble['template']}\" %}}\n" + "\n".join(body),
         ).render(
             **preamble,
             body=body,
