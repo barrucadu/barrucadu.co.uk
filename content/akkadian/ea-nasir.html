@@ -1,0 +1,354 @@
+%filters=akk
+%body_class=akk
+%template=akk.html
+%title=Complaint Tablet to Ea-Nāsir
+%source_type=transcription
+%source_url=https://cdli.mpiwg-berlin.mpg.de/artifacts/414985
+%source_title=CDLI
+
+{% block preamble %}
+<figure>
+  <img
+    src="akkadian/xkcd2758.png"
+    alt="My Favorite Things (xkcd 2758)"
+    title="When an Ur guy / sells Nanni things / but the copper's bad, / He simply records his complaint for all time / &quot;I got a bad deal / I'm maaaaad&quot;">
+  <figcaption>My Favorite Things (<a href="https://xkcd.com/2758/">xkcd 2758</a>)</figcaption>
+</figure>
+{% endblock %}
+
+{% block pretranslation %}
+<blockquote style="margin-top: 0; margin-bottom: 0; padding-top: 0;">
+  <p>To Ea-Nāṣir,</p>
+  <p>When you left me, you said that you would give to Gimil-Sîn good quality ingots.  You left, having said this, but you have not done so.  You put poor quality ingots before my messenger and said &quot;if you want to take them, then take them; if not, leave.&quot;</p>
+  <p>What do you take me for, to treat me like this? I have sent gentlemen like yourself to retrieve my money-bag, but you have disrespected me: not just once, but twice, you have sent them back to me, through enemy territory, empty-handed.</p>
+  <p>Who among the Telmun traders have treated me like this?  You have disrespected my messenger!  Due to the silver that I owe,<sup>1</sup> you speak such words.  I and Šumi-Abum have each given 1080 talents of copper to the palace on your behalf, aside from that which we left under seal at the temple of Šamaš.  How have you treated me for that copper?  You have kept my money-bag from me in enemy territory.  The return of my money-bag is now on you.</p>
+  <p>Know that I will not accept poor quality copper from here: I will choose the ingots one-by-one in my forecourt.  And with regard to how you have already treated me with this copper, I reject it.<sup>2</sup></p>
+  <footer>Nanni</footer>
+</blockquote>
+
+<ol>
+  <li>The literal translation of this phrase doesn't make much sense, and the dictionary doesn't give a figurative meaning for it, so I've taken the standard translation.</li>
+  <li>This is different to the standard ending, where Nanni says he will exercise his right of rejection &quot;from now on&quot;, but the verb is in the preterite so I'm not sure why you can read it like that.</li>
+</ol>
+{% endblock %}
+
+{% block translation %}
+<h3>Obverse</h3>
+
+%akk:trans To Ea-Nāṣir,
+%akk:orig ana ea-nāṣir
+%akk:vocab ana: "to" / "towards"
+%akk:vocab ea-nāṣir: the name of the villain, literally "Ea is the (his) protector"
+
+%akk:trans speak:
+%akk:orig qibi-ma
+%akk:vocab -ma: stresses the preceeding word and acts kind of like a colon or semicolon
+%akk:vocab qibi: masculine singular G-imperative form of the verb "qabûm": "to speak"
+
+%akk:trans Nanni said,
+%akk:orig umma nanni-ma
+%akk:vocab umma X-ma: introduces direct speech by X
+%akk:vocab nanni: the name of our poor victim
+
+%akk:trans at the time you left
+%akk:orig anumma talliku
+%akk:vocab anumma: "now", in context this is "the-now-of-talliku"
+%akk:vocab talliku: 2nd person masculine singular G-preterite form (irregular) of the verb "alākum": "to go"
+
+%akk:trans thus you spoke to me
+%akk:orig kīam taqbiam
+%akk:vocab kīam: "thus, in this manner" / "hence"
+%akk:vocab taqbiam: 2nd person masculine singular G-preterite form of the verb "qabûm": "to speak" (with ventive suffix)
+
+%akk:trans you said,
+%akk:orig umma attā-ma
+%akk:vocab umma X-ma
+%akk:vocab attā: "you"
+
+%akk:trans "good quality ingots
+%akk:orig gubārī damqūtim
+%akk:vocab gubārī: accusative masculine plural form of the noun "gubārum": "metal bar" / "ingot"
+%akk:vocab damqūtim: accusative masculine plural form of the adjective "damqum": "good"
+
+%akk:trans to Gimil-Sîn I will give"
+%akk:orig ana gimil-sîn anaddin
+%akk:vocab ana
+%akk:vocab gimil-sîn: the name of Nanni's servant, literally "gift of Sîn" (i.e. the moon god)
+%akk:vocab anaddin: 1st person singular G-durative form of the verb "nadānum": "to give"
+
+%akk:trans you left, you said this to me.
+%akk:orig tallik-ma taqbiam
+%akk:vocab tallik: 2nd person masculine singular G-preterite form (irregular) of the verb "alākum": "to go"
+%akk:vocab -ma
+%akk:vocab taqbiam
+
+%akk:trans You have not done this.
+%akk:orig ula teppuš
+%akk:vocab ula: negating prefix
+%akk:vocab teppuš: 2nd person masculine singular G-preterite form of the verb "epēšum": "to do"
+
+%akk:trans Poor quality ingots
+%akk:orig gubārī lā damqūtim
+%akk:vocab gubārī
+%akk:vocab lā: negating prefix (can also be used to emphasise a negative)
+%akk:vocab damqūtim
+
+%akk:trans to my messenger
+%akk:orig ana mār šipriya
+%akk:vocab ana
+%akk:vocab mār šipriya: "my messenger"
+%akk:vocab mār: construct form of the noun "mārum" which in this context means something like "member of the profession"
+%akk:vocab šipriya: genitive masculine singular form of the noun "šiprum": "work", "mission" (with 1st person singular possessive suffix)
+
+%akk:trans you put; you said,
+%akk:orig taškun-ma umma attā-ma
+%akk:vocab taškun: 2nd person masculine singular G-preterite form of the verb "šakānum": "to place / put / set"
+%akk:vocab -ma
+%akk:vocab umma X-ma
+%akk:vocab attā
+
+%akk:trans "if you want to take, then take
+%akk:orig šumma teleqqeā leqeā
+%akk:vocab šumma: introduces a conditional statement: "if"; there is no explicit "then"
+%akk:vocab teleqqeā: 2nd person common plural G-durative form of the verb "leqûm": "to take / take over"
+%akk:vocab leqeā: common plural G-imperative form of the verb "leqûm": "to take / take over"
+
+%akk:trans if you do not want to take, then go away."
+%akk:orig šumma lā teleqqeā atlakā
+%akk:vocab šumma
+%akk:vocab lā
+%akk:vocab teleqqeā
+%akk:vocab atlakā: 3rd person common plural Gt-imperative form (irregular) of the verb "alākum": "to go"
+
+%akk:trans Me, like what
+%akk:orig yâti ana kīma mannim
+%akk:vocab yâti: "me" / "to me"
+%akk:vocab ana kīma: connective "as" in a comparative clause
+%akk:vocab mannim: genitive masculine singular form of the noun "mannum": "who?" / "what?"
+
+%akk:trans do you make me to be?
+%akk:orig tušimanni-ma
+%akk:note:html I was very stuck on this line until I found <a href="https://mostlydeadlanguages.tumblr.com/post/753651405781450752/heya-im-looking-at-the-famous-complaint-tablet">this post on tumblr</a>.
+%akk:vocab tušimanni: 2nd person masculine singular Š-durative form of the verb "ewûm": "to turn into" (with "anni" suffix meaning "me [accusative]")
+%akk:vocab -ma
+
+%akk:trans Thus in this manner you disrespected me.
+%akk:orig kīam temēšanni
+%akk:vocab kīam
+%akk:vocab temēšanni: 2nd person masculine singular G-preterite form of the verb "mêšum": "to despise / disrespect / have contempt for" (with "anni" suffix meaning "me [accusative]")
+
+%akk:trans Gentlemen like you
+%akk:orig mārī awīlī ana kīma kâti
+%akk:note Here "awīlī" stands in apposition to "mārī", acting as a kind of epithet.
+%akk:vocab mārī awīlī: "gentlemen" (literally "sons [who are] free men")
+%akk:vocab mārī: accusative masculine plural form of the noun "mārum": "son"
+%akk:vocab awīlī: accusative masculine plural form of the noun "awīlum": "man" / "free man"
+%akk:vocab ana kīma
+%akk:vocab kâti: "you"
+
+%akk:trans to take my money-bag
+%akk:orig ana kissiya mahārim
+%akk:vocab ana
+%akk:vocab kissiya: genitive masculine singular form of the noun "kissum": "money-bag" (with 1st person singular possessive suffix)
+%akk:vocab mahārim: accusative masculine singular noun-form of the verb "mahārum": "to face / confront / receive"
+
+%akk:trans I sent,
+%akk:orig ašpuram-ma
+%akk:vocab ašpuram: 1st person common singular G-preterite form of the verb "šapārum": "to send"
+%akk:vocab -ma
+
+%akk:trans you have disrespected me:
+%akk:orig tumîššam-ma
+%akk:vocab tumîššam: 2nd person masculine singular D-preterite form of the verb "mêšum": "to despise / disrespect / have contempt for" (with ventive suffix)
+%akk:vocab -ma
+
+%akk:trans in enemy territory,
+%akk:orig ina qaqqar nakrim
+%akk:vocab ina: "in" /"on" / "by" / "from" / "among"
+%akk:vocab qaqqar: construct form of the noun "qaqqarum": "land" / "territory"
+%akk:vocab nakrim: genitive masculine singular form of the noun "nakrum": "enemy"
+
+<h3>Reverse</h3>
+
+%akk:trans once and twice
+%akk:orig ištiššu u šinīšu
+%akk:vocab ištiššu: "once"
+%akk:vocab u: "and"
+%akk:vocab šinīšu: twice
+
+%akk:trans their emptiness you sent back.
+%akk:orig rīqūssunu tuterram
+%akk:vocab rīqūssunu: nominative masculine singular form of the noun "rīqūtum": "(in a state of) emptiness" (with 3rd person plural possessive suffix)
+%akk:vocab tuterram: 2nd person masculine singular D-preterite form of the verb "târum": "to return" (with ventive suffix)
+
+%akk:trans Among those who go to Telmun
+%akk:orig ina ālik Telmun
+%akk:vocab ina
+%akk:vocab ālik Telmun: "one who goes to Telmun"
+%akk:vocab ālik: from the verb "alākum" ("to go"), has many contextual meanings which roughly follow the pattern "one who does X" / "one who goes to X"
+%akk:vocab Telmun: an ancient civilisation in Eastern Arabia known for its copper mines, also called "Dilmun"
+
+%akk:trans who, in this way,
+%akk:orig mannum ša kīam
+%akk:vocab mannum: nominative masculine singular form of the noun "mannum": "who?" / "what?"
+%akk:vocab ša: "of"
+%akk:vocab kīam
+
+%akk:trans has done to me?
+%akk:orig īpušanni-ma
+%akk:vocab īpušanni: 3rd person common singular G-preterite form of the verb "epēšum": "to do" (with "anni" suffix meaning "me [accusative]")
+%akk:vocab -ma
+
+%akk:trans You have disrespected my messenger!
+%akk:orig attā mār šipriya tumēš
+%akk:vocab attā
+%akk:vocab mār šipriya
+%akk:vocab mār
+%akk:vocab šipriya
+%akk:vocab tumēš: 2nd person masculine singular D-preterite form of the verb "mêšum": "to despise / disrespect / have contempt for"
+
+%akk:trans In accordance with the silver,
+%akk:orig ana mala kaspim
+%akk:vocab ana mala: "in accordance with"
+%akk:vocab ana
+%akk:vocab mala: "as much as" / "equivalent to"
+%akk:vocab kaspim: genitive masculine singular form of the noun "kaspum": "silver"
+
+%akk:trans that is in my care, you caused to go out
+%akk:orig ša ina qātiya tušēṣu
+%akk:vocab ša
+%akk:vocab ina qātiya: literally "in my hand" but often used metaphorically to mean "in my care"
+%akk:vocab ina
+%akk:vocab qātiya: genitive feminine singular form of the noun "qātum": "hand" (with 1st person singular possessive suffix)
+%akk:vocab tušēṣu: 2nd person masculine singular Š-preterite form of the verb "aṣû": "to go out"
+
+%akk:trans such words you speak.
+%akk:orig kīam tadabbub
+%akk:vocab kīam
+%akk:vocab tadabbub: 2nd person masculine singular G-durative form of the verb "dabābum": "to speak"
+
+%akk:trans And for your sake
+%akk:orig u aššumika
+%akk:vocab u
+%akk:vocab aššumika: genitive masculine singular form of the noun "aššum": "because of / for the sake of" (with 2nd person singular possessive suffix)
+
+%akk:trans to the palace
+%akk:orig ana ēkallim
+%akk:note "ēkallim" is written here logographically, with a syllabogram to indicate the case: "É.GAL-li".
+%akk:vocab ana
+%akk:vocab ēkallim: genitive feminine singular form of the noun "ēkallum": "palace" (a Sumerian loanword)
+
+%akk:trans I gave 1080 talents of copper
+%akk:orig 1080 bilt erû anaku addin
+%akk:note The quantity of copper is written here logographically: "1U.8DIŠ.GUN.URUDA".  The exact quantity is ambiguous since they didn't have a sign for zero.
+%akk:vocab bilt: absolute form (used for units for measure after a number) of the noun "biltum": "talent", a unit of weight
+%akk:vocab anāku: "I" / "me"
+%akk:vocab erû: "copper"
+%akk:vocab addin: 1st person singular G-preterite form of the verb "nadānum": "to give"
+
+%akk:trans and Šumi-Abum
+%akk:orig u šumi-abum
+%akk:vocab u
+%akk:vocab šumi-abum: the name of some other poor guy, literally "successor of the father"
+
+%akk:trans gave 1080 talents of copper
+%akk:orig 1080 bilt erû iddin
+%akk:vocab bilt
+%akk:vocab erû
+%akk:vocab iddin: 3rd person singular G-preterite form of the verb "nadānum": "to give"
+
+%akk:trans apart from that which, to the temple of Šamaš,
+%akk:orig ezib ša ana bīt šamaš
+%akk:note "temple of Šamaš" is written here logographically as "É.DINGIR.UTU"
+%akk:vocab ezib: "apart from"
+%akk:vocab ša
+%akk:vocab ana
+%akk:vocab bīt šamaš: "temple of Šamaš" (the god of the sun)
+%akk:vocab bīt: construct form of the noun "bītum": "house"
+
+%akk:trans we left sealed.
+%akk:orig kunukkam nīzib
+%akk:vocab kunukkam: accusative masculine singular form of the noun "kunukkum": "seal" / "sealed [thing]"
+%akk:vocab nīzib: 3rd person common plural G-preterite form of the verb "ezēbum": "to leave behind"
+
+%akk:trans For that copper,
+%akk:orig ana warim šâti
+%akk:vocab ana
+%akk:vocab warim: genetive masculine singular form of the noun "erû": "copper"
+%akk:vocab šâti: genetive masculine singular determinative adjective: "that"
+
+%akk:trans how have you done to me?
+%akk:orig kī tepušanni
+%akk:vocab kī: "how?"
+%akk:vocab tepušanni: 2nd person masculine singular G-preterite form of the verb "epēšum": "to do" (with "anni" suffix meaning "me [accusative]")
+
+%akk:trans The money-bag, in enemy territory,
+%akk:orig kissi ina qaqqar nakrim
+%akk:vocab kissi: genitive masculine singular form of the noun "kissum": "money-bag"
+%akk:vocab ina
+%akk:vocab qaqqar
+%akk:vocab nakrim
+
+%akk:trans you have held back.
+%akk:orig tuktīl
+%akk:vocab tuktīl: 2nd person masculine singular D-preterite form of the verb "kullum": "to hold back"
+
+%akk:trans The money-bag, to my hand,
+%akk:orig kissi ana qātiya
+%akk:vocab kissi
+%akk:vocab ana
+%akk:vocab qātiya
+
+%akk:trans the recovery is on you.
+%akk:orig šulummam elika išu
+%akk:vocab šulummam: accusative masculine singular form of the noun "šulummum": "recovery"
+%akk:vocab elika: "on" / "on to" (with 2nd person singular possessive suffix)
+%akk:vocab išu: 3rd person masculine singular G-stative form of the verb "išûm": "to have"
+
+%akk:trans Relating to here,
+%akk:orig kīma annikīam
+%akk:vocab kīma: "like" / "when" / "as"
+%akk:vocab annikīam: "here"
+
+%akk:trans poor quality copper
+%akk:orig weriam lā dummuqam
+%akk:vocab weriam: accusative masculine singular form of the noun "erû": "copper"
+%akk:vocab lā
+%akk:vocab dummuqam: accusative masculine singular form of the adjective "dummuqum": "good" (alternative spelling of "damqum")
+
+%akk:trans I will strongly oppose, you will know this.
+%akk:orig lā amahharka talammad
+%akk:vocab lā
+%akk:vocab amahharka: 1st person common singular G-durative form of the verb "mahārum": "to oppose" (with "ka" suffix meaning "you [accusative masculine singular]")
+%akk:vocab talammad: 2nd person masculine singular G-durative form of the verb "lamādum": "to come to know"
+
+%akk:trans In my forecourt,
+%akk:orig ina kissaliya
+%akk:vocab ina
+%akk:vocab kissaliya: genitive masculine singular form of the noun "kisallum": "forecourt" (with 1st person singular possessive suffix)
+
+
+%akk:trans one by one I will choose:
+%akk:orig ištīna unassaq-ma
+%akk:vocab ištīna: "one by one"
+%akk:vocab unassaq: 1st person common singular D-durative form of the verb "nasāqum": "to choose"
+%akk:vocab -ma
+
+%akk:trans I will take,
+%akk:orig eleqqe
+%akk:vocab eleqqe: 1st person common singular G-durative form of the verb "leqûm": "to take / take over"
+
+<h3>Side</h3>
+
+%akk:trans and with regard to how you have disrespected me,
+%akk:orig u ana ša tumiššanni
+%akk:vocab u
+%akk:vocab ana
+%akk:vocab ša
+%akk:vocab tumiššanni: 2nd person masculine singular D-preterite form of the verb "mêšum": "to despise / disrespect / have contempt for" (with "anni" suffix meaning "me [accusative]")
+
+%akk:trans I have made my rejection to you.
+%akk:orig nasīhūtam ēpuška
+%akk:vocab nasīhūtam: accusative feminine singular form of the noun "nasīhūtum": "rejection" / "deportation"
+%akk:vocab ēpuška: 1st person common singular G-preterite form of the verb "epēšum": "to do" (with 2nd person singular possessive suffix)
+{% endblock %}
