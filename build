@@ -94,23 +94,37 @@ for root, dirs, files in Path("content").walk():
         links = []
         for tag, attr in [("a", "href"), ("img", "src"), ("link", "href")]:
             for elem in soup.find_all(tag):
-                links.append(elem.attrs[attr].split("#")[0])
+                link = elem.attrs[attr]
+                anchor = None
+                if "#" in link:
+                    link, anchor = link.split("#")
+                links.append((link, anchor))
         links_to_check[Path(*root.parts[1:], file)] = set(links)
 
 any_broken_links = False
 for page, links in links_to_check.items():
-    for link in links:
+    for link, anchor in links:
         # cv.pdf is generated and copied over in the deployment script
         if "://" in link or link in ["mailto:mike@barrucadu.co.uk", "cv.pdf"]:
             continue
 
         file_destination = Path(OUT_DIR, link)
         dir_destination = Path(OUT_DIR, link, "index.html")
-        if file_destination.is_file() or dir_destination.is_file():
+        destination = None
+        if file_destination.is_file():
+            destination = file_destination
+        elif dir_destination.is_file():
+            destination = dir_destination
+        else:
+            print(f"BROKEN LINK {page}: {link}", file=sys.stderr)
+            any_broken_links = True
             continue
 
-        print(f"BROKEN LINK {page}: {link}", file=sys.stderr)
-        any_broken_links = True
+        if anchor is not None:
+            soup = BeautifulSoup(destination.read_text(), features="html.parser")
+            if not soup.find(id=anchor):
+                print(f"BROKEN LINK {page}: {link}#{anchor}", file=sys.stderr)
+                any_broken_links = True
 
 if any_broken_links:
     sys.exit(1)
