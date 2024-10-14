@@ -9,3 +9,9 @@
     display: block;
     text-align: center;
 }
+
+/* akkadian pages */
+body.akk {
+    background-image: url("akkadian/background.webp");
+    background-repeat: repeat-y;
+}

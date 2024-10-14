@@ -17,7 +17,7 @@
     <link rel="stylesheet preload" href="{{ hashed_links['extra.css'] }}" as="style" type="text/css">
   </head>
 
-  <body>
+  <body{% if body_class is defined %} class="{{ body_class }}"{% endif %}>
     <main>
       {% block main required %}{% endblock %}
     </main>
