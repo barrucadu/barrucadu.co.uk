@@ -1,0 +1,19 @@
+<div class="akk-line" id="L{{ lineno }}">
+  <small class="akk-lineno">{{ lineno }}</small>
+
+  <span class="akk-trans"><strong>{{ trans }}</strong></span>
+
+  <details>
+    <summary>{{ orig }}</summary>
+    {% for (note, is_html) in notes %}
+    <p>{% if is_html %}{{ note|safe }}{% else %}{{ note }}{% endif %}</p>
+    {% endfor %}
+    {% if vocab %}
+    <ul class="akk-vocab">
+      {% for term, defn in vocab %}
+      <li><strong>{{ term }}:</strong> {{ defn }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </details>
+</div>

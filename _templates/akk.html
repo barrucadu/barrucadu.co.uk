@@ -1,0 +1,34 @@
+{% extends "default.html" %}
+{% block content %}
+<section id="preamble">
+  {% block preamble required %}{% endblock %}
+
+  <p><small>Translated from the <a href="{{ source_url }}">{{ source_type }} at {{ source_title }}</a>.</small></p>
+</section>
+
+<section id="translation">
+  <h2>Translation</h2>
+
+  {% block pretranslation %}{% endblock %}
+
+  <button id="akk-toggle" onclick="toggleDetails()">Toggle all notes</button>
+
+  {% block translation required %}{% endblock %}
+</section>
+
+<script>
+  let isOpen = false;
+  function toggleDetails() {
+      if(isOpen) {
+          document.body.querySelectorAll("details").forEach((e) => e.removeAttribute("open"));
+      } else {
+          document.body.querySelectorAll("details").forEach((e) => e.setAttribute("open", true));
+      }
+      isOpen = !isOpen;
+  }
+  document.body.querySelector("#akk-toggle").style.display = "block";
+</script>
+{% endblock %}
+{% block footer %}
+<span class="big-link"><a href="akkadian">return to Akkadian pages</a></span>
+{% endblock %}

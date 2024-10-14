@@ -23,7 +23,59 @@ from docopt import docopt
 from pathlib import Path
 
 
-FILTERS = {}
+def filter_akk(body, jinja2_env):
+    def parse_akkline(body, defns):
+        out = {}
+        while body:
+            line = body[0]
+            if line.startswith("%akk:trans"):
+                body = body[1:]
+                out["trans"] = line.split(maxsplit=1)[1].strip()
+            elif line.startswith("%akk:orig"):
+                out["orig"] = line.split(maxsplit=1)[1].strip()
+                body = body[1:]
+            elif line.startswith("%akk:note"):
+                is_html = line.startswith("%akk:note:html")
+                rest = line.split(maxsplit=1)[1].strip()
+                out.setdefault("notes", []).append((rest, is_html))
+                body = body[1:]
+            elif line.startswith("%akk:vocab"):
+                body = body[1:]
+                rest = line.split(maxsplit=1)[1]
+                if ":" in rest:
+                    term, defn = rest.split(":", maxsplit=1)
+                    term = term.strip()
+                    defn = defn.strip()
+                    defns[term.strip()] = defn
+                else:
+                    term = rest.strip()
+                out.setdefault("vocab", []).append((term, defns[term]))
+            else:
+                break
+        return out, body
+
+    lineno = 0
+    defns = {}
+    fragment_template = jinja2_env.get_template("_fragments/akkline.html")
+
+    while body:
+        if body[0].startswith("%akk:trans"):
+            akkline, body = parse_akkline(body, defns)
+            if akkline:
+                lineno += 1
+                yield fragment_template.render(
+                    **akkline,
+                    lineno=lineno,
+                )
+        else:
+            yield body[0]
+            body = body[1:]
+
+
+FILTERS = {
+    "akk": filter_akk,
+}
+
 
 args = docopt(__doc__)
 OUT_DIR = args["--out"]

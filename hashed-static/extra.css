@@ -15,3 +15,34 @@ body.akk {
     background-image: url("akkadian/background.webp");
     background-repeat: repeat-y;
 }
+#akk-toggle {
+    margin: 0 auto 1.6rem auto;
+    display: none;
+    background-color: var(--bg);
+}
+.akk-line {
+    display: grid;
+    grid-template-areas:
+        "lineno trans"
+        "lineno details";
+    grid-column-gap: 1em;
+    grid-template-columns: min-content auto;
+}
+.akk-line + .akk-line {
+    margin-top: 1.6rem;
+}
+.akk-line span {
+    display: block;
+}
+.akk-lineno {
+    grid-area: lineno;
+}
+.akk-trans {
+    grid-area: trans;
+}
+.akk-details {
+    grid-area: details;
+}
+.akk-vocab {
+    list-style-type: none;
+}
