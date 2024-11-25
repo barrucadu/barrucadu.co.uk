@@ -102,7 +102,9 @@ for fpath in Path("hashed-static").iterdir():
                 break
             file_hash.update(data)
 
-    HASHED_LINKS[fpath.name] = f"{fpath.stem}-sha256-{file_hash.hexdigest()}{fpath.suffix}"
+    HASHED_LINKS[fpath.name] = (
+        f"{fpath.stem}-sha256-{file_hash.hexdigest()}{fpath.suffix}"
+    )
     shutil.copy(fpath, Path(OUT_DIR, HASHED_LINKS[fpath.name]))
 
 links_to_check = {}

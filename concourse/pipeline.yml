@@ -49,10 +49,9 @@ jobs:
         config:
           platform: linux
           image_resource:
-            type: docker-image
+            type: registry-image
             source:
-              repository: python
-              tag: 3.12
+              repository: nixos/nix
           inputs:
             - name: www-git
           outputs:
@@ -63,13 +62,12 @@ jobs:
             args:
               - -cex
               - |
-                pip install -r requirements-freeze.txt
-                ./build --out="../site/${OUT_DIR}"
+                nix --extra-experimental-features "nix-command flakes" develop --command bash -c "./build --out=../site/${OUT_DIR}"
       - task: build-cv
         config:
           platform: linux
           image_resource:
-            type: docker-image
+            type: registry-image
             source:
               repository: texlive/texlive
           inputs:
