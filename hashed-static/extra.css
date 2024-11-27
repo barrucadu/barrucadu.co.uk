@@ -15,6 +15,11 @@ body.akk {
     background-image: url("akkadian/background.webp");
     background-repeat: repeat-y;
 }
+@media (prefers-color-scheme: dark) {
+    body.akk {
+        background-image: url("akkadian/background-dark.webp");
+    }
+}
 #akk-toggle {
     margin: 0 auto 1.6rem auto;
     display: none;
