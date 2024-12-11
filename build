@@ -107,6 +107,7 @@ for fpath in Path("hashed-static").iterdir():
     )
     shutil.copy(fpath, Path(OUT_DIR, HASHED_LINKS[fpath.name]))
 
+PERMALINKS = []
 links_to_check = {}
 for root, dirs, files in Path("content").walk():
     target_dir = Path(OUT_DIR, *root.parts[1:])
@@ -143,6 +144,7 @@ for root, dirs, files in Path("content").walk():
             hashed_links=HASHED_LINKS,
         )
         Path(target_dir, file).with_suffix(".html").write_text(rendered)
+        PERMALINKS.append(BASE_HREF + str(Path(*root.parts[1:], file).with_suffix(".html")))
 
         soup = BeautifulSoup(rendered, features="html.parser")
         links = []
@@ -154,6 +156,13 @@ for root, dirs, files in Path("content").walk():
                     link, anchor = link.split("#")
                 links.append((link, anchor))
         links_to_check[Path(*root.parts[1:], file)] = set(links)
+
+Path(OUT_DIR, "sitemap.xml").write_text(
+    JINJA2_ENV.get_template("sitemap.xml").render(
+        base_href=BASE_HREF,
+        permalinks=PERMALINKS,
+    )
+)
 
 any_broken_links = False
 for page, links in links_to_check.items():
