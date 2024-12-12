@@ -17,19 +17,25 @@
 :root {
     /* Theme colors */
     --fg: #0e0e0e;
-    --bg: #fefefe;
+    --bg: #fbfcfc;
     --form-bg: #fbfbfb;
     --form-fg: #00004d;
     --form-fg-placeholder: #00004d9a;
+    --link-fg: #0048bd;
+    --link-fg-hover: #40a4b9;
+    --marker-fg: #d24101;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --fg: #fefefe;
-        --bg: #0e0e0e;
+        --fg: #a8c1bb;
+        --bg: #001010;
         --form-bg: #1a1a1a;
         --form-fg: #fefefe;
         --form-fg-placeholder: #fefefe9a;
+        --link-fg: #77bfcf;
+        --link-fg-hover: #40a4b9;
+        --marker-fg: #da5bd6;
     }
 }
 
@@ -151,9 +157,12 @@ p {
     margin: 1.6rem 0; /* 1 */
 }
 
-/* Remove link color. */
 a {
-    color: var(--fg);
+    color: var(--link-fg);
+}
+
+a:hover {
+    color: var(--link-fg-hover);
 }
 
 /* Make string a little more bold, to adjust for the font. */

@@ -1,5 +1,6 @@
 .big-link:before, .big-link:after {
     content: "✦";
+    color: var(--marker-fg);
     font-size: 1rem;
     vertical-align: middle;
     padding: 0 0.5rem;
