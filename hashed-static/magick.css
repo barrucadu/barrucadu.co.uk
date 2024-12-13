@@ -17,7 +17,7 @@
 :root {
     /* Theme colors */
     --fg: #0e0e0e;
-    --bg: #fbfcfc;
+    --bg: url("bg-light.webp");
     --form-bg: #fbfbfb;
     --form-fg: #00004d;
     --form-fg-placeholder: #00004d9a;
@@ -28,8 +28,8 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --fg: #a8c1bb;
-        --bg: #001010;
+        --fg: #d7e5e2;
+        --bg: url("bg-dark.webp");
         --form-bg: #1a1a1a;
         --form-fg: #fefefe;
         --form-fg-placeholder: #fefefe9a;
@@ -63,7 +63,8 @@ html {
 */
 body {
     font-size: 1.8rem; /* 1 */
-    background-color: var(--bg); /* 2 */
+    background-image: var(--bg);
+    background-repeat: repeat;
     color: var(--fg); /* 2 */
     font-family: "Equity", serif; /* 3 */
     font-style: normal; /* 3 */
