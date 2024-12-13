@@ -109,6 +109,25 @@ for fpath in Path("hashed-static").iterdir():
     shutil.copy(fpath, Path(OUT_DIR, HASHED_LINKS[fpath.name]))
 
 
+def render(template, target, params={}):
+    if type(template) is str:
+        template = JINJA2_ENV.get_template(template)
+    if type(target) is str:
+        target = Path(OUT_DIR, target)
+
+    params["link"] = str(target).replace(f"{OUT_DIR}/", "")
+    params["permalink"] = f"{BASE_HREF}{params['link']}"
+
+    rendered = template.render(
+        base_href=BASE_HREF,
+        hashed_links=HASHED_LINKS,
+        **params,
+    )
+    target.write_text(rendered)
+
+    return rendered
+
+
 def render_page(source, target):
     lines = source.read_text().splitlines()
     metadata_end_idx = lines[1:].index("---") + 1
@@ -118,20 +137,17 @@ def render_page(source, target):
 
     metadata.setdefault("template", "default.html")
     metadata.setdefault("filters", [])
-    metadata["link"] = str(target).replace(f"{OUT_DIR}/", "")
-    metadata["permalink"] = f"{BASE_HREF}{metadata['link']}"
 
     for name in metadata["filters"]:
         body = list(FILTERS[name](body, JINJA2_ENV))
 
-    rendered = JINJA2_ENV.from_string(
-        f"{{% extends \"{metadata['template']}\" %}}\n" + "\n".join(body),
-    ).render(
-        base_href=BASE_HREF,
-        hashed_links=HASHED_LINKS,
-        **metadata,
+    rendered = render(
+        JINJA2_ENV.from_string(
+            f"{{% extends \"{metadata['template']}\" %}}\n" + "\n".join(body),
+        ),
+        target,
+        metadata,
     )
-    target.write_text(rendered)
 
     soup = BeautifulSoup(rendered, features="html.parser")
     links = []
@@ -160,18 +176,8 @@ for root, dirs, files in Path("content").walk():
         PERMALINKS.append(metadata["permalink"])
         links_to_check[metadata["link"]] = links
 
-Path(OUT_DIR, "sitemap.xml").write_text(
-    JINJA2_ENV.get_template("sitemap.xml").render(
-        base_href=BASE_HREF,
-        permalinks=PERMALINKS,
-    )
-)
-
-Path(OUT_DIR, "robots.txt").write_text(
-    JINJA2_ENV.get_template("robots.txt").render(
-        base_href=BASE_HREF,
-    )
-)
+render("sitemap.xml", "sitemap.xml", {"permalinks": PERMALINKS})
+render("robots.txt", "robots.txt")
 
 any_broken_links = False
 for page, links in links_to_check.items():
