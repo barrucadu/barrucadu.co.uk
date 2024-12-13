@@ -16,6 +16,7 @@
             ps.beautifulsoup4
             ps.docopt
             ps.jinja2
+            ps.pyyaml
           ]))
         ];
       };

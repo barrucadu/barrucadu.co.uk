@@ -17,6 +17,7 @@ import hashlib
 import jinja2
 import shutil
 import sys
+import yaml
 
 from bs4 import BeautifulSoup
 from docopt import docopt
@@ -108,31 +109,27 @@ for fpath in Path("hashed-static").iterdir():
     shutil.copy(fpath, Path(OUT_DIR, HASHED_LINKS[fpath.name]))
 
 
-def render_page(source, target, preamble):
-    body = []
-    in_preamble = True
-    for line in source.read_text().splitlines():
-        if in_preamble:
-            if line and line[0] == "%":
-                key, val = line[1:].split("=")
-                preamble[key.strip()] = val.strip()
-            else:
-                in_preamble = False
-                body = [line]
-        else:
-            body.append(line)
+def render_page(source, target):
+    lines = source.read_text().splitlines()
+    metadata_end_idx = lines[1:].index("---") + 1
+    body_start_idx = metadata_end_idx + 1
+    metadata = yaml.load("\n".join(lines[1:metadata_end_idx]), Loader=yaml.SafeLoader)
+    body = lines[body_start_idx:]
 
-    if "filters" in preamble:
-        for name in preamble.get("filters", "").split(","):
-            body = list(FILTERS[name](body, JINJA2_ENV))
+    metadata.setdefault("template", "default.html")
+    metadata.setdefault("filters", [])
+    metadata["link"] = str(target).replace(f"{OUT_DIR}/", "")
+    metadata["permalink"] = f"{BASE_HREF}{metadata['link']}"
+
+    for name in metadata["filters"]:
+        body = list(FILTERS[name](body, JINJA2_ENV))
 
     rendered = JINJA2_ENV.from_string(
-        f"{{% extends \"{preamble['template']}\" %}}\n" + "\n".join(body),
+        f"{{% extends \"{metadata['template']}\" %}}\n" + "\n".join(body),
     ).render(
-        **preamble,
-        body=body,
         base_href=BASE_HREF,
         hashed_links=HASHED_LINKS,
+        **metadata,
     )
     target.write_text(rendered)
 
@@ -146,8 +143,7 @@ def render_page(source, target, preamble):
                 link, anchor = link.split("#")
             links.append((link, anchor))
 
-    permalink = str(target).replace(f"{OUT_DIR}/", BASE_HREF)
-    return permalink, set(links)
+    return metadata, set(links)
 
 
 PERMALINKS = []
@@ -157,16 +153,12 @@ for root, dirs, files in Path("content").walk():
     for dir in dirs:
         Path(target_dir, dir).mkdir(exist_ok=True)
     for file in files:
-        permalink, links = render_page(
+        metadata, links = render_page(
             source=Path(root, file),
             target=Path(target_dir, file),
-            preamble={
-                "title": "barrucadu",
-                "template": "default.html",
-            },
         )
-        PERMALINKS.append(permalink)
-        links_to_check[Path(*root.parts[1:], file)] = links
+        PERMALINKS.append(metadata["permalink"])
+        links_to_check[metadata["link"]] = links
 
 Path(OUT_DIR, "sitemap.xml").write_text(
     JINJA2_ENV.get_template("sitemap.xml").render(
