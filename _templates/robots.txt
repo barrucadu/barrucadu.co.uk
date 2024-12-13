@@ -1,0 +1,5 @@
+User-agent: *
+Sitemap: {{ base_href }}sitemap.xml
+
+User-agent: ia_archiver
+Disallow: /

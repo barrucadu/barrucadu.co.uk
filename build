@@ -175,6 +175,12 @@ Path(OUT_DIR, "sitemap.xml").write_text(
     )
 )
 
+Path(OUT_DIR, "robots.txt").write_text(
+    JINJA2_ENV.get_template("robots.txt").render(
+        base_href=BASE_HREF,
+    )
+)
+
 any_broken_links = False
 for page, links in links_to_check.items():
     for link, anchor in links:
