@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>barrucadu</title>
+  <link href="{{ permalink }}" rel="self" />
+  <link href="{{ base_href }}" />
+  <id>{{ permalink }}</id>
+  <author>
+    <name>Michael Walker</name>
+    <email>mike@barrucadu.co.uk</email>
+  </author>
+  <updated>{{ updated }}T00:00:00Z</updated>
+  {%- for entry in entries %}
+  <entry>
+    <title>{{ entry.title }}</title>
+    <link href="{{ entry.permalink }}" />
+    <id>{{ entry.permalink }}</id>
+    <published>{{ entry.feed.published }}T00:00:00Z</published>
+    <updated>{{ entry.feed.updated }}T00:00:00Z</updated>
+    <summary>{{ entry.feed.summary }}</summary>
+  </entry>
+  {%- endfor %}
+</feed>

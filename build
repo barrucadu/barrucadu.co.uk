@@ -138,6 +138,15 @@ def render_page(source, target):
     metadata.setdefault("template", "default.html")
     metadata.setdefault("filters", [])
 
+    if "feed" in metadata:
+        for attr in ["published", "summary"]:
+            if attr not in metadata["feed"]:
+                print(f"MISSING FEED ATTRIBUTE {source}: {attr}", file=sys.stderr)
+                sys.exit(1)
+        metadata["feed"].setdefault("updated", metadata["feed"]["published"])
+        metadata["feed"]["published"] = metadata["feed"]["published"].isoformat()
+        metadata["feed"]["updated"] = metadata["feed"]["updated"].isoformat()
+
     for name in metadata["filters"]:
         body = list(FILTERS[name](body, JINJA2_ENV))
 
@@ -163,6 +172,7 @@ def render_page(source, target):
 
 
 PERMALINKS = []
+FEED_ENTRIES = []
 links_to_check = {}
 for root, dirs, files in Path("content").walk():
     target_dir = Path(OUT_DIR, *root.parts[1:])
@@ -174,8 +184,19 @@ for root, dirs, files in Path("content").walk():
             target=Path(target_dir, file),
         )
         PERMALINKS.append(metadata["permalink"])
+        if "feed" in metadata:
+            FEED_ENTRIES.append(metadata)
         links_to_check[metadata["link"]] = links
 
+FEED_ENTRIES = sorted(FEED_ENTRIES, key=lambda m: m["feed"]["updated"], reverse=True)
+render(
+    "atom.xml",
+    "atom.xml",
+    {
+        "entries": FEED_ENTRIES[:10],
+        "updated": FEED_ENTRIES[0]["feed"]["updated"],
+    },
+)
 render("sitemap.xml", "sitemap.xml", {"permalinks": PERMALINKS})
 render("robots.txt", "robots.txt")
 
