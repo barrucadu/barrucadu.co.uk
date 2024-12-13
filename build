@@ -21,6 +21,7 @@ import yaml
 
 from bs4 import BeautifulSoup
 from docopt import docopt
+from markdown import markdown
 from pathlib import Path
 
 
@@ -151,9 +152,18 @@ def render_page(source, target):
     for name in metadata["filters"]:
         body = list(FILTERS[name](body, JINJA2_ENV))
 
+    if source.suffix == ".html":
+        body = "\n".join(body)
+    elif source.suffix == ".markdown":
+        html = markdown("\n".join(body), extensions=["fenced_code", "md_in_html"])
+        body = f"{{% block content %}}\n{html}\n{{% endblock %}}"
+    else:
+        print(f"UNKNOWN FILETYPE {source}: {source.suffix}", file=sys.stderr)
+        sys.exit(1)
+
     rendered = render(
         JINJA2_ENV.from_string(
-            f"{{% extends \"{metadata['template']}\" %}}\n" + "\n".join(body),
+            f"{{% extends \"{metadata['template']}\" %}}\n" + body,
         ),
         target,
         metadata,
@@ -182,7 +192,7 @@ for root, dirs, files in Path("content").walk():
     for file in files:
         metadata, links = render_page(
             source=Path(root, file),
-            target=Path(target_dir, file),
+            target=Path(target_dir, file).with_suffix(".html"),
         )
         PERMALINKS.append(metadata["permalink"])
         if "feed" in metadata:
