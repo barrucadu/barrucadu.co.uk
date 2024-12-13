@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB" prefix="og: https://ogp.me/ns#">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="Michael Walker">
     <meta name="robots" content="FOLLOW,INDEX">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:site_name" content="{{ site_name }}">
+    <meta property="og:url"       content="{{ permalink }}">
+    <meta property="og:title"     content="{{ title }}">
+    <meta property="og:locale"    content="en_GB">
+    {%- block opengraph %}
+    <meta property="og:type"      content="website" />
+    {%- endblock %}
+
+    <link rel="canonical" href="{{ permalink }}">
 
     <base href="{{ base_href }}">
 
@@ -16,7 +26,7 @@
     <link rel="stylesheet preload" href="{{ hashed_links['fonts.css'] }}" as="style" type="text/css">
     <link rel="stylesheet preload" href="{{ hashed_links['extra.css'] }}" as="style" type="text/css">
 
-    <link rel="alternate" type="application/atom+xml" title="barrucadu" href="atom.xml">
+    <link rel="alternate" type="application/atom+xml" title="{{ site_name }}" href="atom.xml">
   </head>
 
   <body{% if body_class is defined %} class="{{ body_class }}"{% endif %}>

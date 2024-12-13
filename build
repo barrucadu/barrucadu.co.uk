@@ -121,6 +121,7 @@ def render(template, target, params={}):
     rendered = template.render(
         base_href=BASE_HREF,
         hashed_links=HASHED_LINKS,
+        site_name="barrucadu",
         **params,
     )
     target.write_text(rendered)
