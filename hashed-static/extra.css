@@ -38,20 +38,19 @@
     padding: 0.5em;
 }
 
-.navgrid h3 {
+.navgrid-header .navgrid-item-title {
     font-size: 3rem;
     text-transform: uppercase;
     max-width: 150px;
     text-align: center;
 }
-.navgrid h3::before {
-    content: "";
-}
-
-.navgrid h4 {
+.navgrid-item .navgrid-item-title {
     margin: 0 0 8px 0;
     font-style: normal;
     text-align: center;
+}
+.navgrid-item-title::before {
+    content: "";
 }
 
 .navgrid time {
