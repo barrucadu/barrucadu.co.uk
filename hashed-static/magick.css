@@ -18,6 +18,7 @@
     /* Theme colors */
     --fg: #0e0e0e;
     --bg: url("bg-light.webp");
+    --box-bg: rgba(251,251,251,0.5);
     --form-bg: #fbfbfb;
     --form-fg: #00004d;
     --form-fg-placeholder: #00004d9a;
@@ -30,6 +31,7 @@
     :root {
         --fg: #d7e5e2;
         --bg: url("bg-dark.webp");
+        --box-bg: rgba(26,26,26,0.9);
         --form-bg: #1a1a1a;
         --form-fg: #fefefe;
         --form-fg-placeholder: #fefefe9a;

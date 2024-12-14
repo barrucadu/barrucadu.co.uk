@@ -178,6 +178,9 @@ def render_page(source, target):
             if "#" in link:
                 link, anchor = link.split("#")
             links.append((link, anchor))
+    if "feed" in metadata:
+        if "image" in metadata["feed"]:
+            links.append((metadata["feed"]["image"], None))
 
     return metadata, set(links)
 

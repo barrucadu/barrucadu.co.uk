@@ -11,6 +11,69 @@
     text-align: center;
 }
 
+/* outlines boxes */
+.navgrid {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    justify-items: stretch;
+    align-items: start;
+    gap: 1em;
+}
+
+.navgrid li {
+    display: block;
+}
+
+.navgrid-header {
+    align-self: center;
+    text-align: center;
+}
+
+.navgrid-item, .box {
+    display: block;
+    background-color: var(--box-bg);
+    border: 2px dashed var(--marker-fg);
+    padding: 0.5em;
+}
+
+.navgrid h3 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    max-width: 150px;
+    text-align: center;
+}
+.navgrid h3::before {
+    content: "";
+}
+
+.navgrid h4 {
+    margin: 0 0 8px 0;
+    font-style: normal;
+    text-align: center;
+}
+
+.navgrid time {
+    float: right;
+    font-weight: bold;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    gap: 9px; /* match the div padding */
+}
+
+.box img {
+    max-width: 128px;
+    max-height: 64px;
+}
+
+.box-text {
+    width: 100%;
+}
+
 /* akkadian pages */
 body.akk {
     background-image: url("akkadian/background.webp");

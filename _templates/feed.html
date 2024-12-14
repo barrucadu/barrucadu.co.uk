@@ -4,4 +4,7 @@
 <meta property="article:published_time" content="{{ feed.published }}" />
 <meta property="article:modified_time" content="{{ feed.updated }}" />
 <meta property="article:author" content="https://www.barrucadu.co.uk/" />
+{%- if feed.image is defined %}
+<meta property="og:image" content="{{ base_href }}{{ feed.image }}" />
+{%- endif -%}
 {% endblock %}
