@@ -46,16 +46,17 @@ class MdKonataProcessor(markdown.blockprocessors.BlockProcessor):
                 blocks[i] = re.sub(self.RE_END, "", block)
 
                 ebox = ET.SubElement(parent, "div")
-                ebox.set("class", "box")
-                eimgwr = ET.SubElement(ebox, "div")
-                einner = ET.SubElement(ebox, "div")
+                ebox.set("class", "konata")
+                # order matters
                 if konata in self.RIGHT_KONATAS:
-                    einner, eimgwr = eimgwr, einner
+                    einner = ET.SubElement(ebox, "div")
+                    eimg = ET.SubElement(ebox, "img")
+                else:
+                    eimg = ET.SubElement(ebox, "img")
+                    einner = ET.SubElement(ebox, "div")
 
-                einner.set("class", "box-text")
                 self.parser.parseBlocks(einner, blocks[0 : i + 1])
 
-                eimg = ET.SubElement(eimgwr, "img")
                 eimg.set("src", f"konata/{konata}.webp")
                 eimg.set("alt", "")
 

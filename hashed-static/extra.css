@@ -31,7 +31,7 @@
     text-align: center;
 }
 
-.navgrid-item, .box {
+.navgrid-item, .konata {
     display: block;
     background-color: var(--box-bg);
     border: 2px dashed var(--marker-fg);
@@ -58,18 +58,20 @@
     font-weight: bold;
 }
 
-.box {
+.konata {
     display: flex;
     align-items: center;
-    gap: 9px; /* match the div padding */
+    gap: 1em; /* 2x the div padding */
 }
 
-.box img {
+.konata img {
     max-width: 128px;
     max-height: 64px;
+    align-self: flex-end;
+    margin: -0.5em; /* undo the div padding */
 }
 
-.box-text {
+.konata div {
     width: 100%;
 }
 
