@@ -13,7 +13,6 @@ feed:
   <figcaption>{{ feed.image_alt }}</figcaption>
 </figure>
 
-<section markdown="1" id="introduction">
 <h2 style="display: none">Introduction</h2>
 
 I derive a lot of enjoyment from fiddling around with my servers (it's more fun
@@ -30,9 +29,7 @@ Is it over-engineered?  Yes.  Was it necessary?  No.  Did I learn some new
 things along the way?  Yes!
 
 This post goes into some of those things.
-</section>
 
-<section markdown="1">
 ## Context: How I run things
 
 I'm a heavy believer in infrastructure-as-code and configuration-as-code.  In
@@ -74,9 +71,7 @@ defining the servers I do have at the moment in code.
 
 Each repository has its own Concourse configuration, see [the barrucadu.co.uk
 pipeline][] for a representative example.
-</section>
 
-<section markdown="1">
 ## Installing NixOS on Hetzner Cloud
 
 I use the Hetzner web UI to create servers.  Some points of note:
@@ -149,9 +144,7 @@ Because I have standard practices for how I partition and configure my machines,
 covers setting up secrets.
 </div>
 </div>
-</section>
 
-<section markdown="1">
 ## Provisioning HTTPS certificates
 
 LetsEncrypt is great, but obviously the HTTP challenge (putting a file at a
@@ -371,9 +364,7 @@ Go see [the actual configuration][website-mirror] if you're interested in what
 it really looks like.
 </div>
 </div>
-</section>
 
-<section markdown="1">
 ## Deployments!
 
 I didn't do anything fancy here, I just configured everything that I wanted to
@@ -402,9 +393,7 @@ minutes, so I'd know very quickly if I broke it.
 So while the mechanics of syncing bookdb and bookmarks were not new, I did have
 to [refactor my NixOS config a bit][] to make it able to push to multiple
 targets.
-</section>
 
-<section markdown="1">
 ## Duplicating the webserver configuration
 
 Let's briefly review where we are:
@@ -442,9 +431,7 @@ configuration-as-editing-a-crapload-of-files-in-`etc` systems.
 </div>
 <div><img src="konata/flop.webp" alt=""></div>
 </div>
-</section>
 
-<section markdown="1">
 ## Enabling GeoDNS with OctoDNS and Route53
 
 The new server is ready to serve traffic, so now we just need to set up the
@@ -526,9 +513,7 @@ requests were essentially going to a random servers: not what I wanted!
 That's everything!
 </div>
 </div>
-</section>
 
-<section markdown="1">
 ## Aside: Configuring distributed Nix builds
 
 One final point.  [bookdb][] and [bookmarks][] are Rust applications, which is a
@@ -582,14 +567,11 @@ I disabled bookdb and bookmarks on `yuggoth`, applied this configuration,
 re-enabled them, applied that configuration, and lo and behold: it SSHed into
 `carcosa` and completed in an instant because `carcosa` already had those build
 artefacts cached.
-</section>
 
-<section markdown="1">
 ## Inspired by
 
 - [Building a Tiny CDN With pyinfra and Chimera Linux][tinycdn]
 - [Homelab: Setting up Caddy Reverse Proxy with SSL on NixOS][homelab]
-</section>
 
 [tinycdn]: https://www.wezm.net/v2/posts/2024/tiny-cdn/
 [homelab]: https://aottr.dev/posts/2024/08/homelab-setting-up-caddy-reverse-proxy-with-ssl-on-nixos/

@@ -15,14 +15,37 @@ Options:
 
 import hashlib
 import jinja2
+import markdown
 import shutil
 import sys
 import yaml
 
 from bs4 import BeautifulSoup
 from docopt import docopt
-from markdown import markdown
 from pathlib import Path
+from slugify import slugify
+
+
+class MdSectionPostprocessor(markdown.postprocessors.Postprocessor):
+    def run(self, text):
+        out = []
+        in_section = False
+        for line in text.splitlines():
+            if line.startswith("<h2"):
+                if in_section:
+                    out.append("</section>")
+                slug = slugify(line.split(">")[1].split("<")[0])
+                out.append(f'<section id="{slug}">')
+                in_section = True
+            out.append(line)
+        if in_section:
+            out.append("</section>")
+        return "\n".join(out)
+
+
+class MdSectionExtension(markdown.extensions.Extension):
+    def extendMarkdown(self, md):
+        md.postprocessors.register(MdSectionPostprocessor(), "mdsection", 999)
 
 
 def filter_akk(body, jinja2_env):
@@ -155,7 +178,10 @@ def render_page(source, target):
     if source.suffix == ".html":
         body = "\n".join(body)
     elif source.suffix == ".markdown":
-        html = markdown("\n".join(body), extensions=["fenced_code", "md_in_html"])
+        html = markdown.markdown(
+            "\n".join(body),
+            extensions=["fenced_code", "md_in_html", MdSectionExtension()],
+        )
         body = f"{{% block content %}}\n{html}\n{{% endblock %}}"
     else:
         print(f"UNKNOWN FILETYPE {source}: {source.suffix}", file=sys.stderr)

@@ -17,6 +17,7 @@
             ps.docopt
             ps.jinja2
             ps.markdown
+            ps.python-slugify
             ps.pyyaml
           ]))
         ];
