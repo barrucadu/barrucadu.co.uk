@@ -136,14 +136,11 @@ networking.defaultGateway6 = { address = "fe80::1"; interface = "enp1s0"; };
 
 You can get the `address` from the Hetzner web UI.
 
-<div class="box" markdown="1">
-<div><img src="konata/point.webp" alt=""></div>
-<div class="box-text" markdown="1">
+<konata:point>
 Because I have standard practices for how I partition and configure my machines,
 [I have a runbook][] (and a helper script) for this whole process, which also
 covers setting up secrets.
-</div>
-</div>
+</konata>
 
 ## Provisioning HTTPS certificates
 
@@ -353,17 +350,14 @@ barrucadu.co.uk {
 }
 ```
 
-<div class="box" markdown="1">
-<div><img src="konata/point.webp" alt=""></div>
-<div class="box-text" markdown="1">
+<konata:point>
 I actually have all this NixOS config abstracted, so I'm not typing everything
 out verbatim for every domain, but for this article I de-abstracted the examples
 to a single domain to make what's going on clear.
 
 Go see [the actual configuration][website-mirror] if you're interested in what
 it really looks like.
-</div>
-</div>
+</konata>
 
 ## Deployments!
 
@@ -424,13 +418,10 @@ NixOS handles merging configuration across files, so there's no problem at all
 with having some caddy config in the new file and some in the main `carcosa`
 configuration file.
 
-<div class="box" markdown="1">
-<div class="box-text" markdown="1">
+<konata:flop>
 There's no way I could go back to
 configuration-as-editing-a-crapload-of-files-in-`etc` systems.
-</div>
-<div><img src="konata/flop.webp" alt=""></div>
-</div>
+</konata>
 
 ## Enabling GeoDNS with OctoDNS and Route53
 
@@ -507,12 +498,9 @@ The interesting parts are:
 I intiially missed the healthcheck part, so all my pools were unhealthy, so
 requests were essentially going to a random servers: not what I wanted!
 
-<div class="box" markdown="1">
-<div><img src="konata/thumbsup.webp" alt=""></div>
-<div class="box-text" markdown="1">
+<konata:thumbsup>
 That's everything!
-</div>
-</div>
+</konata>
 
 ## Aside: Configuring distributed Nix builds
 
@@ -520,12 +508,9 @@ One final point.  [bookdb][] and [bookmarks][] are Rust applications, which is a
 bit heavy on the CPU and RAM when compiling.  I quickly found that the smallest
 instance type didn't really cope.
 
-<div class="box" markdown="1">
-<div class="box-text" markdown="1">
+<konata:ponder>
 Should I just un-mirror them?  No, that's the coward's way out!
-</div>
-<div><img src="konata/ponder.webp" alt=""></div>
-</div>
+</konata>
 
 I decided to solve the problem by setting up [distributed builds][] which, well,
 turned out to be incredibly easy.

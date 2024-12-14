@@ -16,14 +16,55 @@ Options:
 import hashlib
 import jinja2
 import markdown
+import re
 import shutil
 import sys
+import xml.etree.ElementTree as ET
 import yaml
 
 from bs4 import BeautifulSoup
 from docopt import docopt
 from pathlib import Path
 from slugify import slugify
+
+
+class MdKonataProcessor(markdown.blockprocessors.BlockProcessor):
+    RE_START = r"^<konata:([a-z-]+)>"
+    RE_END = "</konata>$"
+
+    RIGHT_KONATAS = ["flop", "ponder"]
+
+    def test(self, parent, block):
+        return re.search(self.RE_START, block)
+
+    def run(self, parent, blocks):
+        original_block = blocks[0]
+        konata = re.search(self.RE_START, original_block).group(1)
+        blocks[0] = re.sub(self.RE_START, "", original_block)
+        for i, block in enumerate(blocks):
+            if re.search(self.RE_END, block):
+                blocks[i] = re.sub(self.RE_END, "", block)
+
+                ebox = ET.SubElement(parent, "div")
+                ebox.set("class", "box")
+                eimgwr = ET.SubElement(ebox, "div")
+                einner = ET.SubElement(ebox, "div")
+                if konata in self.RIGHT_KONATAS:
+                    einner, eimgwr = eimgwr, einner
+
+                einner.set("class", "box-text")
+                self.parser.parseBlocks(einner, blocks[0 : i + 1])
+
+                eimg = ET.SubElement(eimgwr, "img")
+                eimg.set("src", f"konata/{konata}.webp")
+                eimg.set("alt", "")
+
+                for i in range(0, i + 1):
+                    blocks.pop(0)
+                return True
+
+        blocks[0] = original_block
+        return False
 
 
 class MdSectionPostprocessor(markdown.postprocessors.Postprocessor):
@@ -43,8 +84,11 @@ class MdSectionPostprocessor(markdown.postprocessors.Postprocessor):
         return "\n".join(out)
 
 
-class MdSectionExtension(markdown.extensions.Extension):
+class MdBarrucadu(markdown.extensions.Extension):
     def extendMarkdown(self, md):
+        md.parser.blockprocessors.register(
+            MdKonataProcessor(md.parser), "mdkonata", 999
+        )
         md.postprocessors.register(MdSectionPostprocessor(), "mdsection", 999)
 
 
@@ -180,7 +224,7 @@ def render_page(source, target):
     elif source.suffix == ".markdown":
         html = markdown.markdown(
             "\n".join(body),
-            extensions=["fenced_code", "md_in_html", MdSectionExtension()],
+            extensions=["fenced_code", "md_in_html", MdBarrucadu()],
         )
         body = f"{{% block content %}}\n{html}\n{{% endblock %}}"
     else:
