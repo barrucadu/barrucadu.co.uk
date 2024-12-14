@@ -634,8 +634,9 @@ pre:has(code) {
     overflow-y: hidden; /* 2 */
     font-family: "Courier Prime", monospace; /* 3 */
     font-size: 1.6rem; /* 3 */
-    border-top: 2px solid var(--fg); /* 4 */
-    border-bottom: 2px solid var(--fg); /* 4 */
+    border-top: 1px dotted var(--marker-fg); /* 4 */
+    border-bottom: 1px dotted var(--marker-fg); /* 4 */
+    background-color: var(--box-bg);
 }
 
 /* Set a custom monospace font */
