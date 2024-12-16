@@ -577,14 +577,12 @@ th {
 /*
     1) Set custom padding and margins.
     2) Hide the vertical scroll bar.
-    3) Set the width to fit just around the content, but limit it to 80% of the main column.
     4) Center the blockquote horizontally and add some vertical margins.
 */
 blockquote {
     padding: 1rem 1.6rem; /* 1 */
     overflow-y: hidden; /* 2 */
-    width: fit-content; /* 3 */
-    max-width: 80%; /* 3 */
+    width: 80%; /* 3 */
     margin: 2rem auto; /* 4 */
 }
 
