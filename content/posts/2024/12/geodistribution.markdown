@@ -13,7 +13,7 @@ feed:
   <figcaption>{{ feed.image_alt }}</figcaption>
 </figure>
 
-<h2 style="display: none">Introduction</h2>
+<h2 style="display: none" markdown="1">Introduction</h2>
 
 I derive a lot of enjoyment from fiddling around with my servers (it's more fun
 than it sounds!) so when I saw a blog post about [setting up a tiny CDN with
