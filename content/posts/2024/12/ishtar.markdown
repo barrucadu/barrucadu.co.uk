@@ -356,7 +356,7 @@ for sure!  But this isn't so
 > "Enter, ladyship.  These are the rites of the mistress of the Netherworld."
 
 <konata:point>
-The "rings of the her hands and feet" are, according to other translations,
+The "rings of her hands and feet" are, according to other translations,
 bracelets and anklets.  Not finger and toe rings as I was imagining.
 </konata>
 
