@@ -64,6 +64,10 @@
     gap: 1em; /* 2x the div padding */
 }
 
+.konata + .konata {
+    border-top: none;
+}
+
 .konata img {
     max-width: 128px;
     max-height: 64px;
