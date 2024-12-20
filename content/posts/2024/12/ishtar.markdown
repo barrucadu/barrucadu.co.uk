@@ -386,7 +386,7 @@ bad because people mostly write with digits.
 > ana šâša gabbīša-ma šūṣâšši murṣī
 
 > From the very moment Ištar went down to the Netherworld,<br>
-> Ereškigal saw her: her face tembled with anger.<br>
+> Ereškigal saw her: her face trembled with anger.<br>
 > Ištar, unaware, sat above,<br>
 > Ereškigal made ready to speak,<br>
 > To Namtar her chief minister she speaks a command:<br>
