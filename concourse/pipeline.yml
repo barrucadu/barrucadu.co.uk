@@ -7,6 +7,14 @@ resource_types:
       password: ((docker-registry-password))
 
 resources:
+  - name: nix-image
+    type: registry-image
+    source:
+      repository: mirror.gcr.io/nixos/nix
+  - name: texlive-image
+    type: registry-image
+    source:
+      repository: mirror.gcr.io/texlive/texlive
   - name: fonts-git
     type: git
     source:
@@ -44,20 +52,19 @@ jobs:
   - name: build-and-deploy
     serial: true
     plan:
+      - get: nix-image
+      - get: texlive-image
       - get: fonts-git
       - get: cv-git
         trigger: true
       - get: www-git
         trigger: true
       - task: build-site
+        image: nix-image
         params:
           OUT_DIR: www
         config:
           platform: linux
-          image_resource:
-            type: registry-image
-            source:
-              repository: nixos/nix
           inputs:
             - name: www-git
           outputs:
@@ -70,12 +77,9 @@ jobs:
               - |
                 nix --extra-experimental-features "nix-command flakes" develop --command bash -c "./build --out=../site/${OUT_DIR}"
       - task: build-cv
+        image: texlive-image
         config:
           platform: linux
-          image_resource:
-            type: registry-image
-            source:
-              repository: texlive/texlive
           inputs:
             - name: fonts-git
               path: fonts
