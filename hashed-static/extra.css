@@ -11,6 +11,11 @@
     text-align: center;
 }
 
+td.money {
+    font-family: "Courier Prime", monospace;
+    text-align: right;
+}
+
 /* outlines boxes */
 .navgrid {
     list-style-type: none;
