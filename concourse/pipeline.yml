@@ -16,6 +16,7 @@ resources:
     type: registry-image
     source:
       repository: mirror.gcr.io/texlive/texlive
+      tag: latest-full
   - name: fonts-git
     type: git
     source:
