@@ -11,6 +11,7 @@ resources:
     type: registry-image
     source:
       repository: mirror.gcr.io/nixos/nix
+      tag: 2.31.2
   - name: texlive-image
     type: registry-image
     source:
