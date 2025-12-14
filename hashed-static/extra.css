@@ -91,6 +91,7 @@ body.akk {
 }
 @media (prefers-color-scheme: dark) {
     body.akk {
+        background-color: #130a14;
         background-image: url("akkadian/background-dark.webp");
     }
 }
